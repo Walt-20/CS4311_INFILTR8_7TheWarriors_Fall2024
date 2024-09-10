@@ -49,10 +49,13 @@
         padding: 20px;
         box-shadow: 2px 0 5px rgba(0,0,0,0.5);
         flex-direction: column;
+        transition: transform 0.3s ease;
+        transform: translateX(-100%);
     }
 
     .menu.open {
         display: flex;
+        transform: translateX(0);
     }
 
     .menu button {
@@ -74,18 +77,24 @@
         top: 10px;
         left: 10px;
         z-index: 1000; /* Ensure the button is on top */
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 24px;
+        color: white;
+        transition: left 0.3s ease;
+    }
+
+    .menu.open + .menu-button {
+        left: 190px; /* Adjust this value based on the width of the menu */
     }
 </style>
 
 <button class="menu-button" on:click={toggleMenu}>
     {#if menuOpen}
-    <span class="material-symbols-outlined">
-        chevron_left
-    </span>
+        <span class="material-symbols-outlined">chevron_left</span>
     {:else}
-    <span class="material-symbols-outlined">
-        chevron_right
-    </span>
+        <span class="material-symbols-outlined">chevron_right</span>
     {/if}
 </button>
 
