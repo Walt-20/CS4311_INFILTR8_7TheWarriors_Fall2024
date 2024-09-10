@@ -1,10 +1,7 @@
 <script>
-    import { goto } from '$app/navigation';
+    import {navigateTo} from '../utils.js';
+    
     export let menuOpen = false;
-
-    function navigateTo(path) {
-        goto(path);
-    }
 </script>
 
 <style>
