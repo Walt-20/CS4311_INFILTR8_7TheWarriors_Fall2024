@@ -1,10 +1,12 @@
 <script>
     import { onMount } from 'svelte';
+    import Menu from '$lib/Menu.svelte';
 
     let greeting = '';
     let notifications = ["Notification 1", "Notification 2", "Notification 3"];
     let files = [];
     let uploadProgress = 0;
+    let menuOpen = false;
 
     onMount(() => {
         const hours = new Date().getHours();
@@ -28,6 +30,10 @@
     function handleDiscardAll() {
         files = [];
         uploadProgress = 0;
+    }
+
+    function toggleMenu() {
+        menuOpen = !menuOpen;
     }
 </script>
 
@@ -53,6 +59,10 @@
         width: 0;
     }
 </style>
+
+<Menu {menuOpen} />
+    
+<button on:click={toggleMenu}>☰ Menu</button>
 
 <h1>{greeting}, Analyst!</h1>
 
