@@ -1,10 +1,5 @@
-<div class="main-content">
-    <slot></slot>
-</div>
+<script>
+    import '../app.css'
+</script>
 
-<style>
-    .main-content {
-        background-color: grey;
-        padding: 0;
-    }
-</style>
+<slot />

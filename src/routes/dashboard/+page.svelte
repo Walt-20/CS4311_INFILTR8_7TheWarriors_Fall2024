@@ -62,11 +62,19 @@
     h1, h2, ul, p {
         color: green;
     }
+
+    .greeting h1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 </style>
 
 <Menu {menuOpen} />
 
-<h1>{greeting}, Analyst!</h1>
+<div class="greeting">
+    <h1>{greeting}, Analyst!</h1>
+</div>
 
 <h2>Notifications</h2>
 <ul>

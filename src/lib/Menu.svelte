@@ -79,9 +79,13 @@
 
 <button class="menu-button" on:click={toggleMenu}>
     {#if menuOpen}
-        &#9650; <!-- Up arrow -->
+    <span class="material-symbols-outlined">
+        chevron_left
+    </span>
     {:else}
-        &#9660; <!-- Down arrow -->
+    <span class="material-symbols-outlined">
+        chevron_right
+    </span>
     {/if}
 </button>
 
