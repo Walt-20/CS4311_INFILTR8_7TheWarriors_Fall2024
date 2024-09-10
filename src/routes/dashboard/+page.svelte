@@ -58,11 +58,13 @@
         background-color: #4caf50;
         width: 0;
     }
+
+    h1, h2, ul, p {
+        color: green;
+    }
 </style>
 
 <Menu {menuOpen} />
-    
-<button on:click={toggleMenu}>☰ Menu</button>
 
 <h1>{greeting}, Analyst!</h1>
 
