@@ -12,7 +12,7 @@
 </script>
 
 <style>
-    * {
+    body {
         background-color: gray;
     }
 
@@ -101,6 +101,6 @@
             <label for="password">Password</label>
             <input type="text" id="password" placeholder="Password" bind:value={password} required/>
         </div>
-        <button type="submit" on:click={() => navigateTo('src/lib/Menu.svelte')} > Update Password </button>
+        <button type="submit" > Update Password </button>
     </div>
 </form>
