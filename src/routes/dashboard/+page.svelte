@@ -26,6 +26,13 @@
 
     function handleFileSelect(event) {
         files = Array.from(event.target.files);
+        uploadProgress = 0;
+        const interval = setInterval(() => {
+            uploadProgress += 10;
+            if (uploadProgress >= 100) {
+                clearInterval(interval);
+            }
+        }, 100);
     }
 
     function handleCreateProject() {
@@ -35,6 +42,10 @@
     function handleDiscardAll() {
         files = [];
         uploadProgress = 0;
+    }
+
+    function triggerFileInput() {
+        document.getElementById('file-input').click();
     }
 </script>
 
@@ -89,6 +100,46 @@
         justify-content: center;
         align-items: center;
     }
+
+    .button {
+        background-color: rgb(63, 63, 63);
+        color: green;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s, box-shadow 0.3s;
+    }
+
+    .button:hover {
+        background-color: rgb(107, 107, 107);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .button.discard {
+        background-color: #b00020;
+    }
+
+    .button.discard:hover {
+        background-color: #7f0000;
+    }
+
+    .file-input-container {
+        position: relative;
+        display: inline-block;
+    }
+
+    .file-input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        cursor: pointer;
+    }
+
 </style>
 
 <Menu {menuOpen} />
@@ -114,15 +165,19 @@
     <div class="create-project">
         <h2>Create New Project</h2>
         <div class="file-upload">
-            <p>Drag and drop a file here or</p>
-            <input type="file" multiple on:change={handleFileSelect} />
+            <div class="top">
+                <p>Drag and drop a file here or</p>
+                <div class="file-input-container">
+                    <button class="button" on:click{triggerFileInput}>Select Files</button>
+                    <input id=:file-input class="file-input" type="file" multiple on:change={handleFileSelect} />
+                </div>
+            </div>
         </div>
-        <button on:click={handleFileSelect}>Select Files</button>
-        <button on:click={handleCreateProject}>Create Project</button>
-        <button on:click={handleDiscardAll}>Discard all</button>
     </div>
     
     <div class="upload-files">
+        <button class="button" on:click={handleCreateProject}>Create Project</button>
+        <button class="button discard" on:click={handleDiscardAll}>Discard all</button>
         <h2>Uploading Files</h2>
         {#if files.length > 0}
             <ul>
