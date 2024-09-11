@@ -43,6 +43,14 @@
 </script>
 
 <style>
+    .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto;
+        gap: 20px;
+        padding: 20px;
+    }
+
     .file-upload {
         border: 2px dashed #ccc;
         padding: 20px;
@@ -63,16 +71,17 @@
         background-color: #4caf50;
         width: 0;
     }
-    
-    .notification {
-        display: flex;
-        align-items: center;
+
+    .notifications {
+        grid-column: 1 / 2;
     }
 
-    .notification h2 {
-        display: flex;
-        align-items: center;
-        margin: 0;
+    .create-project {
+        grid-column: 2 / 3;
+    }
+
+    .upload-files {
+        grid-column: 1 / 3;
     }
 
     h1, h2, ul, p {
@@ -84,11 +93,6 @@
         justify-content: center;
         align-items: center;
     }
-
-    .message {
-        width: 25%;
-        
-    }
 </style>
 
 <Menu {menuOpen} />
@@ -97,36 +101,44 @@
     <h1>{greeting}, Analyst!</h1>
 </div>
 
-<div class="notification">
-    <h2> <span class="material-symbols-outlined">notifications_active</span>
-        Notifications 
-    </h2>
-</div>
-<div class="message">
-    {#each notifications as { message, unread}}
-        <Notification {message} {unread} />
-    {/each}
-</div>
-
-<h2>Create New Project</h2>
-<div class="file-upload">
-    <p>Drag and drop a file here or</p>
-    <input type="file" multiple on:change={handleFileSelect} />
-</div>
-<button on:click={handleFileSelect}>Select Files</button>
-<button on:click={handleCreateProject}>Create Project</button>
-<button on:click={handleDiscardAll}>Discard all</button>
-
-<h2>Uploading Files</h2>
-{#if files.length > 0}
-    <ul>
-        {#each files as file}
-            <li>{file.name}</li>
-        {/each}
-    </ul>
-    <div class="progress-bar">
-        <div style="width: {uploadProgress}%"></div>
+<div class="grid">
+    <div class="notifications">
+        <div class="notification">
+            <h2> <span class="material-symbols-outlined">notifications_active</span>
+                Notifications 
+            </h2>
+        </div>
+        <div class="message">
+            {#each notifications as { message, unread}}
+                <Notification {message} {unread} />
+            {/each}
+        </div>
     </div>
-{:else}
-    <p>No files being uploaded.</p>
-{/if}
+    
+    <div class="create-project">
+        <h2>Create New Project</h2>
+        <div class="file-upload">
+            <p>Drag and drop a file here or</p>
+            <input type="file" multiple on:change={handleFileSelect} />
+        </div>
+        <button on:click={handleFileSelect}>Select Files</button>
+        <button on:click={handleCreateProject}>Create Project</button>
+        <button on:click={handleDiscardAll}>Discard all</button>
+    </div>
+    
+    <div class="upload-files">
+        <h2>Uploading Files</h2>
+        {#if files.length > 0}
+            <ul>
+                {#each files as file}
+                    <li>{file.name}</li>
+                {/each}
+            </ul>
+            <div class="progress-bar">
+                <div style="width: {uploadProgress}%"></div>
+            </div>
+        {:else}
+            <p>No files being uploaded.</p>
+        {/if}
+    </div>
+</div>
