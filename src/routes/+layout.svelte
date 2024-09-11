@@ -1,11 +1,5 @@
-<div class="main-content">
-    <slot></slot>
-</div>
+<script>
+    import '../app.css'
+</script>
 
-<style>
-    .main-content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-</style>
+<slot />

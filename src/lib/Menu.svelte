@@ -1,30 +1,39 @@
 <script>
-    import { goto } from '$app/navigation';
-    export let menuOpen = false;
+    let menuOpen = false;
+
+    function toggleMenu() {
+        menuOpen = !menuOpen;
+    }
 
     function navigateTo(path) {
-        goto(path);
+        // Implement your navigation logic here
+        console.log(`Navigating to ${path}`);
     }
 </script>
 
 <style>
     .menu {
+        display: none;
         position: fixed;
-        left: 0;
         top: 0;
-        width: 200px;
+        left: 0;
         height: 100%;
+        width: 200px;
         background-color: #333;
         color: white;
         padding: 20px;
-        display: flex;
+        box-shadow: 2px 0 5px rgba(0,0,0,0.5);
         flex-direction: column;
-        gap: 10px;
-        transform: translateX(-100%);
         transition: transform 0.3s ease;
+        transform: translateX(-100%);
+    }
+
+    .menu h2 {
+        color: green;
     }
 
     .menu.open {
+        display: flex;
         transform: translateX(0);
     }
 
@@ -34,13 +43,39 @@
         color: white;
         text-align: left;
         padding: 10px;
+        width: 100%;
         cursor: pointer;
     }
 
     .menu button:hover {
         background-color: #444;
     }
+
+    .menu-button {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        z-index: 1000;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 24px;
+        color: white;
+        transition: left 0.3s ease;
+    }
+
+    .menu-button.open {
+        left: 190px;
+    }
 </style>
+
+<button class="menu-button {menuOpen ? 'open' : ''}" on:click={toggleMenu}>
+    {#if menuOpen}
+        <span class="material-symbols-outlined">chevron_left</span>
+    {:else}
+        <span class="material-symbols-outlined">chevron_right</span>
+    {/if}
+</button>
 
 <div class="menu {menuOpen ? 'open' : ''}">
     <h2>INFILTR8</h2>
