@@ -1,9 +1,14 @@
 <script>
     import { onMount } from 'svelte';
     import Menu from '$lib/Menu.svelte';
+    import Notification from '$lib/Notification.svelte';
 
     let greeting = '';
-    let notifications = ["Notification 1", "Notification 2", "Notification 3"];
+    let notifications = [
+        { message: "Notification 1", unread: true }, 
+        { message: "Notification 2", unread: false }, 
+        {message: "Notification 3", unread: true }
+    ];
     let files = [];
     let uploadProgress = 0;
     let menuOpen = false;
@@ -79,6 +84,11 @@
         justify-content: center;
         align-items: center;
     }
+
+    .message {
+        width: 25%;
+        
+    }
 </style>
 
 <Menu {menuOpen} />
@@ -89,13 +99,14 @@
 
 <div class="notification">
     <h2> <span class="material-symbols-outlined">notifications_active</span>
-        Notifications </h2>
+        Notifications 
+    </h2>
 </div>
-<ul>
-    {#each notifications as notification}
-        <li>{notification}</li>
+<div class="message">
+    {#each notifications as { message, unread}}
+        <Notification {message} {unread} />
     {/each}
-</ul>
+</div>
 
 <h2>Create New Project</h2>
 <div class="file-upload">
