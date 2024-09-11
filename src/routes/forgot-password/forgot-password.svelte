@@ -53,14 +53,14 @@
         padding: 10px;
         border: none;
         border-radius: 5px;
-        background-color: #007BFF;
+        background-color: #2cd90e;
         color: white;
         font-size: 16px;
         cursor: pointer;
     }
 
     button:hover {
-        background-color: #0056b3;
+        background-color: #20a509;
     }
 
     .forgot-password {
