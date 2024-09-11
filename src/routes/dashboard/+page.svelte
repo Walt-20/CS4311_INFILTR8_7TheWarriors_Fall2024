@@ -58,6 +58,17 @@
         background-color: #4caf50;
         width: 0;
     }
+    
+    .notification {
+        display: flex;
+        align-items: center;
+    }
+
+    .notification h2 {
+        display: flex;
+        align-items: center;
+        margin: 0;
+    }
 
     h1, h2, ul, p {
         color: green;
@@ -76,7 +87,10 @@
     <h1>{greeting}, Analyst!</h1>
 </div>
 
-<h2>Notifications</h2>
+<div class="notification">
+    <h2> <span class="material-symbols-outlined">notifications_active</span>
+        Notifications </h2>
+</div>
 <ul>
     {#each notifications as notification}
         <li>{notification}</li>

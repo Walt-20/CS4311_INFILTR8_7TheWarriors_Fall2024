@@ -12,31 +12,6 @@
 </script>
 
 <style>
-    body {
-        background-color: grey;
-    }
-
-    .file-upload {
-        border: 2px dashed #ccc;
-        padding: 20px;
-        text-align: center;
-    }
-
-    .progress-bar div {
-        height: 20px;
-        background-color: #4caf50;
-        width: 0;
-    }
-
-    h1, h2, ul, p {
-        color: green;
-    }
-
-    nav {
-        display: flex;
-        justify-content: flex-start;
-    }
-
     .menu {
         display: none;
         position: fixed;
@@ -51,6 +26,10 @@
         flex-direction: column;
         transition: transform 0.3s ease;
         transform: translateX(-100%);
+    }
+
+    .menu h2 {
+        color: green;
     }
 
     .menu.open {
@@ -76,7 +55,7 @@
         position: fixed;
         top: 10px;
         left: 10px;
-        z-index: 1000; /* Ensure the button is on top */
+        z-index: 1000;
         background: none;
         border: none;
         cursor: pointer;
@@ -85,12 +64,12 @@
         transition: left 0.3s ease;
     }
 
-    .menu.open + .menu-button {
-        left: 190px; /* Adjust this value based on the width of the menu */
+    .menu-button.open {
+        left: 190px;
     }
 </style>
 
-<button class="menu-button" on:click={toggleMenu}>
+<button class="menu-button {menuOpen ? 'open' : ''}" on:click={toggleMenu}>
     {#if menuOpen}
         <span class="material-symbols-outlined">chevron_left</span>
     {:else}
