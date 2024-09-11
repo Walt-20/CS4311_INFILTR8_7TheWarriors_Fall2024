@@ -36,10 +36,6 @@
         files = [];
         uploadProgress = 0;
     }
-
-    function toggleMenu() {
-        menuOpen = !menuOpen;
-    }
 </script>
 
 <style>
