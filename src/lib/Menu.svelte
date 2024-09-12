@@ -1,14 +1,12 @@
+
 <script>
-    let menuOpen = false;
+    import {navigateTo} from '../utils.js';
 
     function toggleMenu() {
         menuOpen = !menuOpen;
     }
-
-    function navigateTo(path) {
-        // Implement your navigation logic here
-        console.log(`Navigating to ${path}`);
-    }
+    
+    export let menuOpen = false;
 </script>
 
 <style>

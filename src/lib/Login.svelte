@@ -1,5 +1,6 @@
 <script>
     import user from '../user';
+    import {navigateTo} from '../utils.js';
 
     let username = '';
     let password = '';
@@ -105,7 +106,7 @@
             <label for="password">Password</label>
             <input type="text" id="password" bind:value={password} />
         </div>
-        <button type="submit">Login</button>
+        <button  on:click={() => navigateTo('/dashboard')}>Login</button>
         <a href="/forgot-password" class="forgot-password">Forgot Password?</a>
     </div>
 </form>
