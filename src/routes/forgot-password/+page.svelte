@@ -14,10 +14,6 @@
 </script>
 
 <style>
-    body {
-        background-color: gray;
-    }
-
     form {
         max-width: 400px;
         margin: 50px auto;

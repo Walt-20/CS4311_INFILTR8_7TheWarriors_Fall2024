@@ -23,10 +23,8 @@
     :global(body) {
         background-color: #9e9e9e;
     }
-    h1 {
-        color: #69f0ae;
-    }
-    h2 {
-        color: #69f0ae;
+    h1, h2 {
+        color: #44f824;
+        text-align: center;
     }
 </style>
