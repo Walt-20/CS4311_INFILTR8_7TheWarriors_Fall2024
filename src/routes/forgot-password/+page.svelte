@@ -1,6 +1,5 @@
 <script>
-    import user from '../user';
-    import {navigateTo} from '../utils.js';
+    import {navigateTo} from '../../utils.js';
 
     let username = '';
     let password = '';
@@ -8,7 +7,10 @@
 
     const updatePassword = () => {
         // TO BE UPDTED WHEN DATABASE IS INTEGRATED
+        navigateTo('/')
     }
+    
+
 </script>
 
 <style>
@@ -20,23 +22,23 @@
         max-width: 400px;
         margin: 50px auto;
         margin-top: 3%;
-        padding: 20px;
-        border: 1px solid #ccc;
+        padding: 50px;
+        border: 1px solid rgb(77, 76, 76);
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        background-color: #fff;
+        background-color: rgb(77, 76, 76);
     }
 
     div {
         margin-bottom: 15px;
-        background-color: white;
+        background-color: rgb(77, 76, 76);
     }
 
     label {
         display: block;
         margin-bottom: 5px;
         font-weight: bold;
-        background-color: white;
+        background-color: rgb(77, 76, 76);
     }
 
     input[type="text"] {
@@ -48,7 +50,8 @@
         background-color: white;
     }
 
-    button {
+    .updateButton {
+        margin-top: 3%;
         width: 100%;
         padding: 10px;
         border: none;
@@ -59,32 +62,37 @@
         cursor: pointer;
     }
 
-    button:hover {
+    .updateButton:hover {
         background-color: #20a509;
     }
 
-    .forgot-password {
-        display: block;
-        margin-top: 10px;
-        text-align: right;
-        color: #007BFF;
-        text-decoration: none;
+    .returnButton {
+        margin-top: 3%;
+        width: 50%;
+        padding: 10px;
+        margin-left: 25%;
+        border: none;
+        border-radius: 5px;
+        background-color: white;
+        font-size: 12px;
     }
 
-    .forgot-password:hover {
-        text-decoration: underline;
+    .returnButton:hover {
+        background-color: #FFA500;
     }
+
     h1 {
         text-align: center;
-        margin-top: 5%;
+        margin-top: 3%;
         color: #39FF14;
     }
     .titleform {
+        margin-top: 1%;
         text-align: center;
-        background-color: white;
+        background-color: rgb(77, 76, 76);
     }
     .login-background {
-        background-color: white;
+        background-color: rgb(77, 76, 76);
     }
 </style>
 
@@ -94,13 +102,15 @@
         <h2 class="titleform"> Change Password </h2>
         <div class="login-background">
             <label for="username">Username</label>
-            <input type="text" id="username" placeholder="Username" bind:value={username} required/>
+            <input type="text" id="username" placeholder="Username" bind:value={username} />
         </div>
 
         <div class="login-background">
             <label for="password">Password</label>
-            <input type="text" id="password" placeholder="Password" bind:value={password} required/>
+            <input type="text" id="password" placeholder="Password" bind:value={password} />
         </div>
-        <button type="submit" > Update Password </button>
+        <button class="updateButton" type="submit" > Update Password </button>
     </div>
+    <input class="returnButton" type="button" value="Back to Login" on:click={updatePassword} /> 
+
 </form>
