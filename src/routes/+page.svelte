@@ -18,3 +18,15 @@
 <h2>Login to INFILTR8</h2>
 <Login />
 {/if}
+
+<style>
+    :global(body) {
+        background-color: #9e9e9e;
+    }
+    h1 {
+        color: #69f0ae;
+    }
+    h2 {
+        color: #69f0ae;
+    }
+</style>
