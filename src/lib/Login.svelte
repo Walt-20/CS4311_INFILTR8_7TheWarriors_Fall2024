@@ -107,6 +107,6 @@
             <input type="text" id="password" bind:value={password} />
         </div>
         <button  on:click={() => navigateTo('/dashboard')}>Login</button>
-        <a href="/forgot-password" class="forgot-password">Forgot Password?</a>
+        <a href='/forgot-password' class="forgot-password">Forgot Password?</a>
     </div>
 </form>
