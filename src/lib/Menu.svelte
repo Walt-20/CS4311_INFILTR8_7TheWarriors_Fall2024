@@ -27,7 +27,7 @@
     }
 
     .menu h2 {
-        color: green;
+        color: #20a509;
     }
 
     .menu.open {

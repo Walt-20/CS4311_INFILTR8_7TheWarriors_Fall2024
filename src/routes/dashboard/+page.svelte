@@ -91,8 +91,8 @@
         grid-column: 1 / 3;
     }
 
-    h1, h2, ul, p {
-        color: green;
+    h1, h2 {
+        color: #20a509;
     }
 
     .greeting h1 {
@@ -102,8 +102,8 @@
     }
 
     .button {
-        background-color: rgb(63, 63, 63);
-        color: green;
+        background-color: #20a509;
+        color: #f3f3f3;
         border: none;
         border-radius: 5px;
         padding: 10px 20px;
@@ -113,7 +113,7 @@
     }
 
     .button:hover {
-        background-color: rgb(107, 107, 107);
+        background-color: rgb(44, 44, 44);
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
 
