@@ -102,7 +102,7 @@
     }
 
     .button {
-        background-color: #20a509;
+        background-color: #2cd90e;
         color: #f3f3f3;
         border: none;
         border-radius: 5px;
@@ -113,7 +113,7 @@
     }
 
     .button:hover {
-        background-color: rgb(44, 44, 44);
+        background-color: #20a509;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
 
