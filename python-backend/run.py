@@ -1,9 +1,10 @@
 from flask import Flask,g,Response,request
 from json import dumps
 from neo4j import GraphDatabase, basic_auth
+import os
 
 app = Flask(__name__)
-driver = GraphDatabase.driver('neo4j+s://36954b0e.databases.neo4j.io',auth=basic_auth("neo4j",""))
+driver = GraphDatabase.driver('neo4j+s://36954b0e.databases.neo4j.io',auth=basic_auth("neo4j",os.environ.get("NEO4J_AUTH_KEY")))
 driver.verify_connectivity()
 
 def serialize_user(user):
