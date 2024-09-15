@@ -19,8 +19,8 @@ npm run dev -- --open
 
 ## Stack Foundation 
 
-**Frontend**: (fill in)
-**Backend**: Node.js
-**Build Tool**: (fill in)
-**Package Manager**: npm
-**Database**: Neo4J Enviornment 
+- **Frontend**: (fill in)
+- **Backend**: Node.js
+- **Build Tool**: (fill in)
+- **Package Manager**: npm
+- **Database**: Neo4J Enviornment 
