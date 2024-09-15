@@ -46,7 +46,7 @@
         border: 1px solid #ccc;
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        background-color: #fff;
+        background-color: rgb(77, 76, 76);
     }
 
     div {
@@ -72,21 +72,21 @@
         padding: 10px;
         border: none;
         border-radius: 5px;
-        background-color: #007BFF;
+        background-color: #2cd90e;
         color: white;
         font-size: 16px;
         cursor: pointer;
     }
 
     button:hover {
-        background-color: #0056b3;
+        background-color: #20a609;
     }
 
     .forgot-password {
         display: block;
         margin-top: 10px;
         text-align: right;
-        color: #007BFF;
+        color: #000;
         text-decoration: none;
     }
 
@@ -99,14 +99,14 @@
     <div>
         <div>
             <label for="username">Username</label>
-            <input type="text" id="username" bind:value={username} />
+            <input type="text" id="username" bind:value={username} placeholder="Username"/>
         </div>
 
         <div>
             <label for="password">Password</label>
-            <input type="text" id="password" bind:value={password} />
+            <input type="text" id="password" bind:value={password} placeholder="Password"/>
         </div>
         <button  on:click={() => navigateTo('/dashboard')}>Login</button>
-        <a href="/forgot-password" class="forgot-password">Forgot Password?</a>
+        <a href='/forgot-password' class="forgot-password">Forgot Password?</a>
     </div>
 </form>
