@@ -8,11 +8,15 @@
     .notification {
         display: flex;
         align-items: center;
-        background-color: #616060;
         padding: 10px;
-        border-radius: 5px;
         margin-bottom: 10px;
         height: 15px;
+    }
+
+    .notification:hover {
+        transform: scale(1.00);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        cursor: pointer;
     }
 
     .notification-message {

@@ -7,7 +7,7 @@
     let notifications = [
         { message: "Notification 1", unread: true }, 
         { message: "Notification 2", unread: false }, 
-        {message: "Notification 3", unread: true }
+        { message: "Notification 3", unread: true }
     ];
     let files = [];
     let uploadProgress = 0;
@@ -79,6 +79,12 @@
         width: 0;
     }
 
+    .message {
+        background-color: rgba(83,109,130,255);
+        border-radius: 1%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
     .notifications {
         grid-column: 1 / 2;
     }
@@ -92,7 +98,7 @@
     }
 
     h1, h2 {
-        color: #20a509;
+        color: rgba(156,178,190,255);
     }
 
     .greeting h1 {
@@ -102,8 +108,7 @@
     }
 
     .button {
-        background-color: #2cd90e;
-        color: #f3f3f3;
+        background-color: rgba(156,178,190,255);
         border: none;
         border-radius: 5px;
         padding: 10px 20px;
@@ -113,16 +118,18 @@
     }
 
     .button:hover {
-        background-color: #20a509;
+        background-color: #5e6b72;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
 
     .button.discard {
         background-color: #b00020;
+        color: #f3f3f3;
     }
 
     .button.discard:hover {
         background-color: #7f0000;
+        color: #f3f3f3;
     }
 
     .file-input-container {
