@@ -17,8 +17,8 @@
         left: 0;
         height: 100%;
         width: 200px;
-        background-color: #333;
-        color: white;
+        background-color: rgba(83,109,130,255);
+        color: #fff;
         padding: 20px;
         box-shadow: 2px 0 5px rgba(0,0,0,0.5);
         flex-direction: column;
@@ -27,7 +27,7 @@
     }
 
     .menu h2 {
-        color: #20a509;
+        color: rgba(38,55,77,255);
     }
 
     .menu.open {

@@ -176,7 +176,7 @@
                 <p>Drag and drop a file here or</p>
                 <div class="file-input-container">
                     <button class="button" on:click{triggerFileInput}>Select Files</button>
-                    <input id=:file-input class="file-input" type="file" multiple on:change={handleFileSelect} />
+                    <input id=:file-input class="file-input" type="file" multiple accept=".nessus" on:change={handleFileSelect} />
                 </div>
             </div>
         </div>
