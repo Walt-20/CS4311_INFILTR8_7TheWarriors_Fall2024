@@ -26,13 +26,7 @@
 
     function handleFileSelect(event) {
         files = Array.from(event.target.files);
-        uploadProgress = 0;
-        const interval = setInterval(() => {
-            uploadProgress += 10;
-            if (uploadProgress >= 100) {
-                clearInterval(interval);
-            }
-        }, 100);
+        handleShowProgress();
     }
 
     function handleCreateProject() {
@@ -46,6 +40,26 @@
 
     function triggerFileInput() {
         document.getElementById('file-input').click();
+    }
+
+    function handleDrop(event) {
+        event.preventDefault();
+        files = Array.from(event.dataTransfer.files);
+        handleShowProgress();
+    }
+
+    function handleDragOver(event) {
+        event.preventDefault();
+    }
+
+    function handleShowProgress() {
+        uploadProgress = 0;
+        const interval = setInterval(() => {
+            uploadProgress += 10;
+            if (uploadProgress >= 100) {
+                clearInterval(interval)
+            }
+        }, 100);
     }
 </script>
 
@@ -171,7 +185,12 @@
     
     <div class="create-project">
         <h2>Create New Project</h2>
-        <div class="file-upload">
+        <div class="file-upload"
+             role="button"
+             tabindex="0"
+             aria-label="File upload area. Drag and drop a nuessus file here or select files using the button."
+             on:dragover={handleDragOver}
+             on:drop={handleDrop}>
             <div class="top">
                 <p>Drag and drop a file here or</p>
                 <div class="file-input-container">
