@@ -2,6 +2,7 @@
     import { onMount } from 'svelte';
     import Menu from '$lib/Menu.svelte';
     import Notification from '$lib/Notification.svelte';
+    import { navigateTo } from '../../utils';
 
     let greeting = '';
     let notifications = [
@@ -12,6 +13,7 @@
     let files = [];
     let uploadProgress = 0;
     let menuOpen = false;
+    let isValidFile = false;
 
     onMount(() => {
         const hours = new Date().getHours();
@@ -25,12 +27,21 @@
     });
 
     function handleFileSelect(event) {
-        files = Array.from(event.target.files);
+        const allowedTypes = ['application/vdn.openxmlformats-officedocument.spreadsheetml.sheet'];
+        const selectedFiles = Array.from(event.target.files);
+        const validFiles = selectedFiles.filter(file => file.name.endsWith(".nessus"));
+
+        if (validFiles.length !== selectedFiles.length) {
+            alert('Only .nessus files are allowed.');
+        }
+
+        files = validFiles;
+        isValidFile = files.length > 0;
         handleShowProgress();
     }
 
     function handleCreateProject() {
-        // Handle create project action
+        navigateTo('/project');
     }
 
     function handleDiscardAll() {
@@ -38,13 +49,18 @@
         uploadProgress = 0;
     }
 
-    function triggerFileInput() {
-        document.getElementById('file-input').click();
-    }
-
     function handleDrop(event) {
         event.preventDefault();
-        files = Array.from(event.dataTransfer.files);
+        const allowedTypes = ['application/vdn.openxmlformats-officedocument.spreadsheetml.sheet'];
+        const selectedFiles = Array.from(event.dataTransfer.files);
+        const validFiles = selectedFiles.filter(file => file.name.endsWith(".nessus"));
+
+        if (validFiles.length !== selectedFiles.length) {
+            alert('Only .nessus files are allowed.');
+        }
+
+        files = validFiles;
+        isValidFile = files.length > 0;
         handleShowProgress();
     }
 
@@ -202,7 +218,7 @@
     </div>
     
     <div class="upload-files">
-        <button class="button" on:click={handleCreateProject}>Create Project</button>
+        <button class="button" on:click={handleCreateProject} disabled={!isValidFile}>Create Project</button>
         <button class="button discard" on:click={handleDiscardAll}>Discard all</button>
         <h2>Uploading Files</h2>
         {#if files.length > 0}
