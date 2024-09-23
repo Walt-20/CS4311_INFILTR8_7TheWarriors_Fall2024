@@ -56,6 +56,11 @@
         cursor: pointer;
     }
 
+    .current-project:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
     .folder-icon {
         margin-right: 10px;
         font-size: 2rem;
@@ -79,6 +84,11 @@
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         width: 75%;
         padding: 10px;
+    }
+
+    .scope-list:hover, .entry-list:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
 
     .scope-list ul, .entry-list ul {
@@ -106,6 +116,12 @@
         border-radius: 5px;
         background-color: rgba(83,109,130,255);
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+    }
+
+    .project-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
 
     .project-card .icon {
@@ -129,6 +145,28 @@
         cursor: pointer;
         margin-left: 10px;
     }
+
+    .start-testing {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .start-testing button {
+        padding: 10px 20px;
+        background-color: rgba(83,109,130,255);
+        color: #fff;
+        border: none;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+        cursor: pointer;
+    }
+
+    .start-testing button:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+    
 </style>
 
 <Menu {menuOpen} />
@@ -202,6 +240,9 @@
                 </ul>
             </div>
         </div>
+    </div>
+    <div class="start-testing">
+        <button>Start Testing</button>
     </div>
 </div>
 
