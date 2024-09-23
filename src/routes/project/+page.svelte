@@ -1,9 +1,6 @@
 <script>
-    import { onMount } from 'svelte';
     import Menu from '../../lib/Menu.svelte';
 
-    let files = [];
-    let uploadProgress = 0;
     let ips = ["192.168.1.1", "192.168.1.2", "192.168.1.3"];
     let analyses = ["Analysis 1", "Analysis 2", "Analysis 3"];
     let projects = ["Project 1", "Project 2", "Project 3"];
@@ -11,19 +8,30 @@
 
     function moveUp(list, index) {
         if (index > 0) {
-            [list[index - 1], list[index]] = [list[index], list[index - 1]];
-            ips = [...list];
+            const newList = [...list];
+            [newList[index - 1], newList[index]] = [newList[index], newList[index - 1]];
+            if (list === ips) {
+                ips = newList;
+            } else {
+                analyses = newList;
+            }
         }
     }
 
     function moveDown(list, index) {
         if (index < list.length - 1) {
-            [list[index + 1], list[index]] = [list[index], list[index + 1]];
-            ips = [...list];
+            const newList = [...list];
+            [newList[index + 1], newList[index]] = [newList[index], newList[index + 1]];
+            if (list === ips) {
+                ips = newList;
+            } else {
+                analyses = newList;
+            }
         }
     }
-
 </script>
+
+
 
 <style>
     .grid {
@@ -66,23 +74,42 @@
         grid-area: ip;
     }
 
-    .scope-list {
+    .scope-list, .entry-list {
         background-color: rgba(83,109,130,255);
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         width: 75%;
         padding: 10px;
     }
 
-    .scope-list ul {
+    .scope-list ul, .entry-list ul {
         list-style-type: none;
         padding: 0;
     }
 
-    .scope-list li {
+    .scope-list li, .entry-list li {
         display: flex;
         justify-content: space-between;
         align-items: center;
         padding: 5px 0;
+    }
+
+    .load-projects ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    .project-card {
+        display: flex;
+        align-items: center;
+        padding: 20px;
+        margin: 20px 0;
+        border-radius: 5px;
+        background-color: rgba(83,109,130,255);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .project-card .icon {
+        margin-right: 10px;
     }
 
     .entry {
@@ -143,24 +170,37 @@
         
         <div class="entry">
             <h2>Entry Points Allowed</h2>
-            <ul>
-                {#each analyses as analysis, index}
-                    <li>
-                        {analysis}
-                        <span class="arrow" on:click={() => moveUp(analyses, index)}>⬆️</span>
-                        <span class="arrow" on:click={() => moveDown(analyses, index)}>⬇️</span>
-                    </li>
-                {/each}
-            </ul>
+            <div class="entry-list">
+                <ul>
+                    {#each analyses as analysis, index}
+                        <li>
+                            <span>{analysis}</span>
+                            <div>
+                                <span class="arrow" on:click={() => moveUp(analyses, index)} aria-label="Move up"><span class="material-symbols-outlined">
+                                    keyboard_arrow_up
+                                    </span></span>
+                                <span class="arrow" on:click={() => moveDown(analyses, index)} aria-label="Move down"><span class="material-symbols-outlined">
+                                    keyboard_arrow_down
+                                    </span></span>
+                            </div>
+                        </li>
+                    {/each}
+                </ul>
+            </div>
         </div>
         
         <div class="load">
             <h2>Load Projects</h2>
-            <ul>
-                {#each projects as project}
-                    <li>{project}</li>
-                {/each}
-            </ul>
+            <div class="load-projects">
+                <ul>
+                    {#each projects as project}
+                        <li class="project-card">
+                            <span class="icon">📁</span>
+                            <span>{project}</span>
+                        </li>
+                    {/each}
+                </ul>
+            </div>
         </div>
     </div>
 </div>
