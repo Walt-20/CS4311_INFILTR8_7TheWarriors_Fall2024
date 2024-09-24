@@ -67,7 +67,7 @@
         box-sizing: border-box;
     }
 
-    button {
+    .login-button {
         width: 100%;
         padding: 10px;
         border: none;
@@ -76,6 +76,15 @@
         color: white;
         font-size: 16px;
         cursor: pointer;
+        margin-top: 3%;
+    }
+
+    .register-button {
+        display: block;
+        margin-top: 15px;
+        text-align: center;
+        color: #000;
+        text-decoration: none;
     }
 
     button:hover {
@@ -85,7 +94,7 @@
     .forgot-password {
         display: block;
         margin-top: 10px;
-        text-align: right;
+        text-align: left;
         color: #000;
         text-decoration: none;
     }
@@ -106,7 +115,10 @@
             <label for="password">Password</label>
             <input type="text" id="password" bind:value={password} placeholder="Password"/>
         </div>
-        <button  on:click={() => navigateTo('/dashboard')}>Login</button>
-        <a href='/forgot-password' class="forgot-password">Forgot Password?</a>
+        <a href="/forgot-password" class="forgot-password">Forgot Password?</a>
+        <button class='login-button' on:click={() => navigateTo('/dashboard')}>Login</button>
+        <div class="register-button">
+            Don't have an account? <a href="/registration">Register DAC Analyst</a>
+        </div>
     </div>
 </form>
