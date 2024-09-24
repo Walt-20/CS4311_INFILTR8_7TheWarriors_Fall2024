@@ -12,6 +12,8 @@
     const registerUser = () => {
         // TO BE UPDTED WHEN DATABASE IS INTEGRATED
         navigateTo('/')
+
+        // GENERATE HASHED TOKEN TO STORE IN DATABASE
     }
     
 
@@ -23,15 +25,15 @@
         margin: 50px auto;
         margin-top: 3%;
         padding: 50px;
-        border: 1px solid rgb(77, 76, 76);
+        border: 1px solid rgba(83,109,130,255);
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        background-color: rgb(77, 76, 76);
+        background-color: rgba(83,109,130,255);
     }
 
     div {
         margin-bottom: 15px;
-        background-color: rgb(77, 76, 76);
+        background-color:rgba(83,109,130,255);
     }
 
     label {
@@ -39,7 +41,7 @@
         margin-top: 8px;
         margin-bottom: 5px;
         font-weight: bold;
-        background-color: rgb(77, 76, 76);
+        background-color: rgba(83,109,130,255);
     }
 
     input[type="text"] {
@@ -66,14 +68,14 @@
         padding: 10px;
         border: none;
         border-radius: 5px;
-        background-color: #2cd90e;
+        background-color: rgba(38,55,77,255);
         color: white;
         font-size: 16px;
         cursor: pointer;
     }
 
     .updateButton:hover {
-        background-color: #20a509;
+        background-color: rgb(2, 8, 70);
     }
 
     .returnButton {
@@ -88,18 +90,18 @@
     }
 
     .returnButton:hover {
-        background-color: #FFA500;
+        background-color: rgb(177, 2, 2);
     }
 
     h1 {
         text-align: center;
         margin-top: 3%;
-        color: #39FF14;
+        color: rgba(156,178,190,255);
     }
     .titleform {
         margin-top: 1%;
         text-align: center;
-        background-color: rgb(77, 76, 76);
+        background-color: rgba(83,109,130,255);
     }
     
 </style>
