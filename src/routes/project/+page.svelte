@@ -2,6 +2,9 @@
     import { onMount } from 'svelte';
     import Menu from '../../lib/Menu.svelte';
 
+    export let data
+    const projectsData = data.projectsData;
+    console.log(projectsData)
     let greeting = '';
     let notifications = ["Notification 1", "Notification 2", "Notification 3"];
     let files = [];
