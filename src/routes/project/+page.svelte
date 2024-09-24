@@ -38,8 +38,8 @@
         display: grid;
         grid-template-columns: 1fr auto;
         grid-template-areas: "current-project load" "ip load" "entry load";
-        grid-gap: 20px;
-        padding: 20px;
+        grid-gap: 5px;
+        padding: 5px;
     }
 
     .current-project {
@@ -83,7 +83,7 @@
         background-color: rgba(83,109,130,255);
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         width: 75%;
-        padding: 10px;
+        padding: 5px;
     }
 
     .scope-list:hover, .entry-list:hover {
@@ -138,7 +138,7 @@
     }
 
     .main {
-        padding: 20px;
+        padding: 5px;
     }
 
     .arrow {
