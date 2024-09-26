@@ -22,19 +22,19 @@
         border: 1px solid rgb(77, 76, 76);
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        background-color: rgb(77, 76, 76);
+        background-color: rgba(83,109,130,255);
     }
 
     div {
         margin-bottom: 15px;
-        background-color: rgb(77, 76, 76);
+        background-color: rgba(83,109,130,255);
     }
 
     label {
         display: block;
         margin-bottom: 5px;
         font-weight: bold;
-        background-color: rgb(77, 76, 76);
+        background-color: rgba(83,109,130,255);
     }
 
     input[type="text"] {
@@ -52,14 +52,14 @@
         padding: 10px;
         border: none;
         border-radius: 5px;
-        background-color: #2cd90e;
-        color: white;
+        background-color: white;
+        color: black;
         font-size: 16px;
         cursor: pointer;
     }
 
     .updateButton:hover {
-        background-color: #20a509;
+        background-color: #FFA500;
     }
 
     .returnButton {
@@ -80,15 +80,15 @@
     h1 {
         text-align: center;
         margin-top: 3%;
-        color: #39FF14;
+        color: rgba(156,178,190,255);
     }
     .titleform {
         margin-top: 1%;
         text-align: center;
-        background-color: rgb(77, 76, 76);
+        background-color: rgba(83,109,130,255);
     }
     .login-background {
-        background-color: rgb(77, 76, 76);
+        background-color: rgba(83,109,130,255);
     }
 </style>
 
