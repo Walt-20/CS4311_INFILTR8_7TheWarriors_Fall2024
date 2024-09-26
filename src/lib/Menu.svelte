@@ -78,9 +78,9 @@
 <div class="menu {menuOpen ? 'open' : ''}">
     <h2>INFILTR8</h2>
     <button on:click={() => navigateTo('/dashboard')}>Dashboard</button>
-    <button on:click={() => navigateTo('/project-manager')}>Project Manager</button>
+    <button on:click={() => navigateTo('/project')}>Project Manager</button>
     <button on:click={() => navigateTo('/analysis')}>Analysis</button>
-    <button on:click={() => navigateTo('/reports')}>Reports</button>
+    <button on:click={() => navigateTo('/report')}>Reports</button>
     <button on:click={() => navigateTo('/settings')}>Settings</button>
     <button on:click={() => navigateTo('/support')}>Support</button>
 </div>

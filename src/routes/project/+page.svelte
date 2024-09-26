@@ -1,6 +1,16 @@
 <script>
     import Menu from '../../lib/Menu.svelte';
 
+<<<<<<< HEAD
+=======
+    export let data
+    const projectsData = data.projectsData;
+    console.log(projectsData)
+    let greeting = '';
+    let notifications = ["Notification 1", "Notification 2", "Notification 3"];
+    let files = [];
+    let uploadProgress = 0;
+>>>>>>> 119b94750114960a95af4d7573c73beaf880e6ea
     let ips = ["192.168.1.1", "192.168.1.2", "192.168.1.3"];
     let analyses = ["Analysis 1", "Analysis 2", "Analysis 3"];
     let projects = ["Project 1", "Project 2", "Project 3"];
