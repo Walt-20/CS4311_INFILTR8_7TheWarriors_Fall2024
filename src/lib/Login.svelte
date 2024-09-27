@@ -46,7 +46,7 @@
         border: 1px solid #ccc;
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        background-color: rgb(77, 76, 76);
+        background-color: rgba(83,109,130,255);
     }
 
     div {
@@ -72,8 +72,8 @@
         padding: 10px;
         border: none;
         border-radius: 5px;
-        background-color: #2cd90e;
-        color: white;
+        background-color: white;
+        color: black;
         font-size: 16px;
         cursor: pointer;
         margin-top: 3%;
@@ -88,7 +88,7 @@
     }
 
     button:hover {
-        background-color: #20a609;
+        background-color: #FFA500;
     }
 
     .forgot-password {
