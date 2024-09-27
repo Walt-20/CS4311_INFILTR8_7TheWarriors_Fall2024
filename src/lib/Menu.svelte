@@ -26,10 +26,6 @@
         transform: translateX(-100%);
     }
 
-    .menu h2 {
-        color: rgba(38,55,77,255);
-    }
-
     .menu.open {
         display: flex;
         transform: translateX(0);
