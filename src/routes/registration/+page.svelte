@@ -33,7 +33,7 @@
 
     div {
         margin-bottom: 15px;
-        background-color:rgba(83,109,130,255);
+        background-color: rgba(83,109,130,255);
     }
 
     label {

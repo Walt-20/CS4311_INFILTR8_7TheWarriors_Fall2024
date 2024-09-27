@@ -24,7 +24,7 @@
         background-color: rgba(38,55,77,255);
     }
     h1, h2 {
-        color: #44f824;
+        color: rgba(156,178,190,255);
         text-align: center;
     }
 </style>
