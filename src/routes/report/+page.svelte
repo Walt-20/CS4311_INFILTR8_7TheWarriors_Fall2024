@@ -12,11 +12,14 @@
     let menuOpen = false;
 
     function handleExport() {
+        console.log('Export button clicked');
+        console.log('Selected export format:', selectedFormat);
         // Handle export action
     }
 
     function toggleMenu() {
         menuOpen = !menuOpen;
+        console.log('Menu toggled:', menuOpen ? 'Opened' : 'Closed');
     }
 </script>
 
@@ -81,7 +84,7 @@
 
     <div>
         <label for="export-format">Format to export</label>
-        <select id="export-format" bind:value={selectedFormat}>
+        <select id="export-format" bind:value={selectedFormat} on:change={() => console.log('Selected export format changed to:', selectedFormat)}>
             {#each exportFormats as format}
                 <option value={format}>{format}</option>
             {/each}

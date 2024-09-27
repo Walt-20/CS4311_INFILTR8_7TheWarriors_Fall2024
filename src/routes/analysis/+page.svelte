@@ -10,17 +10,24 @@
 
     function handleTestChange(event) {
         selectedTest = event.target.value;
+        console.log('Test changed to:', selectedTest);
     }
 
     function handleEntryPointChange(event) {
         selectedEntryPoint = event.target.value;
+        console.log('Entry Point changed to:', selectedEntryPoint);
     }
 
     function handleStartTimeChange(event) {
         selectedStartTime = event.target.value;
+        console.log('Start Time changed to:', selectedStartTime);
     }
 
     function viewResult() {
+        console.log('View Result button clicked');
+        console.log('Selected Test:', selectedTest);
+        console.log('Selected Entry Point:', selectedEntryPoint);
+        console.log('Selected Start Time:', selectedStartTime);
         // Handle view result action
     }
 </script>

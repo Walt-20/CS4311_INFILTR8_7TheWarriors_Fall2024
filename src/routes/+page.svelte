@@ -2,21 +2,34 @@
     import user from '../user';
     import Login from '../lib/Login.svelte';
 
-    $: isLoggedIn = $user === null? false : true;
+    $: isLoggedIn = $user === null ? false : true;
+
+    // Log the login 
+    $: {
+        if (isLoggedIn) {
+            console.log("Analyst is logged in:", $user.firstname);
+        } else {
+            console.log("Analyst is logged out");
+        }
+    }
 
     const logout = () => {
-        user.update(val => val = null);
+        console.log("Logging out Analyst...");
+        user.update(val => {
+            console.log("User before logout:", val);
+            return null;
+        });
     }
 
 </script>
 
 <h1>INFILTR8</h1>
 {#if isLoggedIn}
-<h2>{$user.firstname} logged in!</h2>
-<input type="button" value="Logout!" on:click={logout} />
+    <h2>{$user.firstname} logged in!</h2>
+    <input type="button" value="Logout!" on:click={logout} />
 {:else}
-<h2>Login to INFILTR8</h2>
-<Login />
+    <h2>Login to INFILTR8</h2>
+    <Login />
 {/if}
 
 <style>
