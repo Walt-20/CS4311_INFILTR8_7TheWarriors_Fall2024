@@ -44,18 +44,26 @@
         console.log('Is valid file:', isValidFile);
         handleShowProgress();
 
-        handleFileUpload(files);
+        if (isValidFile) {
+            handleFileUpload(files[0]);
+        }
     }
 
-    async function handleFileUpload(files) {
+    async function handleFileUpload(file) {
+        console.log(file);
         const formData = new FormData();
-        formData.append('file', files);
+        formData.append('file', file);
         console.log("handling file upload");
 
         const response = await fetch('http://localhost:5000/upload', {
             method: 'POST',
             body: formData
         });
+
+        if (!response.ok) {
+            console.error('File upload failed:', response.statusText);
+            return;
+        }
 
         const result = await response.text();
         console.log(result);
