@@ -21,7 +21,7 @@ app.post('/upload', upload.single('file'), (req, res) => {
 
     console.log('uploading file');
     const filePath = path.join(__dirname, req.file.path);
-    exec(`python3 ../main.py ${filePath}`, (error, stdout, stderr) => {
+    exec(`python ../main.py ${filePath}`, (error, stdout, stderr) => {
         if (error) {
             console.error(`Error: ${error.message}`);
             return res.status(500).send('Error processing file');

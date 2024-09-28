@@ -1,16 +1,20 @@
 # change lines 10 and 13 to match your desired paths
 
 import os
+import sys
 import xml.etree.ElementTree as ET
 import pandas as pd
 import category_encoders as ce
 from sklearn.preprocessing import MinMaxScaler
 
 # Path to the Nessus XML file, change line 10 to match path where your NESSUS file is
-nessus_file = '~/Downloads/file.nessus'
+print(sys.argv[1])
+nessus_file = sys.argv[1]
 
 # Base directory for output CSV files, change line 13 to where you want output CSVs to go
-output_base_dir = '~/Downloads/'
+home_directroy = os.path.expanduser('~')
+output_base_dir = os.path.join(home_directroy, 'Documents', 'UTEP', 'Fall 2024', 'Software 2', 'machine_learning')
+os.makedirs(output_base_dir, exist_ok=True)
 
 # Construct paths for output CSV files
 data_with_exploits_path = os.path.join(output_base_dir, 'data_with_exploits.csv')
