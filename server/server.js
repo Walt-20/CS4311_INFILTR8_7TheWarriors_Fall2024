@@ -21,7 +21,10 @@ app.post('/upload', upload.single('file'), (req, res) => {
 
     console.log('uploading file');
     const filePath = path.join(__dirname, req.file.path);
-    exec(`python ../main.py ${filePath}`, (error, stdout, stderr) => {
+    const rootDir = path.join(__dirname, '..');
+    console.log(`the fuq is ${filePath}`);
+    console.log(`the fuq is ${rootDir}`);
+    exec(`python main.py "${filePath}"`, { cwd: rootDir }, (error, stdout, stderr) => {
         if (error) {
             console.error(`Error: ${error.message}`);
             return res.status(500).send('Error processing file');
