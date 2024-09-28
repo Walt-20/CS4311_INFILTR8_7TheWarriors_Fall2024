@@ -7,10 +7,10 @@ import category_encoders as ce
 from sklearn.preprocessing import MinMaxScaler
 
 # Path to the Nessus XML file, change line 10 to match path where your NESSUS file is
-nessus_file = 'C:/Users/diego/OneDrive/Desktop/INFILTR8/SLAD Default - Network Scan (No Creds)_cw5u7o.nessus'
+nessus_file = '~/Downloads/file.nessus'
 
 # Base directory for output CSV files, change line 13 to where you want output CSVs to go
-output_base_dir = 'C:/Users/diego/OneDrive/Desktop/INFILTR8/Process_5/'
+output_base_dir = '~/Downloads/'
 
 # Construct paths for output CSV files
 data_with_exploits_path = os.path.join(output_base_dir, 'data_with_exploits.csv')
