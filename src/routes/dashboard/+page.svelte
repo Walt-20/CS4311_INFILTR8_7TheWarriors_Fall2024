@@ -43,6 +43,22 @@
         console.log('Valid files:', files);
         console.log('Is valid file:', isValidFile);
         handleShowProgress();
+
+        handleFileUpload(files);
+    }
+
+    async function handleFileUpload(files) {
+        const formData = new FormData();
+        formData.append('file', files);
+        console.log("handling file upload");
+
+        const response = await fetch('http://localhost:5000/upload', {
+            method: 'POST',
+            body: formData
+        });
+
+        const result = await response.text();
+        console.log(result);
     }
 
     function handleCreateProject() {
