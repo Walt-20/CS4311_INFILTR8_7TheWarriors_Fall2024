@@ -1,11 +1,11 @@
-
 <script>
-    import {navigateTo} from '../utils.js';
+    import { navigateTo } from '../utils.js';
 
     function toggleMenu() {
         menuOpen = !menuOpen;
+        console.log('Menu toggled:', menuOpen ? 'Opened' : 'Closed'); // Log menu toggle state
     }
-    
+
     export let menuOpen = false;
 </script>
 
@@ -24,10 +24,6 @@
         flex-direction: column;
         transition: transform 0.3s ease;
         transform: translateX(-100%);
-    }
-
-    .menu h2 {
-        color: rgba(38,55,77,255);
     }
 
     .menu.open {
@@ -77,10 +73,33 @@
 
 <div class="menu {menuOpen ? 'open' : ''}">
     <h2>INFILTR8</h2>
-    <button on:click={() => navigateTo('/dashboard')}>Dashboard</button>
-    <button on:click={() => navigateTo('/project-manager')}>Project Manager</button>
-    <button on:click={() => navigateTo('/analysis')}>Analysis</button>
-    <button on:click={() => navigateTo('/reports')}>Reports</button>
-    <button on:click={() => navigateTo('/settings')}>Settings</button>
-    <button on:click={() => navigateTo('/support')}>Support</button>
+    <button on:click={() => {
+        console.log('Navigating to Dashboard'); // Log navigation action
+        navigateTo('/dashboard');
+    }}>Dashboard</button>
+    
+    <button on:click={() => {
+        console.log('Navigating to Project Manager'); // Log navigation action
+        navigateTo('/project');
+    }}>Project Manager</button>
+    
+    <button on:click={() => {
+        console.log('Navigating to Analysis'); // Log navigation action
+        navigateTo('/analysis');
+    }}>Analysis</button>
+    
+    <button on:click={() => {
+        console.log('Navigating to Reports'); // Log navigation action
+        navigateTo('/report');
+    }}>Reports</button>
+    
+    <button on:click={() => {
+        console.log('Navigating to Settings'); // Log navigation action
+        navigateTo('/settings');
+    }}>Settings</button>
+    
+    <button on:click={() => {
+        console.log('Navigating to Support'); // Log navigation action
+        navigateTo('/support');
+    }}>Support</button>
 </div>
