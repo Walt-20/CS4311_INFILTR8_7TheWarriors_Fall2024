@@ -46,7 +46,7 @@
         border: 1px solid #ccc;
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        background-color: rgb(77, 76, 76);
+        background-color: rgba(83,109,130,255);
     }
 
     div {
@@ -67,25 +67,34 @@
         box-sizing: border-box;
     }
 
-    button {
+    .login-button {
         width: 100%;
         padding: 10px;
         border: none;
         border-radius: 5px;
-        background-color: #2cd90e;
-        color: white;
+        background-color: white;
+        color: black;
         font-size: 16px;
         cursor: pointer;
+        margin-top: 3%;
+    }
+
+    .register-button {
+        display: block;
+        margin-top: 15px;
+        text-align: center;
+        color: #000;
+        text-decoration: none;
     }
 
     button:hover {
-        background-color: #20a609;
+        background-color: #FFA500;
     }
 
     .forgot-password {
         display: block;
         margin-top: 10px;
-        text-align: right;
+        text-align: left;
         color: #000;
         text-decoration: none;
     }
@@ -106,7 +115,10 @@
             <label for="password">Password</label>
             <input type="text" id="password" bind:value={password} placeholder="Password"/>
         </div>
-        <button  on:click={() => navigateTo('/dashboard')}>Login</button>
-        <a href='/forgot-password' class="forgot-password">Forgot Password?</a>
+        <a href="/forgot-password" class="forgot-password">Forgot Password?</a>
+        <button class='login-button' on:click={() => navigateTo('/dashboard')}>Login</button>
+        <div class="register-button">
+            Don't have an account? <a href="/registration">Register DAC Analyst</a>
+        </div>
     </div>
 </form>

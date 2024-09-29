@@ -1,11 +1,15 @@
 <script>
     import {navigateTo} from '../../utils.js';
 
+    let fullname = '';
+    let token = '';
+    let email = '';
     let username = '';
     let password = '';
+    let renteredPassword = '';
     let currentError = null;
 
-    const updatePassword = () => {
+    const registerUser = () => {
         // TO BE UPDTED WHEN DATABASE IS INTEGRATED
         navigateTo('/')
     }
@@ -19,7 +23,7 @@
         margin: 50px auto;
         margin-top: 3%;
         padding: 50px;
-        border: 1px solid rgb(77, 76, 76);
+        border: 1px solid rgba(83,109,130,255);
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         background-color: rgba(83,109,130,255);
@@ -32,12 +36,22 @@
 
     label {
         display: block;
+        margin-top: 8px;
         margin-bottom: 5px;
         font-weight: bold;
         background-color: rgba(83,109,130,255);
     }
 
     input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+        background-color: white;
+    }
+
+    input[type="password"] {
         width: 100%;
         padding: 10px;
         border: 1px solid #ccc;
@@ -87,26 +101,32 @@
         text-align: center;
         background-color: rgba(83,109,130,255);
     }
-    .login-background {
-        background-color: rgba(83,109,130,255);
-    }
+    
 </style>
 
 <h1> INFILTR8 </h1>
-<form on:submit|preventDefault={updatePassword}>
+<form on:submit|preventDefault={registerUser}>
     <div>
-        <h2 class="titleform"> Change Password </h2>
-        <div class="login-background">
+        <h2 class="titleform"> Registration </h2>
+        <div class="register-info">
+            <label for="fullname">Full Name</label>
+            <input type="text" id="fullname" placeholder="Name" bind:value={fullname} />
+
             <label for="username">Username</label>
-            <input type="text" id="username" placeholder="Username" bind:value={username} />
+            <input type="text" id="Username" placeholder="Username" bind:value={username} />
+
+            <label for="email">Email</label>
+            <input type="text" id="email" placeholder="Email" bind:value={email} />
+
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Password" bind:value={password} />
+
+            <label for="renteredPassword">Re-Enter Password</label>
+            <input type="password" id="renteredPassword" placeholder="Re-Entered Password" bind:value={renteredPassword} />
         </div>
 
-        <div class="login-background">
-            <label for="password">Password</label>
-            <input type="text" id="password" placeholder="Password" bind:value={password} />
-        </div>
-        <button class="updateButton" type="submit" > Update Password </button>
+        <button class="updateButton" type="submit" > Register Analyst </button>
     </div>
-    <input class="returnButton" type="button" value="Back to Login" on:click={updatePassword} /> 
+    <input class="returnButton" type="button" value="Back to Login" on:click={registerUser} /> 
 
 </form>
