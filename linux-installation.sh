@@ -1,7 +1,7 @@
 #! /bin/bash
 
 cd ./src
-npm install -i
+npm ci
 
 cd ../python-backend
 python -m venv venv
