@@ -10,9 +10,11 @@ Before instaliing INFILTR8 ensure you have a .env file with your databse credent
 linux: linuxinstallation.sh
 
 windows: windowsinstallation.ps1
-windows: 
-n pythonbackend/run.py 
 
+windows: ./venv/scripts/activate 
+
+virtual pythonbackend/run.py 
+linux: source venv/bin/activate 
 
 ```
 
