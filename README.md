@@ -4,6 +4,17 @@ The Intelligent Network Findings with In-Depth Learning for Targeted Reconnaissa
 
 INFILTR8 assists the urge for secure and resilient systems by automating the early stages of penetration testing. In addition to automating reconnaissance, INFILTR8 provides features that enable analysts to schedule analyses, monitor progress, adjust test scopes, and export compiled results. This comprehensive functionality makes INFILTR8 an invaluable asset for penetration testers and cybersecurity experts focused on discovering and mitigating vulnerabilities in defense-related systems.
 
+## Installation 
+Before instaliing INFILTR8 ensure you have a .env file with your databse credentials inside the pyhton backend folder.
+```bash   
+linux: linuxinstallation.sh
+
+windows: windowsinstallation.ps1
+windows: 
+n pythonbackend/run.py 
+
+
+```
 
 ## Launching INFILTR8
 

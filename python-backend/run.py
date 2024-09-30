@@ -2,17 +2,14 @@ from flask import Flask,g,Response,request
 from flask_cors import CORS
 from json import dumps
 from neo4j import GraphDatabase, basic_auth
-from dotenv import load_dotenv
 import os
-
-load_dotenv()
 
 app = Flask(__name__)
 CORS(app)
 driver = GraphDatabase.driver('neo4j+s://36954b0e.databases.neo4j.io',auth=basic_auth("neo4j",os.environ.get("NEO4J_AUTH_KEY")))
 driver.verify_connectivity()
 
-def serialize_user(user):
+def serialize_analyst(analyst):
     return {
         "first_name": user.get("first_name"),
         "last_name": user.get("last_name"),
@@ -26,6 +23,10 @@ def serialize_project(project):
         "label": "project",
         "id": project.get("id")
     }
+
+@app.route("/")
+def home():
+    return ""
 
 @app.route("/projects",methods=['GET','POST'])
 def get_projects():
@@ -43,8 +44,8 @@ def get_projects():
     for record in records:
         label, = record["n"].labels
         try:
-            if label == "User":
-                nodes.append(serialize_user(record["n"]))
+            if label == "Analyst":
+                nodes.append(serialize_analyst(record["n"]))
             elif label == "Project":
                 nodes.append(serialize_project(record["n"]))
         except KeyError:
