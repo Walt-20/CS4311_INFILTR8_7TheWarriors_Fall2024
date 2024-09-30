@@ -15,8 +15,12 @@
 <h2>{$user.firstname} logged in!</h2>
 <input type="button" value="Logout!" on:click={logout} />
 {:else}
+<<<<<<< HEAD
+    <Login />
+=======
 <h2>Login to INFILTR8</h2>
 <Login />
+>>>>>>> 438112f5b619340558d85b5f37e25199ba800d0d
 {/if}
 
 <style>
