@@ -12,8 +12,8 @@ print(sys.argv[1])
 nessus_file = sys.argv[1]
 
 # Base directory for output CSV files, change line 13 to where you want output CSVs to go
-home_directroy = os.path.expanduser('~')
-output_base_dir = os.path.join(home_directroy, 'Documents', 'UTEP', 'Fall 2024', 'Software 2', 'machine_learning')
+current_dir = os.getcwd()
+output_base_dir = os.path.join(current_dir, 'machine_learning')
 os.makedirs(output_base_dir, exist_ok=True)
 
 # Construct paths for output CSV files
