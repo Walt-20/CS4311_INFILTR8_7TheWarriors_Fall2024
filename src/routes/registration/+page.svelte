@@ -107,13 +107,10 @@
 <h1> INFILTR8 </h1>
 <form on:submit|preventDefault={registerUser}>
     <div>
-        <h2 class="titleform"> Registration </h2>
+        <h2 class="titleform"> Change Password </h2>
         <div class="register-info">
             <label for="fullname">Full Name</label>
             <input type="text" id="fullname" placeholder="Name" bind:value={fullname} />
-
-            <label for="username">Username</label>
-            <input type="text" id="Username" placeholder="Username" bind:value={username} />
 
             <label for="email">Email</label>
             <input type="text" id="email" placeholder="Email" bind:value={email} />
