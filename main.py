@@ -1,15 +1,13 @@
 # change lines 10 and 13 to match your desired paths
 
 import os
-import sys
 import xml.etree.ElementTree as ET
 import pandas as pd
 import category_encoders as ce
 from sklearn.preprocessing import MinMaxScaler
 
 # Path to the Nessus XML file, change line 10 to match path where your NESSUS file is
-print(sys.argv[1])
-nessus_file = sys.argv[1]
+nessus_file = 'C:/Users/diego/OneDrive/Desktop/INFILTR8/SLAD Default - Network Scan (No Creds)_cw5u7o.nessus'
 
 # Base directory for output CSV files, change line 13 to where you want output CSVs to go
 current_dir = os.getcwd()
