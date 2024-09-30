@@ -1,7 +1,10 @@
 from flask import Flask,g,Response,request
 from json import dumps
 from neo4j import GraphDatabase, basic_auth
+from dotenv import load_dotenv
 import os
+
+load_dotenv()
 
 app = Flask(__name__)
 driver = GraphDatabase.driver('neo4j+s://36954b0e.databases.neo4j.io',auth=basic_auth("neo4j",os.environ.get("NEO4J_AUTH_KEY")))
