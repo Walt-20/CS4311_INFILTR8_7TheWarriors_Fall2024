@@ -24,29 +24,19 @@ app.post('/upload', upload.single('file'), (req, res) => {
     const rootDir = path.join(__dirname, '..');
     console.log(`the fuq is ${filePath}`);
     console.log(`the fuq is ${rootDir}`);
-    const commandExists = (command, callback) => {
-        exec(`command -v ${command}`, (error, stdout, stderr) => {
-            callback(!error && stdout.trim().length > 0);
-        });
-    };
-
-    commandExists('python', (pythonExists) => {
-        const pythonCommand = pythonExists ? 'python' : 'python3';
-        exec(`${pythonCommand} main.py "${filePath}"`, { cwd: rootDir }, (error, stdout, stderr) => {
-            if (error) {
-                console.error(`Error: ${error.message}`);
-                return res.status(500).send('Error processing file');
-            }
-            if (stderr) {
-                console.error(`Stderr: ${stderr}`);
-                return res.status(500).send('Error processing file');
-            }
-            res.send(stdout);
-        });
+    exec(`python3 main.py "${filePath}"`, { cwd: rootDir }, (error, stdout, stderr) => {
+        if (error) {
+            console.error(`Error: ${error.message}`);
+            return res.status(500).send('Error processing file');
+        }
+        if (stderr) {
+            console.error(`Stderr: ${stderr}`);
+            return res.status(500).send('Error processing file');
+        }
+        res.send(stdout);
     });
-
 });
 
-app.listen(5000, () => {
-    console.log('Server is running on port 5000');
+app.listen(5001, () => {
+    console.log('Server is running on port 5001');
 });

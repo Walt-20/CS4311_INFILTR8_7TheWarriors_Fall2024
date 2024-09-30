@@ -24,56 +24,95 @@
         } else {
             greeting = 'Good Evening';
         }
+        console.log('Greeting set to:', greeting);
     });
 
     function handleFileSelect(event) {
+        console.log('File selection triggered:', event);
         const allowedTypes = ['application/vdn.openxmlformats-officedocument.spreadsheetml.sheet'];
         const selectedFiles = Array.from(event.target.files);
         const validFiles = selectedFiles.filter(file => file.name.endsWith(".nessus"));
 
         if (validFiles.length !== selectedFiles.length) {
             alert('Only .nessus files are allowed.');
+            console.warn('Invalid file type selected.');
         }
 
         files = validFiles;
         isValidFile = files.length > 0;
+        console.log('Valid files:', files);
+        console.log('Is valid file:', isValidFile);
         handleShowProgress();
+
+        if (isValidFile) {
+            handleFileUpload(files[0]);
+        }
+    }
+
+    async function handleFileUpload(file) {
+        console.log(file);
+        const formData = new FormData();
+        formData.append('file', file);
+        console.log("handling file upload");
+
+        const response = await fetch('http://localhost:5001/upload', {
+            method: 'POST',
+            body: formData
+        });
+
+        if (!response.ok) {
+            console.error('File upload failed:', response.statusText);
+            return;
+        }
+
+        const result = await response.text();
+        console.log(result);
     }
 
     function handleCreateProject() {
+        console.log('Creating project with files:', files);
         navigateTo('/project');
     }
 
     function handleDiscardAll() {
+        console.log('Discarding all files.');
         files = [];
         uploadProgress = 0;
     }
 
     function handleDrop(event) {
         event.preventDefault();
+        console.log('File drop event:', event);
         const allowedTypes = ['application/vdn.openxmlformats-officedocument.spreadsheetml.sheet'];
         const selectedFiles = Array.from(event.dataTransfer.files);
         const validFiles = selectedFiles.filter(file => file.name.endsWith(".nessus"));
 
         if (validFiles.length !== selectedFiles.length) {
             alert('Only .nessus files are allowed.');
+            console.warn('Invalid file type dropped.');
         }
 
         files = validFiles;
         isValidFile = files.length > 0;
+        console.log('Valid files after drop:', files);
+        console.log('Is valid file after drop:', isValidFile);
         handleShowProgress();
     }
 
     function handleDragOver(event) {
         event.preventDefault();
+        console.log('Drag over event:', event);
     }
 
     function handleShowProgress() {
+        console.log('Starting upload progress...');
         uploadProgress = 0;
         const interval = setInterval(() => {
             uploadProgress += 10;
+            console.log('Upload progress:', uploadProgress);
             if (uploadProgress >= 100) {
-                clearInterval(interval)
+                console.log('Upload completed.');
+                clearInterval(interval);
             }
         }, 100);
     }
