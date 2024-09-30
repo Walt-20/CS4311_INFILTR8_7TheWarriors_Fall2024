@@ -1,10 +1,7 @@
 from flask import Flask,g,Response,request
 from json import dumps
 from neo4j import GraphDatabase, basic_auth
-from dotenv import load_dotenv
 import os
-
-load_dotenv()
 
 app = Flask(__name__)
 # 'bolt://localhost:7687' for local database
