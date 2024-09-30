@@ -1,22 +1,58 @@
 <script>
     import {navigateTo} from '../../utils.js';
 
-    let fullname = '';
+    let firstName = '';
+    let lastName = '';
     let token = '';
     let email = '';
-    let username = '';
     let password = '';
-    let renteredPassword = '';
-    let currentError = null;
 
-    const registerUser = () => {
-        // TO BE UPDTED WHEN DATABASE IS INTEGRATED
-        navigateTo('/')
+    const goToLogin = () => {
+        navigateTo('../');
+    };
 
-        // GENERATE HASHED TOKEN TO STORE IN DATABASE
-    }
+    const generateToken = () => {
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+            var r = (Math.random() * 16) | 0,
+                v = c === 'x' ? r : (r & 0x3) | 0x8;
+            return v.toString(16);
+        });
+    };
+
+    const registerUser = async () => {
+        token = generateToken()
+
+        try {
+            const response = await fetch('http://127.0.0.1:8080/registration', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    firstName,
+                    lastName,
+                    email,
+                    password,
+                    token
+                }),
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                alert('New DAC Analyst User Registered!');
+                console.log("Success", result)
+            } else {
+                alert('Unsuccsessful request to register new DAC Analyst');
+                console.log("Error", result)
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('There was an issue registering your user');
+            location.reload();
+        }
+    };
     
-
 </script>
 
 <style>
@@ -111,24 +147,21 @@
     <div>
         <h2 class="titleform"> Registration </h2>
         <div class="register-info">
-            <label for="fullname">Full Name</label>
-            <input type="text" id="fullname" placeholder="Name" bind:value={fullname} />
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" placeholder="First Name" bind:value={firstName} required/>
 
-            <label for="username">Username</label>
-            <input type="text" id="Username" placeholder="Username" bind:value={username} />
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" placeholder="Last Name" bind:value={lastName} required/>
 
-            <label for="email">Email</label>
-            <input type="text" id="email" placeholder="Email" bind:value={email} />
+            <label for="email"> DAC Analyst Email</label>
+            <input type="text" id="email" placeholder="DAC Analyst Email" bind:value={email} required/>
 
             <label for="password">Password</label>
-            <input type="password" id="password" placeholder="Password" bind:value={password} />
-
-            <label for="renteredPassword">Re-Enter Password</label>
-            <input type="password" id="renteredPassword" placeholder="Re-Entered Password" bind:value={renteredPassword} />
+            <input type="password" id="password" placeholder="Password" bind:value={password} required/>
         </div>
 
         <button class="updateButton" type="submit" > Register Analyst </button>
     </div>
-    <input class="returnButton" type="button" value="Back to Login" on:click={registerUser} /> 
+    <input class="returnButton" type="button" value="Back to Login" on:click={goToLogin} /> 
 
 </form>

@@ -40,10 +40,10 @@
 
 <style>
     form {
-        max-width: 400px;
+        max-width: 600px;
         margin: 50px auto;
         padding: 20px;
-        border: 1px solid #ccc;
+        border: 1px solid rgba(83,109,130,255);
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         background-color: rgba(83,109,130,255);
@@ -72,8 +72,8 @@
         padding: 10px;
         border: none;
         border-radius: 5px;
-        background-color: white;
-        color: black;
+        background-color: rgba(38,55,77,255);
+        color: white;
         font-size: 16px;
         cursor: pointer;
         margin-top: 3%;
@@ -88,7 +88,7 @@
     }
 
     button:hover {
-        background-color: #FFA500;
+        background-color: rgb(2, 8, 70);
     }
 
     .forgot-password {
@@ -102,10 +102,17 @@
     .forgot-password:hover {
         text-decoration: underline;
     }
+
+    .titleform {
+        margin-top: 1%;
+        text-align: center;
+        background-color: rgba(83,109,130,255);
+    }
 </style>
 
 <form on:submit|preventDefault={login}>
     <div>
+        <h2 class="titleform"> Log In </h2>
         <div>
             <label for="username">Username</label>
             <input type="text" id="username" bind:value={username} placeholder="Username"/>

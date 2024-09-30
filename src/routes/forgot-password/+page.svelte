@@ -1,9 +1,15 @@
 <script>
     import {navigateTo} from '../../utils.js';
 
-    let username = '';
+    let email = '';
+    let token = '';
     let password = '';
+    let confirmPassword = '';
     let currentError = null;
+
+    const goToLogin = () => {
+        navigateTo('../');
+    };
 
     const updatePassword = () => {
         // TO BE UPDTED WHEN DATABASE IS INTEGRATED
@@ -52,14 +58,14 @@
         padding: 10px;
         border: none;
         border-radius: 5px;
-        background-color: white;
-        color: black;
+        background-color: rgba(38,55,77,255);
+        color: white;
         font-size: 16px;
         cursor: pointer;
     }
 
     .updateButton:hover {
-        background-color: #FFA500;
+        background-color: rgb(2, 8, 70);
     }
 
     .returnButton {
@@ -74,7 +80,7 @@
     }
 
     .returnButton:hover {
-        background-color: #FFA500;
+        background-color: rgb(177, 2, 2);
     }
 
     h1 {
@@ -97,16 +103,26 @@
     <div>
         <h2 class="titleform"> Change Password </h2>
         <div class="login-background">
-            <label for="username">Username</label>
-            <input type="text" id="username" placeholder="Username" bind:value={username} />
+            <label for="email">DAC Analyst Email</label>
+            <input type="text" id="email" placeholder="Enter DAC Analyst Email" bind:value={email} />
+        </div>
+
+        <div class="login-background">
+            <label for="token">Token</label>
+            <input type="text" id="token" placeholder="Enter Token" bind:value={token} />
         </div>
 
         <div class="login-background">
             <label for="password">Password</label>
             <input type="text" id="password" placeholder="Password" bind:value={password} />
         </div>
+
+        <div class="login-background">
+            <label for="password">Re-enter Password</label>
+            <input type="text" id="confirmPassword" placeholder="Re-enter Password" bind:value={confirmPassword} />
+        </div>
         <button class="updateButton" type="submit" > Update Password </button>
     </div>
-    <input class="returnButton" type="button" value="Back to Login" on:click={updatePassword} /> 
+    <input class="returnButton" type="button" value="Back to Login" on:click={goToLogin} /> 
 
 </form>
