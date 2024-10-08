@@ -4,7 +4,7 @@
     let firstName = '';
     let lastName = '';
     let token = '';
-    let email = '';
+    let username = '';
     let password = '';
 
     const goToLogin = () => {
@@ -31,7 +31,7 @@
                 body: JSON.stringify({
                     firstName,
                     lastName,
-                    email,
+                    username,
                     password,
                     token
                 }),
@@ -145,21 +145,16 @@
 <h1> INFILTR8 </h1>
 <form on:submit|preventDefault={registerUser}>
     <div>
-        <h2 class="titleform"> Change Password </h2>
+        <h2 class="titleform"> Registration </h2>
         <div class="register-info">
             <label for="firstName">First Name</label>
             <input type="text" id="firstName" placeholder="First Name" bind:value={firstName} required/>
 
-<<<<<<< HEAD
             <label for="lastName">Last Name</label>
             <input type="text" id="lastName" placeholder="Last Name" bind:value={lastName} required/>
 
-            <label for="email"> DAC Analyst Email</label>
-            <input type="text" id="email" placeholder="DAC Analyst Email" bind:value={email} required/>
-=======
-            <label for="email">Email</label>
-            <input type="text" id="email" placeholder="Email" bind:value={email} />
->>>>>>> 438112f5b619340558d85b5f37e25199ba800d0d
+            <label for="username"> DAC Analyst Username</label>
+            <input type="text" id="username" placeholder="DAC Analyst Username" bind:value={username} required/>
 
             <label for="password">Password</label>
             <input type="password" id="password" placeholder="Password" bind:value={password} required/>

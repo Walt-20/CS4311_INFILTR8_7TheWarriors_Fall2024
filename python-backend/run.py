@@ -2,18 +2,21 @@ from flask import Flask,g,Response,request
 from flask_cors import CORS
 from json import dumps
 from neo4j import GraphDatabase, basic_auth
+from dotenv import load_dotenv
 import os
+
+load_dotenv()
 
 app = Flask(__name__)
 CORS(app)
 driver = GraphDatabase.driver('neo4j+s://36954b0e.databases.neo4j.io',auth=basic_auth("neo4j",os.environ.get("NEO4J_AUTH_KEY")))
 driver.verify_connectivity()
 
-def serialize_analyst(analyst):
+def serialize_user(user):
     return {
         "first_name": user.get("first_name"),
         "last_name": user.get("last_name"),
-        "email": user.get("email"),
+        "username": user.get("username"),
         "password": user.get("password"),
         "token": user.get("token")
     }
@@ -23,10 +26,6 @@ def serialize_project(project):
         "label": "project",
         "id": project.get("id")
     }
-
-@app.route("/")
-def home():
-    return ""
 
 @app.route("/projects",methods=['GET','POST'])
 def get_projects():
@@ -44,8 +43,8 @@ def get_projects():
     for record in records:
         label, = record["n"].labels
         try:
-            if label == "Analyst":
-                nodes.append(serialize_analyst(record["n"]))
+            if label == "User":
+                nodes.append(serialize_user(record["n"]))
             elif label == "Project":
                 nodes.append(serialize_project(record["n"]))
         except KeyError:
@@ -64,17 +63,17 @@ def create_analyst():
         data = request.get_json()
         first_name = data.get('firstName')
         last_name = data.get('lastName')
-        email = data.get('email')
+        username = data.get('username')
         password = data.get('password')
         token = data.get('token')
 
         query = """
-        CREATE (n:Analyst {first_name: $first_name, last_name: $last_name, email: $email, password: $password, token: $token})
+        CREATE (n:Analyst {first_name: $first_name, last_name: $last_name, username: $username, password: $password, token: $token})
         RETURN n
         """
 
         with driver.session() as session:
-            result = session.run(query, first_name=first_name, last_name=last_name, email=email, password=password, token=token)
+            result = session.run(query, first_name=first_name, last_name=last_name, username=username, password=password, token=token)
             record = result.single()
 
         if record:
@@ -110,10 +109,10 @@ def delete_analyst_nodes():
         query = "MATCH (n:Analyst) DETACH DELETE n"
         with driver.session() as session:
             session.run(query)
-        return {"message": "All Analyst nodes deleted successfully"}, 200
+        return {"message": "All Analyst nodes deleted successfully"}
     except Exception as e:
         print(f"Error during deletion: {e}")
-        return {"error": "Failed to delete Analyst nodes"}, 500
+        return {"error": "Failed to delete Analyst nodes"}
 
 
 if __name__ == "__main__":
