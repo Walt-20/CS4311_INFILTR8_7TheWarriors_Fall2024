@@ -150,16 +150,8 @@
             <label for="firstName">First Name</label>
             <input type="text" id="firstName" placeholder="First Name" bind:value={firstName} required/>
 
-<<<<<<< HEAD
-            <label for="lastName">Last Name</label>
-            <input type="text" id="lastName" placeholder="Last Name" bind:value={lastName} required/>
-
-            <label for="email"> DAC Analyst Email</label>
-            <input type="text" id="email" placeholder="DAC Analyst Email" bind:value={email} required/>
-=======
             <label for="email">Email</label>
             <input type="text" id="email" placeholder="Email" bind:value={email} />
->>>>>>> 438112f5b619340558d85b5f37e25199ba800d0d
 
             <label for="password">Password</label>
             <input type="password" id="password" placeholder="Password" bind:value={password} required/>
