@@ -1,6 +1,7 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+@import 'flowbite';
 body {
 	height: 100vh;
 	background-color: rgba(38, 55, 77, 255);

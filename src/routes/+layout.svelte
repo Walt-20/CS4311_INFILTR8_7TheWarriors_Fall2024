@@ -3,12 +3,14 @@
 	import { DarkMode } from 'flowbite-svelte';
 </script>
 
-<header class="relative flex justify-between items-center p-4 bg-white dark:bg-gray-800">
+<div class="relative flex flex-col min-h-screen bg-white dark:bg-gray-800">
+    
+    <!-- Dark Mode toggle button in the top-right corner -->
     <div class="absolute top-4 right-4 z-10">
-        <DarkMode class="bg-blue-500 text-white p-8 rounded" />
+        <!-- <DarkMode class="bg-gray-200 dark:bg-gray-700 text-black dark:text-white p-2 rounded-full" /> -->
+        <DarkMode />
     </div>
-</header>
-  
-<div class="flex flex-col min-h-screen bg-white dark:bg-gray-800">
+
+    <!-- Slot for the rest of the content -->
     <slot />
 </div>
