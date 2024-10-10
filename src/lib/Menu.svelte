@@ -14,16 +14,21 @@
 </script>
 
 <div class={`fixed top-0 left-0 h-screen transition-transform transform bg-gray-800 text-white ${menuOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+    
+    <div class = "text-center text-xl font-bold py-4 bg-gray-700 dark:bg-gray-800">
+        INFILTR8
+    </div>
+
     <Sidebar {activeUrl}>
         <SidebarWrapper>
             <SidebarGroup>
-                <SidebarItem label="Dashboard">
+                <SidebarItem label="Dashboard" href="/dashboard">
                     <svelte:fragment slot="icon">
                         <ChartPieSolid class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
                     </svelte:fragment>
                 </SidebarItem>
 
-                <SidebarItem label="Project Manager" {spanClass}>
+                <SidebarItem label="Project Manager" href="/project" {spanClass}>
                     <svelte:fragment slot="icon">
                         <BriefcaseSolid class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
                     </svelte:fragment>
@@ -32,7 +37,7 @@
                     </svelte:fragment>
                 </SidebarItem>
 
-                <SidebarItem label="Analysis" {spanClass}>
+                <SidebarItem label="Analysis" href="/analysis" {spanClass}>
                     <svelte:fragment slot="icon">
                         <ChartLineUpOutline class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
                     </svelte:fragment>
@@ -41,19 +46,19 @@
                     </svelte:fragment>
                 </SidebarItem>
 
-                <SidebarItem label="Reports" href="/docs/components/sidebar" active={activeUrl === '/docs/components/sidebar'}>
+                <SidebarItem label="Reports" href="/report" {spanClass}>
                     <svelte:fragment slot="icon">
                         <FileChartBarSolid class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
                     </svelte:fragment>
                 </SidebarItem>
 
-                <SidebarItem label="Settings">
+                <SidebarItem label="Settings" href="/settings">
                     <svelte:fragment slot="icon">
                         <CogOutline class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
                     </svelte:fragment>
                 </SidebarItem>
 
-                <SidebarItem label="Support">
+                <SidebarItem label="Support" href="/support">
                     <svelte:fragment slot="icon">
                         <QuestionCircleOutline class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
                     </svelte:fragment>
