@@ -7,7 +7,6 @@
     
     <!-- Dark Mode toggle button in the top-right corner -->
     <div class="absolute top-4 right-4 z-10">
-        <!-- <DarkMode class="bg-gray-200 dark:bg-gray-700 text-black dark:text-white p-2 rounded-full" /> -->
         <DarkMode />
     </div>
 
