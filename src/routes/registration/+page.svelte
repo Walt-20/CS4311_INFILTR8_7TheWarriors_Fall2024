@@ -3,6 +3,7 @@
 
     let firstName = '';
     let lastName = '';
+    let username = '';
     let token = '';
     let email = '';
     let password = '';
@@ -55,7 +56,7 @@
     
 </script>
 
-<style>
+<!-- <style>
     form {
         max-width: 400px;
         margin: 50px auto;
@@ -161,4 +162,33 @@
     </div>
     <input class="returnButton" type="button" value="Back to Login" on:click={goToLogin} /> 
 
-</form>
+</form> -->
+
+<div class="flex justify-center items-center h-screen bg-white dark:bg-gray-800">
+    <form class="max-w-md w-full bg-gray-100 dark:bg-gray-700 shadow-md rounded-lg p-8" on:submit|preventDefault={token}>
+        <h2 class="text-2xl font-semibold text-center mb-6 dark:text-white">Registration</h2>
+        
+        <div class="mb-4">
+            <label class="block text-gray-900 dark:text-white" for="firstName">First Name</label>
+            <input type="text" id="firstName" bind:value={firstName} placeholder="First Name" class="mt-1 block w-full p-2 border rounded"/>
+        </div>
+
+        <div class="mb-4">
+            <label class="block text-gray-900 dark:text-white" for="username">Username</label>
+            <input type="text" id="username" bind:value={username} placeholder="First Name" class="mt-1 block w-full p-2 border rounded"/>
+        </div>
+        
+        <div class="mb-4">
+            <label class="block text-gray-900 dark:text-white" for="password">Password</label>
+            <input type="text" id="password" bind:value={password} placeholder="Password" class="mt-1 block w-full p-2 border rounded"/>
+        </div>
+
+        <button class="mt-6 w-full py-2 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700 text-center">
+            Register Analyst
+        </button>
+
+        <button type="button" class="mt-6 w-full py-2 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700 text-center" on:click={goToLogin}>
+            Back to Login
+        </button>
+    </form>
+</div>
