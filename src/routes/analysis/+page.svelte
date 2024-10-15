@@ -32,8 +32,8 @@
 
 <Menu {menuOpen} />
 
-<div class="text-center py-6">
-    <h1 class="text-2xl font-bold text-gray-800 dark:text-gray-200"> Schedule Analysis!</h1>
+<div class="text-center py-4">
+    <h1 class="text-4xl font-bold text-gray-800 dark:text-gray-200"> Schedule Analysis!</h1>
 </div>
 
 <!-- Entry Points Checklist -->
