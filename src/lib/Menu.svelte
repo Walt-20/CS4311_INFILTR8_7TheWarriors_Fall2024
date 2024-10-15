@@ -69,7 +69,7 @@
 </div>
 
 <button 
-    class={`fixed top-2 ${menuOpen ? 'left-56' : 'left-10'} z-10 p-2 text-black rounded hover:bg-gray-100 dark:hover:bg-gray-600 focus:outline-none transition-all duration-300`}
+    class={`fixed top-2 ${menuOpen ? 'left-56' : 'left-10'} z-10 p-2 text-black dark:text-white rounded hover:bg-gray-100 dark:hover:bg-gray-600 focus:outline-none transition-all duration-300`}
     on:click={toggleMenu}
 >
     {#if menuOpen}
