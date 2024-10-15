@@ -41,7 +41,7 @@
 <style>
 </style>
 
-<div class="flex justify-center items-center h-screen bg-white dark:bg-gray-800">
+<div class="flex justify-center items-center h-screen w-full bg-white dark:bg-gray-800">
     <form class="max-w-md w-full bg-gray-100 dark:bg-gray-700 shadow-md rounded-lg p-8" on:submit|preventDefault={login}>
         <h2 class="text-2xl font-semibold text-center mb-6 dark:text-white">Log In</h2>
         {#if currentError}

@@ -62,18 +62,23 @@
         <h2 class="text-2xl font-semibold text-center mb-6 dark:text-white">Registration</h2>
         
         <div class="mb-4">
-            <label class="block text-gray-900 dark:text-white" for="firstName">Full Name</label>
-            <input type="text" id="firstName" bind:value={firstName} placeholder="First & Last Name" class="mt-1 block w-full p-2 border rounded"/>
+            <label class="block text-gray-900 dark:text-white" for="firstName">First Name</label>
+            <input type="text" id="firstName" bind:value={firstName} placeholder="First Name" class="mt-1 block w-full p-2 border rounded" required/>
+        </div>
+
+        <div class="mb-4">
+            <label class="block text-gray-900 dark:text-white" for="lastName">Last Name</label>
+            <input type="text" id="lastName" bind:value={lastName} placeholder="Last Name" class="mt-1 block w-full p-2 border rounded" required/>
         </div>
 
         <div class="mb-4">
             <label class="block text-gray-900 dark:text-white" for="username">Username</label>
-            <input type="text" id="username" bind:value={username} placeholder="Enter Username" class="mt-1 block w-full p-2 border rounded"/>
+            <input type="text" id="username" bind:value={username} placeholder="Enter Username" class="mt-1 block w-full p-2 border rounded" required/>
         </div>
         
         <div class="mb-4">
             <label class="block text-gray-900 dark:text-white" for="password">Password</label>
-            <input type="text" id="password" bind:value={password} placeholder="Enter Password" class="mt-1 block w-full p-2 border rounded"/>
+            <input type="text" id="password" bind:value={password} placeholder="Enter Password" class="mt-1 block w-full p-2 border rounded" required/>
         </div>
 
         <button class="mt-6 w-full py-2 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700 text-center">

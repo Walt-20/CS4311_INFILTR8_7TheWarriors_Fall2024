@@ -18,7 +18,6 @@
             Logout
         </button>
     {:else}
-        <h2 class="text-2xl mb-4 text-black dark:text-white">Login to INFILTR8</h2>
         <Login />
     {/if}
 </div>
