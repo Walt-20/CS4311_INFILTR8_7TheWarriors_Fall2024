@@ -19,35 +19,6 @@
     
 
 </script>
-<!-- 
-<h1> INFILTR8 </h1>
-<form on:submit|preventDefault={updatePassword}>
-    <div>
-        <h2 class="titleform"> Change Password </h2>
-        <div class="login-background">
-            <label for="email">DAC Analyst Email</label>
-            <input type="text" id="email" placeholder="Enter DAC Analyst Email" bind:value={email} />
-        </div>
-
-        <div class="login-background">
-            <label for="token">Token</label>
-            <input type="text" id="token" placeholder="Enter Token" bind:value={token} />
-        </div>
-
-        <div class="login-background">
-            <label for="password">Password</label>
-            <input type="text" id="password" placeholder="Password" bind:value={password} />
-        </div>
-
-        <div class="login-background">
-            <label for="password">Re-enter Password</label>
-            <input type="text" id="confirmPassword" placeholder="Re-enter Password" bind:value={confirmPassword} />
-        </div>
-        <button class="updateButton" type="submit" > Update Password </button>
-    </div>
-    <input class="returnButton" type="button" value="Back to Login" on:click={goToLogin} /> 
-
-</form>  -->
 
 <div class="flex justify-center items-center h-screen bg-white dark:bg-gray-800">
     <form class="max-w-md w-full bg-gray-100 dark:bg-gray-700 shadow-md rounded-lg p-8" on:submit|preventDefault={token}>
