@@ -10,20 +10,14 @@
 
 </script>
 
-<h1>INFILTR8</h1>
-{#if isLoggedIn}
-<h2>{$user.firstname} logged in!</h2>
-<input type="button" value="Logout!" on:click={logout} />
-{:else}
-<Login />
-{/if}
-
-<style>
-    :global(body) {
-        background-color: rgba(38,55,77,255);
-    }
-    h1, h2 {
-        color: rgba(156,178,190,255);
-        text-align: center;
-    }
-</style>
+<div class="flex flex-col items-center justify-center h-screen">
+    <h1 class="text-5xl font-bold mb-4 mt-16 text-black dark:text-white">INFILTR8</h1>
+    {#if isLoggedIn}
+        <h2 class="text-2xl mb-4 text-black dark:text-white">Welcome, {$user.firstname}!</h2>
+        <button on:click={logout} class="mt-4 py-2 px-4 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700">
+            Logout
+        </button>
+    {:else}
+        <Login />
+    {/if}
+</div>
