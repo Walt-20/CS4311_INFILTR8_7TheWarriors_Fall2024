@@ -5,7 +5,7 @@
     let lastName = '';
     let username = '';
     let token = '';
-    let email = '';
+    let username = '';
     let password = '';
 
     const goToLogin = () => {
@@ -32,7 +32,7 @@
                 body: JSON.stringify({
                     firstName,
                     lastName,
-                    email,
+                    username,
                     password,
                     token
                 }),
