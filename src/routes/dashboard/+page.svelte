@@ -43,7 +43,37 @@
         console.log('Valid files:', files);
         console.log('Is valid file:', isValidFile);
         handleShowProgress();
+
+        // Added this - Darien ///////////////////
+        if (isValidFile) {
+            // Upload the file to the server for parsing
+            uploadFileToServer(files[0]);
+        }
+        ///////////////////////////////////////////
     }
+
+    // Added this - Darien  ///////////////////////
+    async function uploadFileToServer(file) {
+        const formData = new FormData();
+        formData.append('file', file);
+
+        try {
+            const response = await fetch('/api/upload-nessus', {
+                method: 'POST',
+                body: formData
+            });
+
+            if (response.ok) {
+                const csvFilePath = await response.json();
+                alert(`CSV file generated: ${csvFilePath}`);
+            } else {
+                alert('File upload failed');
+            }
+        } catch (error) {
+            console.error('Error uploading file:', error);
+        }
+    }
+    /////////////////////////////////////////////////
 
     function handleCreateProject() {
         console.log('Creating project with files:', files);
