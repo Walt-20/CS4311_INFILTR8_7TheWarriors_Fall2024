@@ -12,67 +12,39 @@
     let menuOpen = false;
 
     function handleExport() {
-        console.log('Export button clicked');
-        console.log('Selected export format:', selectedFormat);
         // Handle export action
     }
 
     function toggleMenu() {
         menuOpen = !menuOpen;
-        console.log('Menu toggled:', menuOpen ? 'Opened' : 'Closed');
     }
 </script>
 
-<style>
-    .content {
-        margin-left: 220px;
-        padding: 20px;
-    }
-
-    .device-list {
-        border: 1px solid #ccc;
-        padding: 10px;
-        margin-bottom: 20px;
-    }
-
-    .device-list ul {
-        list-style-type: none;
-        padding: 0;
-    }
-
-    .device-list li {
-        display: flex;
-        justify-content: space-between;
-        padding: 5px 0;
-    }
-
-    .device-list li:nth-child(odd) {
-        background-color: #f9f9f9;
-    }
-
-    .device-list .header {
-        font-weight: bold;
-    }
-</style>
-
 <Menu {menuOpen} />
 
-<div class="content">
-    <button on:click={toggleMenu}>☰ Menu</button>
+<div class="ml p-5">
 
-    <h1>Report</h1>
-    <button>Go to Current Project Folder</button>
+    <div class="text-center py-4">
+        <h1 class="text-4xl font-bold text-gray-800 dark:text-gray-200">Report</h1>
+    </div>
 
-    <div class="device-list">
-        <ul>
-            <li class="header">
+    <!-- Menu Toggle Button -->
+    <button class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md mb-6" on:click={toggleMenu}>☰ Menu</button>
+
+    <!-- Go to Current Project Folder Button -->
+    <button class="bg-gray-600 hover:bg-gray-700 text-white py-2 px-6 rounded-md shadow-md mb-6">Go to Current Project Folder</button>
+
+    <!-- Device List -->
+    <div class="border border-gray-300 bg-gray-300 dark:bg-gray-600 rounded-lg shadow-sm mb-6 p-4">
+        <ul class="space-y-2">
+            <li class="font-bold text-gray-700 flex justify-between bg-gray-100 p-2 rounded-md">
                 <span>IP Addresses</span>
                 <span>Device</span>
                 <span>Vulnerability</span>
                 <span>Status</span>
             </li>
             {#each devices as device}
-                <li>
+                <li class="flex justify-between p-2 rounded-md hover:bg-gray-50">
                     <span>{device.ip}</span>
                     <span>{device.device}</span>
                     <span>{device.vulnerability}</span>
@@ -82,14 +54,16 @@
         </ul>
     </div>
 
-    <div>
-        <label for="export-format">Format to export</label>
-        <select id="export-format" bind:value={selectedFormat} on:change={() => console.log('Selected export format changed to:', selectedFormat)}>
-            {#each exportFormats as format}
-                <option value={format}>{format}</option>
-            {/each}
-        </select>
+    <!-- Export Format Dropdown -->
+    <div class="mb-6">
+    <label for="export-format" class="block text-gray-700 dark:text-white  mb-2">Format to export</label>
+    <select id="export-format" bind:value={selectedFormat} class="bg-gray-200 border border-gray-300 rounded-md py-2 px-4 w-40 focus:ring-2 focus:ring-blue-500">
+        {#each exportFormats as format}
+        <option value={format}>{format}</option>
+        {/each}
+    </select>
     </div>
 
-    <button on:click={handleExport}>Export</button>
+    <!-- Export Button -->
+    <button class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-6 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300" on:click={handleExport}>Export</button>
 </div>
