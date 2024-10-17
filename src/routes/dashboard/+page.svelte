@@ -3,6 +3,7 @@
     import Menu from '$lib/Menu.svelte';
     import Notification from '$lib/Notification.svelte';
     import { navigateTo } from '../../utils';
+    import { BookOpenOutline } from 'flowbite-svelte-icons';
 
     let greeting = '';
     let notifications = [
@@ -43,6 +44,30 @@
         console.log('Valid files:', files);
         console.log('Is valid file:', isValidFile);
         handleShowProgress();
+
+        if (isValidFile) {
+            handleFileUpload(files[0]);
+        }
+    }
+
+    async function handleFileUpload(file) {
+        console.log(file);
+        const formData = new FormData();
+        formData.append('file', file);
+        console.log("handling file upload");
+
+        const response = await fetch('http://localhost:5001/upload', {
+            method: 'POST',
+            body: formData
+        });
+
+        if (!response.ok) {
+            console.error('File upload failed:', response.statusText);
+            return;
+        }
+
+        const result = await response.text();
+        console.log(result);
     }
 
     function handleCreateProject() {
@@ -94,160 +119,84 @@
     }
 </script>
 
-<style>
-    .grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: auto auto;
-        gap: 20px;
-        padding: 20px;
-    }
-
-    .file-upload {
-        border: 2px dashed #ccc;
-        padding: 20px;
-        text-align: center;
-        margin-bottom: 20px;
-    }
-
-    .progress-bar {
-        width: 100%;
-        background-color: #f3f3f3;
-        border-radius: 5px;
-        overflow: hidden;
-        margin-bottom: 10px;
-    }
-
-    .progress-bar div {
-        height: 20px;
-        background-color: #4caf50;
-        width: 0;
-    }
-
-    .message {
-        background-color: rgba(83,109,130,255);
-        border-radius: 1%;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    .notifications {
-        grid-column: 1 / 2;
-    }
-
-    .create-project {
-        grid-column: 2 / 3;
-    }
-
-    .upload-files {
-        grid-column: 1 / 3;
-    }
-
-    h1, h2 {
-        color: rgba(156,178,190,255);
-    }
-
-    .greeting h1 {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .button {
-        background-color: rgba(156,178,190,255);
-        border: none;
-        border-radius: 5px;
-        padding: 10px 20px;
-        font-size: 16px;
-        cursor: pointer;
-        transition: background-color 0.3s, box-shadow 0.3s;
-    }
-
-    .button:hover {
-        background-color: #5e6b72;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    .button.discard {
-        background-color: #b00020;
-        color: #f3f3f3;
-    }
-
-    .button.discard:hover {
-        background-color: #7f0000;
-        color: #f3f3f3;
-    }
-
-    .file-input-container {
-        position: relative;
-        display: inline-block;
-    }
-
-    .file-input {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        opacity: 0;
-        cursor: pointer;
-    }
-
-</style>
-
 <Menu {menuOpen} />
 
-<div class="greeting">
-    <h1>{greeting}, Analyst!</h1>
+<div class="text-center py-6">
+    <h1 class="text-2xl font-semibold dark:text-gray-200">{greeting}, Analyst!</h1>
 </div>
 
-<div class="grid">
+<div class="grid grid-cols-2 gap-6 p-6">
+    <!-- Notifications Section -->
     <div class="notifications">
-        <div class="notification">
-            <h2> <span class="material-symbols-outlined">notifications_active</span>
-                Notifications 
+        <div class="mb-4 p-4 bg-gray-50 dark:bg-gray-700 rounded shadow">
+            <h2 class="text-xl font-bold flex items-center dark:text-gray-200">
+                <span class="material-symbols-outlined mr-2">notifications_active</span>
+                Notifications
             </h2>
         </div>
-        <div class="message">
-            {#each notifications as { message, unread}}
+
+        <div class="bg-white dark:bg-gray-700 p-4 rounded shadow">
+            {#each notifications as { message, unread }}
                 <Notification {message} {unread} />
             {/each}
         </div>
     </div>
-    
+
+    <!-- Create New Project Section -->
     <div class="create-project">
-        <h2>Create New Project</h2>
-        <div class="file-upload"
-             role="button"
-             tabindex="0"
-             aria-label="File upload area. Drag and drop a nuessus file here or select files using the button."
-             on:dragover={handleDragOver}
-             on:drop={handleDrop}>
-            <div class="top">
-                <p>Drag and drop a file here or</p>
-                <div class="file-input-container">
-                    <button class="button" on:click{triggerFileInput}>Select Files</button>
-                    <input id=:file-input class="file-input" type="file" multiple accept=".nessus" on:change={handleFileSelect} />
+        <div class="mb-4 p-4 bg-gray-50 dark:bg-gray-700 rounded shadow">
+            <h2 class="text-xl font-bold flex items-center dark:text-gray-200">
+                <BookOpenOutline class = "w-6 h-6 mr-2" /> 
+                Create New Project
+            </h2>
+        </div>
+
+        <!-- File Upload -->
+        <div class="file-upload border-2 border-dashed border-gray-300 dark:border-gray-500 p-6 text-center rounded hover:bg-gray-50 dark:hover:bg-gray-600 cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo-500">
+            <div class="flex flex-col items-center justify-center space-y-4">
+                <h2 class="text-m flex items-center dark:text-gray-200">
+                    Drag and Drop a File Here Or
+                </h2>
+                
+                <div class="relative inline-block">
+                    <button type="button" class="inline-flex items-center px-4 py-2 bg-blue-600 text-white font-medium text-sm rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        Select Files
+                    </button>
+                    <input id="file-input" class="absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer" type="file" multiple accept=".nessus" on:change={handleFileSelect} />
                 </div>
             </div>
         </div>
     </div>
-    
-    <div class="upload-files">
-        <button class="button" on:click={handleCreateProject} disabled={!isValidFile}>Create Project</button>
-        <button class="button discard" on:click={handleDiscardAll}>Discard all</button>
-        <h2>Uploading Files</h2>
+
+    <!-- Upload Files Section -->
+    <div class="upload-files col-span-2 mt-6">
+        <button 
+            class="px-4 py-2 bg-blue-600 text-white rounded mr-4 hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-800" 
+            on:click={handleCreateProject} >
+            Create Project
+        </button>
+
+        <button 
+            class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 focus:ring-4 focus:ring-red-300 dark:focus:ring-red-800" 
+            on:click={handleDiscardAll}>
+            Discard All
+        </button>
+
+        <h2 class="text-xl font-bold mt-6 dark:text-gray-200">Uploading Files</h2>
+
         {#if files.length > 0}
-            <ul>
+            <ul class="list-disc list-inside dark:text-gray-300 mt-2">
                 {#each files as file}
                     <li>{file.name}</li>
                 {/each}
             </ul>
-            <div class="progress-bar">
-                <div style="width: {uploadProgress}%"></div>
+
+            <!-- Progress Bar -->
+            <div class="progress-bar bg-gray-200 rounded overflow-hidden mt-4">
+                <div class="bg-green-500 h-2 rounded" style="width: {uploadProgress}%"></div>
             </div>
         {:else}
-            <p>No files being uploaded.</p>
+            <p class="mt-4 text-gray-600 dark:text-gray-300">No files being uploaded.</p>
         {/if}
     </div>
 </div>
-

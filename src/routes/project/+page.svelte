@@ -1,29 +1,69 @@
 <script>
     import Menu from '../../lib/Menu.svelte';
 
-    let ips = ["192.168.1.1", "192.168.1.2", "192.168.1.3"];
+    let newIp = '';  // Stores the input for new IP
+    let errorMessage = '';  // To store and display error messages
+
+    let ips = ["192.168.0.1", "192.168.0.2", "192.168.0.3"];
+    let ipStatus = ips.map(() => "Allowed");
+
     let analyses = ["Analysis 1", "Analysis 2", "Analysis 3"];
     let projects = ["Project 1", "Project 2", "Project 3"];
     let menuOpen = false;
 
-    function moveUp(list, index) {
+    // Toggle IP status between 'allowed' and 'off-limits'
+    function toggleStatus(index) {
+        ipStatus[index] = ipStatus[index] === "Allowed" ? "Off-Limits" : "Allowed";
+    }
+
+    // Regular expression to validate an IP address with sections ranging 0-255
+    const ipRegex = /^(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}$/;
+
+    // Function to validate if the IP is in correct format (0-255 in all sections)
+    function isValidIp(ip) {
+        return ipRegex.test(ip);
+    }
+
+    // Function to add a new IP to the Scope IP list
+    function addNewIp() {
+        if (newIp.trim() === '') {
+            errorMessage = 'IP address cannot be empty.';
+        } else if (!isValidIp(newIp)) {
+            errorMessage = 'Invalid IP address format.';
+        } else if (ips.includes(newIp)) {
+            errorMessage = 'IP already exists in the List.';
+        } else {
+            ips = [...ips, newIp];
+            ipStatus = [...ipStatus, "allowed"]; // Default status for new IP
+            newIp = '';  // Clear the input field
+            errorMessage = '';  // Clear any previous error
+        }
+    }
+
+    function moveUp(list, statusList, index) {
         if (index > 0) {
             const newList = [...list];
+            const newStatusList = [...statusList];
             [newList[index - 1], newList[index]] = [newList[index], newList[index - 1]];
+            [newStatusList[index - 1], newStatusList[index]] = [newStatusList[index], newStatusList[index - 1]];
             if (list === ips) {
                 ips = newList;
+                ipStatus = newStatusList;
             } else {
                 analyses = newList;
             }
         }
     }
 
-    function moveDown(list, index) {
+    function moveDown(list, statusList, index) {
         if (index < list.length - 1) {
             const newList = [...list];
+            const newStatusList = [...statusList];
             [newList[index + 1], newList[index]] = [newList[index], newList[index + 1]];
+            [newStatusList[index + 1], newStatusList[index]] = [newStatusList[index], newStatusList[index + 1]];
             if (list === ips) {
                 ips = newList;
+                ipStatus = newStatusList;
             } else {
                 analyses = newList;
             }
@@ -86,22 +126,69 @@
         padding: 5px;
     }
 
+    /*  I DONT LIKE THIS....Darien
     .scope-list:hover, .entry-list:hover {
         transform: scale(1.05);
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
+    */
 
     .scope-list ul, .entry-list ul {
         list-style-type: none;
         padding: 0;
     }
 
-    .scope-list li, .entry-list li {
+    .scope-list li, .entry-list li{
         display: flex;
         justify-content: space-between;
         align-items: center;
         padding: 5px 0;
     }
+
+    /*  Start of Add Darien  */
+    input {
+        margin-right: 10px;
+    }
+
+    button {
+        margin-bottom: 10px;
+    }
+
+    .error {
+        color: red;
+    }
+
+    .status-label {
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    .status-box {
+        display: inline-block;
+        width: 20px; /* Width of the box */
+        height: 20px; /* Height of the box */
+        margin-right: 1px; /* Space between box and IP */
+        cursor: pointer; /* Pointer cursor to indicate clickable */
+    }
+
+    .allowed_box {
+        background-color: #8BC34A;
+        border: 1px solid #4CAF50;
+    }
+
+    .off-limits_box {
+        background-color: #F44336;
+        border: 1px solid #D32F2F;
+    }
+
+    .allowed {
+        color: #8BC34A;
+    }
+
+    .off-limits {
+        color: #F44336;
+    }
+    /*      End of Add Darien  */
 
     .load-projects ul {
         list-style-type: none;
@@ -191,20 +278,40 @@
                 <ul>
                     {#each ips as ip, index}
                         <li>
+                            <!-- Clickable box for status -->
+                            <span class="status-box"
+                                on:click={() => toggleStatus(index)}
+                                class:allowed_box={ipStatus[index] === "Allowed"}
+                                class:off-limits_box={ipStatus[index] === "Off-Limits"}>
+                            </span>
                             <span>{ip}</span>
+                            <!-- Toggle status when clicked -->
+                            <span class="status-label" 
+                                class:allowed={ipStatus[index] === "Allowed"}
+                                class:off-limits={ipStatus[index] === "Off-Limits"}>
+                                {ipStatus[index]}
+                            </span>
                             <div>
-                                <span class="arrow" on:click={() => moveUp(ips, index)} aria-label="Move up"><span class="material-symbols-outlined">
+                                <span class="arrow" on:click={() => moveUp(ips, ipStatus, index)} aria-label="Move up"><span class="material-symbols-outlined">
                                     keyboard_arrow_up
                                     </span></span>
-                                <span class="arrow" on:click={() => moveDown(ips, index)} aria-label="Move down"><span class="material-symbols-outlined">
+                                <span class="arrow" on:click={() => moveDown(ips, ipStatus, index)} aria-label="Move down"><span class="material-symbols-outlined">
                                     keyboard_arrow_down
                                     </span></span>
                             </div>
                         </li>
                     {/each}
+                    <!-- Input field for Allowed IPs -->
+                    <input type="text" bind:value={newIp} placeholder="Enter IP" />
+                    <button on:click={addNewIp}>Add</button>
                 </ul>
             </div>
+            <!-- Error Message Display -->
+            {#if errorMessage}
+                <p class="error">{errorMessage}</p>
+            {/if}
         </div>
+
         
         <div class="entry">
             <h2>Entry Points Allowed</h2>
@@ -245,4 +352,3 @@
         <button>Start Testing</button>
     </div>
 </div>
-
