@@ -1,5 +1,6 @@
 <script>
-    import {navigateTo} from '../../utils.js';
+    import { navigateTo } from '../../utils.js';
+    import { addLog } from '$lib/logStore.js'; // Import log function
 
     let email = '';
     let token = '';
@@ -13,11 +14,15 @@
     };
 
     const updatePassword = () => {
-        // TO BE UPDTED WHEN DATABASE IS INTEGRATED
-        navigateTo('/')
-    }
-    
+        // Placeholder action for updating password
+        addLog(`Password updated for user: ${username}`); // Log password update
+        navigateTo('/'); // Navigate back to login
+    };
 
+    const backToLogin = () => {
+        addLog('Navigated back to login from forgot password page'); // Log navigation
+        navigateTo('/');
+    };
 </script>
 
 <div class="flex justify-center items-center h-screen bg-white dark:bg-gray-800">

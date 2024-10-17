@@ -1,32 +1,33 @@
 <script>
-    import Menu from '$lib/Menu.svelte';
-    let entryPoints = [
-        { name: "Unauthorized port bypass", selected: false },
-        { name: "Default credentials", selected: false },
-        { name: "Unpatched software exploits", selected: false },
-        { name: "Protocols missing encryption", selected: false },
-        { name: "Weak passwords", selected: false }
-    ];
+    import { addLog } from '$lib/logStore.js'; // Import log store function
 
-    let menuOpen = false;
+    let tests = ["Test 1", "Test 2", "Test 3"];
+    let selectedTest = tests[0];
+    let entryPoints = ["Entry Point 1", "Entry Point 2"];
+    let selectedEntryPoint = entryPoints[0];
     let startTimes = ["08:00 AM", "12:00 PM", "04:00 PM"];
     let selectedStartTime = startTimes[0];
     let analysisProgress = 50; // Example progress value
     let overallProgress = 75; // Example overall progress value
 
-    function handleEntryPointChange(index) {
-        // Toggle the selected status of the entry point
-        entryPoints[index].selected = !entryPoints[index].selected;
+    function handleTestChange(event) {
+        selectedTest = event.target.value;
+        addLog(`Test changed to: ${selectedTest}`); // Log test change
+    }
+
+    function handleEntryPointChange(event) {
+        selectedEntryPoint = event.target.value;
+        addLog(`Entry Point changed to: ${selectedEntryPoint}`); // Log entry point change
     }
 
     function handleStartTimeChange(event) {
         selectedStartTime = event.target.value;
+        addLog(`Start Time changed to: ${selectedStartTime}`); // Log start time change
     }
 
     function viewResult() {
-        // Handle view result action
-        const selectedEntryPoints = entryPoints.filter(entryPoint => entryPoint.selected);
-        console.log("Selected entry points:", selectedEntryPoints);
+        addLog(`View Result clicked with Test: ${selectedTest}, Entry Point: ${selectedEntryPoint}, Start Time: ${selectedStartTime}`); 
+        // Log view result action
     }
 </script>
 
@@ -81,3 +82,5 @@
     View Result
     </button>
 </div>
+
+<button on:click={viewResult}>View Result</button>

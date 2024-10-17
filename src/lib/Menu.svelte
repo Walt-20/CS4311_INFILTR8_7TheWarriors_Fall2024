@@ -3,13 +3,20 @@
     import { page } from '$app/stores';
     import { Sidebar, SidebarGroup, SidebarItem, SidebarWrapper } from 'flowbite-svelte';
     import { ChartPieSolid, BriefcaseSolid, ChartLineUpOutline, FileChartBarSolid, CogOutline, QuestionCircleOutline } from 'flowbite-svelte-icons';
-
-    let menuOpen = false;
+    import { addLog } from '$lib/logStore.js'; // Import log function
+    
+    export let menuOpen = false;
     let spanClass = 'flex-1 ms-3 whitespace-nowrap';
     $: activeUrl = $page.url.pathname;
 
     function toggleMenu() {
         menuOpen = !menuOpen;
+        addLog(`Menu toggled: ${menuOpen ? 'Opened' : 'Closed'}`); // Log menu state
+    }
+
+    function logAndNavigate(path, label) {
+        addLog(`Navigating to ${label}`);
+        navigateTo(path);
     }
 </script>
 
@@ -78,3 +85,13 @@
         <span class="material-symbols-outlined">chevron_right</span>
     {/if}
 </button>
+
+<div class="menu {menuOpen ? 'open' : ''}">
+    <h2>INFILTR8</h2>
+    <button on:click={() => logAndNavigate('/dashboard', 'Dashboard')}>Dashboard</button>
+    <button on:click={() => logAndNavigate('/project', 'Project Manager')}>Project Manager</button>
+    <button on:click={() => logAndNavigate('/analysis', 'Analysis')}>Analysis</button>
+    <button on:click={() => logAndNavigate('/report', 'Reports')}>Reports</button>
+    <button on:click={() => logAndNavigate('/settings', 'Settings')}>Settings</button>
+    <button on:click={() => logAndNavigate('/support', 'Support')}>Support</button>
+</div>

@@ -1,6 +1,7 @@
 <script>
     import { onMount } from 'svelte';
     import Menu from '$lib/Menu.svelte';
+    import { addLog } from '$lib/logStore.js'; // Import log function
 
     let devices = [
         { ip: "192.168.1.1", device: "Router", vulnerability: "High", status: "Active" },
@@ -12,11 +13,17 @@
     let menuOpen = false;
 
     function handleExport() {
-        // Handle export action
+        addLog(`Export button clicked. Format: ${selectedFormat}`); // Log export action
+        // Handle export action (e.g., generate file, etc.)
     }
 
     function toggleMenu() {
         menuOpen = !menuOpen;
+        addLog(`Menu toggled: ${menuOpen ? 'Opened' : 'Closed'}`); // Log menu state change
+    }
+
+    function handleFormatChange() {
+        addLog(`Export format changed to: ${selectedFormat}`); // Log format change
     }
 </script>
 

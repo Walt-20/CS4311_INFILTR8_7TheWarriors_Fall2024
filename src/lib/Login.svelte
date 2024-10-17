@@ -1,6 +1,7 @@
 <script>
     import user from '../user';
-    import {navigateTo} from '../utils.js';
+    import { navigateTo } from '../utils.js';
+    import { addLog } from '$lib/logStore.js'; // Import the log store function
 
     let username = '';
     let password = '';
@@ -10,32 +11,33 @@
         fetch('http://127.0.0.1:3030/login', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify({
                 username: username,
-                password: password
+                password: password,
+            }),
+        })
+            .then((response) => {
+                if (response.status < 299) {
+                    addLog(`User "${username}" logged in successfully.`);
+                    return response.json();
+                } else {
+                    currentError = 'Server response error, contact your administrator';
+                    addLog(`Failed login attempt for user "${username}". Error: ${currentError}`);
+                }
             })
-        })
-        .then((response) => {
-            if (response.status < 299) {
-                return response.json();
-            } 
-
-            if (response.status > 299) {
-                currentError = 'Server response error, contact your administrator';
-            }
-        })
-        .then((data) => {
-            if (data) {
-                user.update(val => val = {...data});
-            }
-        })
-        .catch((error) => {
-            currentError = error;
-            console.log("Error loggin in: ", error);
-        })
-    }
+            .then((data) => {
+                if (data) {
+                    user.update((val) => (val = { ...data }));
+                    navigateTo('/dashboard'); // Navigate to dashboard on success
+                }
+            })
+            .catch((error) => {
+                currentError = error;
+                addLog(`Error logging in for user "${username}". Details: ${error}`);
+            });
+    };
 </script>
 
 <style>

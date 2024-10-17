@@ -7,7 +7,7 @@
     const logout = () => {
         user.update(val => val = null);
     }
-
+ 
 </script>
 
 <div class="flex flex-col items-center justify-center h-screen">
