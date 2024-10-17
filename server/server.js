@@ -2,8 +2,10 @@ import express from 'express';
 import multer from 'multer';
 import { exec } from 'child_process';
 import path, { dirname } from 'path';
-import cors from 'cors';
+import fs from 'fs';
 import { fileURLToPath } from 'url';
+import cors from 'cors';
+import csv from 'csv-parser';
 
 const app = express();
 const upload = multer({ dest: 'uploads/' });
@@ -24,16 +26,42 @@ app.post('/upload', upload.single('file'), (req, res) => {
     const rootDir = path.join(__dirname, '..');
     console.log(`the fuq is ${filePath}`);
     console.log(`the fuq is ${rootDir}`);
-    exec(`python3 main.py "${filePath}"`, { cwd: rootDir }, (error, stdout, stderr) => {
-        if (error) {
-            console.error(`Error: ${error.message}`);
-            return res.status(500).send('Error processing file');
-        }
-        if (stderr) {
-            console.error(`Stderr: ${stderr}`);
-            return res.status(500).send('Error processing file');
-        }
+    exec(`python main.py "${filePath}"`, { cwd: rootDir }, (error, stdout, stderr) => {
+        console.log(`stdout: ${stdout}`);
+        
         res.send(stdout);
+
+        // After Python execution, read and process the CSV file
+        const csvFilePath = path.join(rootDir, 'machine_learning', 'data_with_exploits.csv');
+        const columnsToExtract = ['ip', 'archetype', 'pluginName'];
+
+        const results = [];
+
+        console.log(`${csvFilePath}`);
+
+        // Reading the CSV file and extracting specific columns
+        fs.createReadStream(csvFilePath)
+            .pipe(csv())
+            .on('data', (data) => {
+                const filteredData = {};
+                columnsToExtract.forEach(col => {
+                    if (data[col]) {
+                        filteredData[col] = data[col];
+                    }
+                });
+                results.push(filteredData);
+            })
+            .on('end', () => {
+                // After CSV processing, send the extracted data
+                res.json({
+                    extractedColumns: results // Send extracted columns from CSV
+                });
+                console.log(`${extractedColumns}`);
+            })
+            .on('error', (csvError) => {
+                console.error('Error reading CSV:', csvError);
+                return res.status(500).send('Error processing CSV file');
+            });
     });
 });
 
