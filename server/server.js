@@ -12,6 +12,7 @@ const upload = multer({ dest: 'uploads/' });
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+const targetDir = path.join(__dirname, 'results');
 
 app.use(cors());
 
@@ -28,8 +29,6 @@ app.post('/upload', upload.single('file'), (req, res) => {
     console.log(`the fuq is ${rootDir}`);
     exec(`python main.py "${filePath}"`, { cwd: rootDir }, (error, stdout, stderr) => {
         console.log(`stdout: ${stdout}`);
-        
-        res.send(stdout);
 
         // After Python execution, read and process the CSV file
         const csvFilePath = path.join(rootDir, 'machine_learning', 'data_with_exploits.csv');
@@ -37,7 +36,7 @@ app.post('/upload', upload.single('file'), (req, res) => {
 
         const results = [];
 
-        console.log(`${csvFilePath}`);
+        const jsonFilePath = path.join(targetDir, 'results.json');
 
         // Reading the CSV file and extracting specific columns
         fs.createReadStream(csvFilePath)
@@ -52,17 +51,21 @@ app.post('/upload', upload.single('file'), (req, res) => {
                 results.push(filteredData);
             })
             .on('end', () => {
-                // After CSV processing, send the extracted data
-                res.json({
-                    extractedColumns: results // Send extracted columns from CSV
+                const jsonData = JSON.stringify(results, null, 2);
+
+                fs.writeFile(jsonFilePath, jsonData, (err) => {
+                    if (err) {
+                        console.error('Error writing JSON file:', err);
+                        return res.status(500).send('Error saving results');
+                    }
+                    res.send('Results saved successfully');
                 });
-                console.log(`${extractedColumns}`);
             })
             .on('error', (csvError) => {
                 console.error('Error reading CSV:', csvError);
                 return res.status(500).send('Error processing CSV file');
             });
-    });
+        });
 });
 
 app.listen(5001, () => {

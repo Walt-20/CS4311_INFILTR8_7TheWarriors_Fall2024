@@ -1,0 +1,1477 @@
+[
+  {
+    "ip": "10.31.112.29",
+    "archetype": "Other",
+    "pluginName": "Nessus Scan Information"
+  },
+  {
+    "ip": "10.31.112.29",
+    "archetype": "Other",
+    "pluginName": "Open Port Re-check"
+  },
+  {
+    "ip": "10.31.112.29",
+    "archetype": "Unauthenticated port bypass",
+    "pluginName": "Terminal Services Doesn't Use Network Level Authentication (NLA)"
+  },
+  {
+    "ip": "10.31.112.29",
+    "archetype": "Other",
+    "pluginName": "Device Type"
+  },
+  {
+    "ip": "10.31.112.29",
+    "archetype": "Other",
+    "pluginName": "Common Platform Enumeration (CPE)"
+  },
+  {
+    "ip": "10.31.112.29",
+    "archetype": "missing encryption protocols",
+    "pluginName": "Terminal Services Use SSL/TLS"
+  },
+  {
+    "ip": "10.31.112.29",
+    "archetype": "Other",
+    "pluginName": "OS Identification"
+  },
+  {
+    "ip": "10.31.112.29",
+    "archetype": "Other",
+    "pluginName": "Ethernet Card Manufacturer Detection"
+  },
+  {
+    "ip": "10.31.112.29",
+    "archetype": "Other",
+    "pluginName": "VMware Virtual Machine Detection"
+  },
+  {
+    "ip": "10.31.112.29",
+    "archetype": "Other",
+    "pluginName": "Microsoft Windows Remote Desktop Protocol Server Man-in-the-Middle Weakness"
+  },
+  {
+    "ip": "10.31.112.29",
+    "archetype": "Other",
+    "pluginName": "RDP Screenshot"
+  },
+  {
+    "ip": "10.31.112.29",
+    "archetype": "missing encryption protocols",
+    "pluginName": "Terminal Services Encryption Level is Medium or Low"
+  },
+  {
+    "ip": "10.31.112.29",
+    "archetype": "missing encryption protocols",
+    "pluginName": "Terminal Services Encryption Level is not FIPS-140 Compliant"
+  },
+  {
+    "ip": "10.31.112.29",
+    "archetype": "Other",
+    "pluginName": "HyperText Transfer Protocol (HTTP) Information"
+  },
+  {
+    "ip": "10.31.112.29",
+    "archetype": "Other",
+    "pluginName": "Windows Terminal Services Enabled"
+  },
+  {
+    "ip": "10.31.112.29",
+    "archetype": "Other",
+    "pluginName": "HTTP Server Type and Version"
+  },
+  {
+    "ip": "10.31.112.29",
+    "archetype": "Other",
+    "pluginName": "HTTP Methods Allowed (per directory)"
+  },
+  {
+    "ip": "10.31.112.29",
+    "archetype": "Other",
+    "pluginName": "SMB Signing Disabled"
+  },
+  {
+    "ip": "10.31.112.29",
+    "archetype": "Other",
+    "pluginName": "Web Server Unconfigured - Default Install Page Present"
+  },
+  {
+    "ip": "10.31.112.29",
+    "archetype": "Other",
+    "pluginName": "Service Detection"
+  },
+  {
+    "ip": "10.31.112.29",
+    "archetype": "Other",
+    "pluginName": "Inconsistent Hostname and IP Address"
+  },
+  {
+    "ip": "10.31.112.29",
+    "archetype": "Other",
+    "pluginName": "Host Fully Qualified Domain Name (FQDN) Resolution"
+  },
+  {
+    "ip": "10.31.112.29",
+    "archetype": "Other",
+    "pluginName": "Traceroute Information"
+  },
+  {
+    "ip": "10.31.112.29",
+    "archetype": "Other",
+    "pluginName": "Nessus Windows Scan Not Performed with Admin Privileges"
+  },
+  {
+    "ip": "10.31.112.29",
+    "archetype": "Other",
+    "pluginName": "Microsoft Windows SMB Registry : Nessus Cannot Access the Windows Registry"
+  },
+  {
+    "ip": "10.31.112.29",
+    "archetype": "Other",
+    "pluginName": "Nessus SYN scanner"
+  },
+  {
+    "ip": "10.31.112.29",
+    "archetype": "Other",
+    "pluginName": "Nessus SYN scanner"
+  },
+  {
+    "ip": "10.31.112.29",
+    "archetype": "Other",
+    "pluginName": "Nessus SYN scanner"
+  },
+  {
+    "ip": "10.31.112.29",
+    "archetype": "Other",
+    "pluginName": "Nessus SYN scanner"
+  },
+  {
+    "ip": "10.31.112.29",
+    "archetype": "Other",
+    "pluginName": "Nessus SYN scanner"
+  },
+  {
+    "ip": "10.31.112.29",
+    "archetype": "Other",
+    "pluginName": "Microsoft Windows SMB Log In Possible"
+  },
+  {
+    "ip": "10.31.112.29",
+    "archetype": "Other",
+    "pluginName": "Microsoft Windows SMB NativeLanManager Remote System Information Disclosure"
+  },
+  {
+    "ip": "10.31.112.29",
+    "archetype": "Other",
+    "pluginName": "Windows NetBIOS / SMB Remote Host Information Disclosure"
+  },
+  {
+    "ip": "10.31.112.29",
+    "archetype": "Other",
+    "pluginName": "DCE Services Enumeration"
+  },
+  {
+    "ip": "10.31.112.29",
+    "archetype": "Other",
+    "pluginName": "DCE Services Enumeration"
+  },
+  {
+    "ip": "10.31.112.29",
+    "archetype": "Other",
+    "pluginName": "DCE Services Enumeration"
+  },
+  {
+    "ip": "10.31.112.29",
+    "archetype": "Other",
+    "pluginName": "DCE Services Enumeration"
+  },
+  {
+    "ip": "10.31.112.29",
+    "archetype": "Other",
+    "pluginName": "DCE Services Enumeration"
+  },
+  {
+    "ip": "10.31.112.29",
+    "archetype": "Other",
+    "pluginName": "DCE Services Enumeration"
+  },
+  {
+    "ip": "10.31.112.29",
+    "archetype": "Other",
+    "pluginName": "DCE Services Enumeration"
+  },
+  {
+    "ip": "10.31.112.29",
+    "archetype": "Other",
+    "pluginName": "DCE Services Enumeration"
+  },
+  {
+    "ip": "10.31.112.29",
+    "archetype": "Other",
+    "pluginName": "Microsoft Windows SMB Service Detection"
+  },
+  {
+    "ip": "10.31.112.29",
+    "archetype": "Other",
+    "pluginName": "Microsoft Windows SMB Service Detection"
+  },
+  {
+    "ip": "10.31.112.26",
+    "archetype": "Other",
+    "pluginName": "Nessus Scan Information"
+  },
+  {
+    "ip": "10.31.112.26",
+    "archetype": "Other",
+    "pluginName": "Open Port Re-check"
+  },
+  {
+    "ip": "10.31.112.26",
+    "archetype": "Other",
+    "pluginName": "Device Type"
+  },
+  {
+    "ip": "10.31.112.26",
+    "archetype": "Other",
+    "pluginName": "Common Platform Enumeration (CPE)"
+  },
+  {
+    "ip": "10.31.112.26",
+    "archetype": "Other",
+    "pluginName": "OS Identification"
+  },
+  {
+    "ip": "10.31.112.26",
+    "archetype": "Other",
+    "pluginName": "HyperText Transfer Protocol (HTTP) Information"
+  },
+  {
+    "ip": "10.31.112.26",
+    "archetype": "Other",
+    "pluginName": "HTTP Server Type and Version"
+  },
+  {
+    "ip": "10.31.112.26",
+    "archetype": "Other",
+    "pluginName": "HTTP Methods Allowed (per directory)"
+  },
+  {
+    "ip": "10.31.112.26",
+    "archetype": "Other",
+    "pluginName": "Ethernet Card Manufacturer Detection"
+  },
+  {
+    "ip": "10.31.112.26",
+    "archetype": "Other",
+    "pluginName": "VMware Virtual Machine Detection"
+  },
+  {
+    "ip": "10.31.112.26",
+    "archetype": "Other",
+    "pluginName": "Microsoft Windows Remote Desktop Protocol Server Man-in-the-Middle Weakness"
+  },
+  {
+    "ip": "10.31.112.26",
+    "archetype": "Other",
+    "pluginName": "Web Server Unconfigured - Default Install Page Present"
+  },
+  {
+    "ip": "10.31.112.26",
+    "archetype": "Other",
+    "pluginName": "RDP Screenshot"
+  },
+  {
+    "ip": "10.31.112.26",
+    "archetype": "missing encryption protocols",
+    "pluginName": "Terminal Services Encryption Level is Medium or Low"
+  },
+  {
+    "ip": "10.31.112.26",
+    "archetype": "missing encryption protocols",
+    "pluginName": "Terminal Services Encryption Level is not FIPS-140 Compliant"
+  },
+  {
+    "ip": "10.31.112.26",
+    "archetype": "Other",
+    "pluginName": "Windows Terminal Services Enabled"
+  },
+  {
+    "ip": "10.31.112.26",
+    "archetype": "Other",
+    "pluginName": "SMB Signing Disabled"
+  },
+  {
+    "ip": "10.31.112.26",
+    "archetype": "Other",
+    "pluginName": "Service Detection"
+  },
+  {
+    "ip": "10.31.112.26",
+    "archetype": "Other",
+    "pluginName": "Inconsistent Hostname and IP Address"
+  },
+  {
+    "ip": "10.31.112.26",
+    "archetype": "Other",
+    "pluginName": "Host Fully Qualified Domain Name (FQDN) Resolution"
+  },
+  {
+    "ip": "10.31.112.26",
+    "archetype": "Other",
+    "pluginName": "Traceroute Information"
+  },
+  {
+    "ip": "10.31.112.26",
+    "archetype": "Other",
+    "pluginName": "Nessus Windows Scan Not Performed with Admin Privileges"
+  },
+  {
+    "ip": "10.31.112.26",
+    "archetype": "Other",
+    "pluginName": "Microsoft Windows SMB Registry : Nessus Cannot Access the Windows Registry"
+  },
+  {
+    "ip": "10.31.112.26",
+    "archetype": "Other",
+    "pluginName": "Nessus SYN scanner"
+  },
+  {
+    "ip": "10.31.112.26",
+    "archetype": "Other",
+    "pluginName": "Nessus SYN scanner"
+  },
+  {
+    "ip": "10.31.112.26",
+    "archetype": "Other",
+    "pluginName": "Nessus SYN scanner"
+  },
+  {
+    "ip": "10.31.112.26",
+    "archetype": "Other",
+    "pluginName": "Nessus SYN scanner"
+  },
+  {
+    "ip": "10.31.112.26",
+    "archetype": "Other",
+    "pluginName": "Nessus SYN scanner"
+  },
+  {
+    "ip": "10.31.112.26",
+    "archetype": "Other",
+    "pluginName": "Microsoft Windows SMB Log In Possible"
+  },
+  {
+    "ip": "10.31.112.26",
+    "archetype": "Other",
+    "pluginName": "Microsoft Windows SMB NativeLanManager Remote System Information Disclosure"
+  },
+  {
+    "ip": "10.31.112.26",
+    "archetype": "Other",
+    "pluginName": "Windows NetBIOS / SMB Remote Host Information Disclosure"
+  },
+  {
+    "ip": "10.31.112.26",
+    "archetype": "Other",
+    "pluginName": "DCE Services Enumeration"
+  },
+  {
+    "ip": "10.31.112.26",
+    "archetype": "Other",
+    "pluginName": "DCE Services Enumeration"
+  },
+  {
+    "ip": "10.31.112.26",
+    "archetype": "Other",
+    "pluginName": "DCE Services Enumeration"
+  },
+  {
+    "ip": "10.31.112.26",
+    "archetype": "Other",
+    "pluginName": "DCE Services Enumeration"
+  },
+  {
+    "ip": "10.31.112.26",
+    "archetype": "Other",
+    "pluginName": "DCE Services Enumeration"
+  },
+  {
+    "ip": "10.31.112.26",
+    "archetype": "Other",
+    "pluginName": "DCE Services Enumeration"
+  },
+  {
+    "ip": "10.31.112.26",
+    "archetype": "Other",
+    "pluginName": "DCE Services Enumeration"
+  },
+  {
+    "ip": "10.31.112.26",
+    "archetype": "Other",
+    "pluginName": "DCE Services Enumeration"
+  },
+  {
+    "ip": "10.31.112.26",
+    "archetype": "Other",
+    "pluginName": "Microsoft Windows SMB Service Detection"
+  },
+  {
+    "ip": "10.31.112.26",
+    "archetype": "Other",
+    "pluginName": "Microsoft Windows SMB Service Detection"
+  },
+  {
+    "ip": "10.31.112.25",
+    "archetype": "Other",
+    "pluginName": "Nessus Scan Information"
+  },
+  {
+    "ip": "10.31.112.25",
+    "archetype": "Other",
+    "pluginName": "Open Port Re-check"
+  },
+  {
+    "ip": "10.31.112.25",
+    "archetype": "Other",
+    "pluginName": "Device Type"
+  },
+  {
+    "ip": "10.31.112.25",
+    "archetype": "Other",
+    "pluginName": "Common Platform Enumeration (CPE)"
+  },
+  {
+    "ip": "10.31.112.25",
+    "archetype": "Other",
+    "pluginName": "OS Identification"
+  },
+  {
+    "ip": "10.31.112.25",
+    "archetype": "Other",
+    "pluginName": "Ethernet Card Manufacturer Detection"
+  },
+  {
+    "ip": "10.31.112.25",
+    "archetype": "Other",
+    "pluginName": "VMware Virtual Machine Detection"
+  },
+  {
+    "ip": "10.31.112.25",
+    "archetype": "Other",
+    "pluginName": "Microsoft Windows Remote Desktop Protocol Server Man-in-the-Middle Weakness"
+  },
+  {
+    "ip": "10.31.112.25",
+    "archetype": "Other",
+    "pluginName": "RDP Screenshot"
+  },
+  {
+    "ip": "10.31.112.25",
+    "archetype": "missing encryption protocols",
+    "pluginName": "Terminal Services Encryption Level is Medium or Low"
+  },
+  {
+    "ip": "10.31.112.25",
+    "archetype": "missing encryption protocols",
+    "pluginName": "Terminal Services Encryption Level is not FIPS-140 Compliant"
+  },
+  {
+    "ip": "10.31.112.25",
+    "archetype": "Other",
+    "pluginName": "Windows Terminal Services Enabled"
+  },
+  {
+    "ip": "10.31.112.25",
+    "archetype": "Other",
+    "pluginName": "HyperText Transfer Protocol (HTTP) Information"
+  },
+  {
+    "ip": "10.31.112.25",
+    "archetype": "Other",
+    "pluginName": "HTTP Server Type and Version"
+  },
+  {
+    "ip": "10.31.112.25",
+    "archetype": "Other",
+    "pluginName": "HTTP Methods Allowed (per directory)"
+  },
+  {
+    "ip": "10.31.112.25",
+    "archetype": "Other",
+    "pluginName": "SMB Signing Disabled"
+  },
+  {
+    "ip": "10.31.112.25",
+    "archetype": "Other",
+    "pluginName": "Web Server Unconfigured - Default Install Page Present"
+  },
+  {
+    "ip": "10.31.112.25",
+    "archetype": "Other",
+    "pluginName": "Service Detection"
+  },
+  {
+    "ip": "10.31.112.25",
+    "archetype": "Other",
+    "pluginName": "Inconsistent Hostname and IP Address"
+  },
+  {
+    "ip": "10.31.112.25",
+    "archetype": "Other",
+    "pluginName": "Host Fully Qualified Domain Name (FQDN) Resolution"
+  },
+  {
+    "ip": "10.31.112.25",
+    "archetype": "Other",
+    "pluginName": "Traceroute Information"
+  },
+  {
+    "ip": "10.31.112.25",
+    "archetype": "Other",
+    "pluginName": "Nessus Windows Scan Not Performed with Admin Privileges"
+  },
+  {
+    "ip": "10.31.112.25",
+    "archetype": "Other",
+    "pluginName": "Microsoft Windows SMB Registry : Nessus Cannot Access the Windows Registry"
+  },
+  {
+    "ip": "10.31.112.25",
+    "archetype": "Other",
+    "pluginName": "Nessus SYN scanner"
+  },
+  {
+    "ip": "10.31.112.25",
+    "archetype": "Other",
+    "pluginName": "Nessus SYN scanner"
+  },
+  {
+    "ip": "10.31.112.25",
+    "archetype": "Other",
+    "pluginName": "Nessus SYN scanner"
+  },
+  {
+    "ip": "10.31.112.25",
+    "archetype": "Other",
+    "pluginName": "Nessus SYN scanner"
+  },
+  {
+    "ip": "10.31.112.25",
+    "archetype": "Other",
+    "pluginName": "Nessus SYN scanner"
+  },
+  {
+    "ip": "10.31.112.25",
+    "archetype": "Other",
+    "pluginName": "Microsoft Windows SMB Log In Possible"
+  },
+  {
+    "ip": "10.31.112.25",
+    "archetype": "Other",
+    "pluginName": "Microsoft Windows SMB NativeLanManager Remote System Information Disclosure"
+  },
+  {
+    "ip": "10.31.112.25",
+    "archetype": "Other",
+    "pluginName": "Windows NetBIOS / SMB Remote Host Information Disclosure"
+  },
+  {
+    "ip": "10.31.112.25",
+    "archetype": "Other",
+    "pluginName": "DCE Services Enumeration"
+  },
+  {
+    "ip": "10.31.112.25",
+    "archetype": "Other",
+    "pluginName": "DCE Services Enumeration"
+  },
+  {
+    "ip": "10.31.112.25",
+    "archetype": "Other",
+    "pluginName": "DCE Services Enumeration"
+  },
+  {
+    "ip": "10.31.112.25",
+    "archetype": "Other",
+    "pluginName": "DCE Services Enumeration"
+  },
+  {
+    "ip": "10.31.112.25",
+    "archetype": "Other",
+    "pluginName": "DCE Services Enumeration"
+  },
+  {
+    "ip": "10.31.112.25",
+    "archetype": "Other",
+    "pluginName": "DCE Services Enumeration"
+  },
+  {
+    "ip": "10.31.112.25",
+    "archetype": "Other",
+    "pluginName": "DCE Services Enumeration"
+  },
+  {
+    "ip": "10.31.112.25",
+    "archetype": "Other",
+    "pluginName": "DCE Services Enumeration"
+  },
+  {
+    "ip": "10.31.112.25",
+    "archetype": "Other",
+    "pluginName": "Microsoft Windows SMB Service Detection"
+  },
+  {
+    "ip": "10.31.112.25",
+    "archetype": "Other",
+    "pluginName": "Microsoft Windows SMB Service Detection"
+  },
+  {
+    "ip": "10.31.112.24",
+    "archetype": "Other",
+    "pluginName": "Nessus Scan Information"
+  },
+  {
+    "ip": "10.31.112.24",
+    "archetype": "Other",
+    "pluginName": "Open Port Re-check"
+  },
+  {
+    "ip": "10.31.112.24",
+    "archetype": "Other",
+    "pluginName": "Device Type"
+  },
+  {
+    "ip": "10.31.112.24",
+    "archetype": "Other",
+    "pluginName": "Common Platform Enumeration (CPE)"
+  },
+  {
+    "ip": "10.31.112.24",
+    "archetype": "Other",
+    "pluginName": "OS Identification"
+  },
+  {
+    "ip": "10.31.112.24",
+    "archetype": "Other",
+    "pluginName": "HyperText Transfer Protocol (HTTP) Information"
+  },
+  {
+    "ip": "10.31.112.24",
+    "archetype": "Other",
+    "pluginName": "HTTP Server Type and Version"
+  },
+  {
+    "ip": "10.31.112.24",
+    "archetype": "Other",
+    "pluginName": "HTTP Methods Allowed (per directory)"
+  },
+  {
+    "ip": "10.31.112.24",
+    "archetype": "Other",
+    "pluginName": "Ethernet Card Manufacturer Detection"
+  },
+  {
+    "ip": "10.31.112.24",
+    "archetype": "Other",
+    "pluginName": "VMware Virtual Machine Detection"
+  },
+  {
+    "ip": "10.31.112.24",
+    "archetype": "Other",
+    "pluginName": "Microsoft Windows Remote Desktop Protocol Server Man-in-the-Middle Weakness"
+  },
+  {
+    "ip": "10.31.112.24",
+    "archetype": "Other",
+    "pluginName": "Web Server Unconfigured - Default Install Page Present"
+  },
+  {
+    "ip": "10.31.112.24",
+    "archetype": "Other",
+    "pluginName": "RDP Screenshot"
+  },
+  {
+    "ip": "10.31.112.24",
+    "archetype": "missing encryption protocols",
+    "pluginName": "Terminal Services Encryption Level is Medium or Low"
+  },
+  {
+    "ip": "10.31.112.24",
+    "archetype": "missing encryption protocols",
+    "pluginName": "Terminal Services Encryption Level is not FIPS-140 Compliant"
+  },
+  {
+    "ip": "10.31.112.24",
+    "archetype": "Other",
+    "pluginName": "Windows Terminal Services Enabled"
+  },
+  {
+    "ip": "10.31.112.24",
+    "archetype": "Other",
+    "pluginName": "SMB Signing Disabled"
+  },
+  {
+    "ip": "10.31.112.24",
+    "archetype": "Other",
+    "pluginName": "Service Detection"
+  },
+  {
+    "ip": "10.31.112.24",
+    "archetype": "Other",
+    "pluginName": "Inconsistent Hostname and IP Address"
+  },
+  {
+    "ip": "10.31.112.24",
+    "archetype": "Other",
+    "pluginName": "Host Fully Qualified Domain Name (FQDN) Resolution"
+  },
+  {
+    "ip": "10.31.112.24",
+    "archetype": "Other",
+    "pluginName": "Traceroute Information"
+  },
+  {
+    "ip": "10.31.112.24",
+    "archetype": "Other",
+    "pluginName": "Nessus Windows Scan Not Performed with Admin Privileges"
+  },
+  {
+    "ip": "10.31.112.24",
+    "archetype": "Other",
+    "pluginName": "Microsoft Windows SMB Registry : Nessus Cannot Access the Windows Registry"
+  },
+  {
+    "ip": "10.31.112.24",
+    "archetype": "Other",
+    "pluginName": "Nessus SYN scanner"
+  },
+  {
+    "ip": "10.31.112.24",
+    "archetype": "Other",
+    "pluginName": "Nessus SYN scanner"
+  },
+  {
+    "ip": "10.31.112.24",
+    "archetype": "Other",
+    "pluginName": "Nessus SYN scanner"
+  },
+  {
+    "ip": "10.31.112.24",
+    "archetype": "Other",
+    "pluginName": "Nessus SYN scanner"
+  },
+  {
+    "ip": "10.31.112.24",
+    "archetype": "Other",
+    "pluginName": "Nessus SYN scanner"
+  },
+  {
+    "ip": "10.31.112.24",
+    "archetype": "Other",
+    "pluginName": "Microsoft Windows SMB Log In Possible"
+  },
+  {
+    "ip": "10.31.112.24",
+    "archetype": "Other",
+    "pluginName": "Microsoft Windows SMB NativeLanManager Remote System Information Disclosure"
+  },
+  {
+    "ip": "10.31.112.24",
+    "archetype": "Other",
+    "pluginName": "Windows NetBIOS / SMB Remote Host Information Disclosure"
+  },
+  {
+    "ip": "10.31.112.24",
+    "archetype": "Other",
+    "pluginName": "DCE Services Enumeration"
+  },
+  {
+    "ip": "10.31.112.24",
+    "archetype": "Other",
+    "pluginName": "DCE Services Enumeration"
+  },
+  {
+    "ip": "10.31.112.24",
+    "archetype": "Other",
+    "pluginName": "DCE Services Enumeration"
+  },
+  {
+    "ip": "10.31.112.24",
+    "archetype": "Other",
+    "pluginName": "DCE Services Enumeration"
+  },
+  {
+    "ip": "10.31.112.24",
+    "archetype": "Other",
+    "pluginName": "DCE Services Enumeration"
+  },
+  {
+    "ip": "10.31.112.24",
+    "archetype": "Other",
+    "pluginName": "DCE Services Enumeration"
+  },
+  {
+    "ip": "10.31.112.24",
+    "archetype": "Other",
+    "pluginName": "DCE Services Enumeration"
+  },
+  {
+    "ip": "10.31.112.24",
+    "archetype": "Other",
+    "pluginName": "DCE Services Enumeration"
+  },
+  {
+    "ip": "10.31.112.24",
+    "archetype": "Other",
+    "pluginName": "Microsoft Windows SMB Service Detection"
+  },
+  {
+    "ip": "10.31.112.24",
+    "archetype": "Other",
+    "pluginName": "Microsoft Windows SMB Service Detection"
+  },
+  {
+    "ip": "10.31.112.23",
+    "archetype": "Other",
+    "pluginName": "Nessus Scan Information"
+  },
+  {
+    "ip": "10.31.112.23",
+    "archetype": "Other",
+    "pluginName": "Open Port Re-check"
+  },
+  {
+    "ip": "10.31.112.23",
+    "archetype": "Other",
+    "pluginName": "Device Type"
+  },
+  {
+    "ip": "10.31.112.23",
+    "archetype": "Other",
+    "pluginName": "Common Platform Enumeration (CPE)"
+  },
+  {
+    "ip": "10.31.112.23",
+    "archetype": "Other",
+    "pluginName": "OS Identification"
+  },
+  {
+    "ip": "10.31.112.23",
+    "archetype": "Other",
+    "pluginName": "Ethernet Card Manufacturer Detection"
+  },
+  {
+    "ip": "10.31.112.23",
+    "archetype": "Other",
+    "pluginName": "VMware Virtual Machine Detection"
+  },
+  {
+    "ip": "10.31.112.23",
+    "archetype": "Other",
+    "pluginName": "Microsoft Windows Remote Desktop Protocol Server Man-in-the-Middle Weakness"
+  },
+  {
+    "ip": "10.31.112.23",
+    "archetype": "Other",
+    "pluginName": "RDP Screenshot"
+  },
+  {
+    "ip": "10.31.112.23",
+    "archetype": "missing encryption protocols",
+    "pluginName": "Terminal Services Encryption Level is Medium or Low"
+  },
+  {
+    "ip": "10.31.112.23",
+    "archetype": "missing encryption protocols",
+    "pluginName": "Terminal Services Encryption Level is not FIPS-140 Compliant"
+  },
+  {
+    "ip": "10.31.112.23",
+    "archetype": "Other",
+    "pluginName": "Windows Terminal Services Enabled"
+  },
+  {
+    "ip": "10.31.112.23",
+    "archetype": "Other",
+    "pluginName": "HyperText Transfer Protocol (HTTP) Information"
+  },
+  {
+    "ip": "10.31.112.23",
+    "archetype": "Other",
+    "pluginName": "HTTP Server Type and Version"
+  },
+  {
+    "ip": "10.31.112.23",
+    "archetype": "Other",
+    "pluginName": "HTTP Methods Allowed (per directory)"
+  },
+  {
+    "ip": "10.31.112.23",
+    "archetype": "Other",
+    "pluginName": "SMB Signing Disabled"
+  },
+  {
+    "ip": "10.31.112.23",
+    "archetype": "Other",
+    "pluginName": "Web Server Unconfigured - Default Install Page Present"
+  },
+  {
+    "ip": "10.31.112.23",
+    "archetype": "Other",
+    "pluginName": "Service Detection"
+  },
+  {
+    "ip": "10.31.112.23",
+    "archetype": "Other",
+    "pluginName": "Inconsistent Hostname and IP Address"
+  },
+  {
+    "ip": "10.31.112.23",
+    "archetype": "Other",
+    "pluginName": "Host Fully Qualified Domain Name (FQDN) Resolution"
+  },
+  {
+    "ip": "10.31.112.23",
+    "archetype": "Other",
+    "pluginName": "Traceroute Information"
+  },
+  {
+    "ip": "10.31.112.23",
+    "archetype": "Other",
+    "pluginName": "Nessus Windows Scan Not Performed with Admin Privileges"
+  },
+  {
+    "ip": "10.31.112.23",
+    "archetype": "Other",
+    "pluginName": "Microsoft Windows SMB Registry : Nessus Cannot Access the Windows Registry"
+  },
+  {
+    "ip": "10.31.112.23",
+    "archetype": "Other",
+    "pluginName": "Nessus SYN scanner"
+  },
+  {
+    "ip": "10.31.112.23",
+    "archetype": "Other",
+    "pluginName": "Nessus SYN scanner"
+  },
+  {
+    "ip": "10.31.112.23",
+    "archetype": "Other",
+    "pluginName": "Nessus SYN scanner"
+  },
+  {
+    "ip": "10.31.112.23",
+    "archetype": "Other",
+    "pluginName": "Nessus SYN scanner"
+  },
+  {
+    "ip": "10.31.112.23",
+    "archetype": "Other",
+    "pluginName": "Nessus SYN scanner"
+  },
+  {
+    "ip": "10.31.112.23",
+    "archetype": "Other",
+    "pluginName": "Microsoft Windows SMB Log In Possible"
+  },
+  {
+    "ip": "10.31.112.23",
+    "archetype": "Other",
+    "pluginName": "Microsoft Windows SMB NativeLanManager Remote System Information Disclosure"
+  },
+  {
+    "ip": "10.31.112.23",
+    "archetype": "Other",
+    "pluginName": "Windows NetBIOS / SMB Remote Host Information Disclosure"
+  },
+  {
+    "ip": "10.31.112.23",
+    "archetype": "Other",
+    "pluginName": "DCE Services Enumeration"
+  },
+  {
+    "ip": "10.31.112.23",
+    "archetype": "Other",
+    "pluginName": "DCE Services Enumeration"
+  },
+  {
+    "ip": "10.31.112.23",
+    "archetype": "Other",
+    "pluginName": "DCE Services Enumeration"
+  },
+  {
+    "ip": "10.31.112.23",
+    "archetype": "Other",
+    "pluginName": "DCE Services Enumeration"
+  },
+  {
+    "ip": "10.31.112.23",
+    "archetype": "Other",
+    "pluginName": "DCE Services Enumeration"
+  },
+  {
+    "ip": "10.31.112.23",
+    "archetype": "Other",
+    "pluginName": "DCE Services Enumeration"
+  },
+  {
+    "ip": "10.31.112.23",
+    "archetype": "Other",
+    "pluginName": "DCE Services Enumeration"
+  },
+  {
+    "ip": "10.31.112.23",
+    "archetype": "Other",
+    "pluginName": "DCE Services Enumeration"
+  },
+  {
+    "ip": "10.31.112.23",
+    "archetype": "Other",
+    "pluginName": "Microsoft Windows SMB Service Detection"
+  },
+  {
+    "ip": "10.31.112.23",
+    "archetype": "Other",
+    "pluginName": "Microsoft Windows SMB Service Detection"
+  },
+  {
+    "ip": "10.31.112.22",
+    "archetype": "Other",
+    "pluginName": "Nessus Scan Information"
+  },
+  {
+    "ip": "10.31.112.22",
+    "archetype": "Other",
+    "pluginName": "Open Port Re-check"
+  },
+  {
+    "ip": "10.31.112.22",
+    "archetype": "Other",
+    "pluginName": "Common Platform Enumeration (CPE)"
+  },
+  {
+    "ip": "10.31.112.22",
+    "archetype": "Other",
+    "pluginName": "Device Type"
+  },
+  {
+    "ip": "10.31.112.22",
+    "archetype": "Other",
+    "pluginName": "OS Identification"
+  },
+  {
+    "ip": "10.31.112.22",
+    "archetype": "Other",
+    "pluginName": "HTTP Server Type and Version"
+  },
+  {
+    "ip": "10.31.112.22",
+    "archetype": "Other",
+    "pluginName": "HTTP Server Type and Version"
+  },
+  {
+    "ip": "10.31.112.22",
+    "archetype": "Other",
+    "pluginName": "HTTP Methods Allowed (per directory)"
+  },
+  {
+    "ip": "10.31.112.22",
+    "archetype": "Other",
+    "pluginName": "Ethernet Card Manufacturer Detection"
+  },
+  {
+    "ip": "10.31.112.22",
+    "archetype": "Other",
+    "pluginName": "VMware Virtual Machine Detection"
+  },
+  {
+    "ip": "10.31.112.22",
+    "archetype": "Other",
+    "pluginName": "Microsoft Windows Remote Desktop Protocol Server Man-in-the-Middle Weakness"
+  },
+  {
+    "ip": "10.31.112.22",
+    "archetype": "Other",
+    "pluginName": "Web Server Unconfigured - Default Install Page Present"
+  },
+  {
+    "ip": "10.31.112.22",
+    "archetype": "Other",
+    "pluginName": "TCP Channel Detection"
+  },
+  {
+    "ip": "10.31.112.22",
+    "archetype": "Other",
+    "pluginName": "RDP Screenshot"
+  },
+  {
+    "ip": "10.31.112.22",
+    "archetype": "missing encryption protocols",
+    "pluginName": "Terminal Services Encryption Level is Medium or Low"
+  },
+  {
+    "ip": "10.31.112.22",
+    "archetype": "missing encryption protocols",
+    "pluginName": "Terminal Services Encryption Level is not FIPS-140 Compliant"
+  },
+  {
+    "ip": "10.31.112.22",
+    "archetype": "Other",
+    "pluginName": "Windows Terminal Services Enabled"
+  },
+  {
+    "ip": "10.31.112.22",
+    "archetype": "Other",
+    "pluginName": "SMB Signing Disabled"
+  },
+  {
+    "ip": "10.31.112.22",
+    "archetype": "Other",
+    "pluginName": "Service Detection"
+  },
+  {
+    "ip": "10.31.112.22",
+    "archetype": "Other",
+    "pluginName": "Service Detection"
+  },
+  {
+    "ip": "10.31.112.22",
+    "archetype": "Other",
+    "pluginName": "Inconsistent Hostname and IP Address"
+  },
+  {
+    "ip": "10.31.112.22",
+    "archetype": "Other",
+    "pluginName": "Host Fully Qualified Domain Name (FQDN) Resolution"
+  },
+  {
+    "ip": "10.31.112.22",
+    "archetype": "Other",
+    "pluginName": "Traceroute Information"
+  },
+  {
+    "ip": "10.31.112.22",
+    "archetype": "Other",
+    "pluginName": "Nessus Windows Scan Not Performed with Admin Privileges"
+  },
+  {
+    "ip": "10.31.112.22",
+    "archetype": "Other",
+    "pluginName": "Microsoft Windows SMB Registry : Nessus Cannot Access the Windows Registry"
+  },
+  {
+    "ip": "10.31.112.22",
+    "archetype": "Other",
+    "pluginName": "Nessus SYN scanner"
+  },
+  {
+    "ip": "10.31.112.22",
+    "archetype": "Other",
+    "pluginName": "Nessus SYN scanner"
+  },
+  {
+    "ip": "10.31.112.22",
+    "archetype": "Other",
+    "pluginName": "Nessus SYN scanner"
+  },
+  {
+    "ip": "10.31.112.22",
+    "archetype": "Other",
+    "pluginName": "Nessus SYN scanner"
+  },
+  {
+    "ip": "10.31.112.22",
+    "archetype": "Other",
+    "pluginName": "Nessus SYN scanner"
+  },
+  {
+    "ip": "10.31.112.22",
+    "archetype": "Other",
+    "pluginName": "Nessus SYN scanner"
+  },
+  {
+    "ip": "10.31.112.22",
+    "archetype": "Other",
+    "pluginName": "Nessus SYN scanner"
+  },
+  {
+    "ip": "10.31.112.22",
+    "archetype": "Other",
+    "pluginName": "Microsoft Windows SMB Log In Possible"
+  },
+  {
+    "ip": "10.31.112.22",
+    "archetype": "Other",
+    "pluginName": "Microsoft Windows SMB NativeLanManager Remote System Information Disclosure"
+  },
+  {
+    "ip": "10.31.112.22",
+    "archetype": "Other",
+    "pluginName": "Windows NetBIOS / SMB Remote Host Information Disclosure"
+  },
+  {
+    "ip": "10.31.112.22",
+    "archetype": "Other",
+    "pluginName": "DCE Services Enumeration"
+  },
+  {
+    "ip": "10.31.112.22",
+    "archetype": "Other",
+    "pluginName": "DCE Services Enumeration"
+  },
+  {
+    "ip": "10.31.112.22",
+    "archetype": "Other",
+    "pluginName": "DCE Services Enumeration"
+  },
+  {
+    "ip": "10.31.112.22",
+    "archetype": "Other",
+    "pluginName": "DCE Services Enumeration"
+  },
+  {
+    "ip": "10.31.112.22",
+    "archetype": "Other",
+    "pluginName": "DCE Services Enumeration"
+  },
+  {
+    "ip": "10.31.112.22",
+    "archetype": "Other",
+    "pluginName": "DCE Services Enumeration"
+  },
+  {
+    "ip": "10.31.112.22",
+    "archetype": "Other",
+    "pluginName": "DCE Services Enumeration"
+  },
+  {
+    "ip": "10.31.112.22",
+    "archetype": "Other",
+    "pluginName": "DCE Services Enumeration"
+  },
+  {
+    "ip": "10.31.112.22",
+    "archetype": "Other",
+    "pluginName": "Microsoft Windows SMB Service Detection"
+  },
+  {
+    "ip": "10.31.112.22",
+    "archetype": "Other",
+    "pluginName": "Microsoft Windows SMB Service Detection"
+  },
+  {
+    "ip": "10.31.112.21",
+    "archetype": "Other",
+    "pluginName": "Nessus Scan Information"
+  },
+  {
+    "ip": "10.31.112.21",
+    "archetype": "Other",
+    "pluginName": "Open Port Re-check"
+  },
+  {
+    "ip": "10.31.112.21",
+    "archetype": "Unauthenticated port bypass",
+    "pluginName": "Terminal Services Doesn't Use Network Level Authentication (NLA)"
+  },
+  {
+    "ip": "10.31.112.21",
+    "archetype": "Other",
+    "pluginName": "Device Type"
+  },
+  {
+    "ip": "10.31.112.21",
+    "archetype": "Other",
+    "pluginName": "Common Platform Enumeration (CPE)"
+  },
+  {
+    "ip": "10.31.112.21",
+    "archetype": "missing encryption protocols",
+    "pluginName": "Terminal Services Use SSL/TLS"
+  },
+  {
+    "ip": "10.31.112.21",
+    "archetype": "Other",
+    "pluginName": "OS Identification"
+  },
+  {
+    "ip": "10.31.112.21",
+    "archetype": "Other",
+    "pluginName": "HyperText Transfer Protocol (HTTP) Information"
+  },
+  {
+    "ip": "10.31.112.21",
+    "archetype": "Other",
+    "pluginName": "HTTP Server Type and Version"
+  },
+  {
+    "ip": "10.31.112.21",
+    "archetype": "Other",
+    "pluginName": "Ethernet Card Manufacturer Detection"
+  },
+  {
+    "ip": "10.31.112.21",
+    "archetype": "Other",
+    "pluginName": "VMware Virtual Machine Detection"
+  },
+  {
+    "ip": "10.31.112.21",
+    "archetype": "Other",
+    "pluginName": "HTTP Methods Allowed (per directory)"
+  },
+  {
+    "ip": "10.31.112.21",
+    "archetype": "Other",
+    "pluginName": "Microsoft Windows Remote Desktop Protocol Server Man-in-the-Middle Weakness"
+  },
+  {
+    "ip": "10.31.112.21",
+    "archetype": "Other",
+    "pluginName": "Web Server Unconfigured - Default Install Page Present"
+  },
+  {
+    "ip": "10.31.112.21",
+    "archetype": "Other",
+    "pluginName": "RDP Screenshot"
+  },
+  {
+    "ip": "10.31.112.21",
+    "archetype": "missing encryption protocols",
+    "pluginName": "Terminal Services Encryption Level is Medium or Low"
+  },
+  {
+    "ip": "10.31.112.21",
+    "archetype": "missing encryption protocols",
+    "pluginName": "Terminal Services Encryption Level is not FIPS-140 Compliant"
+  },
+  {
+    "ip": "10.31.112.21",
+    "archetype": "Other",
+    "pluginName": "Windows Terminal Services Enabled"
+  },
+  {
+    "ip": "10.31.112.21",
+    "archetype": "Other",
+    "pluginName": "SMB Signing Disabled"
+  },
+  {
+    "ip": "10.31.112.21",
+    "archetype": "Other",
+    "pluginName": "Service Detection"
+  },
+  {
+    "ip": "10.31.112.21",
+    "archetype": "Other",
+    "pluginName": "Inconsistent Hostname and IP Address"
+  },
+  {
+    "ip": "10.31.112.21",
+    "archetype": "Other",
+    "pluginName": "Host Fully Qualified Domain Name (FQDN) Resolution"
+  },
+  {
+    "ip": "10.31.112.21",
+    "archetype": "Other",
+    "pluginName": "Traceroute Information"
+  },
+  {
+    "ip": "10.31.112.21",
+    "archetype": "Other",
+    "pluginName": "Nessus Windows Scan Not Performed with Admin Privileges"
+  },
+  {
+    "ip": "10.31.112.21",
+    "archetype": "Other",
+    "pluginName": "Microsoft Windows SMB Registry : Nessus Cannot Access the Windows Registry"
+  },
+  {
+    "ip": "10.31.112.21",
+    "archetype": "Other",
+    "pluginName": "Nessus SYN scanner"
+  },
+  {
+    "ip": "10.31.112.21",
+    "archetype": "Other",
+    "pluginName": "Nessus SYN scanner"
+  },
+  {
+    "ip": "10.31.112.21",
+    "archetype": "Other",
+    "pluginName": "Nessus SYN scanner"
+  },
+  {
+    "ip": "10.31.112.21",
+    "archetype": "Other",
+    "pluginName": "Nessus SYN scanner"
+  },
+  {
+    "ip": "10.31.112.21",
+    "archetype": "Other",
+    "pluginName": "Nessus SYN scanner"
+  },
+  {
+    "ip": "10.31.112.21",
+    "archetype": "Other",
+    "pluginName": "Microsoft Windows SMB Log In Possible"
+  },
+  {
+    "ip": "10.31.112.21",
+    "archetype": "Other",
+    "pluginName": "Microsoft Windows SMB NativeLanManager Remote System Information Disclosure"
+  },
+  {
+    "ip": "10.31.112.21",
+    "archetype": "Other",
+    "pluginName": "Windows NetBIOS / SMB Remote Host Information Disclosure"
+  },
+  {
+    "ip": "10.31.112.21",
+    "archetype": "Other",
+    "pluginName": "DCE Services Enumeration"
+  },
+  {
+    "ip": "10.31.112.21",
+    "archetype": "Other",
+    "pluginName": "DCE Services Enumeration"
+  },
+  {
+    "ip": "10.31.112.21",
+    "archetype": "Other",
+    "pluginName": "DCE Services Enumeration"
+  },
+  {
+    "ip": "10.31.112.21",
+    "archetype": "Other",
+    "pluginName": "DCE Services Enumeration"
+  },
+  {
+    "ip": "10.31.112.21",
+    "archetype": "Other",
+    "pluginName": "DCE Services Enumeration"
+  },
+  {
+    "ip": "10.31.112.21",
+    "archetype": "Other",
+    "pluginName": "DCE Services Enumeration"
+  },
+  {
+    "ip": "10.31.112.21",
+    "archetype": "Other",
+    "pluginName": "DCE Services Enumeration"
+  },
+  {
+    "ip": "10.31.112.21",
+    "archetype": "Other",
+    "pluginName": "DCE Services Enumeration"
+  },
+  {
+    "ip": "10.31.112.21",
+    "archetype": "Other",
+    "pluginName": "Microsoft Windows SMB Service Detection"
+  },
+  {
+    "ip": "10.31.112.21",
+    "archetype": "Other",
+    "pluginName": "Microsoft Windows SMB Service Detection"
+  }
+]
