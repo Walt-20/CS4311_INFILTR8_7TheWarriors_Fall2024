@@ -64,7 +64,7 @@
     <!-- Export Format Dropdown -->
     <div class="mb-6">
     <label for="export-format" class="block text-gray-700 dark:text-white  mb-2">Format to export</label>
-    <select id="export-format" bind:value={selectedFormat} class="bg-gray-200 border border-gray-300 rounded-md py-2 px-4 w-40 focus:ring-2 focus:ring-blue-500">
+    <select id="export-format" bind:value={selectedFormat} on:change={handleFormatChange} class="bg-gray-200 border border-gray-300 rounded-md py-2 px-4 w-40 focus:ring-2 focus:ring-blue-500">    
         {#each exportFormats as format}
         <option value={format}>{format}</option>
         {/each}

@@ -202,7 +202,6 @@
 
     <!-- New Download Logs Section -->
     <div class="download-logs">
-        <h2>Download User Logs</h2>
         <button class="button" on:click={downloadLogs}>Download Logs</button>
     </div>
 </div>
