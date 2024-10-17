@@ -59,7 +59,7 @@
         formData.append('file', file);
 
         try {
-            const response = await fetch('/api/upload-nessus', {
+            const response = await fetch('/api/upload-nessus', {      ////// <---- Might need to change this
                 method: 'POST',
                 body: formData
             });
