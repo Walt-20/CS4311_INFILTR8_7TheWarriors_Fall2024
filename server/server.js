@@ -13,6 +13,7 @@ const upload = multer({ dest: 'uploads/' });
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const targetDir = path.join(__dirname, 'results');
+const jsonFilePath = path.join(targetDir, 'results.json');
 
 app.use(cors());
 
@@ -35,8 +36,6 @@ app.post('/upload', upload.single('file'), (req, res) => {
         const columnsToExtract = ['ip', 'archetype', 'pluginName'];
 
         const results = [];
-
-        const jsonFilePath = path.join(targetDir, 'results.json');
 
         // Reading the CSV file and extracting specific columns
         fs.createReadStream(csvFilePath)
@@ -66,6 +65,10 @@ app.post('/upload', upload.single('file'), (req, res) => {
                 return res.status(500).send('Error processing CSV file');
             });
         });
+});
+
+app.get('/results', (req, res) => {
+    res.sendFile(jsonFilePath);
 });
 
 app.listen(5001, () => {
