@@ -2,7 +2,7 @@
     import { navigateTo } from '../utils.js';
     import { page } from '$app/stores';
     import { Sidebar, SidebarGroup, SidebarItem, SidebarWrapper } from 'flowbite-svelte';
-    import { ChartPieSolid, BriefcaseSolid, ChartLineUpOutline, FileChartBarSolid, CogOutline, QuestionCircleOutline } from 'flowbite-svelte-icons';
+    import { ChartPieSolid, ArrowRightToBracketOutline, BriefcaseSolid, ChartLineUpOutline, FileChartBarSolid, CogOutline, QuestionCircleOutline } from 'flowbite-svelte-icons';
     import { addLog } from '$lib/logStore.js'; // Import log function
 
     let menuOpen = false;
@@ -38,17 +38,11 @@
                     <svelte:fragment slot="icon">
                         <BriefcaseSolid class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
                     </svelte:fragment>
-                    <svelte:fragment slot="subtext">
-                        <span class="inline-flex justify-center items-center px-2 ms-3 text-sm font-medium text-gray-800 bg-gray-200 rounded-full dark:bg-gray-700 dark:text-gray-300"> Pro </span>
-                    </svelte:fragment>
                 </SidebarItem>
 
                 <SidebarItem label="Analysis" href="/analysis" {spanClass} on:click={() => logNavigation('Analysis', '/analysis')}>
                     <svelte:fragment slot="icon">
                         <ChartLineUpOutline class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
-                    </svelte:fragment>
-                    <svelte:fragment slot="subtext">
-                        <span class="inline-flex justify-center items-center p-3 ms-3 w-3 h-3 text-sm font-medium text-primary-600 bg-primary-200 rounded-full dark:bg-primary-900 dark:text-primary-200"> 3 </span>
                     </svelte:fragment>
                 </SidebarItem>
 
@@ -68,6 +62,13 @@
                     <svelte:fragment slot="icon">
                         <QuestionCircleOutline class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
                     </svelte:fragment>
+                </SidebarItem>
+
+                <SidebarItem label="Log Out" href="../">
+                    <svelte:fragment slot="icon">
+                        <ArrowRightToBracketOutline class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
+                    </svelte:fragment>
+
                 </SidebarItem>
             </SidebarGroup>
         </SidebarWrapper>
