@@ -5,7 +5,6 @@
     let lastName = '';
     let username = '';
     let token = '';
-    let username = '';
     let password = '';
 
     const goToLogin = () => {
