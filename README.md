@@ -32,7 +32,7 @@ npm run dev -- --open
 
 ## Stack Foundation 
 
-- **Frontend**: Svelte
+- **Frontend**: Svelte, TailWind, FlowBite
 - **Backend**: Node.js
 - **Package Manager**: npm
 - **Database**: Neo4J Enviornment 
