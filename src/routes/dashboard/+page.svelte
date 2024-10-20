@@ -178,7 +178,7 @@
     <div class="upload-files col-span-2 mt-6">
         <button 
             class="px-4 py-2 bg-blue-600 text-white rounded mr-4 hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-800" 
-            on:click={handleCreateProject} >
+            on:click={handleCreateProject} disabled={!isValidFile} >
             Create Project
         </button>
 

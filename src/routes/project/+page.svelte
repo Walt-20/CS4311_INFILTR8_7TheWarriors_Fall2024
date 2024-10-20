@@ -69,6 +69,22 @@
             }
         }
     }
+
+    // create function here to make a call to http://localhost:5001/results
+
+    // this will give you back the json.
+
+    // parse that json into two separate lists, one for ips and one for entry points 
+
+    /* 
+    
+    * {
+    *    "ip": "10.31.112.29",
+    *    "archetype": "Other",
+    *    "pluginName": "Nessus Scan Information"
+    * },
+    
+    */
 </script>
 
 
