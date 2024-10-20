@@ -132,24 +132,8 @@
 </div>
 
 <div class="grid grid-cols-2 gap-6 p-6">
-    <!-- Notifications Section -->
-    <div class="notifications">
-        <div class="mb-4 p-4 bg-gray-50 dark:bg-gray-700 rounded shadow">
-            <h2 class="text-xl font-bold flex items-center dark:text-gray-200">
-                <span class="material-symbols-outlined mr-2">notifications_active</span>
-                Notifications
-            </h2>
-        </div>
-
-        <div class="bg-white dark:bg-gray-700 p-4 rounded shadow">
-            {#each notifications as { message, unread }}
-                <Notification {message} {unread} />
-            {/each}
-        </div>
-    </div>
-
-    <!-- Create New Project Section -->
-    <div class="create-project">
+      <!-- Create New Project Section -->
+      <div class="create-project">
         <div class="mb-4 p-4 bg-gray-50 dark:bg-gray-700 rounded shadow">
             <h2 class="text-xl font-bold flex items-center dark:text-gray-200">
                 <BookOpenOutline class = "w-6 h-6 mr-2" /> 
@@ -171,6 +155,21 @@
                     <input id="file-input" class="absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer" type="file" multiple accept=".nessus" on:change={handleFileSelect} />
                 </div>
             </div>
+        </div>
+    </div>
+    <!-- Notifications Section -->
+    <div class="notifications">
+        <div class="mb-4 p-4 bg-gray-50 dark:bg-gray-700 rounded shadow">
+            <h2 class="text-xl font-bold flex items-center dark:text-gray-200">
+                <span class="material-symbols-outlined mr-2">notifications_active</span>
+                Notifications
+            </h2>
+        </div>
+
+        <div class="bg-white dark:bg-gray-700 p-4 rounded shadow">
+            {#each notifications as { message, unread }}
+                <Notification {message} {unread} />
+            {/each}
         </div>
     </div>
 

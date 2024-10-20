@@ -1,11 +1,10 @@
-/node_modules
+node_modules
 
 # Output
 .output
 .vercel
 /.svelte-kit
 /build
-!server/uploads/*
 
 # OS
 .DS_Store
@@ -21,5 +20,11 @@ Thumbs.db
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 
-# backend server
-server/uploads/*
+# node server
+/server/*
+
+#Venv
+/python-backend/venv
+
+#Env
+/python-backend/.env
