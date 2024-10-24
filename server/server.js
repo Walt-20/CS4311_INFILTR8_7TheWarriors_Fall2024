@@ -26,10 +26,7 @@ app.post('/upload', upload.single('file'), (req, res) => {
     console.log('uploading file');
     const filePath = path.join(__dirname, req.file.path);
     const rootDir = path.join(__dirname, '..');
-    console.log(`the fuq is ${filePath}`);
-    console.log(`the fuq is ${rootDir}`);
     exec(`python main.py "${filePath}"`, { cwd: rootDir }, (error, stdout, stderr) => {
-        console.log(`stdout: ${stdout}`);
 
         // After Python execution, read and process the CSV file
         const csvFilePath = path.join(rootDir, 'machine_learning', 'data_with_exploits.csv');
@@ -47,7 +44,9 @@ app.post('/upload', upload.single('file'), (req, res) => {
                         filteredData[col] = data[col];
                     }
                 });
-                results.push(filteredData);
+                if (filteredData.archetype && filteredData.archetype.toLowerCase() !== 'other') {
+                    results.push(filteredData);
+                }
             })
             .on('end', () => {
                 const jsonData = JSON.stringify(results, null, 2);
