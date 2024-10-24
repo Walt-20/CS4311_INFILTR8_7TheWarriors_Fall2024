@@ -4,10 +4,10 @@
     let newIp = '';  // Stores the input for new IP
     let errorMessage = '';  // To store and display error messages
 
-    let ips = ["192.168.0.1", "192.168.0.2", "192.168.0.3"];
-    let ipStatus = ips.map(() => "Allowed");
+    let ips = [];
+    let ipStatus = [];
 
-    let analyses = ["Analysis 1", "Analysis 2", "Analysis 3"];
+    let entryPoints = [];
     let projects = ["Project 1", "Project 2", "Project 3"];
     let menuOpen = false;
 
@@ -50,7 +50,7 @@
                 ips = newList;
                 ipStatus = newStatusList;
             } else {
-                analyses = newList;
+                entryPoints = newList;
             }
         }
     }
@@ -65,10 +65,54 @@
                 ips = newList;
                 ipStatus = newStatusList;
             } else {
-                analyses = newList;
+                entryPoints = newList;
             }
         }
     }
+
+    // create function here to make a call to http://localhost:5001/results
+
+    // this will give you back the json.
+
+    // parse that json into two separate lists, one for ips and one for entry points 
+
+    /* 
+    
+    * {
+    *    "ip": "10.31.112.29",
+    *    "archetype": "Other",
+    *    "pluginName": "Nessus Scan Information"
+    * },
+    
+    */
+
+   async function fetchResults() {
+    try {
+        const response = await fetch('http://localhost:5001/results');
+
+        if (!response.ok) {
+            throw new Error('Error, Network response: ', response);
+        }
+
+        const data = await response.json();
+
+        const inIps = [];
+        const inEntryPoints = [];
+
+        data.slice(0, 20).forEach(item => {
+            inIps.push(item.ip);
+            inEntryPoints.push(item.archetype);
+        });
+
+        ips = inIps;
+        entryPoints = inEntryPoints;
+        ipStatus = ips.map(() => "Allowed");
+    } catch (error) {
+        console.error('Error fetching results: ', error);
+    }
+   }
+
+   fetchResults();
 </script>
 
 
@@ -317,14 +361,14 @@
             <h2>Entry Points Allowed</h2>
             <div class="entry-list">
                 <ul>
-                    {#each analyses as analysis, index}
+                    {#each entryPoints as entry, index}
                         <li>
-                            <span>{analysis}</span>
+                            <span>{entry}</span>
                             <div>
-                                <span class="arrow" on:click={() => moveUp(analyses, index)} aria-label="Move up"><span class="material-symbols-outlined">
+                                <span class="arrow" on:click={() => moveUp(entryPoints, index)} aria-label="Move up"><span class="material-symbols-outlined">
                                     keyboard_arrow_up
                                     </span></span>
-                                <span class="arrow" on:click={() => moveDown(analyses, index)} aria-label="Move down"><span class="material-symbols-outlined">
+                                <span class="arrow" on:click={() => moveDown(entryPoints, index)} aria-label="Move down"><span class="material-symbols-outlined">
                                     keyboard_arrow_down
                                     </span></span>
                             </div>
@@ -349,6 +393,6 @@
         </div>
     </div>
     <div class="start-testing">
-        <button>Start Testing</button>
+        <button>Start Analysis</button>
     </div>
 </div>

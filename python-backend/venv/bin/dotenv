@@ -1,5 +1,5 @@
 #!/bin/sh
-'''exec' "/Users/santiagoolivas/Desktop/Software 2/CS4311_INFILTR8_7TheWarriors_Fall2024/python-backend/venv/bin/python" "$0" "$@"
+'''exec' "/home/walt/Documents/UTEP/2024/Fall/Software Two/CS4311_INFILTR8_7TheWarriors_Fall2024/python-backend/venv/bin/python3.11" "$0" "$@"
 ' '''
 # -*- coding: utf-8 -*-
 import re
