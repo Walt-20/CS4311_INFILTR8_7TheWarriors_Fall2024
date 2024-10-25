@@ -1,4 +1,4 @@
-from flask import Flask,g,Response,request
+from flask import Flask, g, Response, request, jsonify
 from flask_cors import CORS
 from json import dumps
 from neo4j import GraphDatabase, basic_auth
@@ -8,7 +8,7 @@ import os
 load_dotenv()
  
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/*": {"origins": "*"}})
 driver = GraphDatabase.driver('neo4j+s://36954b0e.databases.neo4j.io',auth=basic_auth("neo4j",os.environ.get("NEO4J_AUTH_KEY")))
 driver.verify_connectivity()
  
@@ -20,6 +20,77 @@ def serialize_user(user):
         "password": user.get("password"),
         "token": user.get("token")
     }
+
+@app.route("/login", methods=['POST'])
+def login():
+    data = request.get_json()
+    username = data.get("username")
+    password = data.get("password")
+
+    query = """
+    MATCH (u:Analyst {username: $username, password: $password})
+    RETURN u
+    """
+    with driver.session() as session:
+        result = session.run(query, username=username, password=password)
+        record = result.single()
+
+    if record:
+        user = record["u"]
+        return jsonify({
+            "message": "Login successful",
+            "user": serialize_user(user)
+        }), 200
+    else:
+        return jsonify({"error": "Invalid username or password"}), 401
+
+@app.route("/forgot-password", methods=['POST'])
+def verify_token():
+    data = request.get_json()
+    username = data.get("username")
+    token = data.get("token")
+
+    query = """
+    MATCH (u:Analyst {username: $username, token: $token})
+    RETURN u
+    """
+    with driver.session() as session:
+        result = session.run(query, username=username, token=token)
+        record = result.single()
+
+    if record:
+        user = record["u"]
+        return jsonify({
+            "message": "Token verified successfully",
+            "user": serialize_user(user)
+        }), 200
+    else:
+        return jsonify({"error": "Invalid username or token"}), 401
+
+@app.route("/update-password", methods=['POST'])
+def update_password():
+    data = request.get_json()
+    username = data.get("username")
+    new_password = data.get("password")
+
+    query = """
+    MATCH (u:Analyst {username: $username})
+    SET u.password = $new_password
+    RETURN u
+    """
+    with driver.session() as session:
+        result = session.run(query, username=username, new_password=new_password)
+        record = result.single()
+
+    if record:
+        user = record["u"]
+        return jsonify({
+            "message": "Password updated successfully",
+            "user": serialize_user(user)
+        }), 200
+    else:
+        return jsonify({"error": "User not found or password update failed"}), 400
+
  
 def serialize_project(project):
     return {

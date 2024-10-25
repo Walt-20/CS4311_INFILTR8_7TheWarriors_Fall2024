@@ -8,36 +8,44 @@
     let currentError = null;
 
     const login = () => {
-        fetch('http://127.0.0.1:3030/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                username: username,
-                password: password,
-            }),
+    fetch('http://127.0.0.1:8080/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            username: username,
+            password: password,
+        }),
+    })
+        .then((response) => {
+            if (response.status === 200) {
+                addLog(`User "${username}" logged in successfully.`);
+                return response.json();
+            } else if (response.status === 401) {
+                currentError = 'Invalid username or password';
+                addLog(`Failed login attempt for user "${username}". Error: ${currentError}`);
+            } else {
+                currentError = 'Server response error, contact your administrator';
+                addLog(`Failed login attempt for user "${username}". Error: ${currentError}`);
+            }
         })
-            .then((response) => {
-                if (response.status < 299) {
-                    addLog(`User "${username}" logged in successfully.`);
-                    return response.json();
-                } else {
-                    currentError = 'Server response error, contact your administrator';
-                    addLog(`Failed login attempt for user "${username}". Error: ${currentError}`);
-                }
-            })
-            .then((data) => {
-                if (data) {
-                    user.update((val) => (val = { ...data }));
-                    navigateTo('/dashboard'); // Navigate to dashboard on success
-                }
-            })
-            .catch((error) => {
-                currentError = error;
-                addLog(`Error logging in for user "${username}". Details: ${error}`);
-            });
-    };
+        .then((data) => {
+            if (data && data.user) {
+                user.update((val) => (val = { ...data.user }));
+                addLog(`User "${username}" is logged in, showing welcome screen.`);
+                // Show the welcome message for 3 seconds, then navigate to the dashboard
+                setTimeout(() => {
+                    navigateTo('/dashboard'); // Redirect after a delay
+                }, 3000); // 3000 milliseconds = 3 seconds
+            }
+        })
+        .catch((error) => {
+            currentError = error.message || 'An error occurred';
+            addLog(`Error logging in for user "${username}". Details: ${currentError}`);
+        });
+};
+
 </script>
 
 <style>
@@ -62,7 +70,7 @@
         
         <a href="/forgot-password" class="text-blue-600 hover:underline">Forgot Password?</a>
 
-        <a href="/dashboard" class="mt-6 w-full py-2 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700 text-center block">Login</a>
+        <button type="submit" class="mt-6 w-full py-2 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700 text-center block"> Login </button>
 
         <div class="mt-4 text-center">
             Don't have an account? <a href="/registration" class="text-blue-600 hover:underline">Register DAC Analyst</a>

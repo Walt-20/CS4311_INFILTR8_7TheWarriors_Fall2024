@@ -4,6 +4,7 @@
     import { Sidebar, SidebarGroup, SidebarItem, SidebarWrapper } from 'flowbite-svelte';
     import { ChartPieSolid, ArrowRightToBracketOutline, BriefcaseSolid, ChartLineUpOutline, FileChartBarSolid, CogOutline, QuestionCircleOutline } from 'flowbite-svelte-icons';
     import { addLog } from '$lib/logStore.js'; // Import log function
+    import user from '../user';
 
     let menuOpen = false;
     let spanClass = 'flex-1 ms-3 whitespace-nowrap';
@@ -18,6 +19,7 @@
         addLog(`Navigating to ${label}`); // Log navigation event
         navigateTo(href);
     }
+    
 </script>
 
 <div class={`fixed top-0 left-0 h-screen transition-transform transform bg-gray-800 text-white ${menuOpen ? 'translate-x-0' : '-translate-x-full'}`}>
@@ -64,12 +66,15 @@
                     </svelte:fragment>
                 </SidebarItem>
 
-                <SidebarItem label="Log Out" href="../">
+                <SidebarItem label="Log Out" href="#" on:click={() => {
+                    user.update(val => val = null); 
+                    navigateTo('/'); 
+                }}>
                     <svelte:fragment slot="icon">
                         <ArrowRightToBracketOutline class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
                     </svelte:fragment>
-
                 </SidebarItem>
+
             </SidebarGroup>
         </SidebarWrapper>
     </Sidebar>
