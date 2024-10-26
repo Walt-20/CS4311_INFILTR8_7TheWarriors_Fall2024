@@ -113,7 +113,7 @@
         // Create temporary link and trigger download
         const a = document.createElement('a');
         a.href = url;
-        a.download = 'user-actions-log.txt';
+        a.download = 'Logs.log';
         a.click();
         URL.revokeObjectURL(url); // Clean up
     }
