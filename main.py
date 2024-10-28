@@ -128,7 +128,9 @@ print(encoded_data.head())
 filtered_df = df[df['port'] != '0']
 
 # Ensure severity is numeric
-filtered_df['severity'] = pd.to_numeric(filtered_df['severity'], errors='coerce')
+# filtered_df['severity'] = pd.to_numeric(filtered_df['severity'], errors='coerce')
+filtered_df = df[df['severity'].notnull()].copy()
+filtered_df.loc[:, 'severity'] = pd.to_numeric(filtered_df['severity'], errors='coerce')
 
 # Group the data by IP and port, and count the number of unique attributes/data points for each entry point
 entry_point_info = filtered_df.groupby(['ip', 'port']).agg({
