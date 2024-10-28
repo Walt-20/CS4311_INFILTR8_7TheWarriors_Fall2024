@@ -25,5 +25,5 @@ To start the app, run the following scrip that initializes the front end, back e
 
 - **Frontend**: Svelte ^4.2.7 , Tailwind ^3.4.9 , Flowbite ^2.5.2
 - **Backend**: Node.js ^21.6.1, Python ^3.12.0
-- **Package Manager**: npm ^10.8.3g
+- **Package Manager**: npm ^10.8.3
 - **Database**: Neo4J Enviornment ^5.24.2
