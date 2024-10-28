@@ -13,6 +13,14 @@ Run the following command on a linux system:
 ./linux-installation.sh
 ```
 
+## Installation 
+Before running the installation commands,ensure you have a .env file named .env with your database credentials inside the python-backend folder.
+
+Run the following command on a linux system:
+```bash   
+./linux-installation.sh
+```
+
 ## Launching INFILTR8
 
 To start the app, run the following scrip that initializes the front end, back end, and the database.
@@ -23,7 +31,9 @@ To start the app, run the following scrip that initializes the front end, back e
 
 ## Stack Foundation 
 
+
 - **Frontend**: Svelte ^4.2.7 , Tailwind ^3.4.9 , Flowbite ^2.5.2
 - **Backend**: Node.js ^21.6.1, Python ^3.12.0
 - **Package Manager**: npm ^10.8.3
 - **Database**: Neo4J Enviornment ^5.24.2
+
