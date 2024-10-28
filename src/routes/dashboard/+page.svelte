@@ -45,30 +45,36 @@
         console.log('Is valid file:', isValidFile);
         handleShowProgress();
 
+        // Added this - Darien ///////////////////
         if (isValidFile) {
-            handleFileUpload(files[0]);
+            // Upload the file to the server for parsing
+            uploadFileToServer(files[0]);
         }
+        ///////////////////////////////////////////
     }
 
-    async function handleFileUpload(file) {
-        console.log(file);
+    // Added this - Darien  ///////////////////////
+    async function uploadFileToServer(file) {
         const formData = new FormData();
         formData.append('file', file);
-        console.log("handling file upload");
 
-        const response = await fetch('http://localhost:5001/upload', {
-            method: 'POST',
-            body: formData
-        });
+        try {
+            const response = await fetch('http://localhost:5001/upload', {      ////// <---- Might need to change this
+                method: 'POST',
+                body: formData
+            });
 
-        if (!response.ok) {
-            console.error('File upload failed:', response.statusText);
-            return;
+            if (response.ok) {
+                const csvFilePath = await response.json();
+                alert(`CSV file generated: ${csvFilePath}`);
+            } else {
+                alert('File upload failed');
+            }
+        } catch (error) {
+            console.error('Error uploading file:', error);
         }
-
-        const result = await response.text();
-        console.log(result);
     }
+    /////////////////////////////////////////////////
 
     function handleCreateProject() {
         console.log('Creating project with files:', files);
@@ -126,24 +132,8 @@
 </div>
 
 <div class="grid grid-cols-2 gap-6 p-6">
-    <!-- Notifications Section -->
-    <div class="notifications">
-        <div class="mb-4 p-4 bg-gray-50 dark:bg-gray-700 rounded shadow">
-            <h2 class="text-xl font-bold flex items-center dark:text-gray-200">
-                <span class="material-symbols-outlined mr-2">notifications_active</span>
-                Notifications
-            </h2>
-        </div>
-
-        <div class="bg-white dark:bg-gray-700 p-4 rounded shadow">
-            {#each notifications as { message, unread }}
-                <Notification {message} {unread} />
-            {/each}
-        </div>
-    </div>
-
-    <!-- Create New Project Section -->
-    <div class="create-project">
+      <!-- Create New Project Section -->
+      <div class="create-project">
         <div class="mb-4 p-4 bg-gray-50 dark:bg-gray-700 rounded shadow">
             <h2 class="text-xl font-bold flex items-center dark:text-gray-200">
                 <BookOpenOutline class = "w-6 h-6 mr-2" /> 
@@ -167,12 +157,27 @@
             </div>
         </div>
     </div>
+    <!-- Notifications Section -->
+    <div class="notifications">
+        <div class="mb-4 p-4 bg-gray-50 dark:bg-gray-700 rounded shadow">
+            <h2 class="text-xl font-bold flex items-center dark:text-gray-200">
+                <span class="material-symbols-outlined mr-2">notifications_active</span>
+                Notifications
+            </h2>
+        </div>
+
+        <div class="bg-white dark:bg-gray-700 p-4 rounded shadow">
+            {#each notifications as { message, unread }}
+                <Notification {message} {unread} />
+            {/each}
+        </div>
+    </div>
 
     <!-- Upload Files Section -->
     <div class="upload-files col-span-2 mt-6">
         <button 
             class="px-4 py-2 bg-blue-600 text-white rounded mr-4 hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-800" 
-            on:click={handleCreateProject} >
+            on:click={handleCreateProject} disabled={!isValidFile} >
             Create Project
         </button>
 

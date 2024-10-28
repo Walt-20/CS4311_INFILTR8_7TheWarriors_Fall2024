@@ -4,18 +4,13 @@ The Intelligent Network Findings with In-Depth Learning for Targeted Reconnaissa
 
 INFILTR8 assists the urge for secure and resilient systems by automating the early stages of penetration testing. In addition to automating reconnaissance, INFILTR8 provides features that enable analysts to schedule analyses, monitor progress, adjust test scopes, and export compiled results. This comprehensive functionality makes INFILTR8 an invaluable asset for penetration testers and cybersecurity experts focused on discovering and mitigating vulnerabilities in defense-related systems.
 
+
 ## Installation 
-Before instaliing INFILTR8 ensure you have a .env file with your databse credentials inside the pyhton backend folder.
+Before running the installation commands,ensure you have a .env file named .env with your database credentials inside the python-backend folder.
+
+Run the following command on a linux system:
 ```bash   
-linux: linuxinstallation.sh
-
-windows: windowsinstallation.ps1
-
-windows: ./venv/scripts/activate 
-
-virtual pythonbackend/run.py 
-linux: source venv/bin/activate 
-
+./linux-installation.sh
 ```
 
 ## Installation 
@@ -36,7 +31,9 @@ To start the app, run the following scrip that initializes the front end, back e
 
 ## Stack Foundation 
 
-- **Frontend**: Svelte ^4.2.7
-- **Backend**: Node.js ^21.6.1 Python ^3.12.0
-- **Package Manager**: npm
-- **Database**: Neo4J Enviornment 5.24.2
+
+- **Frontend**: Svelte ^4.2.7 , Tailwind ^3.4.9 , Flowbite ^2.5.2
+- **Backend**: Node.js ^21.6.1, Python ^3.12.0
+- **Package Manager**: npm ^10.8.3
+- **Database**: Neo4J Enviornment ^5.24.2
+
