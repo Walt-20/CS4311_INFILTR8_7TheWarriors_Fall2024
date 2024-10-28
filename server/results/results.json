@@ -1,92 +1,782 @@
 [
   {
-    "ip": "10.31.112.29",
+    "ip": "192.168.1.22",
     "archetype": "Unauthenticated port bypass",
-    "pluginName": "Terminal Services Doesn't Use Network Level Authentication (NLA)"
+    "pluginName": "mDNS Detection (Local Network)"
   },
   {
-    "ip": "10.31.112.29",
+    "ip": "192.168.1.20",
+    "archetype": "default credentials",
+    "pluginName": "Target Credential Status by Authentication Protocol - No Credentials Provided"
+  },
+  {
+    "ip": "192.168.1.20",
     "archetype": "missing encryption protocols",
-    "pluginName": "Terminal Services Use SSL/TLS"
+    "pluginName": "SSL Cipher Block Chaining Cipher Suites Supported"
   },
   {
-    "ip": "10.31.112.29",
+    "ip": "192.168.1.20",
     "archetype": "missing encryption protocols",
-    "pluginName": "Terminal Services Encryption Level is Medium or Low"
+    "pluginName": "SSL Perfect Forward Secrecy Cipher Suites Supported"
   },
   {
-    "ip": "10.31.112.29",
+    "ip": "192.168.1.20",
     "archetype": "missing encryption protocols",
-    "pluginName": "Terminal Services Encryption Level is not FIPS-140 Compliant"
+    "pluginName": "SSL/TLS Recommended Cipher Suites"
   },
   {
-    "ip": "10.31.112.26",
+    "ip": "192.168.1.20",
     "archetype": "missing encryption protocols",
-    "pluginName": "Terminal Services Encryption Level is Medium or Low"
+    "pluginName": "SSL Cipher Suites Supported"
   },
   {
-    "ip": "10.31.112.26",
+    "ip": "192.168.1.20",
     "archetype": "missing encryption protocols",
-    "pluginName": "Terminal Services Encryption Level is not FIPS-140 Compliant"
+    "pluginName": "SSL Self-Signed Certificate"
   },
   {
-    "ip": "10.31.112.25",
+    "ip": "192.168.1.20",
     "archetype": "missing encryption protocols",
-    "pluginName": "Terminal Services Encryption Level is Medium or Low"
+    "pluginName": "SSL Certificate Cannot Be Trusted"
   },
   {
-    "ip": "10.31.112.25",
+    "ip": "192.168.1.20",
     "archetype": "missing encryption protocols",
-    "pluginName": "Terminal Services Encryption Level is not FIPS-140 Compliant"
+    "pluginName": "SSL Root Certification Authority Certificate Information"
   },
   {
-    "ip": "10.31.112.24",
+    "ip": "192.168.1.20",
     "archetype": "missing encryption protocols",
-    "pluginName": "Terminal Services Encryption Level is Medium or Low"
+    "pluginName": "SSL Certificate Information"
   },
   {
-    "ip": "10.31.112.24",
+    "ip": "192.168.1.20",
     "archetype": "missing encryption protocols",
-    "pluginName": "Terminal Services Encryption Level is not FIPS-140 Compliant"
+    "pluginName": "SSL / TLS Versions Supported"
   },
   {
-    "ip": "10.31.112.23",
-    "archetype": "missing encryption protocols",
-    "pluginName": "Terminal Services Encryption Level is Medium or Low"
+    "ip": "192.168.1.20",
+    "archetype": "default credentials",
+    "pluginName": "SSH Password Authentication Accepted"
   },
   {
-    "ip": "10.31.112.23",
-    "archetype": "missing encryption protocols",
-    "pluginName": "Terminal Services Encryption Level is not FIPS-140 Compliant"
-  },
-  {
-    "ip": "10.31.112.22",
-    "archetype": "missing encryption protocols",
-    "pluginName": "Terminal Services Encryption Level is Medium or Low"
-  },
-  {
-    "ip": "10.31.112.22",
-    "archetype": "missing encryption protocols",
-    "pluginName": "Terminal Services Encryption Level is not FIPS-140 Compliant"
-  },
-  {
-    "ip": "10.31.112.21",
+    "ip": "192.168.1.20",
     "archetype": "Unauthenticated port bypass",
-    "pluginName": "Terminal Services Doesn't Use Network Level Authentication (NLA)"
+    "pluginName": "mDNS Detection (Local Network)"
   },
   {
-    "ip": "10.31.112.21",
-    "archetype": "missing encryption protocols",
-    "pluginName": "Terminal Services Use SSL/TLS"
+    "ip": "192.168.1.18",
+    "archetype": "default credentials",
+    "pluginName": "Target Credential Status by Authentication Protocol - Valid Credentials Provided"
   },
   {
-    "ip": "10.31.112.21",
-    "archetype": "missing encryption protocols",
-    "pluginName": "Terminal Services Encryption Level is Medium or Low"
+    "ip": "192.168.1.18",
+    "archetype": "default credentials",
+    "pluginName": "Target Credential Issues by Authentication Protocol - No Issues Found"
   },
   {
-    "ip": "10.31.112.21",
+    "ip": "192.168.1.18",
+    "archetype": "Unauthenticated port bypass",
+    "pluginName": "Enumerate the Network Routing configuration via SSH"
+  },
+  {
+    "ip": "192.168.1.18",
     "archetype": "missing encryption protocols",
-    "pluginName": "Terminal Services Encryption Level is not FIPS-140 Compliant"
+    "pluginName": "OpenSSL < 0.9.7f Insecure Temporary File Creation"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL < 0.9.7f Insecure Temporary File Creation"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL < 0.9.7c ASN.1 Decoding Vulnerabilities"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL < 0.9.7c ASN.1 Decoding Vulnerabilities"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL < 0.9.8i Denial of Service"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL < 0.9.8i Denial of Service"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL < 0.9.8 Weak Default Configuration"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL < 0.9.8 Weak Default Configuration"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL < 0.9.8f Multiple Vulnerabilities"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL < 0.9.8f Multiple Vulnerabilities"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL < 0.9.8k Multiple Vulnerabilities"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL < 0.9.8k Multiple Vulnerabilities"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL SEoL (<= 0.9.8.x)"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL SEoL (<= 0.9.8.x)"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL < 0.9.8s Multiple Vulnerabilities"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL < 0.9.8s Multiple Vulnerabilities"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL < 0.9.8l Multiple Vulnerabilities"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL < 0.9.8l Multiple Vulnerabilities"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL < 0.9.8j Signature Spoofing"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL < 0.9.8j Signature Spoofing"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL < 0.9.8u Multiple Vulnerabilities"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL < 0.9.8u Multiple Vulnerabilities"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL < 0.9.8y Multiple Vulnerabilities"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL < 0.9.8y Multiple Vulnerabilities"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL < 0.9.8w ASN.1 asn1_d2i_read_bio Memory Corruption"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL < 0.9.8w ASN.1 asn1_d2i_read_bio Memory Corruption"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL < 0.9.8h Multiple Vulnerabilities"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL < 0.9.8h Multiple Vulnerabilities"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL 0.9.8 < 0.9.8x DTLS CBC Denial of Service"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL 0.9.8 < 0.9.8x DTLS CBC Denial of Service"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL 1.x < 1.0.0f Multiple Vulnerabilities"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL 1.0.0 < 1.0.0j DTLS CBC Denial of Service"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL 1.0.0 < 1.0.0i ASN.1 asn1_d2i_read_bio Memory Corruption"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL 1.0.0 < 1.0.0m Multiple Vulnerabilities"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL 1.x < 1.0.0e Multiple Vulnerabilities"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL 1.0.0 < 1.0.0s Multiple Vulnerabilities"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL 1.0.0 < 1.0.0k Multiple Vulnerabilities"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL SEoL (1.0.0.x)"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL 1.0.0 < 1.0.0n Multiple Vulnerabilities"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL 1.0.0 < 1.0.1o Multiple Vulnerabilities (POODLE)"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL 1.0.0 < 1.0.0r Multiple Vulnerabilities"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL 1.0.0 < 1.0.0h Multiple Vulnerabilities"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL 1.0.0 < 1.0.0l DTLS Security Bypass"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL 1.0.0 < 1.0.0p Multiple Vulnerabilities (FREAK)"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL SEoL (1.0.2.x)"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL SEoL (1.0.2.x)"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL 1.0.0 < 1.0.0t Multiple DoS"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "unpatched software exploits",
+    "pluginName": "OpenSSL 1.0.2 < 1.0.2zd Vulnerability"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "unpatched software exploits",
+    "pluginName": "OpenSSL 1.0.2 < 1.0.2zd Vulnerability"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL 1.0.2 < 1.0.2zg Multiple Vulnerabilities"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL 1.0.2 < 1.0.2zg Multiple Vulnerabilities"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "unpatched software exploits",
+    "pluginName": "OpenSSL 1.0.2 < 1.0.2ze Vulnerability"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "unpatched software exploits",
+    "pluginName": "OpenSSL 1.0.2 < 1.0.2ze Vulnerability"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "unpatched software exploits",
+    "pluginName": "OpenSSL 1.0.2 < 1.0.2zi Vulnerability"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL 1.0.2 < 1.0.2zh Multiple Vulnerabilities"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "unpatched software exploits",
+    "pluginName": "OpenSSL 1.0.2 < 1.0.2zi Vulnerability"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL 1.0.2 < 1.0.2zh Multiple Vulnerabilities"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "unpatched software exploits",
+    "pluginName": "OpenSSL 1.0.2 < 1.0.2zf Vulnerability"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "unpatched software exploits",
+    "pluginName": "OpenSSL 1.0.2 < 1.0.2zf Vulnerability"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "unpatched software exploits",
+    "pluginName": "OpenSSL 1.0.2 < 1.0.2zj Vulnerability"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "unpatched software exploits",
+    "pluginName": "OpenSSL 1.0.2 < 1.0.2zj Vulnerability"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL SEoL (1.1.1.x)"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL SEoL (1.1.1.x)"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL SEoL (1.1.1.x)"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL SEoL (1.1.1.x)"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "unpatched software exploits",
+    "pluginName": "OpenSSL 1.1.1 < 1.1.1m Vulnerability"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "unpatched software exploits",
+    "pluginName": "OpenSSL 1.1.1 < 1.1.1m Vulnerability"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "unpatched software exploits",
+    "pluginName": "OpenSSL 1.1.1 < 1.1.1m Vulnerability"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "unpatched software exploits",
+    "pluginName": "OpenSSL 1.1.1 < 1.1.1m Vulnerability"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "unpatched software exploits",
+    "pluginName": "OpenSSL 1.1.1 < 1.1.1n Vulnerability"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "unpatched software exploits",
+    "pluginName": "OpenSSL 1.1.1 < 1.1.1n Vulnerability"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "unpatched software exploits",
+    "pluginName": "OpenSSL 1.1.1 < 1.1.1n Vulnerability"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "unpatched software exploits",
+    "pluginName": "OpenSSL 1.1.1 < 1.1.1n Vulnerability"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "unpatched software exploits",
+    "pluginName": "OpenSSL 1.1.1 < 1.1.1l Vulnerability"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "unpatched software exploits",
+    "pluginName": "OpenSSL 1.1.1 < 1.1.1l Vulnerability"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "unpatched software exploits",
+    "pluginName": "OpenSSL 1.1.1 < 1.1.1l Vulnerability"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "unpatched software exploits",
+    "pluginName": "OpenSSL 1.1.1 < 1.1.1l Vulnerability"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "unpatched software exploits",
+    "pluginName": "OpenSSL 1.1.1 < 1.1.1p Vulnerability"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "unpatched software exploits",
+    "pluginName": "OpenSSL 1.1.1 < 1.1.1p Vulnerability"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "unpatched software exploits",
+    "pluginName": "OpenSSL 1.1.1 < 1.1.1p Vulnerability"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "unpatched software exploits",
+    "pluginName": "OpenSSL 1.1.1 < 1.1.1p Vulnerability"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "unpatched software exploits",
+    "pluginName": "OpenSSL 1.1.1 < 1.1.1x Vulnerability"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "unpatched software exploits",
+    "pluginName": "OpenSSL 1.1.1 < 1.1.1x Vulnerability"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "unpatched software exploits",
+    "pluginName": "OpenSSL 1.1.1 < 1.1.1x Vulnerability"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "unpatched software exploits",
+    "pluginName": "OpenSSL 1.1.1 < 1.1.1x Vulnerability"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL 1.1.1 < 1.1.1u Multiple Vulnerabilities"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL 1.1.1 < 1.1.1u Multiple Vulnerabilities"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL 1.1.1 < 1.1.1u Multiple Vulnerabilities"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL 1.1.1 < 1.1.1u Multiple Vulnerabilities"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL 1.1.1 < 1.1.1t Multiple Vulnerabilities"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL 1.1.1 < 1.1.1t Multiple Vulnerabilities"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL 1.1.1 < 1.1.1t Multiple Vulnerabilities"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL 1.1.1 < 1.1.1t Multiple Vulnerabilities"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "unpatched software exploits",
+    "pluginName": "OpenSSL 1.1.1 < 1.1.1o Vulnerability"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "unpatched software exploits",
+    "pluginName": "OpenSSL 1.1.1 < 1.1.1o Vulnerability"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "unpatched software exploits",
+    "pluginName": "OpenSSL 1.1.1 < 1.1.1o Vulnerability"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "unpatched software exploits",
+    "pluginName": "OpenSSL 1.1.1 < 1.1.1o Vulnerability"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "unpatched software exploits",
+    "pluginName": "OpenSSL 1.1.1 < 1.1.1q Vulnerability"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "unpatched software exploits",
+    "pluginName": "OpenSSL 1.1.1 < 1.1.1q Vulnerability"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "unpatched software exploits",
+    "pluginName": "OpenSSL 1.1.1 < 1.1.1q Vulnerability"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "unpatched software exploits",
+    "pluginName": "OpenSSL 1.1.1 < 1.1.1q Vulnerability"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "unpatched software exploits",
+    "pluginName": "OpenSSL 1.1.1 < 1.1.1y Vulnerability"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "unpatched software exploits",
+    "pluginName": "OpenSSL 1.1.1 < 1.1.1y Vulnerability"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "unpatched software exploits",
+    "pluginName": "OpenSSL 1.1.1 < 1.1.1y Vulnerability"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "unpatched software exploits",
+    "pluginName": "OpenSSL 1.1.1 < 1.1.1y Vulnerability"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "unpatched software exploits",
+    "pluginName": "OpenSSL 1.1.1 < 1.1.1v Vulnerability"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "unpatched software exploits",
+    "pluginName": "OpenSSL 1.1.1 < 1.1.1v Vulnerability"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "unpatched software exploits",
+    "pluginName": "OpenSSL 1.1.1 < 1.1.1v Vulnerability"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "unpatched software exploits",
+    "pluginName": "OpenSSL 1.1.1 < 1.1.1v Vulnerability"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL Installed (Linux)"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "SSL Cipher Block Chaining Cipher Suites Supported"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "SSL Perfect Forward Secrecy Cipher Suites Supported"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "SSL/TLS Recommended Cipher Suites"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "SSL Cipher Suites Supported"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "Unauthenticated port bypass",
+    "pluginName": "Enumerate the Network Interface configuration via SSH"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "SSL Certificate Cannot Be Trusted"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "SSL Certificate Expiry"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "SSL Certificate Information"
+  },
+  {
+    "ip": "192.168.1.18",
+    "archetype": "missing encryption protocols",
+    "pluginName": "SSL / TLS Versions Supported"
+  },
+  {
+    "ip": "192.168.1.12",
+    "archetype": "missing encryption protocols",
+    "pluginName": "SSL Certificate Cannot Be Trusted"
+  },
+  {
+    "ip": "192.168.1.12",
+    "archetype": "missing encryption protocols",
+    "pluginName": "SSL Cipher Block Chaining Cipher Suites Supported"
+  },
+  {
+    "ip": "192.168.1.12",
+    "archetype": "missing encryption protocols",
+    "pluginName": "SSL Perfect Forward Secrecy Cipher Suites Supported"
+  },
+  {
+    "ip": "192.168.1.12",
+    "archetype": "missing encryption protocols",
+    "pluginName": "SSL/TLS Recommended Cipher Suites"
+  },
+  {
+    "ip": "192.168.1.12",
+    "archetype": "missing encryption protocols",
+    "pluginName": "SSL Cipher Suites Supported"
+  },
+  {
+    "ip": "192.168.1.12",
+    "archetype": "missing encryption protocols",
+    "pluginName": "SSL Certificate Information"
+  },
+  {
+    "ip": "192.168.1.12",
+    "archetype": "missing encryption protocols",
+    "pluginName": "SSL / TLS Versions Supported"
+  },
+  {
+    "ip": "192.168.1.12",
+    "archetype": "Unauthenticated port bypass",
+    "pluginName": "mDNS Detection (Local Network)"
+  },
+  {
+    "ip": "192.168.1.4",
+    "archetype": "Unauthenticated port bypass",
+    "pluginName": "mDNS Detection (Local Network)"
+  },
+  {
+    "ip": "192.168.1.3",
+    "archetype": "Unauthenticated port bypass",
+    "pluginName": "mDNS Detection (Local Network)"
+  },
+  {
+    "ip": "192.168.1.1",
+    "archetype": "default credentials",
+    "pluginName": "NETGEAR SOAP Request Handling Remote Authentication Bypass"
+  },
+  {
+    "ip": "192.168.1.1",
+    "archetype": "default credentials",
+    "pluginName": "NETGEAR SOAP Request Handling Remote Authentication Bypass"
+  },
+  {
+    "ip": "192.168.1.1",
+    "archetype": "missing encryption protocols",
+    "pluginName": "SSL Resume With Different Cipher Issue"
+  },
+  {
+    "ip": "192.168.1.1",
+    "archetype": "missing encryption protocols",
+    "pluginName": "OpenSSL SSL_OP_NETSCAPE_REUSE_CIPHER_CHANGE_BUG Session Resume Ciphersuite Downgrade Issue"
+  },
+  {
+    "ip": "192.168.1.1",
+    "archetype": "missing encryption protocols",
+    "pluginName": "SSL Session Resume Supported"
+  },
+  {
+    "ip": "192.168.1.1",
+    "archetype": "missing encryption protocols",
+    "pluginName": "SSL Cipher Block Chaining Cipher Suites Supported"
+  },
+  {
+    "ip": "192.168.1.1",
+    "archetype": "missing encryption protocols",
+    "pluginName": "SSL RC4 Cipher Suites Supported (Bar Mitzvah)"
+  },
+  {
+    "ip": "192.168.1.1",
+    "archetype": "missing encryption protocols",
+    "pluginName": "SSL/TLS Recommended Cipher Suites"
+  },
+  {
+    "ip": "192.168.1.1",
+    "archetype": "missing encryption protocols",
+    "pluginName": "SSL Medium Strength Cipher Suites Supported (SWEET32)"
+  },
+  {
+    "ip": "192.168.1.1",
+    "archetype": "missing encryption protocols",
+    "pluginName": "SSL Cipher Suites Supported"
+  },
+  {
+    "ip": "192.168.1.1",
+    "archetype": "missing encryption protocols",
+    "pluginName": "SSL / TLS Versions Supported"
   }
 ]
