@@ -26,9 +26,7 @@ app.post('/upload', upload.single('file'), (req, res) => {
     console.log('uploading file');
     const filePath = path.join(__dirname, req.file.path);
     const rootDir = path.join(__dirname, '..');
-    console.log(`the fuq is ${filePath}`);
-    console.log(`the fuq is ${rootDir}`);
-    exec(`python main.py "${filePath}"`, { cwd: rootDir }, (error, stdout, stderr) => {
+    exec(`python3 main.py "${filePath}"`, { cwd: rootDir }, (error, stdout, stderr) => {
         if (error) {
             console.error(`Error: ${error.message}`);
             return res.status(500).send('Error processing file');
@@ -37,7 +35,6 @@ app.post('/upload', upload.single('file'), (req, res) => {
             console.error(`Stderr: ${stderr}`);
             return res.status(500).send('Error processing file');
         }
-        res.send(stdout);
 
         const csvFiles = [
             path.join(rootDir, 'machine_learning', 'data_with_exploits.csv'),
@@ -60,7 +57,9 @@ app.post('/upload', upload.single('file'), (req, res) => {
                                 filteredData[col] = data[col];
                             }
                         });
-                        fileResults.push(filteredData);
+                        if (filteredData.archetype && filteredData.archetype.toLowerCase() !== 'other') {
+                            fileResults.push(filteredData);
+                        }
                     })
                     .on('end', () => resolve(fileResults))
                     .on('error', (csvError) => reject(csvError));
@@ -71,18 +70,37 @@ app.post('/upload', upload.single('file'), (req, res) => {
         Promise.all(csvFiles.map(parseCSVFile))
             .then((allFilesData) => {
                 allFilesData.forEach(fileData => results.push(...fileData));
+
+                const groupedResults = results.reduce((acc, item) => {
+                    if (!acc[item.ip]) {
+                        acc[item.ip] = [];
+                    }
+                    acc[item.ip].push(item)
+                    return acc;
+                }, {});
+
+                console.log(groupedResults);
         
                 // Sort results by combined_score in descending order
-                results.sort((a, b) => {
-                    const scoreA = parseFloat(a.combined_score) || 0;
-                    const scoreB = parseFloat(b.combined_score) || 0;
-                    return scoreB - scoreA; // Sorts from highest to lowest score
-                });
-        
-                // Send the combined and sorted data
-                res.json({
-                    extractedColumns: results // Send combined and ranked extracted columns from all CSVs
-                });
+                const sortedResults = Object.values(groupedResults).flatMap(group => {
+                    return group.sort((a, b) => {
+                        const scoreA = parseFloat(a.combined_score) || 0
+                        const scoreB = parseFloat(b.combined_score) || 0
+                        return scoreB - scoreA;
+                    })
+                })
+
+                console.log(sortedResults);
+                const jsonFilePath = path.join(rootDir, 'server', 'results', 'results.json')
+                const jsonData = JSON.stringify(results, null, 2)
+
+                fs.writeFile(jsonFilePath, jsonData, (err) => {
+                    if (err) {
+                        console.error('Error writing JSON file: ', err);
+                        return res.status(500).send('Error savings results');
+                    }
+                    res.send('Results created');
+                })
             })
             .catch((error) => {
                 console.error('Error processing CSV files:', error);
@@ -90,6 +108,10 @@ app.post('/upload', upload.single('file'), (req, res) => {
             });
     });
 });
+
+app.get('/results', (req, res) => {
+    res.sendFile(jsonFilePath);
+})
 
 app.listen(5001, () => {
     console.log('Server is running on port 5001');
