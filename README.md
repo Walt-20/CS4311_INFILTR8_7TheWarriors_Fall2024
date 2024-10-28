@@ -18,21 +18,25 @@ linux: source venv/bin/activate
 
 ```
 
-## Launching INFILTR8
+## Installation 
+Before running the installation commands,ensure you have a .env file named .env with your database credentials inside the python-backend folder.
 
-Install required dependencies with `npm install` (or `pnpm install` or `yarn`), then start a server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+Run the following command on a linux system:
+```bash   
+./linux-installation.sh
 ```
 
+## Launching INFILTR8
+
+To start the app, run the following scrip that initializes the front end, back end, and the database.
+
+```bash
+./linux-script.sh
+```
 
 ## Stack Foundation 
 
-- **Frontend**: Svelte
-- **Backend**: Node.js
+- **Frontend**: Svelte ^4.2.7
+- **Backend**: Node.js ^21.6.1 Python ^3.12.0
 - **Package Manager**: npm
-- **Database**: Neo4J Enviornment 
+- **Database**: Neo4J Enviornment 5.24.2
