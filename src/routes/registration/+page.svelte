@@ -4,7 +4,6 @@
     let firstName = '';
     let lastName = '';
     let token = '';
-    let username = '';
     let password = '';
  
     const goToLogin = () => {
