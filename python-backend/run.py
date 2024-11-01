@@ -9,6 +9,9 @@ load_dotenv()
  
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
+
+# 'bolt://localhost:7687' for local database
+# 'neo4j+s://36954b0e.databases.neo4j.io' for online
 driver = GraphDatabase.driver('neo4j+s://36954b0e.databases.neo4j.io',auth=basic_auth("neo4j",os.environ.get("NEO4J_AUTH_KEY")))
 driver.verify_connectivity()
  
