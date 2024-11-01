@@ -4,12 +4,16 @@
     let newIp = '';  // Stores the input for new IP
     let errorMessage = '';  // To store and display error messages
 
-    let ips = [];
+    let ips = ['10.31.112.29', '10.31.112.29'];
     let ipStatus = [];
 
-    let entryPoints = [];
+    let entryPoints = ['missing encryption protocols', 'Unathenticated Port Bypass'];
     let projects = ["Project 1", "Project 2", "Project 3"];
     let menuOpen = false;
+
+    let severity = ['1', '0'];
+
+    let pluginName = ['Terminal Services Doesn\'t Use Network Level Authentication (NLA)', 'Terminal Services Use SSL/TLS']
 
     // Toggle IP status between 'allowed' and 'off-limits'
     function toggleStatus(index) {
@@ -86,33 +90,33 @@
     
     */
 
-   async function fetchResults() {
-    try {
-        const response = await fetch('http://localhost:5001/results');
+//    async function fetchResults() {
+//     try {
+//         const response = await fetch('http://localhost:5001/results');
 
-        if (!response.ok) {
-            throw new Error('Error, Network response: ', response);
-        }
+//         if (!response.ok) {
+//             throw new Error('Error, Network response: ', response);
+//         }
 
-        const data = await response.json();
+//         const data = await response.json();
 
-        const inIps = [];
-        const inEntryPoints = [];
+//         const inIps = [];
+//         const inEntryPoints = [];
 
-        data.slice(0, 20).forEach(item => {
-            inIps.push(item.ip);
-            inEntryPoints.push(item.archetype);
-        });
+//         data.slice(0, 20).forEach(item => {
+//             inIps.push(item.ip);
+//             inEntryPoints.push(item.archetype);
+//         });
 
-        ips = inIps;
-        entryPoints = inEntryPoints;
-        ipStatus = ips.map(() => "Allowed");
-    } catch (error) {
-        console.error('Error fetching results: ', error);
-    }
-   }
+//         ips = inIps;
+//         entryPoints = inEntryPoints;
+//         ipStatus = ips.map(() => "Allowed");
+//     } catch (error) {
+//         console.error('Error fetching results: ', error);
+//     }
+//    }
 
-   fetchResults();
+//    fetchResults();
 </script>
 
 

@@ -30,7 +30,7 @@ app.post('/upload', upload.single('file'), (req, res) => {
 
         // After Python execution, read and process the CSV file
         const csvFilePath = path.join(rootDir, 'machine_learning', 'data_with_exploits.csv');
-        const columnsToExtract = ['ip', 'archetype', 'pluginName'];
+        const columnsToExtract = ['ip', 'archetype', 'pluginName', 'severity'];
 
         const results = [];
 
