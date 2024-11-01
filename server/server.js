@@ -26,7 +26,7 @@ app.post('/upload', upload.single('file'), (req, res) => {
     console.log('uploading file');
     const filePath = path.join(__dirname, req.file.path);
     const rootDir = path.join(__dirname, '..');
-    exec(`python main.py "${filePath}"`, { cwd: rootDir }, (error, stdout, stderr) => {
+    exec(`python parse.py "${filePath}"`, { cwd: rootDir }, (error, stdout, stderr) => {
 
         // After Python execution, read and process the CSV file
         const csvFilePath = path.join(rootDir, 'machine_learning', 'data_with_exploits.csv');
