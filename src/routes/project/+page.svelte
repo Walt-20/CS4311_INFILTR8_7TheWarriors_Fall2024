@@ -96,16 +96,18 @@
 
         const data = await response.json();
 
-        const inIps = [];
-        const inEntryPoints = [];
+        // const inIps = [];
+        // const inEntryPoints = [];
+        const inIpsSet = new Set();
+        const inEntryPointsSet = new Set();
 
         data.slice(0, 20).forEach(item => {
-            inIps.push(item.ip);
-            inEntryPoints.push(item.archetype);
+            inIpsSet.add(item.ip);
+            inEntryPointsSet.add(item.archetype);
         });
 
-        ips = inIps;
-        entryPoints = inEntryPoints;
+        ips = Array.from(inIpsSet);
+        entryPoints = Array.from(inEntryPointsSet);
         ipStatus = ips.map(() => "Allowed");
     } catch (error) {
         console.error('Error fetching results: ', error);

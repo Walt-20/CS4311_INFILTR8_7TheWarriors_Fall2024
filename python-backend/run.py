@@ -54,7 +54,7 @@ def get_projects():
     if request.method == 'GET':
         return Response(dumps({"nodes": nodes, "links": rels}),
                     mimetype="application/json")
-    return null
+    return None
 
 @app.route("/registration", methods=['GET', 'POST'])
 def create_analyst():
