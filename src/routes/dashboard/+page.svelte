@@ -4,11 +4,13 @@
     import Notification from '$lib/Notification.svelte';
     import { navigateTo } from '../../utils';
     import { BookOpenOutline } from 'flowbite-svelte-icons';
-
+    import { addLog, logs } from '$lib/logStore.js';
+    import { get } from 'svelte/store'; // To retrieve the logs
+    
     let greeting = '';
     let notifications = [
-        { message: "Notification 1", unread: true }, 
-        { message: "Notification 2", unread: false }, 
+        { message: "Notification 1", unread: true },
+        { message: "Notification 2", unread: false },
         { message: "Notification 3", unread: true }
     ];
     let files = [];
@@ -18,31 +20,22 @@
 
     onMount(() => {
         const hours = new Date().getHours();
-        if (hours < 12) {
-            greeting = 'Good Morning';
-        } else if (hours < 18) {
-            greeting = 'Good Afternoon';
-        } else {
-            greeting = 'Good Evening';
-        }
-        console.log('Greeting set to:', greeting);
+        greeting = hours < 12 ? 'Good Morning' : hours < 18 ? 'Good Afternoon' : 'Good Evening';
+        addLog(`Greeting set to: ${greeting}`);
     });
 
     function handleFileSelect(event) {
-        console.log('File selection triggered:', event);
-        const allowedTypes = ['application/vdn.openxmlformats-officedocument.spreadsheetml.sheet'];
         const selectedFiles = Array.from(event.target.files);
         const validFiles = selectedFiles.filter(file => file.name.endsWith(".nessus"));
 
         if (validFiles.length !== selectedFiles.length) {
             alert('Only .nessus files are allowed.');
-            console.warn('Invalid file type selected.');
+            addLog('Invalid file type selected.');
         }
 
         files = validFiles;
         isValidFile = files.length > 0;
-        console.log('Valid files:', files);
-        console.log('Is valid file:', isValidFile);
+        addLog(`${files.length} valid files selected.`);
         handleShowProgress();
 
         // Added this - Darien ///////////////////
@@ -77,51 +70,58 @@
     /////////////////////////////////////////////////
 
     function handleCreateProject() {
-        console.log('Creating project with files:', files);
+        addLog('Creating project with selected files.');
         navigateTo('/project');
     }
 
     function handleDiscardAll() {
-        console.log('Discarding all files.');
         files = [];
         uploadProgress = 0;
+        addLog('All files discarded.');
     }
 
     function handleDrop(event) {
         event.preventDefault();
-        console.log('File drop event:', event);
-        const allowedTypes = ['application/vdn.openxmlformats-officedocument.spreadsheetml.sheet'];
         const selectedFiles = Array.from(event.dataTransfer.files);
         const validFiles = selectedFiles.filter(file => file.name.endsWith(".nessus"));
 
         if (validFiles.length !== selectedFiles.length) {
             alert('Only .nessus files are allowed.');
-            console.warn('Invalid file type dropped.');
+            addLog('Invalid file type dropped.');
         }
 
         files = validFiles;
         isValidFile = files.length > 0;
-        console.log('Valid files after drop:', files);
-        console.log('Is valid file after drop:', isValidFile);
+        addLog(`${files.length} valid files dropped.`);
         handleShowProgress();
     }
 
     function handleDragOver(event) {
         event.preventDefault();
-        console.log('Drag over event:', event);
     }
 
     function handleShowProgress() {
-        console.log('Starting upload progress...');
         uploadProgress = 0;
         const interval = setInterval(() => {
             uploadProgress += 10;
-            console.log('Upload progress:', uploadProgress);
             if (uploadProgress >= 100) {
-                console.log('Upload completed.');
                 clearInterval(interval);
+                addLog('Upload completed.');
             }
         }, 100);
+    }
+
+    function downloadLogs() {
+        const allLogs = get(logs).join('\n'); // Convert logs to string
+        const blob = new Blob([allLogs], { type: 'text/plain' }); // Create Blob
+        const url = URL.createObjectURL(blob); // Create URL for Blob
+
+        // Create temporary link and trigger download
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'Logs.log';
+        a.click();
+        URL.revokeObjectURL(url); // Clean up
     }
 </script>
 
@@ -203,5 +203,10 @@
         {:else}
             <p class="mt-4 text-gray-600 dark:text-gray-300">No files being uploaded.</p>
         {/if}
+    </div>
+
+    <!-- New Download Logs Section -->
+    <div class="download-logs">
+        <button class="button" on:click={downloadLogs}>Download Logs</button>
     </div>
 </div>
