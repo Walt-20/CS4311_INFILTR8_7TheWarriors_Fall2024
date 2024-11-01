@@ -3,6 +3,7 @@
  
     let firstName = '';
     let lastName = '';
+    let username = '';
     let token = '';
     let password = '';
  
