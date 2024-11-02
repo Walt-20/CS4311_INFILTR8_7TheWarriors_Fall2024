@@ -2,27 +2,52 @@
     import Menu from '$lib/Menu.svelte';
     import { marked } from 'marked';
     export let data;
-    
+
     let menuOpen = false;
 </script>
 
 <Menu {menuOpen} />
 
-<div class="text-center py-4">
-    <h1 class="text-4xl font-bold text-gray-800 dark:text-gray-200">Support</h1>
-</div>
-
-<div class="flex justify-center items-start min-h-[90vh] pt-12 bg-gray-100 dark:bg-gray-900">
-  <div class="flex flex-col p-10 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-300 dark:border-gray-700 max-w-3xl w-full mx-auto">
-
-    <!-- Support Content -->
-    <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md border border-gray-300 dark:border-gray-600">
-      <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-4">
-        <i class="fas fa-info-circle mr-2"></i> README Content
-      </h2>
-      <div class="text-gray-800 dark:text-gray-300 max-w-3xl">
-        <div class="preview">{@html marked(data.file)}</div>
-      </div>
+<div class="flex flex-col items-center min-h-screen w-full bg-gray-50 dark:bg-gray-900 p-6">
+    <div class="text-center w-full max-w-3xl">
+        <h1 class="text-5xl font-extrabold text-gray-800 dark:text-gray-100 mb-8">
+            Support
+        </h1>
     </div>
-  </div>
+
+    <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6 max-w-3xl w-full text-gray-700 dark:text-gray-200">
+        <div class="prose dark:prose-invert leading-relaxed text-lg">
+            <div class="preview">{@html marked(data.file)}</div>
+        </div>
+    </div>
 </div>
+
+<style>
+    /* Smooth transition for theme and hover effects */
+    h1, .preview {
+        transition: color 0.3s ease, background-color 0.3s ease;
+    }
+
+    /* Make links stand out */
+    .preview a {
+        color: #2563eb; /* blue-600 */
+        text-decoration: underline;
+    }
+
+    .preview a:hover {
+        color: #1e40af; /* blue-800 */
+    }
+
+    /* Add padding and margin for readability */
+    .prose p, .prose ul, .prose ol {
+        margin-top: 0.75rem;
+        margin-bottom: 0.75rem;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 640px) {
+        h1 {
+            font-size: 2.5rem;
+        }
+    }
+</style>

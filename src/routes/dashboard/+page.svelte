@@ -205,8 +205,12 @@
         {/if}
     </div>
 
-    <!-- New Download Logs Section -->
-    <div class="download-logs">
-        <button class="button" on:click={downloadLogs}>Download Logs</button>
-    </div>
+<!-- Download Logs Section -->
+<div class="download-logs mt-6">
+    <button 
+        class="px-4 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-800 transition duration-300" 
+        on:click={downloadLogs}>
+        Download Logs
+    </button>
+</div>
 </div>
