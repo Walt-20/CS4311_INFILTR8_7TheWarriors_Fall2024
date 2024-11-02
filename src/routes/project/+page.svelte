@@ -1,4 +1,4 @@
-<script lang="ts">
+<script>
 	import Menu from '../../lib/Menu.svelte';
 
 	let newIp = ''; // Stores the input for new IP
@@ -111,7 +111,7 @@
 
 			if (!response.ok) {
 				throw new Error('Error, Network response: ', response);
-			}
+			}		
 		} catch (error) {
 			console.error('Error starting analysis: ', error);
 		}

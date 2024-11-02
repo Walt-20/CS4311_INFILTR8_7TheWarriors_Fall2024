@@ -13,6 +13,9 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const targetDir = path.join(__dirname, 'results');
 const jsonFilePath = path.join(targetDir, 'results.json');
+const uploadedFiles = {};
+const rootDir = path.join(__dirname, '..');
+const pythonPath = path.join(rootDir, 'python-backend', 'venv', 'bin', 'python')
 
 
 const uploadDir = path.join(__dirname, 'uploads')
@@ -30,7 +33,7 @@ const storage = multer.diskStorage({
     },
     filename: (req, file, cb) => {
         const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
-        const newFilename = file.filename + '-' + uniqueSuffix + path.extname(file.originalname)
+        const newFilename = uniqueSuffix + path.extname(file.originalname)
         cb(null, newFilename)
     }
 })
@@ -48,8 +51,8 @@ app.post('/upload', upload.single('file'), (req, res) => {
     console.log('uploading file');
     console.log(req.file.path)
     const filePath = path.join(__dirname, req.file.path);
-    const rootDir = path.join(__dirname, '..');
-    exec(`python parse.py "${filePath}"`, { cwd: rootDir }, (error, stdout, stderr) => {
+    uploadedFiles[1] = req.file.path
+    exec(`${pythonPath} parse.py "${filePath}"`, { cwd: rootDir }, (error, stdout, stderr) => {
 
         // After Python execution, read and process the CSV file
         const csvFilePath = path.join(rootDir, 'machine_learning', 'data_with_exploits.csv');
@@ -79,26 +82,80 @@ app.post('/upload', upload.single('file'), (req, res) => {
                         console.error('Error writing JSON file:', err);
                         return res.status(500).send('Error saving results');
                     }
-                    res.send('Results saved successfully');
+                    console.log("Success")
+                    res.status(200).send('Results saved successfully');
                 });
             })
             .on('error', (csvError) => {
                 console.error('Error reading CSV:', csvError);
                 return res.status(500).send('Error processing CSV file');
             });
-        });
+    });
 });
 
-app.post('/start-analysis', (req, res) => {
+app.post('/start-analysis', upload.single('file'), (req, res) => {
     const { disallowedIps, disallowedEntryPoints } = req.body;
 
-    if (!disallowedIps || !disallowedEntryPoints ) {
+    if (!disallowedIps || !disallowedEntryPoints) {
         return res.status(400).send('Invalid data')
     }
 
     console.log('disallowedIps: ', disallowedIps)
     console.log('disallowedEntryPoints: ', disallowedEntryPoints)
-})
+    
+    const disallowedIpsStr = disallowedIps.join(','); // Convert array to comma-separated string
+    const disallowedEntryPointsStr = disallowedEntryPoints.join(','); // Convert array to comma-separated string
+
+    console.log("uploadedFiles[1] ", uploadedFiles[1])
+    console.log("disallowedIpsStr ", disallowedIpsStr)
+    console.log("disallowedEntryPointsStr ", disallowedEntryPointsStr)
+
+    const command = `"${pythonPath}" main.py "${uploadedFiles[1]}" "${disallowedIpsStr}" "${disallowedEntryPointsStr}"`
+
+
+    exec(command, { cwd: rootDir }, (error, stdout, stderr) => {
+        if (error) {
+            console.error(`Error executing Python script: ${error}`);
+            return res.status(500).send('Error executing analysis');
+        }
+
+        // After Python execution, read and process the CSV file
+        const csvFilePath = path.join(rootDir, 'machine_learning', 'data_with_exploits.csv');
+        const columnsToExtract = ['ip', 'archetype', 'pluginName', 'severity'];
+
+        const results = [];
+
+        // Reading the CSV file and extracting specific columns
+        fs.createReadStream(csvFilePath)
+            .pipe(csv())
+            .on('data', (data) => {
+                const filteredData = {};
+                columnsToExtract.forEach(col => {
+                    if (data[col]) {
+                        filteredData[col] = data[col];
+                    }
+                });
+                if (filteredData.archetype && filteredData.archetype.toLowerCase() !== 'other') {
+                    results.push(filteredData);
+                }
+            })
+            .on('end', () => {
+                const jsonData = JSON.stringify(results, null, 2);
+
+                fs.writeFile(jsonFilePath, jsonData, (err) => {
+                    if (err) {
+                        console.error('Error writing JSON file:', err);
+                        return res.status(500).send('Error saving results');
+                    }
+                    res.status(200).send('Results saved successfully');
+                });
+            })
+            .on('error', (csvError) => {
+                console.error('Error reading CSV:', csvError);
+                return res.status(500).send('Error processing CSV file');
+            });
+    });
+});
 
 app.get('/results', (req, res) => {
     res.sendFile(jsonFilePath);

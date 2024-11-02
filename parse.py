@@ -1,11 +1,7 @@
-# change lines 10 and 13 to match your desired paths
-
 import os
 import sys
 import xml.etree.ElementTree as ET
 import pandas as pd
-import category_encoders as ce
-from sklearn.preprocessing import MinMaxScaler
 
 # Path to the Nessus XML file, change line 10 to match path where your NESSUS file is
 nessus_file = sys.argv[1]
@@ -14,12 +10,10 @@ nessus_file = sys.argv[1]
 current_dir = os.getcwd()
 output_base_dir = os.path.join(current_dir, 'machine_learning')
 os.makedirs(output_base_dir, exist_ok=True)
+print("should make directory")
 
 # Construct paths for output CSV files
 data_with_exploits_path = os.path.join(output_base_dir, 'data_with_exploits.csv')
-ranked_entry_points_path = os.path.join(output_base_dir, 'ranked_entry_points.csv')
-entrypoint_most_info_path = os.path.join(output_base_dir, 'entrypoint_most_info.csv')
-port_0_entries_path = os.path.join(output_base_dir, 'port_0_entries.csv')
 
 # Initialize an empty DataFrame
 df = pd.DataFrame(columns=[])
