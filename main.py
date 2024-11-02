@@ -10,6 +10,13 @@ from sklearn.preprocessing import MinMaxScaler
 # Path to the Nessus XML file, change line 10 to match path where your NESSUS file is
 nessus_file = sys.argv[1]
 
+# Accept disallowed IPs and entry points as additional command-line arguments       
+disallowed_ips = sys.argv[2].split(',')  # Comma-separated list of disallowed IPs
+disallowed_entry_points = sys.argv[3].split(',')  # Comma-separated list of disallowed archetypes
+
+# Combine disallowed_ips and disallowed_entry_points into pairs
+disallowed_pairs = list(zip(disallowed_ips, disallowed_entry_points))
+
 # Base directory for output CSV files, change line 13 to where you want output CSVs to go
 current_dir = os.getcwd()
 output_base_dir = os.path.join(current_dir, 'machine_learning')
@@ -54,6 +61,19 @@ for host in main_tree.findall('.//ReportHost'):
     for child in host:
         if not child.tag == 'ReportItem':
             continue
+
+        # Map pluginName and pluginFamily to archetypes
+        plugin_name = child.attrib.get('pluginName', '')
+        plugin_family = child.attrib.get('pluginFamily', '')
+        archetype = map_to_archetype(plugin_name, plugin_family)
+
+         # Create a pair for the current entry
+        entry_point = (host_ip, archetype)
+
+        # Check if the current IP-archetype pair is in the disallowed pairs
+        if entry_point in disallowed_pairs:
+            continue  # Skip disallowed entries
+
         if not have_names:
             have_names = True
             # Add all attributes of the ReportItem to column_names if not already present
@@ -84,11 +104,7 @@ for host in main_tree.findall('.//ReportHost'):
         # Add attributes of ReportItem to respective columns in DataFrame
         for key in child.attrib:
             df.at[ind, key] = child.attrib.get(key)
-
-        # Map pluginName and pluginFamily to archetypes
-        plugin_name = child.attrib.get('pluginName', '')
-        plugin_family = child.attrib.get('pluginFamily', '')
-        archetype = map_to_archetype(plugin_name, plugin_family)
+            
         df.at[ind, 'archetype'] = archetype
 
 # Export DataFrame to CSV file
@@ -128,7 +144,9 @@ print(encoded_data.head())
 filtered_df = df[df['port'] != '0']
 
 # Ensure severity is numeric
-filtered_df['severity'] = pd.to_numeric(filtered_df['severity'], errors='coerce')
+# filtered_df['severity'] = pd.to_numeric(filtered_df['severity'], errors='coerce')
+filtered_df = df[df['severity'].notnull()].copy()
+filtered_df.loc[:, 'severity'] = pd.to_numeric(filtered_df['severity'], errors='coerce')
 
 # Group the data by IP and port, and count the number of unique attributes/data points for each entry point
 entry_point_info = filtered_df.groupby(['ip', 'port']).agg({

@@ -2,91 +2,109 @@
   {
     "ip": "10.31.112.29",
     "archetype": "Unauthenticated port bypass",
-    "pluginName": "Terminal Services Doesn't Use Network Level Authentication (NLA)"
+    "pluginName": "Terminal Services Doesn't Use Network Level Authentication (NLA)",
+    "severity": "2"
   },
   {
     "ip": "10.31.112.29",
     "archetype": "missing encryption protocols",
-    "pluginName": "Terminal Services Use SSL/TLS"
+    "pluginName": "Terminal Services Use SSL/TLS",
+    "severity": "0"
   },
   {
     "ip": "10.31.112.29",
     "archetype": "missing encryption protocols",
-    "pluginName": "Terminal Services Encryption Level is Medium or Low"
+    "pluginName": "Terminal Services Encryption Level is Medium or Low",
+    "severity": "2"
   },
   {
     "ip": "10.31.112.29",
     "archetype": "missing encryption protocols",
-    "pluginName": "Terminal Services Encryption Level is not FIPS-140 Compliant"
+    "pluginName": "Terminal Services Encryption Level is not FIPS-140 Compliant",
+    "severity": "1"
   },
   {
     "ip": "10.31.112.26",
     "archetype": "missing encryption protocols",
-    "pluginName": "Terminal Services Encryption Level is Medium or Low"
+    "pluginName": "Terminal Services Encryption Level is Medium or Low",
+    "severity": "2"
   },
   {
     "ip": "10.31.112.26",
     "archetype": "missing encryption protocols",
-    "pluginName": "Terminal Services Encryption Level is not FIPS-140 Compliant"
+    "pluginName": "Terminal Services Encryption Level is not FIPS-140 Compliant",
+    "severity": "1"
   },
   {
     "ip": "10.31.112.25",
     "archetype": "missing encryption protocols",
-    "pluginName": "Terminal Services Encryption Level is Medium or Low"
+    "pluginName": "Terminal Services Encryption Level is Medium or Low",
+    "severity": "2"
   },
   {
     "ip": "10.31.112.25",
     "archetype": "missing encryption protocols",
-    "pluginName": "Terminal Services Encryption Level is not FIPS-140 Compliant"
+    "pluginName": "Terminal Services Encryption Level is not FIPS-140 Compliant",
+    "severity": "1"
   },
   {
     "ip": "10.31.112.24",
     "archetype": "missing encryption protocols",
-    "pluginName": "Terminal Services Encryption Level is Medium or Low"
+    "pluginName": "Terminal Services Encryption Level is Medium or Low",
+    "severity": "2"
   },
   {
     "ip": "10.31.112.24",
     "archetype": "missing encryption protocols",
-    "pluginName": "Terminal Services Encryption Level is not FIPS-140 Compliant"
+    "pluginName": "Terminal Services Encryption Level is not FIPS-140 Compliant",
+    "severity": "1"
   },
   {
     "ip": "10.31.112.23",
     "archetype": "missing encryption protocols",
-    "pluginName": "Terminal Services Encryption Level is Medium or Low"
+    "pluginName": "Terminal Services Encryption Level is Medium or Low",
+    "severity": "2"
   },
   {
     "ip": "10.31.112.23",
     "archetype": "missing encryption protocols",
-    "pluginName": "Terminal Services Encryption Level is not FIPS-140 Compliant"
+    "pluginName": "Terminal Services Encryption Level is not FIPS-140 Compliant",
+    "severity": "1"
   },
   {
     "ip": "10.31.112.22",
     "archetype": "missing encryption protocols",
-    "pluginName": "Terminal Services Encryption Level is Medium or Low"
+    "pluginName": "Terminal Services Encryption Level is Medium or Low",
+    "severity": "2"
   },
   {
     "ip": "10.31.112.22",
     "archetype": "missing encryption protocols",
-    "pluginName": "Terminal Services Encryption Level is not FIPS-140 Compliant"
+    "pluginName": "Terminal Services Encryption Level is not FIPS-140 Compliant",
+    "severity": "1"
   },
   {
     "ip": "10.31.112.21",
     "archetype": "Unauthenticated port bypass",
-    "pluginName": "Terminal Services Doesn't Use Network Level Authentication (NLA)"
+    "pluginName": "Terminal Services Doesn't Use Network Level Authentication (NLA)",
+    "severity": "2"
   },
   {
     "ip": "10.31.112.21",
     "archetype": "missing encryption protocols",
-    "pluginName": "Terminal Services Use SSL/TLS"
+    "pluginName": "Terminal Services Use SSL/TLS",
+    "severity": "0"
   },
   {
     "ip": "10.31.112.21",
     "archetype": "missing encryption protocols",
-    "pluginName": "Terminal Services Encryption Level is Medium or Low"
+    "pluginName": "Terminal Services Encryption Level is Medium or Low",
+    "severity": "2"
   },
   {
     "ip": "10.31.112.21",
     "archetype": "missing encryption protocols",
-    "pluginName": "Terminal Services Encryption Level is not FIPS-140 Compliant"
+    "pluginName": "Terminal Services Encryption Level is not FIPS-140 Compliant",
+    "severity": "1"
   }
 ]
