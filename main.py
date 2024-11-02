@@ -49,7 +49,7 @@ def map_to_archetype(plugin_name, plugin_family):
 for host in main_tree.findall('.//ReportHost'):
     host_name = host.get('name')  # Extract host name
     host_ip = host.find('.//HostProperties/tag[@name="host-ip"]').text  # Extract host IP
-    
+
     # Iterate through each child element of ReportHost
     for child in host:
         if not child.tag == 'ReportItem':
@@ -90,6 +90,9 @@ for host in main_tree.findall('.//ReportHost'):
         plugin_family = child.attrib.get('pluginFamily', '')
         archetype = map_to_archetype(plugin_name, plugin_family)
         df.at[ind, 'archetype'] = archetype
+
+        if host_ip in disallowed_ips and archetype in disallowed_entries:
+            host.remove()
 
 # Export DataFrame to CSV file
 df.to_csv(data_with_exploits_path, index=False)
