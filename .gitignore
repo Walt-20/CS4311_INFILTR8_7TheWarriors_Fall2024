@@ -29,3 +29,6 @@ vite.config.ts.timestamp-*
 
 #Env
 /python-backend/.env
+
+#machine_learning
+/machine_learning/
