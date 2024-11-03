@@ -23,6 +23,9 @@ sudo neo4j-admin server start
 #Load database
 sudo neo4j-admin database load --from-path="$current_directory/INFILTR8-DUMP" INFILTR8 --verbose
 
+#Set password 
+sudo neo4j-admin dbms set-initial-password INFILTR8
+
 #Close server
 sudo neo4j-admin server stop
 

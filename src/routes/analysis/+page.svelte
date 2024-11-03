@@ -1,5 +1,6 @@
 <script>
     import Menu from '$lib/Menu.svelte';
+    import { addLog } from '$lib/logStore.js'; // Import log function
     let entryPoints = [
         { name: "Unauthorized Port Bypass", selected: false },
         { name: "Default Credentials", selected: false },
@@ -8,26 +9,34 @@
         { name: "Weak Passwords", selected: false }
     ];
 
-    let menuOpen = false;
-    let startTimes = ["08:00 AM", "12:00 PM", "04:00 PM"];
-    let selectedStartTime = startTimes[0];
-    let analysisProgress = 50; // Example progress value
-    let overallProgress = 75; // Example overall progress value
+  let menuOpen = false;
+  let startTimes = ["08:00 AM", "12:00 PM", "04:00 PM"];
+  let selectedStartTime = startTimes[0];
+  let analysisProgress = 50; // Example progress value
+  let overallProgress = 75; // Example overall progress value
 
-    function handleEntryPointChange(index) {
-        // Toggle the selected status of the entry point
-        entryPoints[index].selected = !entryPoints[index].selected;
-    }
+  function handleEntryPointChange(index) {
+      // Toggle the selected status of the entry point
+      entryPoints[index].selected = !entryPoints[index].selected;
+      const status = entryPoints[index].selected ? 'selected' : 'deselected';
+      addLog(`Entry point "${entryPoints[index].name}" was ${status}`); // Log entry point change
+  }
 
-    function handleStartTimeChange(event) {
-        selectedStartTime = event.target.value;
-    }
+  function handleStartTimeChange(event) {
+      selectedStartTime = event.target.value;
+      addLog(`Start time changed to: ${selectedStartTime}`); // Log start time change
+  }
 
-    function viewResult() {
-        // Handle view result action
-        const selectedEntryPoints = entryPoints.filter(entryPoint => entryPoint.selected);
-        console.log("Selected entry points:", selectedEntryPoints);
-    }
+  function viewResult() {
+      const selectedEntryPoints = entryPoints.filter(entryPoint => entryPoint.selected);
+      if (selectedEntryPoints.length > 0) {
+          const selectedNames = selectedEntryPoints.map(ep => ep.name).join(', ');
+          addLog(`Viewing results for selected entry points: ${selectedNames} at ${selectedStartTime}`); // Log result view
+      } else {
+          addLog(`No entry points selected. Viewing results at ${selectedStartTime}`); // Log result view with no selection
+      }
+      // Handle view result action
+  }
 </script>
 
 <Menu {menuOpen} />
@@ -107,3 +116,4 @@
     </div>
   </div>
 </div>
+

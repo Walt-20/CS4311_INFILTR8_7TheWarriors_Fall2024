@@ -58,37 +58,75 @@ app.post('/upload', upload.single('file'), (req, res) => {
         const csvFilePath = path.join(rootDir, 'machine_learning', 'data_with_exploits.csv');
         const columnsToExtract = ['ip', 'archetype', 'pluginName', 'severity'];
 
+        const csvFiles = [
+            path.join(rootDir, 'machine_learning', 'data_with_exploits.csv'),
+            path.join(rootDir, 'machine_learning', 'ranked_entry_points.csv'),
+        ];
+        
         const results = [];
+        
+        // Function to read a single CSV file
+        function parseCSVFile(filePath) {
+            return new Promise((resolve, reject) => {
+                const fileResults = [];
+                fs.createReadStream(filePath)
+                    .pipe(csv())
+                    .on('data', (data) => {
+                        const filteredData = {};
+                        columnsToExtract.forEach(col => {
+                            if (data[col]) {
+                                filteredData[col] = data[col];
+                            }
+                        });
+                        if (filteredData.archetype && filteredData.archetype.toLowerCase() !== 'other') {
+                            fileResults.push(filteredData);
+                        }
+                    })
+                    .on('end', () => resolve(fileResults))
+                    .on('error', (csvError) => reject(csvError));
+            });
+        }
+        
+        // Parse all CSV files
+        Promise.all(csvFiles.map(parseCSVFile))
+            .then((allFilesData) => {
+                allFilesData.forEach(fileData => results.push(...fileData));
 
-        // Reading the CSV file and extracting specific columns
-        fs.createReadStream(csvFilePath)
-            .pipe(csv())
-            .on('data', (data) => {
-                const filteredData = {};
-                columnsToExtract.forEach(col => {
-                    if (data[col]) {
-                        filteredData[col] = data[col];
+                const groupedResults = results.reduce((acc, item) => {
+                    if (!acc[item.ip]) {
+                        acc[item.ip] = [];
                     }
-                });
-                if (filteredData.archetype && filteredData.archetype.toLowerCase() !== 'other') {
-                    results.push(filteredData);
-                }
-            })
-            .on('end', () => {
-                const jsonData = JSON.stringify(results, null, 2);
+                    acc[item.ip].push(item)
+                    return acc;
+                }, {});
+
+                console.log(groupedResults);
+        
+                // Sort results by combined_score in descending order
+                const sortedResults = Object.values(groupedResults).flatMap(group => {
+                    return group.sort((a, b) => {
+                        const scoreA = parseFloat(a.combined_score) || 0
+                        const scoreB = parseFloat(b.combined_score) || 0
+                        return scoreB - scoreA;
+                    })
+                })
+
+                console.log(sortedResults);
+                const jsonFilePath = path.join(rootDir, 'server', 'results', 'results.json')
+                const jsonData = JSON.stringify(results, null, 2)
 
                 fs.writeFile(jsonFilePath, jsonData, (err) => {
                     if (err) {
-                        console.error('Error writing JSON file:', err);
-                        return res.status(500).send('Error saving results');
+                        console.error('Error writing JSON file: ', err);
+                        return res.status(500).send('Error savings results');
                     }
                     console.log("Success")
                     res.status(200).send('Results saved successfully');
                 });
             })
-            .on('error', (csvError) => {
-                console.error('Error reading CSV:', csvError);
-                return res.status(500).send('Error processing CSV file');
+            .catch((error) => {
+                console.error('Error processing CSV files:', error);
+                return res.status(500).send('Error processing CSV files');
             });
     });
 });
@@ -159,7 +197,7 @@ app.post('/start-analysis', upload.single('file'), (req, res) => {
 
 app.get('/results', (req, res) => {
     res.sendFile(jsonFilePath);
-});
+})
 
 function deleteDirectory(directoryPath) {
     if (fs.existsSync(directoryPath)) {
