@@ -20,7 +20,7 @@
 
 	async function fetchResults() {
 		try {
-			const response = await fetch('http://localhost:5001/results');
+			const response = await fetch('http://localhost:5001/user-results');
 
 			if (!response.ok) {
 				throw new Error('Error, Network response: ', response);
@@ -33,7 +33,7 @@
 			const inSeverity = [];
 			const inPluginName = [];
 
-			data.slice(0, 5).forEach((item) => {
+			data.forEach((item) => {
 				inIps.push(item.ip);
 				inEntryPoints.push(item.archetype);
 				inSeverity.push(item.severity);
