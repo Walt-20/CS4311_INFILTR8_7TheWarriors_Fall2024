@@ -12,7 +12,6 @@ const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const rootDir = path.join(__dirname, '..');
-console.log("what is the root dir? ", rootDir)
 const targetParsedDir = path.join(__dirname, 'parsed-results');
 const jsonParsedFilePath = path.join(rootDir, 'server', 'parsed-results', 'results.json')
 const targetUserDir = path.join(__dirname, 'user-results');
@@ -47,7 +46,6 @@ const upload = multer({ storage: storage })
 app.use(cors(), express.json());
 
 app.post('/upload', upload.single('file'), (req, res) => {
-    console.log(req.file);
     if (!req.file) {
         return res.status(400).send('No file uploaded.');
     }
@@ -102,8 +100,6 @@ app.post('/upload', upload.single('file'), (req, res) => {
                     acc[item.ip].push(item)
                     return acc;
                 }, {});
-
-                console.log(groupedResults);
         
                 // Sort results by combined_score in descending order
                 const sortedResults = Object.values(groupedResults).flatMap(group => {
@@ -114,7 +110,6 @@ app.post('/upload', upload.single('file'), (req, res) => {
                     })
                 })
 
-                console.log(sortedResults);
                 const jsonData = JSON.stringify(results, null, 2)
 
                 fs.writeFile(jsonParsedFilePath, jsonData, (err) => {
@@ -122,7 +117,6 @@ app.post('/upload', upload.single('file'), (req, res) => {
                         console.error('Error writing JSON file: ', err);
                         return res.status(500).send('Error savings results');
                     }
-                    console.log("Success")
                     res.status(200).send('Results saved successfully');
                 });
             })
@@ -140,15 +134,8 @@ app.post('/start-analysis', upload.single('file'), (req, res) => {
         return res.status(400).send('Invalid data')
     }
 
-    console.log('disallowedIps: ', disallowedIps)
-    console.log('disallowedEntryPoints: ', disallowedEntryPoints)
-    
     const disallowedIpsStr = disallowedIps.join(','); // Convert array to comma-separated string
     const disallowedEntryPointsStr = disallowedEntryPoints.join(','); // Convert array to comma-separated string
-
-    console.log("uploadedFiles[1] ", uploadedFiles[1])
-    console.log("disallowedIpsStr ", disallowedIpsStr)
-    console.log("disallowedEntryPointsStr ", disallowedEntryPointsStr)
 
     const command = `"${pythonPath}" main.py "${uploadedFiles[1]}" "${disallowedIpsStr}" "${disallowedEntryPointsStr}"`
 
