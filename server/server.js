@@ -54,18 +54,12 @@ app.post('/upload', upload.single('file'), (req, res) => {
     
     const filePath = path.join(req.file.path);
     uploadedFiles[1] = req.file.path
-    console.log("what is the pythonPath? ", pythonPath)
-    console.log("what is the file path? ", filePath)
-    console.log("working dir ", process.cwd())
-    console.log("what is the rootDir? ", rootDir)
     exec(`"${pythonPath}" parse.py "${filePath}"`, { cwd: rootDir }, (error, stdout, stderr) => {
-        console.log("working dir now ", process.cwd())
         if (error) {
             console.error(`exec error: ${error}`)
             return res.status(500).send('Error executing Python script.')
         }
         // After Python execution, read and process the CSV file
-        const csvFilePath = path.join(rootDir, 'machine_learning', 'data_with_exploits.csv');
         const columnsToExtract = ['ip', 'archetype', 'pluginName', 'severity'];
 
         const csvFiles = [
