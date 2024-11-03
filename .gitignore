@@ -22,6 +22,7 @@ vite.config.ts.timestamp-*
 
 # node server
 /server/results/
+/server/uploads/
 
 #Venv
 /python-backend/venv
