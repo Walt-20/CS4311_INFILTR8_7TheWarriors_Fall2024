@@ -38,13 +38,11 @@
         color: #1e40af; /* blue-800 */
     }
 
-    /* Add padding and margin for readability */
+
     .prose p, .prose ul, .prose ol {
         margin-top: 0.75rem;
         margin-bottom: 0.75rem;
     }
-
-    /* Responsive adjustments */
     @media (max-width: 640px) {
         h1 {
             font-size: 2.5rem;
