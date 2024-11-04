@@ -20,38 +20,43 @@
     };
  
     const registerUser = async () => {
-        token = generateToken()
- 
-        try {
-            const response = await fetch('http://127.0.0.1:8080/registration', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    firstName,
-                    lastName,
-                    username,
-                    password,
-                    token
-                }),
-            });
- 
-            const result = await response.json();
- 
-            if (response.ok) {
-                alert('New DAC Analyst User Registered!');
-                console.log("Success", result)
-            } else {
-                alert('Unsuccsessful request to register new DAC Analyst');
-                console.log("Error", result)
-            }
-        } catch (error) {
-            console.error('Error:', error);
-            alert('There was an issue registering your user');
-            location.reload();
+    token = generateToken();
+
+    try {
+        const response = await fetch('http://127.0.0.1:8080/registration', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                firstName,
+                lastName,
+                username,
+                password,
+                token
+            }),
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+            alert('New DAC Analyst User Registered!');
+            console.log("Success", result);
+
+            // Wait for 3 seconds before redirecting to login page
+            setTimeout(() => {
+                   navigateTo('/'); 
+               }, 3000); 
+        } else {
+            alert('Unsuccessful request to register new DAC Analyst');
+            console.log("Error", result);
         }
-    };
+    } catch (error) {
+        console.error('Error:', error);
+        alert('There was an issue registering your user');
+        location.reload();
+    }
+};
     
 </script>
  

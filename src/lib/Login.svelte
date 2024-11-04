@@ -25,9 +25,11 @@
             } else if (response.status === 401) {
                 currentError = 'Invalid username or password';
                 addLog(`Failed login attempt for user "${username}". Error: ${currentError}`);
+                return response.json();
             } else {
                 currentError = 'Server response error, contact your administrator';
                 addLog(`Failed login attempt for user "${username}". Error: ${currentError}`);
+                return response.json();
             }
         })
         .then((data) => {

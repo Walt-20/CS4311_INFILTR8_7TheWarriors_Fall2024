@@ -3,6 +3,7 @@ from flask_cors import CORS
 from json import dumps
 from neo4j import GraphDatabase, basic_auth
 from dotenv import load_dotenv
+import bcrypt
 import os
  
 load_dotenv()
@@ -31,19 +32,26 @@ def login():
     password = data.get("password")
 
     query = """
-    MATCH (u:Analyst {username: $username, password: $password})
-    RETURN u
+    MATCH (u:Analyst {username: $username})
+    RETURN u.password AS stored_password, u.first_name AS first_name, u.last_name AS last_name, u.username AS username
     """
+    
     with driver.session() as session:
-        result = session.run(query, username=username, password=password)
+        result = session.run(query, username=username)
         record = result.single()
 
     if record:
-        user = record["u"]
-        return jsonify({
-            "message": "Login successful",
-            "user": serialize_user(user)
-        }), 200
+        stored_password = record["stored_password"]
+        
+        if bcrypt.checkpw(password.encode('utf-8'), stored_password.encode('utf-8')):
+            user_data = {
+                "first_name": record["first_name"],
+                "last_name": record["last_name"],
+                "username": record["username"]
+            }
+            return jsonify({"message": "Login successful", "user": user_data}), 200
+        else:
+            return jsonify({"error": "Invalid username or password"}), 401
     else:
         return jsonify({"error": "Invalid username or password"}), 401
 
@@ -54,19 +62,19 @@ def verify_token():
     token = data.get("token")
 
     query = """
-    MATCH (u:Analyst {username: $username, token: $token})
-    RETURN u
+    MATCH (u:Analyst {username: $username})
+    RETURN u.token AS stored_token
     """
     with driver.session() as session:
-        result = session.run(query, username=username, token=token)
+        result = session.run(query, username=username)
         record = result.single()
 
     if record:
-        user = record["u"]
-        return jsonify({
-            "message": "Token verified successfully",
-            "user": serialize_user(user)
-        }), 200
+        stored_token = record["stored_token"]
+        if bcrypt.checkpw(token.encode('utf-8'), stored_token.encode('utf-8')):
+            return jsonify({"message": "Token verified successfully"}), 200
+        else:
+            return jsonify({"error": "Invalid username or token"}), 401
     else:
         return jsonify({"error": "Invalid username or token"}), 401
 
@@ -76,21 +84,19 @@ def update_password():
     username = data.get("username")
     new_password = data.get("password")
 
+    hashed_new_password = bcrypt.hashpw(new_password.encode('utf-8'), bcrypt.gensalt())
+
     query = """
     MATCH (u:Analyst {username: $username})
     SET u.password = $new_password
     RETURN u
     """
     with driver.session() as session:
-        result = session.run(query, username=username, new_password=new_password)
+        result = session.run(query, username=username, new_password=hashed_new_password.decode('utf-8'))
         record = result.single()
 
     if record:
-        user = record["u"]
-        return jsonify({
-            "message": "Password updated successfully",
-            "user": serialize_user(user)
-        }), 200
+        return jsonify({"message": "Password updated successfully"}), 200
     else:
         return jsonify({"error": "User not found or password update failed"}), 400
 
@@ -140,16 +146,19 @@ def create_analyst():
         username = data.get('username')
         password = data.get('password')
         token = data.get('token')
- 
+
+        # Hash the password and token before saving
+        hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+        hashed_token = bcrypt.hashpw(token.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+
         query = """
         CREATE (n:Analyst {first_name: $first_name, last_name: $last_name, username: $username, password: $password, token: $token})
         RETURN n
         """
- 
         with driver.session() as session:
-            result = session.run(query, first_name=first_name, last_name=last_name, username=username, password=password, token=token)
+            result = session.run(query, first_name=first_name, last_name=last_name, username=username, password=hashed_password, token=hashed_token)
             record = result.single()
- 
+
         if record:
             analyst_node = record["n"]
             nodes.append(serialize_user(analyst_node))
@@ -162,7 +171,6 @@ def create_analyst():
             return {"error": "Failed to create analyst"}
  
     elif request.method == 'GET':
-        print("In GET")
         try:
             query = "MATCH (n:Analyst) RETURN n"
             
