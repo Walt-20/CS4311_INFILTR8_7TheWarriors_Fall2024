@@ -1,6 +1,6 @@
 <script>
 	import Menu from '../../lib/Menu.svelte';
-	import { navigateTo } from '../../utils';
+    import { BriefcaseSolid } from 'flowbite-svelte-icons';
 
 	let newIp = ''; // Stores the input for new IP
 	let errorMessage = ''; // To store and display error messages
@@ -169,70 +169,147 @@
 	fetchResults();
 </script>
 
-<style>
-	.allowed_box {
-		background-color: green;
-	}
-
-	.off-limits_box {
-		background-color: red;
-	}
-</style>
-
 <Menu {menuOpen} />
+
+<!-- <div class="main">
+
+    <h2>Current Project Folder</h2>
+
+    <div class="grid">
+
+        <button class="current-project">
+            <div class="folder-icon">📁</div>
+            <div class="button-text">
+                <span>Go to Current</span>
+                <span>Project Folder</span>
+            </div>
+        </button>
+        
+        <div class="ip">
+            <h2>Scope IP List</h2>
+            <div class="scope-list">
+                <ul>
+                    {#each ips as ip, index}
+                        <li> -->
+                            <!-- Clickable box for status -->
+                            <!-- <span class="status-box"
+                                on:click={() => toggleStatus(index)}
+                                class:allowed_box={ipStatus[index] === "Allowed"}
+                                class:off-limits_box={ipStatus[index] === "Off-Limits"}>
+                            </span>
+                            <span>{ip}</span> -->
+                            <!-- Toggle status when clicked -->
+                            <!-- <span class="status-label" 
+                                class:allowed={ipStatus[index] === "Allowed"}
+                                class:off-limits={ipStatus[index] === "Off-Limits"}>
+                                {ipStatus[index]}
+                            </span>
+                            <div>
+                                <span class="arrow" on:click={() => moveUp(ips, ipStatus, index)} aria-label="Move up"><span class="material-symbols-outlined">
+                                    keyboard_arrow_up
+                                    </span></span>
+                                <span class="arrow" on:click={() => moveDown(ips, ipStatus, index)} aria-label="Move down"><span class="material-symbols-outlined">
+                                    keyboard_arrow_down
+                                    </span></span>
+                            </div> -->
+                        <!-- </li>
+                    {/each} -->
+                    <!-- Input field for Allowed IPs -->
+                    <!-- <input type="text" bind:value={newIp} placeholder="Enter IP" />
+                    <button on:click={addNewIp}>Add</button> -->
+                <!-- </ul>
+            </div> -->
+            <!-- Error Message Display -->
+            <!-- {#if errorMessage}
+                <p class="error">{errorMessage}</p>
+            {/if}
+        </div>
+
+        
+        <div class="entry">
+            <h2>Entry Points Allowed</h2>
+            <div class="entry-list">
+                <ul>
+                    {#each entryPoints as entry, index}
+                        <li>
+                            <span>{entry}</span>
+                            <div>
+                                <span class="arrow" on:click={() => moveUp(entryPoints, index)} aria-label="Move up"><span class="material-symbols-outlined">
+                                    keyboard_arrow_up
+                                    </span></span>
+                                <span class="arrow" on:click={() => moveDown(entryPoints, index)} aria-label="Move down"><span class="material-symbols-outlined">
+                                    keyboard_arrow_down
+                                    </span></span>
+                            </div>
+                        </li>
+                    {/each}
+                </ul>
+            </div>
+        </div>
+        
+        <div class="load">
+            <h2>Load Projects</h2>
+            <div class="load-projects">
+                <ul>
+                    {#each projects as project}
+                        <li class="project-card">
+                            <span class="icon">📁</span>
+                            <span>{project}</span>
+                        </li>
+                    {/each}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="start-testing">
+        <button>Start Analysis</button>
+    </div>
+</div> -->
+
 
 <div class="text-center py-4">
     <h1 class="text-4xl font-bold text-gray-800 dark:text-gray-200">Current Project</h1>
 </div>
 
-<div class="flex flex-wrap md:flex-nowrap gap-x-5 p-5 bg-gray-100 dark:bg-gray-900 min-h-screen">
+<div class="flex flex-wrap p-5 bg-gray-100 dark:bg-gray-900 min-h-screen">
     <!-- Left Section: IP List & Entry Points -->
     <div class="flex flex-col w-full md:w-1/2 space-y-5">
         <!-- IP List -->
         <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-5">
             <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Scope IP List</h2>
             <ul class="space-y-3 mt-4">
-                {#each ips as ip, index}
-                    <li class="flex items-center justify-between">
-                        <span class="cursor-pointer rounded-full w-5 h-5 flex items-center justify-center" on:click={() => toggleStatus(index)}
-							class:allowed_box={ipStatus[index] === 'Allowed'}
-							class:off-limits_box={ipStatus[index] === 'Off-Limits'}></span>
-                        <span class="ml-4 text-gray-800 dark:text-gray-200">{ip}</span>
-                        <span class="ml-4 text-gray-800 dark:text-gray-200">{entryPoints[index]}</span>
-                    </li>
-                {/each}
+                <li class="flex items-center justify-between">
+                    <span class="cursor-pointer rounded-full w-5 h-5 flex items-center justify-center bg-green-500"></span>
+                    <span class="ml-4 text-gray-800 dark:text-gray-200">192.168.0.1</span>
+                    <span class="ml-4 text-gray-800 dark:text-gray-200">Point A</span> <!-- Entry Point -->
+                    <div class="flex space-x-2">
+                        <button class="material-symbols-outlined text-gray-600 dark:text-gray-400">keyboard_arrow_up</button>
+                        <button class="material-symbols-outlined text-gray-600 dark:text-gray-400">keyboard_arrow_down</button>
+                    </div>
+                </li>
+                <li class="flex items-center justify-between">
+                    <span class="cursor-pointer rounded-full w-5 h-5 flex items-center justify-center bg-red-500"></span>
+                    <span class="ml-4 text-gray-800 dark:text-gray-200">192.168.0.2</span>
+                    <span class="ml-4 text-gray-800 dark:text-gray-200">Point B</span> <!-- Entry Point -->
+                    <div class="flex space-x-2">
+                        <button class="material-symbols-outlined text-gray-600 dark:text-gray-400">keyboard_arrow_up</button>
+                        <button class="material-symbols-outlined text-gray-600 dark:text-gray-400">keyboard_arrow_down</button>
+                    </div>
+                </li>
             </ul>
-            <input type="text" bind:value={newIp} placeholder="Enter IP" class="mt-4 w-full p-2 rounded border dark:bg-gray-700 dark:border-gray-600" />
-            <button on:click={addNewIp} class="mt-2 w-full py-2 bg-blue-600 text-white rounded">Add</button>
-            {#if errorMessage}
-                <p class="text-red-500 mt-2">{errorMessage}</p>
-            {/if}
-        </div>
-        <div class="text-center py-50">
-            <button on:click={startAnalysis} class="mt-2 w-60 py-2 bg-blue-600 text-white rounded">Start Analysis</button>
+            <input type="text" placeholder="Enter IP" class="mt-4 w-full p-2 rounded border dark:bg-gray-700 dark:border-gray-600" />
+            <button class="mt-2 w-full py-2 bg-blue-600 text-white rounded">Add</button>
         </div>
     </div>
 
     <!-- Right Section: Create Project and Load Projects -->
     <div class="flex flex-col w-full md:w-1/2 space-y-5 mt-5 md:mt-0">
-        <!-- Load Projects Box -->
+        <!-- Create Project Box -->
         <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-5">
-            <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Load Projects</h2>
-            <ul class="mt-4 space-y-3">
-                <li class="flex items-center p-3 bg-gray-200 dark:bg-gray-700 rounded cursor-pointer hover:bg-gray-300 dark:hover:bg-gray-600">
-                    <span class="mr-4">📁</span>
-                    <span class="text-gray-800 dark:text-gray-200">Project 1</span>
-                </li>
-                <li class="flex items-center p-3 bg-gray-200 dark:bg-gray-700 rounded cursor-pointer hover:bg-gray-300 dark:hover:bg-gray-600">
-                    <span class="mr-4">📁</span>
-                    <span class="text-gray-800 dark:text-gray-200">Project 2</span>
-                </li>
-            </ul>
+            <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Create New Project</h2>
+            <button class="mt-4 w-full py-2 bg-blue-600 text-white font-semibold rounded">Create New Project</button>
         </div>
-    </div>
-</div>
-    <!-- Right Section: Create Project and Load Projects -->
-    <div class="flex flex-col w-full md:w-1/2 space-y-5 mt-5 md:mt-0">
+
         <!-- Load Projects Box -->
         <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-5">
             <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Load Projects</h2>
