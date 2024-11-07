@@ -46,13 +46,14 @@ const upload = multer({ storage: storage })
 app.use(cors(), express.json());
 
 app.post('/upload', upload.single('file'), (req, res) => {
-    console.log("upload")
+    
     if (!req.file) {
         return res.status(400).send('No file uploaded.');
     }
     
     const filePath = path.join(req.file.path);
-    uploadedFiles.push(req.file.path)
+    const filename = req.file.originalname;
+    uploadedFiles[filename] = filePath
     exec(`"${pythonPath}" parse.py "${filePath}"`, { cwd: rootDir }, (error, stdout, stderr) => {
         if (error) {
             console.error(`exec error: ${error}`)

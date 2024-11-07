@@ -1,5 +1,4 @@
 <script>
-	import { P } from 'flowbite-svelte';
 	import Menu from '../../lib/Menu.svelte';
 	import { navigateTo } from '../../utils';
 
