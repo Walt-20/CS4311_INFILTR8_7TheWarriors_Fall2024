@@ -5,7 +5,7 @@
 	import { navigateTo } from '../../utils';
 	import { BookOpenOutline } from 'flowbite-svelte-icons';
 	import { addLog, logs } from '$lib/logStore.js';
-	import { get } from 'svelte/store'; // To retrieve the logs
+	import { get, writable } from 'svelte/store'; // To retrieve the logs
 	import { fly } from 'svelte/transition';
 
 	let greeting = '';
