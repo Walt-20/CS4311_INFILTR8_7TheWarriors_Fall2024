@@ -53,7 +53,7 @@ app.post('/upload', upload.single('file'), (req, res) => {
     
     const filePath = path.join(req.file.path);
     const filename = req.file.originalname;
-    uploadedFiles[filename] = filePath
+    uploadedFiles[1] = filePath
     exec(`"${pythonPath}" parse.py "${filePath}"`, { cwd: rootDir }, (error, stdout, stderr) => {
         if (error) {
             console.error(`exec error: ${error}`)
@@ -139,7 +139,7 @@ app.post('/start-analysis', upload.single('file'), (req, res) => {
     const disallowedIpsStr = disallowedIps.join(','); // Convert array to comma-separated string
     const disallowedEntryPointsStr = disallowedEntryPoints.join(','); // Convert array to comma-separated string
 
-    const command = `"${pythonPath}" main.py "${uploadedFiles[req.file.path]}" "${disallowedIpsStr}" "${disallowedEntryPointsStr}"`
+    const command = `"${pythonPath}" main.py "${uploadedFiles[1]}" "${disallowedIpsStr}" "${disallowedEntryPointsStr}"`
 
 
     exec(command, { cwd: rootDir }, (error, stdout, stderr) => {
