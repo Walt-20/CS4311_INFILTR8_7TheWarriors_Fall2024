@@ -1,7 +1,7 @@
 <script>
+	import { P } from 'flowbite-svelte';
 	import Menu from '../../lib/Menu.svelte';
-    import { BriefcaseSolid } from 'flowbite-svelte-icons';
-    import { goto } from '$app/navigation';
+	import { navigateTo } from '../../utils';
 
 	let newIp = ''; // Stores the input for new IP
 	let errorMessage = ''; // To store and display error messages
@@ -113,7 +113,9 @@
 
 			if (!response.ok) {
 				throw new Error('Error, Network response: ', response);
-			}		
+			} else {
+				navigateTo('/report')
+			}	
 		} catch (error) {
 			console.error('Error starting analysis: ', error);
 		}
