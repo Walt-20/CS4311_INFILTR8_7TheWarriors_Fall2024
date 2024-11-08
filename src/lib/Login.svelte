@@ -36,9 +36,8 @@
             if (data && data.user) {
                 user.update((val) => (val = { ...data.user }));
                 addLog(`User "${username}" is logged in, showing welcome screen.`);
-                // Show the welcome message for 3 seconds, then navigate to the dashboard
                 setTimeout(() => {
-                    navigateTo('/dashboard'); // Redirect after a delay
+                    navigateTo('/dashboard'); 
                 }, 3000); // 3000 milliseconds = 3 seconds
             }
         })
