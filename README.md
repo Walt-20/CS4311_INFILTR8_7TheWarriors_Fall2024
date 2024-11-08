@@ -12,15 +12,6 @@ Run the following command on a linux system:
 ```bash   
 ./linux-installation.sh
 ```
-
-## Installation 
-Before running the installation commands,ensure you have a .env file named .env with your database credentials inside the python-backend folder.
-
-Run the following command on a linux system:
-```bash   
-./linux-installation.sh
-```
-
 ## Launching INFILTR8
 
 To start the app, run the following scrip that initializes the front end, back end, and the database.
