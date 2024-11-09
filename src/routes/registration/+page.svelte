@@ -43,6 +43,8 @@
             alert('New DAC Analyst User Registered!');
             console.log("Success", result);
 
+            alert(`Copy and paste your token in your local machine, your generated token is: ${token}`);
+
             // Wait for 3 seconds before redirecting to login page
             setTimeout(() => {
                    navigateTo('/'); 
