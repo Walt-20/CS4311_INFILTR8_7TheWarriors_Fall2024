@@ -1,5 +1,6 @@
 <script>
 	import Menu from '../../lib/Menu.svelte';
+	import { navigateTo } from '../../utils';
 
 	let newIp = ''; // Stores the input for new IP
 	let errorMessage = ''; // To store and display error messages
@@ -111,7 +112,9 @@
 
 			if (!response.ok) {
 				throw new Error('Error, Network response: ', response);
-			}		
+			} else {
+				navigateTo('/report')
+			}	
 		} catch (error) {
 			console.error('Error starting analysis: ', error);
 		}

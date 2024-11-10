@@ -46,12 +46,14 @@ const upload = multer({ storage: storage })
 app.use(cors(), express.json());
 
 app.post('/upload', upload.single('file'), (req, res) => {
+    
     if (!req.file) {
         return res.status(400).send('No file uploaded.');
     }
     
     const filePath = path.join(req.file.path);
-    uploadedFiles[1] = req.file.path
+    const filename = req.file.originalname;
+    uploadedFiles[1] = filePath
     exec(`"${pythonPath}" parse.py "${filePath}"`, { cwd: rootDir }, (error, stdout, stderr) => {
         if (error) {
             console.error(`exec error: ${error}`)
@@ -117,7 +119,7 @@ app.post('/upload', upload.single('file'), (req, res) => {
                         console.error('Error writing JSON file: ', err);
                         return res.status(500).send('Error savings results');
                     }
-                    res.status(200).send('Results saved successfully');
+                    return res.status(200).send({ message: 'Results saved successfully' });
                 });
             })
             .catch((error) => {
