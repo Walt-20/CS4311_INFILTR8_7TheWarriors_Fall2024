@@ -3,7 +3,7 @@
 current_directory=$(pwd)
 echo $current_directory
 
-sudo apt install python3.10-venv
+sudo apt install python3.11-venv
 sudo apt install python-is-python3
 
 cd ./src
