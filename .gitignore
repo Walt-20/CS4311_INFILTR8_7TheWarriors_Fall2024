@@ -21,10 +21,14 @@ vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 
 # node server
-/server/*
+/server/results/
+/server/uploads/
 
 #Venv
 /python-backend/venv
 
 #Env
 /python-backend/.env
+
+#machine_learning
+/machine_learning/

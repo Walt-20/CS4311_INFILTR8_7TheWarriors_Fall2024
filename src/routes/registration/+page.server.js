@@ -4,7 +4,7 @@ export const load = async ({ fetch }) => {
         const projectsData = await projectsRes.json()
         return projectsData.nodes
     }
-
+ 
     return {
         projectsData: await fetchUser(),
     }
