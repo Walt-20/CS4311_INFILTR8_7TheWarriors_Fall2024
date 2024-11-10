@@ -35,6 +35,7 @@
         .then((data) => {
             if (data && data.user) {
                 user.update((val) => (val = { ...data.user }));
+                console.log($user)
                 addLog(`User "${username}" is logged in, showing welcome screen.`);
                 setTimeout(() => {
                     navigateTo('/dashboard'); 
