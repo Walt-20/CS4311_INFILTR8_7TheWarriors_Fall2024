@@ -42,7 +42,7 @@
         // Added this - Darien ///////////////////
         if (isValidFile) {
             // Upload the file to the server for parsing
-            uploadFileToServer(files[0]);
+            uploadFileToServer(files[0]); //TODO: Upload multiple files per project? 
         }
         ///////////////////////////////////////////
     }
@@ -59,6 +59,7 @@
             });
 
             if (response.ok) {
+                console.log("Response was fine")
                 const csvFilePath = await response.json();
                 alert(`CSV file generated: ${csvFilePath}`);
             } else {
