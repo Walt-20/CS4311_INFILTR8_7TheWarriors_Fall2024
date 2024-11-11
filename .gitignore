@@ -31,4 +31,13 @@ vite.config.ts.timestamp-*
 /python-backend/.env
 
 #machine_learning
-/machine_learning/
+/machine_learning/*
+
+#Neo4j for windows
+
+/neo4j-windows/*
+
+#Server files
+/server/parsed-results/*
+/server/user-results/*
+/server/uploads/*

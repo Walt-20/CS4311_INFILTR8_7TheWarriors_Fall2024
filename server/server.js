@@ -13,7 +13,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const rootDir = path.join(__dirname, '..');
 const targetParsedDir = path.join(__dirname, 'parsed-results');
-const jsonParsedFilePath = path.join(rootDir, 'server', 'parsed-results', 'results.json')
+const jsonParsedFilePath = path.join(rootDir, 'server', 'parsed-results')
 const targetUserDir = path.join(__dirname, 'user-results');
 const jsonUserFilePath = path.join(rootDir, 'server', 'user-results', 'results.json')
 const uploadedFiles = {};
@@ -113,13 +113,14 @@ app.post('/upload', upload.single('file'), (req, res) => {
                 })
 
                 const jsonData = JSON.stringify(results, null, 2)
+                const jsonPath = path.join(jsonParsedFilePath, "parse-"+ Date.now() + '-' + Math.round(Math.random() * 1E9) + ".json")
 
-                fs.writeFile(jsonParsedFilePath, jsonData, (err) => {
+                fs.writeFile(jsonPath, jsonData, (err) => {
                     if (err) {
                         console.error('Error writing JSON file: ', err);
-                        return res.status(500).send('Error savings results');
+                        return res.status(500).send({message: 'Error savings results'});
                     }
-                    return res.status(200).send({ message: 'Results saved successfully' });
+                    return res.status(200).send({ message: 'Results saved successfully',filepath: jsonPath });
                 });
             })
             .catch((error) => {
@@ -193,6 +194,17 @@ app.get('/parsed-results', (req, res) => {
 
 app.get('/user-results', (req, res) => {
     res.sendFile(jsonUserFilePath);
+})
+
+app.post('/discard', (req, res) => {
+    // console.log(req.body)
+    fs.unlinkSync(req.body.filepath, (err) => {
+        if (err) {
+            return res.status(500).send({message: 'Error discarding file'});
+        } else {
+            return res.status(200).send({message: "Success discarding file"})
+        }
+    })
 })
 
 function deleteDirectory(directoryPath) {
