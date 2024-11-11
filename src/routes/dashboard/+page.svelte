@@ -15,6 +15,7 @@
 		{ message: 'Notification 3', unread: true }
 	];
 	let files = [];
+    let uploadedfiles = []; //Array of paths to files that have been uploaded
 	let uploadProgress = 0;
 	let menuOpen = false;
 	let isValidFile = false;
@@ -68,6 +69,8 @@
 			if (response.ok) {
 				const result = await response.json();
 				serverResponse = `CSV file generated: ${result.message}`;
+                let uploadedfilepath = result.filepath;
+                uploadedfiles.push(uploadedfilepath)
 			} else {
 				serverResponse = 'File upload failed';
 			}
@@ -86,6 +89,23 @@
 
 	function handleDiscardAll() {
 		files = [];
+        uploadedfiles.forEach(async (filepath) => { 
+            try{
+                const response = await fetch('http://localhost:5001/discard',{
+                    method:'POST',
+                    headers: {
+					    'Content-Type': 'application/json'
+				    },
+				    body: JSON.stringify({filepath: filepath}),
+                })
+
+                if (!response.ok) {
+                    throw new Error()
+                }
+            } catch (error) {
+                console.error("Error discarding files: ",error);
+            }
+        });
 		uploadProgress = 0;
 		addLog('All files discarded.');
 	}
