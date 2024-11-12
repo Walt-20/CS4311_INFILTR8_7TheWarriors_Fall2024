@@ -2,6 +2,7 @@
     import user from '../user';
     import { navigateTo } from '../utils.js';
     import { addLog } from '$lib/logStore.js'; // Import the log store function
+    import bcrypt from 'bcryptjs'; // Import bcryptjs for client-side hashing
 
     let username = '';
     let password = '';
@@ -31,6 +32,10 @@
             if (response.status === 200) {
                 // Generate a token after a successful response
                 sessionToken = generateToken();
+
+                // Hash the session token using bcryptjs
+                sessionToken = bcrypt.hashSync(sessionToken, 10);
+                
                 addLog(`User "${username}" logged in successfully. Token: ${sessionToken}`);
                 return response.json();
             } else if (response.status === 401) {
