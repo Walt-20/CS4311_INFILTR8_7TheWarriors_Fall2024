@@ -1,10 +1,5 @@
 [
-  {
-    "ip": "10.31.112.29",
-    "archetype": "Unauthenticated port bypass",
-    "pluginName": "Terminal Services Doesn't Use Network Level Authentication (NLA)",
-    "severity": "2"
-  },
+  
   {
     "ip": "10.31.112.29",
     "archetype": "missing encryption protocols",
