@@ -168,6 +168,7 @@
 	   }
 
 	   fetchResults();
+	   console.log(ips)
 </script>
 
 <Menu {menuOpen} />
