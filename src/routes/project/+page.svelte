@@ -1,6 +1,7 @@
 <script>
 	import Menu from '../../lib/Menu.svelte';
     import { BriefcaseSolid } from 'flowbite-svelte-icons';
+    import { goto } from '$app/navigation';
 
 	let newIp = ''; // Stores the input for new IP
 	let errorMessage = ''; // To store and display error messages
@@ -195,6 +196,9 @@
             {#if errorMessage}
                 <p class="text-red-500 mt-2">{errorMessage}</p>
             {/if}
+        </div>
+        <div class="text-center py-50">
+            <button on:click={() => goto('/analysis')} class="mt-2 w-60 py-2 bg-blue-600 text-white rounded">Start Analysis</button>
         </div>
     </div>
 
