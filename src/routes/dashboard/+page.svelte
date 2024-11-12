@@ -21,6 +21,8 @@
 	let isValidFile = false;
 	let serverResponse = null;
     let showToast = false;
+    let showPopup = writable(false);
+    let projectName = '';
 
 	onMount(() => {
 		const hours = new Date().getHours();
@@ -83,6 +85,7 @@
 	/////////////////////////////////////////////////
 
 	function handleCreateProject() {
+        console.log("Project Name",projectName)
 		addLog('Creating project with selected files.');
 		navigateTo('/project');
 	}
@@ -228,7 +231,7 @@
 	<div class="upload-files col-span-2 mt-6">
 		<button
 			class="mr-4 rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 disabled:cursor-not-allowed disabled:opacity-50 dark:focus:ring-blue-800"
-			on:click={handleCreateProject}
+			on:click={() => showPopup.set(true)}
 			disabled={!isValidFile}
 		>
 			Create Project
@@ -257,6 +260,16 @@
 			<p class="mt-4 text-gray-600 dark:text-gray-300">No files being uploaded.</p>
 		{/if}
 	</div>
+
+    {#if $showPopup}
+    <div class="popup">
+        <form on:submit|preventDefault={handleCreateProject}>
+        <input type="text" id="projectName" bind:value={projectName} placeholder="Enter a name for your project" class="mt-1 block w-full p-2 border rounded" />
+        <button type="submit" class="mt-6 w-full py-2 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700 text-center block">Submit</button>
+        </form>
+    </div>
+    <br>
+    {/if}
 
 	<!-- New Download Logs Section -->
 	<div class="download-logs">
