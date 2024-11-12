@@ -186,19 +186,19 @@
                     <span class="cursor-pointer rounded-full w-5 h-5 flex items-center justify-center bg-green-500"></span>
                     <span class="ml-4 text-gray-800 dark:text-gray-200">192.168.0.1</span>
                     <span class="ml-4 text-gray-800 dark:text-gray-200">Point A</span> <!-- Entry Point -->
-                    <div class="flex space-x-2">
+                    <!-- <div class="flex space-x-2">
                         <button class="material-symbols-outlined text-gray-600 dark:text-gray-400">keyboard_arrow_up</button>
                         <button class="material-symbols-outlined text-gray-600 dark:text-gray-400">keyboard_arrow_down</button>
-                    </div>
+                    </div> -->
                 </li>
                 <li class="flex items-center justify-between">
                     <span class="cursor-pointer rounded-full w-5 h-5 flex items-center justify-center bg-red-500"></span>
                     <span class="ml-4 text-gray-800 dark:text-gray-200">192.168.0.2</span>
                     <span class="ml-4 text-gray-800 dark:text-gray-200">Point B</span> <!-- Entry Point -->
-                    <div class="flex space-x-2">
+                    <!-- <div class="flex space-x-2">
                         <button class="material-symbols-outlined text-gray-600 dark:text-gray-400">keyboard_arrow_up</button>
                         <button class="material-symbols-outlined text-gray-600 dark:text-gray-400">keyboard_arrow_down</button>
-                    </div>
+                    </div> -->
                 </li>
             </ul>
             <input type="text" placeholder="Enter IP" class="mt-4 w-full p-2 rounded border dark:bg-gray-700 dark:border-gray-600" />
@@ -208,12 +208,6 @@
 
     <!-- Right Section: Create Project and Load Projects -->
     <div class="flex flex-col w-full md:w-1/2 space-y-5 mt-5 md:mt-0">
-        <!-- Create Project Box -->
-        <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-5">
-            <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Create New Project</h2>
-            <button class="mt-4 w-full py-2 bg-blue-600 text-white font-semibold rounded">Create New Project</button>
-        </div>
-
         <!-- Load Projects Box -->
         <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-5">
             <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Load Projects</h2>
