@@ -12,48 +12,44 @@ const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const rootDir = path.join(__dirname, '..');
-const targetParsedDir = path.join(__dirname, 'parsed-results');
-const jsonParsedFilePath = path.join(rootDir, 'server', 'parsed-results')
-const targetUserDir = path.join(__dirname, 'user-results');
-const jsonUserFilePath = path.join(rootDir, 'server', 'user-results')
 const uploadedFiles = {};
 const pythonPath = path.join(rootDir, 'python-backend', 'venv', 'bin', 'python')
 
+app.use(cors(), express.json(), express.urlencoded({ extended: true }));
 
-const uploadDir = path.join(__dirname, 'uploads')
-if (!fs.existsSync(uploadDir)) {
-    fs.mkdirSync(uploadDir, { recursive: true })
+function createProjectFolder(projectName) {
+    const projectFolderPath = path.join(rootDir, 'server', projectName);
+    const uploadsFolderPath = path.join(projectFolderPath, 'uploads');
+    if (!fs.existsSync(uploadsFolderPath)) {
+        fs.mkdirSync(uploadsFolderPath, { recursive: true });
+    }
+    return uploadsFolderPath;
 }
 
-if (!fs.existsSync(targetParsedDir) || !fs.existsSync(targetUserDir)) {
-    fs.mkdirSync(targetParsedDir, { recursive: true })
-    fs.mkdirSync(targetUserDir, { recursive: true })
-}
-
+// Multer storage configuration
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, uploadDir)
+        const projectName = req.body.projectName;
+        const uploadsFolderPath = createProjectFolder(projectName);
+        cb(null, uploadsFolderPath);
     },
     filename: (req, file, cb) => {
-        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
-        const newFilename = uniqueSuffix + path.extname(file.originalname)
-        cb(null, newFilename)
+        cb(null, file.originalname);
     }
-})
+});
 
-const upload = multer({ storage: storage })
+const upload = multer({ storage: storage });
 
-app.use(cors(), express.json());
-
-app.post('/upload', upload.array('files'), (req, res) => {
-
+app.post('/upload', (req, res, next) => {
+    console.log(req.body)
+    console.log("uploading files")
     const projectName = req.body.projectName;
-    let filePath = '';
+    console.log(projectName)
     
-    if (!req.files || req.files.length === 0) {
-        return res.status(400).send('No file uploaded.');
-    }
+    console.log("created project")
+    let filePath = '';
 
+    console.log("projectFolderPath: ", projectFolderPath)
     console.log("this work")
 
     const uploadedFiles = req.files.map(file => {
@@ -138,63 +134,63 @@ app.post('/upload', upload.array('files'), (req, res) => {
     });
 });
 
-app.post('/start-analysis', upload.single('file'), (req, res) => {
-    const { disallowedIps, disallowedEntryPoints } = req.body;
+// app.post('/start-analysis', upload.single('file'), (req, res) => {
+//     const { disallowedIps, disallowedEntryPoints } = req.body;
 
-    if (!disallowedIps || !disallowedEntryPoints) {
-        return res.status(400).send('Invalid data')
-    }
+//     if (!disallowedIps || !disallowedEntryPoints) {
+//         return res.status(400).send('Invalid data')
+//     }
 
-    const disallowedIpsStr = disallowedIps.join(','); // Convert array to comma-separated string
-    const disallowedEntryPointsStr = disallowedEntryPoints.join(','); // Convert array to comma-separated string
+//     const disallowedIpsStr = disallowedIps.join(','); // Convert array to comma-separated string
+//     const disallowedEntryPointsStr = disallowedEntryPoints.join(','); // Convert array to comma-separated string
 
-    const command = `"${pythonPath}" main.py "${uploadedFiles[1]}" "${disallowedIpsStr}" "${disallowedEntryPointsStr}"`
+//     const command = `"${pythonPath}" main.py "${uploadedFiles[1]}" "${disallowedIpsStr}" "${disallowedEntryPointsStr}"`
 
 
-    exec(command, { cwd: rootDir }, (error, stdout, stderr) => {
-        if (error) {
-            console.error(`Error executing Python script: ${error}`);
-            return res.status(500).send('Error executing analysis');
-        }
+//     exec(command, { cwd: rootDir }, (error, stdout, stderr) => {
+//         if (error) {
+//             console.error(`Error executing Python script: ${error}`);
+//             return res.status(500).send('Error executing analysis');
+//         }
 
-        // After Python execution, read and process the CSV file
-        const csvFilePath = path.join(rootDir, 'machine_learning', 'data_with_exploits.csv');
-        const columnsToExtract = ['ip', 'archetype', 'pluginName', 'severity'];
+//         // After Python execution, read and process the CSV file
+//         const csvFilePath = path.join(rootDir, 'machine_learning', 'data_with_exploits.csv');
+//         const columnsToExtract = ['ip', 'archetype', 'pluginName', 'severity'];
 
-        const results = [];
+//         const results = [];
 
-        // Reading the CSV file and extracting specific columns
-        fs.createReadStream(csvFilePath)
-            .pipe(csv())
-            .on('data', (data) => {
-                const filteredData = {};
-                columnsToExtract.forEach(col => {
-                    if (data[col]) {
-                        filteredData[col] = data[col];
-                    }
-                });
-                if (filteredData.archetype && filteredData.archetype.toLowerCase() !== 'other') {
-                    results.push(filteredData);
-                }
-            })
-            .on('end', () => {
-                const jsonData = JSON.stringify(results, null, 2);
+//         // Reading the CSV file and extracting specific columns
+//         fs.createReadStream(csvFilePath)
+//             .pipe(csv())
+//             .on('data', (data) => {
+//                 const filteredData = {};
+//                 columnsToExtract.forEach(col => {
+//                     if (data[col]) {
+//                         filteredData[col] = data[col];
+//                     }
+//                 });
+//                 if (filteredData.archetype && filteredData.archetype.toLowerCase() !== 'other') {
+//                     results.push(filteredData);
+//                 }
+//             })
+//             .on('end', () => {
+//                 const jsonData = JSON.stringify(results, null, 2);
                 
 
-                fs.writeFile(jsonUserFilePath, jsonData, (err) => {
-                    if (err) {
-                        console.error('Error writing JSON file:', err);
-                        return res.status(500).send('Error saving results');
-                    }
-                    res.status(200).send('Results saved successfully');
-                });
-            })
-            .on('error', (csvError) => {
-                console.error('Error reading CSV:', csvError);
-                return res.status(500).send('Error processing CSV file');
-            });
-    });
-});
+//                 fs.writeFile(jsonUserFilePath, jsonData, (err) => {
+//                     if (err) {
+//                         console.error('Error writing JSON file:', err);
+//                         return res.status(500).send('Error saving results');
+//                     }
+//                     res.status(200).send('Results saved successfully');
+//                 });
+//             })
+//             .on('error', (csvError) => {
+//                 console.error('Error reading CSV:', csvError);
+//                 return res.status(500).send('Error processing CSV file');
+//             });
+//     });
+// });
 
 app.get('/parsed', (req, res) => {
     res.sendFile(jsonParsedFilePath);
