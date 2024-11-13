@@ -72,7 +72,6 @@ for host in main_tree.findall('.//ReportHost'):
 
         # Check if the current IP-archetype pair is in the disallowed pairs
         if entry_point in disallowed_pairs:
-            print("skipping ", disallowed_pairs)
             continue  # Skip disallowed entries
 
         if not have_names:

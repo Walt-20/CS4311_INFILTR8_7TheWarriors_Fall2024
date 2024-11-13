@@ -50,22 +50,17 @@ app.post('/upload', upload.single('file'), (req, res) => {
     if (!req.file) {
         return res.status(400).send('No file uploaded.');
     }
-    
-    const filePath = path.join(req.file.path);
-    const filename = req.file.originalname;
-    uploadedFiles[1] = filePath
-    exec(`"${pythonPath}" parse.py "${filePath}"`, { cwd: rootDir }, (error, stdout, stderr) => {
-        if (error) {
-            console.error(`exec error: ${error}`)
-            return res.status(500).send('Error executing Python script.')
-        }
+
+    console.log('uploading file');
+    console.log(req.file.path)
+    const filePath = path.join(__dirname, req.file.path);
+    const rootDir = path.join(__dirname, '..');
+    exec(`python parse.py "${filePath}"`, { cwd: rootDir }, (error, stdout, stderr) => {
+
         // After Python execution, read and process the CSV file
+        const csvFilePath = path.join(rootDir, 'machine_learning', 'data_with_exploits.csv');
         const columnsToExtract = ['ip', 'archetype', 'pluginName', 'severity'];
 
-        const csvFiles = [
-            path.join(rootDir, 'machine_learning', 'data_with_exploits.csv'),
-        ];
-        
         const results = [];
         
         // Function to read a single CSV file
@@ -137,13 +132,15 @@ app.post('/start-analysis', upload.single('file'), (req, res) => {
         return res.status(400).send('Invalid data')
     }
 
+    console.log('disallowedIps: ', disallowedIps)
+    console.log('disallowedEntryPoints: ', disallowedEntryPoints)
+
+    const filePath = path.join(__dirname, req.file.path);
+    const rootDir = path.join(__dirname, '..');
     const disallowedIpsStr = disallowedIps.join(','); // Convert array to comma-separated string
     const disallowedEntryPointsStr = disallowedEntryPoints.join(','); // Convert array to comma-separated string
 
-    const command = `"${pythonPath}" main.py "${uploadedFiles[1]}" "${disallowedIpsStr}" "${disallowedEntryPointsStr}"`
-
-
-    exec(command, { cwd: rootDir }, (error, stdout, stderr) => {
+    exec(`python main.py "${filePath}" "${disallowedIpsStr}" "${disallowedEntryPointsStr}"`, { cwd: rootDir }, (error, stdout, stderr) => {
         if (error) {
             console.error(`Error executing Python script: ${error}`);
             return res.status(500).send('Error executing analysis');
