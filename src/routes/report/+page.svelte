@@ -12,6 +12,10 @@
     let selectedFormat = exportFormats[0];
     let menuOpen = false;
 
+    let searchCategory = 'IP Addresses'; // Declare searchCategory
+    let searchQuery = ''; // Declare searchQuery
+    let filteredResults = []; // Store filtered results
+
     onMount(async () => {
         await fetchResults();
     });
@@ -29,6 +33,9 @@
             entryPoints = data.map(item => item.archetype);
             severity = data.map(item => item.severity);
             pluginName = data.map(item => item.pluginName);
+
+            // Initialize filteredResults with the full list on mount
+            filterDevices();
         } catch (error) {
             console.error('Error fetching results:', error);
         }
@@ -44,13 +51,17 @@
     }
 
     function filterDevices() {
-        filteredDevices = devices.filter(device => {
+        filteredResults = ips.map((ip, index) => ({
+            ip,
+            device: entryPoints[index],
+            vulnerability: severity[index]
+        })).filter(item => {
             if (searchCategory === 'IP Addresses') {
-                return device.ip.includes(searchQuery);
+                return item.ip.includes(searchQuery);
             } else if (searchCategory === 'Device') {
-                return device.device.toLowerCase().includes(searchQuery.toLowerCase());
+                return item.device.toLowerCase().includes(searchQuery.toLowerCase());
             } else if (searchCategory === 'Vulnerability') {
-                return device.vulnerability.toLowerCase().includes(searchQuery.toLowerCase());
+                return item.vulnerability.toLowerCase().includes(searchQuery.toLowerCase());
             }
             return true;
         });
@@ -69,7 +80,7 @@
     function exportAsCSV() {
         const csvContent = [
             ["IP Address", "Device", "Vulnerability"], // Header row
-            ...ips.map((ip, index) => [ip, entryPoints[index], severity[index]].join(",")) // Data rows
+            ...filteredResults.map(item => [item.ip, item.device, item.vulnerability].join(",")) // Data rows
         ].join("\n");
 
         const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
@@ -85,17 +96,17 @@
     function exportAsPDF() {
         const doc = new jsPDF();
         doc.text("Report", 10, 10);
-        ips.forEach((ip, index) => {
-            doc.text(`${ip} - ${entryPoints[index]} - ${severity[index]}`, 10, 20 + (10 * index));
+        filteredResults.forEach((item, index) => {
+            doc.text(`${item.ip} - ${item.device} - ${item.vulnerability}`, 10, 20 + (10 * index));
         });
         doc.save('report.pdf');
     }
 
     function exportAsExcel() {
-        const data = ips.map((ip, index) => ({
-            IP: ip,
-            Device: entryPoints[index],
-            Vulnerability: severity[index]
+        const data = filteredResults.map(item => ({
+            IP: item.ip,
+            Device: item.device,
+            Vulnerability: item.vulnerability
         }));
         const ws = XLSX.utils.json_to_sheet(data);
         const wb = XLSX.utils.book_new();
@@ -107,18 +118,19 @@
 <Menu {menuOpen} />
 
 <div class="ml p-5">
-	<div class="text-center py-4">
-		<h1 class="text-4xl font-bold text-gray-800 dark:text-gray-200">Report</h1>
-	</div>
+    <div class="text-center py-4">
+        <h1 class="text-4xl font-bold text-gray-800 dark:text-gray-200">Report</h1>
+    </div>
 
     <button class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md mb-6" on:click={toggleMenu}>☰ Menu</button>
 
     <button class="bg-gray-600 hover:bg-gray-700 text-white py-2 px-6 rounded-md shadow-md mb-6">Go to Current Project Folder</button>
 
+    <!-- Search Section -->
     <div class="mb-6">
         <label class="block text-gray-700 dark:text-white mb-2">Search by</label>
         <div class="flex items-center space-x-2">
-            <select bind:value={searchCategory} class="bg-gray-200 border border-gray-300 rounded-md py-2 px-4 focus:ring-2 focus:ring-blue-500">
+            <select bind:value={searchCategory} class="bg-gray-200 border border-gray-300 rounded-md py-2 px-4 focus:ring-2 focus:ring-blue-500" on:change={filterDevices}>
                 <option>IP Addresses</option>
                 <option>Device</option>
                 <option>Vulnerability</option>
@@ -133,6 +145,7 @@
         </div>
     </div>
 
+    <!-- Filtered Device List -->
     <div class="border border-gray-300 bg-gray-300 dark:bg-gray-600 rounded-lg shadow-sm mb-6 p-4">
         <ul class="space-y-2">
             <li class="font-bold text-gray-700 flex justify-between bg-gray-100 p-2 rounded-md overflow-x-auto">
@@ -140,16 +153,17 @@
                 <span>Device</span>
                 <span>Vulnerability</span>
             </li>
-            {#each ips as ip, index}
+            {#each filteredResults as item}
                 <li class="flex justify-between p-2 rounded-md hover:bg-gray-50 overflow-x-auto">
-                    <span>{ip}</span>
-                    <span>{entryPoints[index]}</span>
-                    <span>{severity[index]}</span>
+                    <span>{item.ip}</span>
+                    <span>{item.device}</span>
+                    <span>{item.vulnerability}</span>
                 </li>
             {/each}
         </ul>
     </div>
 
+    <!-- Export Format Dropdown -->
     <div class="mb-6">
         <label for="export-format" class="block text-gray-700 dark:text-white mb-2">Format to export</label>
         <select id="export-format" bind:value={selectedFormat} class="bg-gray-200 border border-gray-300 rounded-md py-2 px-4 w-40 focus:ring-2 focus:ring-blue-500">
@@ -162,4 +176,3 @@
     <button class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-6 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300"
         on:click={handleExport}>Export</button>
 </div>
-
