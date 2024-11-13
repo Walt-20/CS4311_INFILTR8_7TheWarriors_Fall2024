@@ -9,10 +9,10 @@
 	import { fly } from 'svelte/transition';
 
 	let greeting = '';
-	let notifications = [
-		{ message: 'Notification 1', unread: true },
-		{ message: 'Notification 2', unread: false },
-		{ message: 'Notification 3', unread: true }
+	let projects = [
+		"Project 1",
+		"Project 2",
+		"Project 3"
 	];
 	let files = [];
     let uploadedfiles = []; //Array of paths to files that have been uploaded
@@ -59,11 +59,11 @@
 		showToast = false;
 		console.log('uploading files');
 		const formData = new FormData();
-		formData.append('file', file);
+		formData.append('projectName', projectName)
+		formData.append('files', file);
 
 		try {
 			const response = await fetch('http://localhost:5001/upload', {
-				////// <---- Might need to change this
 				method: 'POST',
 				body: formData
 			});
@@ -82,7 +82,6 @@
 			console.error('Error uploading file:', error);
 		}
 	}
-	/////////////////////////////////////////////////
 
 	function handleCreateProject() {
         console.log("Project Name",projectName)
@@ -178,6 +177,12 @@
 			</h2>
 		</div>
 
+
+		<div class="popup">
+			<input type="text" id="projectName" bind:value={projectName} placeholder="Enter a name for your project" class="mt-1 block w-full p-2 border rounded" />
+		</div>
+		<br>
+
 		<!-- File Upload -->
 		<div
 			class="file-upload cursor-pointer rounded border-2 border-dashed border-gray-300 p-6 text-center hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:border-gray-500 dark:hover:bg-gray-600"
@@ -204,19 +209,26 @@
 			</div>
 		</div>
 	</div>
+
 	<!-- Notifications Section -->
-	<div class="notifications">
+	<div class="projects">
 		<div class="mb-4 rounded bg-gray-50 p-4 shadow dark:bg-gray-700">
 			<h2 class="flex items-center text-xl font-bold dark:text-gray-200">
-				<span class="material-symbols-outlined mr-2">notifications_active</span>
-				Notifications
+				<span class="material-symbols-outlined mr-2">folder</span>
+				Projects
 			</h2>
 		</div>
-
 		<div class="rounded bg-white p-4 shadow dark:bg-gray-700">
-			{#each notifications as { message, unread }}
-				<Notification {message} {unread} />
+			{#if projects.length < 0}
+			{#each projects as project}
+			<h3>
+				<span class="material-symbols-outlined mr-2">folder</span>
+				{project}
+			</h3>
 			{/each}
+			{:else}
+				<h3>No Projects</h3>
+			{/if}
 		</div>
 	</div>
 
@@ -232,7 +244,7 @@
 		<button
 			class="mr-4 rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 disabled:cursor-not-allowed disabled:opacity-50 dark:focus:ring-blue-800"
 			on:click={() => showPopup.set(true)}
-			disabled={!isValidFile}
+			disabled={!isValidFile && projectName != null}
 		>
 			Create Project
 		</button>
@@ -244,8 +256,8 @@
 			Discard All
 		</button>
 
-		<h2 class="mt-6 text-xl font-bold dark:text-gray-200">Uploading Files</h2>
 		{#if files.length > 0}
+			<h2 class="mt-6 text-xl font-bold dark:text-gray-200">Uploading Files</h2>
 			<ul class="mt-2 list-inside list-disc dark:text-gray-300">
 				{#each files as file}
 					<li>{file.name}</li>
@@ -256,23 +268,11 @@
 			<div class="progress-bar mt-4 overflow-hidden rounded bg-gray-200">
 				<div class="h-2 rounded bg-green-500" style="width: {uploadProgress}%"></div>
 			</div>
-		{:else}
-			<p class="mt-4 text-gray-600 dark:text-gray-300">No files being uploaded.</p>
 		{/if}
 	</div>
 
-    {#if $showPopup}
-    <div class="popup">
-        <form on:submit|preventDefault={handleCreateProject}>
-        <input type="text" id="projectName" bind:value={projectName} placeholder="Enter a name for your project" class="mt-1 block w-full p-2 border rounded" />
-        <button type="submit" class="mt-6 w-full py-2 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700 text-center block">Submit</button>
-        </form>
-    </div>
-    <br>
-    {/if}
-
 	<!-- New Download Logs Section -->
-	<div class="download-logs">
+	<!-- <div class="download-logs">
 		<button class="button" on:click={downloadLogs}>Download Logs</button>
-	</div>
+	</div> -->
 </div>
