@@ -6,11 +6,11 @@
 	let errorMessage = ''; // To store and display error messages
 
 	let ips = [];
-    let disallowedIps = [];
+	let disallowedIps = [];
 	let ipStatus = [];
 
 	let entryPoints = [];
-    let disallowedEntryPoints = [];
+	let disallowedEntryPoints = [];
 	let projects = ['Project 1', 'Project 2', 'Project 3'];
 	let menuOpen = false;
 
@@ -21,17 +21,17 @@
 	// Toggle IP status between 'allowed' and 'off-limits'
 	function toggleStatus(index) {
 		ipStatus[index] = ipStatus[index] === 'Allowed' ? 'Off-Limits' : 'Allowed';
-        console.log(ipStatus[index])
-        if (ipStatus[index] == 'Off-Limits') {
-            console.log("off-limits")
-            disallowedIps.push(ips[index])
-            disallowedEntryPoints.push([entryPoints[index]])
-            console.log(disallowedIps)
-            console.log(disallowedEntryPoints)
-        } else {
-            disallowedIps = disallowedIps.filter(ip => ip !== ips[index])
-            disallowedEntryPoints = disallowedEntryPoints.filter(entry => entry !== entryPoints[index])
-        }
+		console.log(ipStatus[index]);
+		if (ipStatus[index] == 'Off-Limits') {
+			console.log('off-limits');
+			disallowedIps.push(ips[index]);
+			disallowedEntryPoints.push([entryPoints[index]]);
+			console.log(disallowedIps);
+			console.log(disallowedEntryPoints);
+		} else {
+			disallowedIps = disallowedIps.filter((ip) => ip !== ips[index]);
+			disallowedEntryPoints = disallowedEntryPoints.filter((entry) => entry !== entryPoints[index]);
+		}
 	}
 
 	// Regular expression to validate an IP address with sections ranging 0-255
@@ -96,9 +96,9 @@
 	}
 
 	async function startAnalysis() {
-        const requestBody = JSON.stringify({ disallowedIps, disallowedEntryPoints })
+		const requestBody = JSON.stringify({ disallowedIps, disallowedEntryPoints });
 
-        console.log('Request body: ', requestBody)
+		console.log('Request body: ', requestBody);
 		try {
 			const response = await fetch('http://localhost:5001/start-analysis', {
 				method: 'POST',
@@ -113,8 +113,8 @@
 			if (!response.ok) {
 				throw new Error('Error, Network response: ', response);
 			} else {
-				navigateTo('/report')
-			}	
+				navigateTo('/report');
+			}
 		} catch (error) {
 			console.error('Error starting analysis: ', error);
 		}
@@ -136,307 +136,100 @@
     
     */
 
-	   async function fetchResults() {
-	    try {
-	        const response = await fetch('http://localhost:5001/parsed-results');
+	async function fetchResults() {
+		try {
+			const response = await fetch('http://localhost:5001/parsed');
 
-	        if (!response.ok) {
-	            throw new Error('Error, Network response: ', response);
-	        }
+			if (!response.ok) {
+				throw new Error('Error, Network response: ', response);
+			}
 
-	        const data = await response.json();
+			const data = await response.json();
 
-	        const inIps = [];
-	        const inEntryPoints = [];
-            const inSeverity = [];
-            const inPluginName = [];
+			const inIps = [];
+			const inEntryPoints = [];
+			const inSeverity = [];
+			const inPluginName = [];
 
-	        data.forEach(item => {
-	            inIps.push(item.ip);
-	            inEntryPoints.push(item.archetype);
-                inSeverity.push(item.severity);
-                inPluginName.push(item.pluginName);
-	        });
+			data.forEach((item) => {
+				inIps.push(item.ip);
+				inEntryPoints.push(item.archetype);
+				inSeverity.push(item.severity);
+				inPluginName.push(item.pluginName);
+			});
 
-	        ips = inIps;
-	        entryPoints = inEntryPoints;
-            pluginName = inPluginName;
-            severity = inSeverity;
-	        ipStatus = ips.map(() => "Allowed");
-	    } catch (error) {
-	        console.error('Error fetching results: ', error);
-	    }
-	   }
+			ips = inIps;
+			entryPoints = inEntryPoints;
+			pluginName = inPluginName;
+			severity = inSeverity;
+			ipStatus = ips.map(() => 'Allowed');
+		} catch (error) {
+			console.error('Error fetching results: ', error);
+		}
+	}
 
-	   fetchResults();
+	fetchResults();
 </script>
 
-<Menu {menuOpen} />
-
-<div class="main">
-	<h2>Current Project Folder</h2>
-
-	<div class="grid">
-		<button class="current-project">
-			<div class="folder-icon">📁</div>
-			<div class="button-text">
-				<span>Go to Current</span>
-				<span>Project Folder</span>
-			</div>
-		</button>
-
-		<div class="ip">
-			<h2>Scope IP List</h2>
-			<div class="scope-list">
-				<ul>
-					{#each ips as ip, index}
-						<li>
-							<!-- Clickable box for status -->
-							<span
-								class="status-box"
-								on:click={() => toggleStatus(index)}
-								class:allowed_box={ipStatus[index] === 'Allowed'}
-								class:off-limits_box={ipStatus[index] === 'Off-Limits'}
-							>
-							</span>
-							<span>{ip}</span>
-                            <span>{entryPoints[index]}</span>
-                            <span>{severity[index]}</span>
-							<!-- Toggle status when clicked -->
-							<span
-								class="status-label"
-								class:allowed={ipStatus[index] === 'Allowed'}
-								class:off-limits={ipStatus[index] === 'Off-Limits'}
-							>
-								{ipStatus[index]}
-							</span>
-							<div>
-								<span
-									class="arrow"
-									on:click={() => moveUp(ips, ipStatus, index)}
-									aria-label="Move up"
-									><span class="material-symbols-outlined"> keyboard_arrow_up </span></span
-								>
-								<span
-									class="arrow"
-									on:click={() => moveDown(ips, ipStatus, index)}
-									aria-label="Move down"
-									><span class="material-symbols-outlined"> keyboard_arrow_down </span></span
-								>
-							</div>
-						</li>
-					{/each}
-					<!-- Input field for Allowed IPs -->
-					<input type="text" bind:value={newIp} placeholder="Enter IP" />
-					<button on:click={addNewIp}>Add</button>
-				</ul>
-			</div>
-			<!-- Error Message Display -->
-			{#if errorMessage}
-				<p class="error">{errorMessage}</p>
-			{/if}
-		</div>
-
-		<div class="load">
-			<h2>Load Projects</h2>
-			<div class="load-projects">
-				<ul>
-					{#each projects as project}
-						<li class="project-card">
-							<span class="icon">📁</span>
-							<span>{project}</span>
-						</li>
-					{/each}
-				</ul>
-			</div>
-		</div>
-	</div>
-	<div class="start-testing">
-		<button on:click={startAnalysis}>Start Analysis</button>
-	</div>
-</div>
-
 <style>
-	.grid {
-		display: grid;
-		grid-template-columns: 1fr auto;
-		grid-template-areas: 'current-project load' 'ip load' 'entry load';
-		grid-gap: 5px;
-		padding: 5px;
-	}
-
-	.current-project {
-		grid-area: current-project;
-		display: flex;
-		width: 50%;
-		align-items: center;
-		padding: 10px;
-		background-color: rgba(83, 109, 130, 255);
-		color: #fff;
-		border: none;
-		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-		border-radius: 8px;
-		cursor: pointer;
-	}
-
-	.current-project:hover {
-		transform: scale(1.05);
-		box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-	}
-
-	.folder-icon {
-		margin-right: 10px;
-		font-size: 2rem;
-		display: flex;
-		align-items: center;
-	}
-
-	.button-text {
-		margin-top: 0.75rem;
-		display: flex;
-		flex-direction: column;
-		margin-left: 10px;
-	}
-
-	.ip {
-		grid-area: ip;
-	}
-
-	.scope-list,
-	.entry-list {
-		background-color: rgba(83, 109, 130, 255);
-		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-		width: 75%;
-		padding: 5px;
-	}
-
-	/*  I DONT LIKE THIS....Darien
-    .scope-list:hover, .entry-list:hover {
-        transform: scale(1.05);
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-    */
-
-	.scope-list ul,
-	.entry-list ul {
-		list-style-type: none;
-		padding: 0;
-	}
-
-	.scope-list li,
-	.entry-list li {
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-		padding: 5px 0;
-	}
-
-	/*  Start of Add Darien  */
-	input {
-		margin-right: 10px;
-	}
-
-	button {
-		margin-bottom: 10px;
-	}
-
-	.error {
-		color: red;
-	}
-
-	.status-label {
-		cursor: pointer;
-		font-weight: bold;
-	}
-
-	.status-box {
-		display: inline-block;
-		width: 20px; /* Width of the box */
-		height: 20px; /* Height of the box */
-		margin-right: 1px; /* Space between box and IP */
-		cursor: pointer; /* Pointer cursor to indicate clickable */
-	}
-
 	.allowed_box {
-		background-color: #8bc34a;
-		border: 1px solid #4caf50;
+		background-color: green;
 	}
 
 	.off-limits_box {
-		background-color: #f44336;
-		border: 1px solid #d32f2f;
-	}
-
-	.allowed {
-		color: #8bc34a;
-	}
-
-	.off-limits {
-		color: #f44336;
-	}
-	/*      End of Add Darien  */
-
-	.load-projects ul {
-		list-style-type: none;
-		padding: 0;
-	}
-
-	.project-card {
-		display: flex;
-		align-items: center;
-		padding: 20px;
-		margin: 20px 0;
-		border-radius: 5px;
-		background-color: rgba(83, 109, 130, 255);
-		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-		cursor: pointer;
-	}
-
-	.project-card:hover {
-		transform: scale(1.05);
-		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-	}
-
-	.project-card .icon {
-		margin-right: 10px;
-	}
-
-	.entry {
-		grid-area: entry;
-	}
-
-	.load {
-		grid-area: load;
-		justify-self: end;
-	}
-
-	.main {
-		padding: 5px;
-	}
-
-	.arrow {
-		cursor: pointer;
-		margin-left: 10px;
-	}
-
-	.start-testing {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-
-	.start-testing button {
-		padding: 10px 20px;
-		background-color: rgba(83, 109, 130, 255);
-		color: #fff;
-		border: none;
-		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-		border-radius: 8px;
-		cursor: pointer;
-	}
-
-	.start-testing button:hover {
-		transform: scale(1.05);
-		box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+		background-color: red;
 	}
 </style>
+
+<Menu {menuOpen} />
+
+<div class="text-center py-4">
+    <h1 class="text-4xl font-bold text-gray-800 dark:text-gray-200">Current Project</h1>
+</div>
+
+<div class="flex flex-wrap md:flex-nowrap gap-x-5 p-5 bg-gray-100 dark:bg-gray-900 min-h-screen">
+    <!-- Left Section: IP List & Entry Points -->
+    <div class="flex flex-col w-full md:w-1/2 space-y-5">
+        <!-- IP List -->
+        <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-5">
+            <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Scope IP List</h2>
+            <ul class="space-y-3 mt-4">
+                {#each ips as ip, index}
+                    <li class="flex items-center justify-between">
+                        <span class="cursor-pointer rounded-full w-5 h-5 flex items-center justify-center" on:click={() => toggleStatus(index)}
+							class:allowed_box={ipStatus[index] === 'Allowed'}
+							class:off-limits_box={ipStatus[index] === 'Off-Limits'}></span>
+                        <span class="ml-4 text-gray-800 dark:text-gray-200">{ip}</span>
+                        <span class="ml-4 text-gray-800 dark:text-gray-200">{entryPoints[index]}</span>
+                    </li>
+                {/each}
+            </ul>
+            <input type="text" bind:value={newIp} placeholder="Enter IP" class="mt-4 w-full p-2 rounded border dark:bg-gray-700 dark:border-gray-600" />
+            <button on:click={addNewIp} class="mt-2 w-full py-2 bg-blue-600 text-white rounded">Add</button>
+            {#if errorMessage}
+                <p class="text-red-500 mt-2">{errorMessage}</p>
+            {/if}
+        </div>
+        <div class="text-center py-50">
+            <button on:click={startAnalysis} class="mt-2 w-60 py-2 bg-blue-600 text-white rounded">Start Analysis</button>
+        </div>
+    </div>
+
+    <!-- Right Section: Create Project and Load Projects -->
+    <div class="flex flex-col w-full md:w-1/2 space-y-5 mt-5 md:mt-0">
+        <!-- Load Projects Box -->
+        <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-5">
+            <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Load Projects</h2>
+            <ul class="mt-4 space-y-3">
+                <li class="flex items-center p-3 bg-gray-200 dark:bg-gray-700 rounded cursor-pointer hover:bg-gray-300 dark:hover:bg-gray-600">
+                    <span class="mr-4">📁</span>
+                    <span class="text-gray-800 dark:text-gray-200">Project 1</span>
+                </li>
+                <li class="flex items-center p-3 bg-gray-200 dark:bg-gray-700 rounded cursor-pointer hover:bg-gray-300 dark:hover:bg-gray-600">
+                    <span class="mr-4">📁</span>
+                    <span class="text-gray-800 dark:text-gray-200">Project 2</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
