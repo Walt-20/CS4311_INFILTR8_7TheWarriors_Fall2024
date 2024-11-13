@@ -1,11 +1,7 @@
 <script>
 	import Menu from '../../lib/Menu.svelte';
 	import { navigateTo } from '../../utils';
-
-	import { writable } from 'svelte/store';
-
-	export const disallowedIps = writable([]);
-	export const disallowedEntryPoints = writable([]);
+	import {disallowedIps,disallowedEntryPoints} from '../../disallowedfilter';
 
 	let newIp = ''; // Stores the input for new IP
 	let errorMessage = ''; // To store and display error messages
@@ -109,7 +105,7 @@
 		const currentDisallowedIps = $disallowedIps; 
 		const currentDisallowedEntryPoints = $disallowedEntryPoints; 
 
-        const requestBody = JSON.stringify({ disallowedIps: currentDisallowedIps, disallowedEntryPoints: disallowedEntryPoints })
+        const requestBody = JSON.stringify({ disallowedIps: currentDisallowedIps, disallowedEntryPoints: currentDisallowedEntryPoints })
 
 		console.log('Request body: ', requestBody);
 		try {
@@ -123,10 +119,10 @@
 
 			console.log('response is: ', response);
 
-			if (!response.ok) {
-				throw new Error('Error, Network response: ', response);
-			} else {
+			if (response.ok) {
 				navigateTo('/report');
+			} else {
+				throw new Error('Error, Network response: ', response);
 			}
 		} catch (error) {
 			console.error('Error starting analysis: ', error);
