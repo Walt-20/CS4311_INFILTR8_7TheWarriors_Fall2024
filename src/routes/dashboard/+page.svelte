@@ -1,217 +1,279 @@
 <script>
     import user from '../../user';
-    import { onMount } from 'svelte';
-    import Menu from '$lib/Menu.svelte';
-    import Notification from '$lib/Notification.svelte';
-    import { navigateTo } from '../../utils';
-    import { BookOpenOutline } from 'flowbite-svelte-icons';
-    import { addLog, logs } from '$lib/logStore.js';
-    import { get } from 'svelte/store'; // To retrieve the logs
-    
-    let greeting = '';
-    let notifications = [
-        { message: "Notification 1", unread: true },
-        { message: "Notification 2", unread: false },
-        { message: "Notification 3", unread: true }
-    ];
-    let files = [];
-    let uploadProgress = 0;
-    let menuOpen = false;
-    let isValidFile = false;
+	import { onMount } from 'svelte';
+	import Menu from '$lib/Menu.svelte';
+	import Notification from '$lib/Notification.svelte';
+	import { navigateTo } from '../../utils';
+	import { BookOpenOutline } from 'flowbite-svelte-icons';
+	import { addLog, logs } from '$lib/logStore.js';
+	import { get, writable } from 'svelte/store'; // To retrieve the logs
+	import { fly } from 'svelte/transition';
 
-    onMount(() => {
-        const hours = new Date().getHours();
-        greeting = hours < 12 ? 'Good Morning' : hours < 18 ? 'Good Afternoon' : 'Good Evening';
-        addLog(`Greeting set to: ${greeting}`);
-    });
+	let greeting = '';
+	let notifications = [
+		{ message: 'Notification 1', unread: true },
+		{ message: 'Notification 2', unread: false },
+		{ message: 'Notification 3', unread: true }
+	];
+	let files = [];
+    let uploadedfiles = []; //Array of paths to files that have been uploaded
+	let uploadProgress = 0;
+	let menuOpen = false;
+	let isValidFile = false;
+	let serverResponse = null;
+    let showToast = false;
+    let showPopup = writable(false);
+    let projectName = '';
 
-    function handleFileSelect(event) {
-        const selectedFiles = Array.from(event.target.files);
-        const validFiles = selectedFiles.filter(file => file.name.endsWith(".nessus"));
+	onMount(() => {
+		const hours = new Date().getHours();
+		greeting = hours < 12 ? 'Good Morning' : hours < 18 ? 'Good Afternoon' : 'Good Evening';
+		addLog(`Greeting set to: ${greeting}`);
+	});
 
-        if (validFiles.length !== selectedFiles.length) {
-            alert('Only .nessus files are allowed.');
-            addLog('Invalid file type selected.');
-        }
+	function handleFileSelect(event) {
+		const selectedFiles = Array.from(event.target.files);
+		const validFiles = selectedFiles.filter((file) => file.name.endsWith('.nessus'));
 
-        files = validFiles;
-        isValidFile = files.length > 0;
-        addLog(`${files.length} valid files selected.`);
-        handleShowProgress();
+		if (validFiles.length !== selectedFiles.length) {
+			alert('Only .nessus files are allowed.');
+			addLog('Invalid file type selected.');
+		}
 
-        // Added this - Darien ///////////////////
-        if (isValidFile) {
-            // Upload the file to the server for parsing
-            uploadFileToServer(files[0]);
-        }
-        ///////////////////////////////////////////
-    }
+		files = validFiles;
+		console.log(`what is files? ${files}`);
+		isValidFile = files.length > 0;
+		addLog(`${files.length} valid files selected.`);
+		handleShowProgress();
 
-    // Added this - Darien  ///////////////////////
-    async function uploadFileToServer(file) {
-        const formData = new FormData();
-        formData.append('file', file);
+		// Added this - Darien ///////////////////
+		if (isValidFile) {
+			// Upload the file to the server for parsing
+			files.forEach((file) => uploadFileToServer(file));
+		}
+		///////////////////////////////////////////
+	}
 
-        try {
-            const response = await fetch('http://localhost:5001/upload', {      ////// <---- Might need to change this
-                method: 'POST',
-                body: formData
-            });
+	// Added this - Darien  ///////////////////////
+	async function uploadFileToServer(file) {
+		serverResponse = null;
+		showToast = false;
+		console.log('uploading files');
+		const formData = new FormData();
+		formData.append('file', file);
 
-            if (response.ok) {
-                const csvFilePath = await response.json();
-                alert(`CSV file generated: ${csvFilePath}`);
-            } else {
-                alert('File upload failed');
+		try {
+			const response = await fetch('http://localhost:5001/upload', {
+				////// <---- Might need to change this
+				method: 'POST',
+				body: formData
+			});
+
+			if (response.ok) {
+				const result = await response.json();
+				serverResponse = `CSV file generated: ${result.message}`;
+                let uploadedfilepath = result.filepath;
+                uploadedfiles.push(uploadedfilepath)
+			} else {
+				serverResponse = 'File upload failed';
+			}
+			showToast = true;
+			setTimeout(() => (showToast = false), 3000);
+		} catch (error) {
+			console.error('Error uploading file:', error);
+		}
+	}
+	/////////////////////////////////////////////////
+
+	function handleCreateProject() {
+        console.log("Project Name",projectName)
+		addLog('Creating project with selected files.');
+		navigateTo('/project');
+	}
+
+	function handleDiscardAll() {
+		files = [];
+        uploadedfiles.forEach(async (filepath) => { 
+            try{
+                const response = await fetch('http://localhost:5001/discard',{
+                    method:'POST',
+                    headers: {
+					    'Content-Type': 'application/json'
+				    },
+				    body: JSON.stringify({filepath: filepath}),
+                })
+
+                if (!response.ok) {
+                    throw new Error()
+                }
+            } catch (error) {
+                console.error("Error discarding files: ",error);
             }
-        } catch (error) {
-            console.error('Error uploading file:', error);
-        }
-    }
-    /////////////////////////////////////////////////
+        });
+		uploadProgress = 0;
+		addLog('All files discarded.');
+	}
 
-    function handleCreateProject() {
-        addLog('Creating project with selected files.');
-        navigateTo('/project');
-    }
+	function handleDrop(event) {
+		event.preventDefault();
+		const selectedFiles = Array.from(event.dataTransfer.files);
+		const validFiles = selectedFiles.filter((file) => file.name.endsWith('.nessus'));
 
-    function handleDiscardAll() {
-        files = [];
-        uploadProgress = 0;
-        addLog('All files discarded.');
-    }
+		if (validFiles.length !== selectedFiles.length) {
+			alert('Only .nessus files are allowed.');
+			addLog('Invalid file type dropped.');
+		}
 
-    function handleDrop(event) {
-        event.preventDefault();
-        const selectedFiles = Array.from(event.dataTransfer.files);
-        const validFiles = selectedFiles.filter(file => file.name.endsWith(".nessus"));
+		files = validFiles;
+		isValidFile = files.length > 0;
+		addLog(`${files.length} valid files dropped.`);
+		handleShowProgress();
 
-        if (validFiles.length !== selectedFiles.length) {
-            alert('Only .nessus files are allowed.');
-            addLog('Invalid file type dropped.');
-        }
+		if (isValidFile) {
+			files.forEach((file) => uploadFileToServer(file));
+		}
+	}
 
-        files = validFiles;
-        isValidFile = files.length > 0;
-        addLog(`${files.length} valid files dropped.`);
-        handleShowProgress();
-    }
+	function handleDragOver(event) {
+		event.preventDefault();
+	}
 
-    function handleDragOver(event) {
-        event.preventDefault();
-    }
+	function handleShowProgress() {
+		uploadProgress = 0;
+		const interval = setInterval(() => {
+			uploadProgress += 10;
+			if (uploadProgress >= 100) {
+				clearInterval(interval);
+				addLog('Upload completed.');
+			}
+		}, 100);
+	}
 
-    function handleShowProgress() {
-        uploadProgress = 0;
-        const interval = setInterval(() => {
-            uploadProgress += 10;
-            if (uploadProgress >= 100) {
-                clearInterval(interval);
-                addLog('Upload completed.');
-            }
-        }, 100);
-    }
+	function downloadLogs() {
+		const allLogs = get(logs).join('\n'); // Convert logs to string
+		const blob = new Blob([allLogs], { type: 'text/plain' }); // Create Blob
+		const url = URL.createObjectURL(blob); // Create URL for Blob
 
-    function downloadLogs() {
-        const allLogs = get(logs).join('\n'); // Convert logs to string
-        const blob = new Blob([allLogs], { type: 'text/plain' }); // Create Blob
-        const url = URL.createObjectURL(blob); // Create URL for Blob
-
-        // Create temporary link and trigger download
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'Logs.log';
-        a.click();
-        URL.revokeObjectURL(url); // Clean up
-    }
+		// Create temporary link and trigger download
+		const a = document.createElement('a');
+		a.href = url;
+		a.download = 'Logs.log';
+		a.click();
+		URL.revokeObjectURL(url); // Clean up
+	}
 </script>
 
 <Menu {menuOpen} />
 
-<div class="text-center py-6">
-    <h1 class="text-2xl font-semibold dark:text-gray-200">{greeting}, {$user?.first_name ?? "Analyst"}!</h1>
+<div class="py-6 text-center">
+	<h1 class="text-2xl font-semibold dark:text-gray-200">{greeting}, {$user?.first_name ?? "Analyst"}!</h1>
 </div>
 
 <div class="grid grid-cols-2 gap-6 p-6">
-      <!-- Create New Project Section -->
-      <div class="create-project">
-        <div class="mb-4 p-4 bg-gray-50 dark:bg-gray-700 rounded shadow">
-            <h2 class="text-xl font-bold flex items-center dark:text-gray-200">
-                <BookOpenOutline class = "w-6 h-6 mr-2" /> 
-                Create New Project
-            </h2>
-        </div>
+	<!-- Create New Project Section -->
+	<div class="create-project">
+		<div class="mb-4 rounded bg-gray-50 p-4 shadow dark:bg-gray-700">
+			<h2 class="flex items-center text-xl font-bold dark:text-gray-200">
+				<BookOpenOutline class="mr-2 h-6 w-6" />
+				Create New Project
+			</h2>
+		</div>
 
-        <!-- File Upload -->
-        <div class="file-upload border-2 border-dashed border-gray-300 dark:border-gray-500 p-6 text-center rounded hover:bg-gray-50 dark:hover:bg-gray-600 cursor-pointer focus:outline-none focus:ring-2 focus:ring-indigo-500">
-            <div class="flex flex-col items-center justify-center space-y-4">
-                <h2 class="text-m flex items-center dark:text-gray-200">
-                    Drag and Drop a File Here Or
-                </h2>
-                
-                <div class="relative inline-block">
-                    <button type="button" class="inline-flex items-center px-4 py-2 bg-blue-600 text-white font-medium text-sm rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
-                        Select Files
-                    </button>
-                    <input id="file-input" class="absolute top-0 left-0 w-full h-full opacity-0 cursor-pointer" type="file" multiple accept=".nessus" on:change={handleFileSelect} />
-                </div>
-            </div>
-        </div>
+		<!-- File Upload -->
+		<div
+			class="file-upload cursor-pointer rounded border-2 border-dashed border-gray-300 p-6 text-center hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:border-gray-500 dark:hover:bg-gray-600"
+		>
+			<div class="flex flex-col items-center justify-center space-y-4">
+				<h2 class="text-m flex items-center dark:text-gray-200">Drag and Drop a File Here Or</h2>
+
+				<div class="relative inline-block">
+					<button
+						type="button"
+						class="inline-flex items-center rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+					>
+						Select Files
+					</button>
+					<input
+						id="file-input"
+						class="absolute left-0 top-0 h-full w-full cursor-pointer opacity-0"
+						type="file"
+						multiple
+						accept=".nessus"
+						on:change={handleFileSelect}
+					/>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Notifications Section -->
+	<div class="notifications">
+		<div class="mb-4 rounded bg-gray-50 p-4 shadow dark:bg-gray-700">
+			<h2 class="flex items-center text-xl font-bold dark:text-gray-200">
+				<span class="material-symbols-outlined mr-2">notifications_active</span>
+				Notifications
+			</h2>
+		</div>
+
+		<div class="rounded bg-white p-4 shadow dark:bg-gray-700">
+			{#each notifications as { message, unread }}
+				<Notification {message} {unread} />
+			{/each}
+		</div>
+	</div>
+
+	<!-- Toast Notification for server response -->
+	{#if showToast}
+		<div class="fixed bottom-4 right-4 rounded bg-white p-4 shadow-lg" in:fly={{ y: 200 }}>
+			<p>{serverResponse}</p>
+		</div>
+	{/if}
+
+	<!-- Upload Files Section -->
+	<div class="upload-files col-span-2 mt-6">
+		<button
+			class="mr-4 rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 disabled:cursor-not-allowed disabled:opacity-50 dark:focus:ring-blue-800"
+			on:click={() => showPopup.set(true)}
+			disabled={!isValidFile}
+		>
+			Create Project
+		</button>
+
+		<button
+			class="rounded bg-red-600 px-4 py-2 text-white hover:bg-red-700 focus:ring-4 focus:ring-red-300 dark:focus:ring-red-800"
+			on:click={handleDiscardAll}
+		>
+			Discard All
+		</button>
+
+		<h2 class="mt-6 text-xl font-bold dark:text-gray-200">Uploading Files</h2>
+		{#if files.length > 0}
+			<ul class="mt-2 list-inside list-disc dark:text-gray-300">
+				{#each files as file}
+					<li>{file.name}</li>
+				{/each}
+			</ul>
+
+			<!-- Progress Bar -->
+			<div class="progress-bar mt-4 overflow-hidden rounded bg-gray-200">
+				<div class="h-2 rounded bg-green-500" style="width: {uploadProgress}%"></div>
+			</div>
+		{:else}
+			<p class="mt-4 text-gray-600 dark:text-gray-300">No files being uploaded.</p>
+		{/if}
+	</div>
+
+    {#if $showPopup}
+    <div class="popup">
+        <form on:submit|preventDefault={handleCreateProject}>
+        <input type="text" id="projectName" bind:value={projectName} placeholder="Enter a name for your project" class="mt-1 block w-full p-2 border rounded" />
+        <button type="submit" class="mt-6 w-full py-2 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700 text-center block">Submit</button>
+        </form>
     </div>
-    <!-- Notifications Section -->
-    <div class="notifications">
-        <div class="mb-4 p-4 bg-gray-50 dark:bg-gray-700 rounded shadow">
-            <h2 class="text-xl font-bold flex items-center dark:text-gray-200">
-                <span class="material-symbols-outlined mr-2">notifications_active</span>
-                Notifications
-            </h2>
-        </div>
+    <br>
+    {/if}
 
-        <div class="bg-white dark:bg-gray-700 p-4 rounded shadow">
-            {#each notifications as { message, unread }}
-                <Notification {message} {unread} />
-            {/each}
-        </div>
-    </div>
-
-    <!-- Upload Files Section -->
-    <div class="upload-files col-span-2 mt-6">
-        <button 
-            class="px-4 py-2 bg-blue-600 text-white rounded mr-4 hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-800" 
-            on:click={handleCreateProject} disabled={files.length == 0} >
-            Create Project
-        </button>
-
-        <button 
-            class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 focus:ring-4 focus:ring-red-300 dark:focus:ring-red-800" 
-            on:click={handleDiscardAll}>
-            Discard All
-        </button>
-
-        <h2 class="text-xl font-bold mt-6 dark:text-gray-200">Uploading Files</h2>
-
-        {#if files.length > 0}
-            <ul class="list-disc list-inside dark:text-gray-300 mt-2">
-                {#each files as file}
-                    <li>{file.name}</li>
-                {/each}
-            </ul>
-
-            <!-- Progress Bar -->
-            <div class="progress-bar bg-gray-200 rounded overflow-hidden mt-4">
-                <div class="bg-green-500 h-2 rounded" style="width: {uploadProgress}%"></div>
-            </div>
-        {:else}
-            <p class="mt-4 text-gray-600 dark:text-gray-300">No files being uploaded.</p>
-        {/if}
-    </div>
-
-<!-- Download Logs Section -->
-<div class="download-logs mt-6">
-    <button 
-        class="px-4 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-800 transition duration-300" 
-        on:click={downloadLogs}>
-        Download Logs
-    </button>
-</div>
+	<!-- New Download Logs Section -->
+	<div class="download-logs">
+		<button class="button" on:click={downloadLogs}>Download Logs</button>
+	</div>
 </div>

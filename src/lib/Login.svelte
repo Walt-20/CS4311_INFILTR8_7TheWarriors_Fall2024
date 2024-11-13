@@ -2,25 +2,41 @@
     import user from '../user';
     import { navigateTo } from '../utils.js';
     import { addLog } from '$lib/logStore.js'; // Import the log store function
+    import bcrypt from 'bcryptjs'; // Import bcryptjs for client-side hashing
 
     let username = '';
     let password = '';
     let currentError = null;
+    let sessionToken = null; // Store the session token
+
+    const generateToken = () => {
+        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+            var r = (Math.random() * 16) | 0,
+                v = c === 'x' ? r : (r & 0x3) | 0x8;
+            return v.toString(16);
+        });
+    };
 
     const login = () => {
-    fetch('http://127.0.0.1:8080/login', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            username: username,
-            password: password,
-        }),
-    })
+        fetch('http://127.0.0.1:8080/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                username: username,
+                password: password,
+            }),
+        })
         .then((response) => {
             if (response.status === 200) {
-                addLog(`User "${username}" logged in successfully.`);
+                // Generate a token after a successful response
+                sessionToken = generateToken();
+
+                // Hash the session token using bcryptjs
+                sessionToken = bcrypt.hashSync(sessionToken, 10);
+                
+                addLog(`User "${username}" logged in successfully. Token: ${sessionToken}`);
                 return response.json();
             } else if (response.status === 401) {
                 currentError = 'Invalid username or password';
@@ -35,10 +51,8 @@
         .then((data) => {
             if (data && data.user) {
                 user.update((val) => (val = { ...data.user }));
-                console.log($user)
-                addLog(`User "${username}" is logged in, showing welcome screen.`);
                 setTimeout(() => {
-                    navigateTo('/dashboard'); 
+                    navigateTo('/dashboard'); // Redirect after a delay
                 }, 3000); // 3000 milliseconds = 3 seconds
             }
         })
@@ -46,7 +60,7 @@
             currentError = error.message || 'An error occurred';
             addLog(`Error logging in for user "${username}". Details: ${currentError}`);
         });
-};
+    };
 
 </script>
 

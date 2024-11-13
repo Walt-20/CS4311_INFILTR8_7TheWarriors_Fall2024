@@ -75,16 +75,16 @@
 		<ul class="space-y-2">
 			<li class="font-bold text-gray-700 flex justify-between bg-gray-100 p-2 rounded-md">
 				<span>IP Addresses</span>
-				<span>Device</span>
+				<!-- <span>Device</span> -->
 				<span>Vulnerability</span>
-				<span>Status</span>
+				<span>Severity</span>
 			</li>
 			{#each ips as ip, index}
 				<li class="flex justify-between p-2 rounded-md hover:bg-gray-50">
 					<span>{ip}</span>
 					<span>{entryPoints[index]}</span>
 					<span>{severity[index]}</span>
-					<span>{pluginName[index]}</span>
+					<!-- <span>{pluginName[index]}</span> -->
 				</li>
 			{/each}
 		</ul>
