@@ -1,23 +1,37 @@
 <script>
     import { onMount } from 'svelte';
     import Menu from '$lib/Menu.svelte';
-    import { addLog } from '$lib/logStore.js'; // Import log function
+    import { jsPDF } from 'jspdf';
+    import * as XLSX from 'xlsx';
 
-    let devices = [
-        { ip: "192.168.1.1", device: "Router", vulnerability: "High", status: "Active" },
-        { ip: "192.168.1.2", device: "Switch", vulnerability: "Medium", status: "Inactive" },
-        { ip: "192.168.1.3", device: "Server", vulnerability: "Low", status: "Active" }
-    ];
-    let exportFormats = ["PDF", "CSV", "Excel"];
+    let ips = [];
+    let entryPoints = [];
+    let severity = [];
+    let pluginName = [];
+    let exportFormats = ['PDF', 'CSV', 'Excel'];
     let selectedFormat = exportFormats[0];
     let menuOpen = false;
 
-    let searchQuery = '';
-    let searchCategory = 'IP Addresses';
-    let filteredDevices = devices;
+    onMount(async () => {
+        await fetchResults();
+    });
 
-    function handleExport() {
-        addLog(`Export button clicked. Format: ${selectedFormat}`);
+    async function fetchResults() {
+        try {
+            const response = await fetch('http://localhost:5001/user-results');
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+
+            const data = await response.json();
+            ips = data.map(item => item.ip);
+            entryPoints = data.map(item => item.archetype);
+            severity = data.map(item => item.severity);
+            pluginName = data.map(item => item.pluginName);
+        } catch (error) {
+            console.error('Error fetching results:', error);
+        }
     }
 
     function toggleMenu() {
@@ -40,6 +54,53 @@
             }
             return true;
         });
+    }
+
+    function handleExport() {
+        if (selectedFormat === 'CSV') {
+            exportAsCSV();
+        } else if (selectedFormat === 'PDF') {
+            exportAsPDF();
+        } else if (selectedFormat === 'Excel') {
+            exportAsExcel();
+        }
+    }
+
+    function exportAsCSV() {
+        const csvContent = [
+            ["IP Address", "Device", "Vulnerability"], // Header row
+            ...ips.map((ip, index) => [ip, entryPoints[index], severity[index]].join(",")) // Data rows
+        ].join("\n");
+
+        const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', 'export.csv');
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+
+    function exportAsPDF() {
+        const doc = new jsPDF();
+        doc.text("Report", 10, 10);
+        ips.forEach((ip, index) => {
+            doc.text(`${ip} - ${entryPoints[index]} - ${severity[index]}`, 10, 20 + (10 * index));
+        });
+        doc.save('report.pdf');
+    }
+
+    function exportAsExcel() {
+        const data = ips.map((ip, index) => ({
+            IP: ip,
+            Device: entryPoints[index],
+            Vulnerability: severity[index]
+        }));
+        const ws = XLSX.utils.json_to_sheet(data);
+        const wb = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, "Report");
+        XLSX.writeFile(wb, 'report.xlsx');
     }
 </script>
 
@@ -74,18 +135,16 @@
 
     <div class="border border-gray-300 bg-gray-300 dark:bg-gray-600 rounded-lg shadow-sm mb-6 p-4">
         <ul class="space-y-2">
-            <li class="font-bold text-gray-700 flex justify-between bg-gray-100 p-2 rounded-md">
+            <li class="font-bold text-gray-700 flex justify-between bg-gray-100 p-2 rounded-md overflow-x-auto">
                 <span>IP Addresses</span>
                 <span>Device</span>
                 <span>Vulnerability</span>
-                <span>Status</span>
             </li>
-            {#each filteredDevices as device}
-                <li class="flex justify-between p-2 rounded-md hover:bg-gray-50">
-                    <span>{device.ip}</span>
-                    <span>{device.device}</span>
-                    <span>{device.vulnerability}</span>
-                    <span>{device.status}</span>
+            {#each ips as ip, index}
+                <li class="flex justify-between p-2 rounded-md hover:bg-gray-50 overflow-x-auto">
+                    <span>{ip}</span>
+                    <span>{entryPoints[index]}</span>
+                    <span>{severity[index]}</span>
                 </li>
             {/each}
         </ul>
@@ -93,12 +152,14 @@
 
     <div class="mb-6">
         <label for="export-format" class="block text-gray-700 dark:text-white mb-2">Format to export</label>
-        <select id="export-format" bind:value={selectedFormat} on:change={handleFormatChange} class="bg-gray-200 border border-gray-300 rounded-md py-2 px-4 w-40 focus:ring-2 focus:ring-blue-500">    
+        <select id="export-format" bind:value={selectedFormat} class="bg-gray-200 border border-gray-300 rounded-md py-2 px-4 w-40 focus:ring-2 focus:ring-blue-500">
             {#each exportFormats as format}
-            <option value={format}>{format}</option>
+                <option value={format}>{format}</option>
             {/each}
         </select>
     </div>
 
-    <button class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-6 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300" on:click={handleExport}>Export</button>
+    <button class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-6 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300"
+        on:click={handleExport}>Export</button>
 </div>
+
