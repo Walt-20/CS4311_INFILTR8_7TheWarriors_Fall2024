@@ -6,11 +6,11 @@
 	let errorMessage = ''; // To store and display error messages
 
 	let ips = [];
-    let disallowedIps = [];
+	let disallowedIps = [];
 	let ipStatus = [];
 
 	let entryPoints = [];
-    let disallowedEntryPoints = [];
+	let disallowedEntryPoints = [];
 	let projects = ['Project 1', 'Project 2', 'Project 3'];
 	let menuOpen = false;
 
@@ -21,17 +21,17 @@
 	// Toggle IP status between 'allowed' and 'off-limits'
 	function toggleStatus(index) {
 		ipStatus[index] = ipStatus[index] === 'Allowed' ? 'Off-Limits' : 'Allowed';
-        console.log(ipStatus[index])
-        if (ipStatus[index] == 'Off-Limits') {
-            console.log("off-limits")
-            disallowedIps.push(ips[index])
-            disallowedEntryPoints.push([entryPoints[index]])
-            console.log(disallowedIps)
-            console.log(disallowedEntryPoints)
-        } else {
-            disallowedIps = disallowedIps.filter(ip => ip !== ips[index])
-            disallowedEntryPoints = disallowedEntryPoints.filter(entry => entry !== entryPoints[index])
-        }
+		console.log(ipStatus[index]);
+		if (ipStatus[index] == 'Off-Limits') {
+			console.log('off-limits');
+			disallowedIps.push(ips[index]);
+			disallowedEntryPoints.push([entryPoints[index]]);
+			console.log(disallowedIps);
+			console.log(disallowedEntryPoints);
+		} else {
+			disallowedIps = disallowedIps.filter((ip) => ip !== ips[index]);
+			disallowedEntryPoints = disallowedEntryPoints.filter((entry) => entry !== entryPoints[index]);
+		}
 	}
 
 	// Regular expression to validate an IP address with sections ranging 0-255
@@ -96,9 +96,9 @@
 	}
 
 	async function startAnalysis() {
-        const requestBody = JSON.stringify({ disallowedIps, disallowedEntryPoints })
+		const requestBody = JSON.stringify({ disallowedIps, disallowedEntryPoints });
 
-        console.log('Request body: ', requestBody)
+		console.log('Request body: ', requestBody);
 		try {
 			const response = await fetch('http://localhost:5001/start-analysis', {
 				method: 'POST',
@@ -113,8 +113,8 @@
 			if (!response.ok) {
 				throw new Error('Error, Network response: ', response);
 			} else {
-				navigateTo('/report')
-			}	
+				navigateTo('/report');
+			}
 		} catch (error) {
 			console.error('Error starting analysis: ', error);
 		}
@@ -136,41 +136,50 @@
     
     */
 
-	   async function fetchResults() {
-	    try {
-	        const response = await fetch('http://localhost:5001/parsed-results');
+	async function fetchResults() {
+		try {
+			const response = await fetch('http://localhost:5001/parsed');
 
-	        if (!response.ok) {
-	            throw new Error('Error, Network response: ', response);
-	        }
+			if (!response.ok) {
+				throw new Error('Error, Network response: ', response);
+			}
 
-	        const data = await response.json();
+			const data = await response.json();
 
-	        const inIps = [];
-	        const inEntryPoints = [];
-            const inSeverity = [];
-            const inPluginName = [];
+			const inIps = [];
+			const inEntryPoints = [];
+			const inSeverity = [];
+			const inPluginName = [];
 
-	        data.forEach(item => {
-	            inIps.push(item.ip);
-	            inEntryPoints.push(item.archetype);
-                inSeverity.push(item.severity);
-                inPluginName.push(item.pluginName);
-	        });
+			data.forEach((item) => {
+				inIps.push(item.ip);
+				inEntryPoints.push(item.archetype);
+				inSeverity.push(item.severity);
+				inPluginName.push(item.pluginName);
+			});
 
-	        ips = inIps;
-	        entryPoints = inEntryPoints;
-            pluginName = inPluginName;
-            severity = inSeverity;
-	        ipStatus = ips.map(() => "Allowed");
-	    } catch (error) {
-	        console.error('Error fetching results: ', error);
-	    }
-	   }
+			ips = inIps;
+			entryPoints = inEntryPoints;
+			pluginName = inPluginName;
+			severity = inSeverity;
+			ipStatus = ips.map(() => 'Allowed');
+		} catch (error) {
+			console.error('Error fetching results: ', error);
+		}
+	}
 
-	   fetchResults();
-	   console.log(ips)
+	fetchResults();
 </script>
+
+<style>
+	.allowed_box {
+		background-color: green;
+	}
+
+	.off-limits_box {
+		background-color: red;
+	}
+</style>
 
 <Menu {menuOpen} />
 
@@ -187,7 +196,9 @@
             <ul class="space-y-3 mt-4">
                 {#each ips as ip, index}
                     <li class="flex items-center justify-between">
-                        <span class="cursor-pointer rounded-full w-5 h-5 flex items-center justify-center bg-green-500"></span>
+                        <span class="cursor-pointer rounded-full w-5 h-5 flex items-center justify-center" on:click={() => toggleStatus(index)}
+							class:allowed_box={ipStatus[index] === 'Allowed'}
+							class:off-limits_box={ipStatus[index] === 'Off-Limits'}></span>
                         <span class="ml-4 text-gray-800 dark:text-gray-200">{ip}</span>
                         <span class="ml-4 text-gray-800 dark:text-gray-200">{entryPoints[index]}</span>
                     </li>
@@ -200,10 +211,28 @@
             {/if}
         </div>
         <div class="text-center py-50">
-            <button on:click={() => goto('/analysis')} class="mt-2 w-60 py-2 bg-blue-600 text-white rounded">Start Analysis</button>
+            <button on:click={startAnalysis} class="mt-2 w-60 py-2 bg-blue-600 text-white rounded">Start Analysis</button>
         </div>
     </div>
 
+    <!-- Right Section: Create Project and Load Projects -->
+    <div class="flex flex-col w-full md:w-1/2 space-y-5 mt-5 md:mt-0">
+        <!-- Load Projects Box -->
+        <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-5">
+            <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Load Projects</h2>
+            <ul class="mt-4 space-y-3">
+                <li class="flex items-center p-3 bg-gray-200 dark:bg-gray-700 rounded cursor-pointer hover:bg-gray-300 dark:hover:bg-gray-600">
+                    <span class="mr-4">📁</span>
+                    <span class="text-gray-800 dark:text-gray-200">Project 1</span>
+                </li>
+                <li class="flex items-center p-3 bg-gray-200 dark:bg-gray-700 rounded cursor-pointer hover:bg-gray-300 dark:hover:bg-gray-600">
+                    <span class="mr-4">📁</span>
+                    <span class="text-gray-800 dark:text-gray-200">Project 2</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
     <!-- Right Section: Create Project and Load Projects -->
     <div class="flex flex-col w-full md:w-1/2 space-y-5 mt-5 md:mt-0">
         <!-- Load Projects Box -->

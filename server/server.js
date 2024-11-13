@@ -13,7 +13,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const rootDir = path.join(__dirname, '..');
 const targetParsedDir = path.join(__dirname, 'parsed-results');
-const jsonParsedFilePath = path.join(rootDir, 'server', 'parsed-results')
+const jsonParsedFilePath = path.join(rootDir, 'server', 'parsed-results', 'results.json')
 const targetUserDir = path.join(__dirname, 'user-results');
 const jsonUserFilePath = path.join(rootDir, 'server', 'user-results', 'results.json')
 const uploadedFiles = {};
@@ -113,7 +113,7 @@ app.post('/upload', upload.single('file'), (req, res) => {
                 })
 
                 const jsonData = JSON.stringify(results, null, 2)
-                const jsonPath = path.join(jsonParsedFilePath, "parse-"+ Date.now() + '-' + Math.round(Math.random() * 1E9) + ".json")
+                const jsonPath = path.join(jsonParsedFilePath)
 
                 fs.writeFile(jsonPath, jsonData, (err) => {
                     if (err) {
@@ -188,7 +188,7 @@ app.post('/start-analysis', upload.single('file'), (req, res) => {
     });
 });
 
-app.get('/parsed-results', (req, res) => {
+app.get('/parsed', (req, res) => {
     res.sendFile(jsonParsedFilePath);
 })
 

@@ -96,22 +96,25 @@
     <button class="bg-gray-600 hover:bg-gray-700 text-white py-2 px-6 rounded-md shadow-md mb-6"
         on:click={() => console.log('Go to Project Folder')}>Go to Current Project Folder</button>
 
-    <div class="border border-gray-300 bg-gray-300 dark:bg-gray-600 rounded-lg shadow-sm mb-6 p-4">
-        <ul class="space-y-2">
-            <li class="font-bold text-gray-700 flex justify-between bg-gray-100 p-2 rounded-md overflow-x-auto">
-                <span>IP Addresses</span>
-                <span>Device</span>
-                <span>Vulnerability</span>
-            </li>
-            {#each ips as ip, index}
-                <li class="flex justify-between p-2 rounded-md hover:bg-gray-50 overflow-x-auto">
-                    <span>{ip}</span>
-                    <span>{entryPoints[index]}</span>
-                    <span>{severity[index]}</span>
-                </li>
-            {/each}
-        </ul>
-    </div>
+	<!-- Device List -->
+	<div class="border border-gray-300 bg-gray-300 dark:bg-gray-600 rounded-lg shadow-sm mb-6 p-4">
+		<ul class="space-y-2">
+			<li class="font-bold text-gray-700 flex justify-between bg-gray-100 p-2 rounded-md">
+				<span>IP Addresses</span>
+				<!-- <span>Device</span> -->
+				<span>Vulnerability</span>
+				<span>Severity</span>
+			</li>
+			{#each ips as ip, index}
+				<li class="flex justify-between p-2 rounded-md hover:bg-gray-50">
+					<span>{ip}</span>
+					<span>{entryPoints[index]}</span>
+					<span>{severity[index]}</span>
+					<!-- <span>{pluginName[index]}</span> -->
+				</li>
+			{/each}
+		</ul>
+	</div>
 
     <div class="mb-6">
         <label for="export-format" class="block text-gray-700 dark:text-white mb-2">Format to export</label>
