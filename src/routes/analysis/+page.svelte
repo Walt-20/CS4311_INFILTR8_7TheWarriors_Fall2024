@@ -10,7 +10,7 @@
     ];
 
   let menuOpen = false;
-  let startTimes = ["08:00 AM", "12:00 PM", "04:00 PM"];
+  let startTimes = ["08:00 AM"];
   let selectedStartTime = startTimes[0];
   let analysisProgress = 50; // Example progress value
   let overallProgress = 75; // Example overall progress value
