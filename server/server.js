@@ -193,7 +193,12 @@ app.get('/parsed', (req, res) => {
 })
 
 app.get('/user-results', (req, res) => {
-    res.sendFile(jsonUserFilePath);
+    try {
+        res.sendFile(jsonUserFilePath);
+    } catch(error) {
+        res.send({message: "No results."})
+    }
+
 })
 
 app.post('/discard', (req, res) => {

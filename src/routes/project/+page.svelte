@@ -1,16 +1,17 @@
 <script>
 	import Menu from '../../lib/Menu.svelte';
 	import { navigateTo } from '../../utils';
+	import {disallowedIps,disallowedEntryPoints} from '../../disallowedfilter';
 
 	let newIp = ''; // Stores the input for new IP
 	let errorMessage = ''; // To store and display error messages
 
 	let ips = [];
-	let disallowedIps = [];
+    //let disallowedIps = [];
 	let ipStatus = [];
 
 	let entryPoints = [];
-	let disallowedEntryPoints = [];
+    //let disallowedEntryPoints = [];
 	let projects = ['Project 1', 'Project 2', 'Project 3'];
 	let menuOpen = false;
 
@@ -21,15 +22,21 @@
 	// Toggle IP status between 'allowed' and 'off-limits'
 	function toggleStatus(index) {
 		ipStatus[index] = ipStatus[index] === 'Allowed' ? 'Off-Limits' : 'Allowed';
-		console.log(ipStatus[index]);
-		if (ipStatus[index] == 'Off-Limits') {
-			disallowedIps.push(ips[index]);
-			disallowedEntryPoints.push(entryPoints[index]);
-		} else {
-			console.log("is this working?")
-			disallowedIps = disallowedIps.filter((ip) => ip !== ips[index]);
-			disallowedEntryPoints = disallowedEntryPoints.filter((entry) => entry !== entryPoints[index]);
-		}
+        console.log(ipStatus[index])
+        if (ipStatus[index] == 'Off-Limits') {
+            console.log("off-limits")
+
+            disallowedIps.update(currentIps => { return [...currentIps, ips[index]]; });
+            disallowedEntryPoints.update(currentEntryPoints => { return [...currentEntryPoints, entryPoints[index]]; });
+
+            console.log(disallowedIps)
+            console.log(disallowedEntryPoints)
+        } else {
+
+            disallowedIps.update(currentIps => { return currentIps.filter(ip => ip !== ips[index]); });
+            disallowedEntryPoints.update(currentEntryPoints => { return currentEntryPoints.filter(entry => entry !== entryPoints[index]); });
+
+        }
 	}
 
 	// Regular expression to validate an IP address with sections ranging 0-255
@@ -94,7 +101,11 @@
 	}
 
 	async function startAnalysis() {
-		const requestBody = JSON.stringify({ disallowedIps, disallowedEntryPoints });
+		
+		const currentDisallowedIps = $disallowedIps; 
+		const currentDisallowedEntryPoints = $disallowedEntryPoints; 
+
+        const requestBody = JSON.stringify({ disallowedIps: currentDisallowedIps, disallowedEntryPoints: currentDisallowedEntryPoints })
 
 		console.log('Request body: ', requestBody);
 		try {
@@ -108,10 +119,10 @@
 
 			console.log('response is: ', response);
 
-			if (!response.ok) {
-				throw new Error('Error, Network response: ', response);
-			} else {
+			if (response.ok) {
 				navigateTo('/report');
+			} else {
+				throw new Error('Error, Network response: ', response);
 			}
 		} catch (error) {
 			console.error('Error starting analysis: ', error);
