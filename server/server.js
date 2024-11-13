@@ -46,12 +46,14 @@ const upload = multer({ storage: storage })
 app.use(cors(), express.json());
 
 app.post('/upload', upload.single('file'), (req, res) => {
+    
     if (!req.file) {
         return res.status(400).send('No file uploaded.');
     }
     
     const filePath = path.join(req.file.path);
-    uploadedFiles[1] = req.file.path
+    const filename = req.file.originalname;
+    uploadedFiles[1] = filePath
     exec(`"${pythonPath}" parse.py "${filePath}"`, { cwd: rootDir }, (error, stdout, stderr) => {
         if (error) {
             console.error(`exec error: ${error}`)
@@ -111,13 +113,14 @@ app.post('/upload', upload.single('file'), (req, res) => {
                 })
 
                 const jsonData = JSON.stringify(results, null, 2)
+                const jsonPath = path.join(jsonParsedFilePath)
 
-                fs.writeFile(jsonParsedFilePath, jsonData, (err) => {
+                fs.writeFile(jsonPath, jsonData, (err) => {
                     if (err) {
                         console.error('Error writing JSON file: ', err);
-                        return res.status(500).send('Error savings results');
+                        return res.status(500).send({message: 'Error savings results'});
                     }
-                    res.status(200).send('Results saved successfully');
+                    return res.status(200).send({ message: 'Results saved successfully',filepath: jsonPath });
                 });
             })
             .catch((error) => {
@@ -185,12 +188,23 @@ app.post('/start-analysis', upload.single('file'), (req, res) => {
     });
 });
 
-app.get('/parsed-results', (req, res) => {
+app.get('/parsed', (req, res) => {
     res.sendFile(jsonParsedFilePath);
 })
 
 app.get('/user-results', (req, res) => {
     res.sendFile(jsonUserFilePath);
+})
+
+app.post('/discard', (req, res) => {
+    // console.log(req.body)
+    fs.unlinkSync(req.body.filepath, (err) => {
+        if (err) {
+            return res.status(500).send({message: 'Error discarding file'});
+        } else {
+            return res.status(200).send({message: "Success discarding file"})
+        }
+    })
 })
 
 function deleteDirectory(directoryPath) {
