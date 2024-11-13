@@ -2,15 +2,20 @@
 	import Menu from '../../lib/Menu.svelte';
 	import { navigateTo } from '../../utils';
 
+	import { writable } from 'svelte/store';
+
+	export const disallowedIps = writable([]);
+	export const disallowedEntryPoints = writable([]);
+
 	let newIp = ''; // Stores the input for new IP
 	let errorMessage = ''; // To store and display error messages
 
 	let ips = [];
-    let disallowedIps = [];
+    //let disallowedIps = [];
 	let ipStatus = [];
 
 	let entryPoints = [];
-    let disallowedEntryPoints = [];
+    //let disallowedEntryPoints = [];
 	let projects = ['Project 1', 'Project 2', 'Project 3'];
 	let menuOpen = false;
 
@@ -24,13 +29,17 @@
         console.log(ipStatus[index])
         if (ipStatus[index] == 'Off-Limits') {
             console.log("off-limits")
-            disallowedIps.push(ips[index])
-            disallowedEntryPoints.push([entryPoints[index]])
+
+            disallowedIps.update(currentIps => { return [...currentIps, ips[index]]; });
+            disallowedEntryPoints.update(currentEntryPoints => { return [...currentEntryPoints, entryPoints[index]]; });
+
             console.log(disallowedIps)
             console.log(disallowedEntryPoints)
         } else {
-            disallowedIps = disallowedIps.filter(ip => ip !== ips[index])
-            disallowedEntryPoints = disallowedEntryPoints.filter(entry => entry !== entryPoints[index])
+
+            disallowedIps.update(currentIps => { return currentIps.filter(ip => ip !== ips[index]); });
+            disallowedEntryPoints.update(currentEntryPoints => { return currentEntryPoints.filter(entry => entry !== entryPoints[index]); });
+
         }
 	}
 
@@ -96,7 +105,11 @@
 	}
 
 	async function startAnalysis() {
-        const requestBody = JSON.stringify({ disallowedIps, disallowedEntryPoints })
+		
+		const currentDisallowedIps = $disallowedIps; 
+		const currentDisallowedEntryPoints = $disallowedEntryPoints; 
+
+        const requestBody = JSON.stringify({ disallowedIps: currentDisallowedIps, disallowedEntryPoints: disallowedEntryPoints })
 
         console.log('Request body: ', requestBody)
 		try {
