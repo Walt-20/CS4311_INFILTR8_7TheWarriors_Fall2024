@@ -13,9 +13,9 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const rootDir = path.join(__dirname, '..');
 const targetParsedDir = path.join(__dirname, 'parsed-results');
-const jsonParsedFilePath = path.join(rootDir, 'server', 'parsed-results', 'results.json')
+const jsonParsedFilePath = path.join(rootDir, 'server', 'parsed-results')
 const targetUserDir = path.join(__dirname, 'user-results');
-const jsonUserFilePath = path.join(rootDir, 'server', 'user-results', 'results.json')
+const jsonUserFilePath = path.join(rootDir, 'server', 'user-results')
 const uploadedFiles = {};
 const pythonPath = path.join(rootDir, 'python-backend', 'venv', 'bin', 'python')
 
@@ -45,15 +45,23 @@ const upload = multer({ storage: storage })
 
 app.use(cors(), express.json());
 
-app.post('/upload', upload.single('file'), (req, res) => {
+app.post('/upload', upload.array('files'), (req, res) => {
+
+    const projectName = req.body.projectName;
+    let filePath = '';
     
-    if (!req.file) {
+    if (!req.files || req.files.length === 0) {
         return res.status(400).send('No file uploaded.');
     }
+
+    console.log("this work")
+
+    const uploadedFiles = req.files.map(file => {
+        console.log("uploaded files")
+        filePath = path.join(file.destination + "/" + file.filename)
+        console.log('File Path: ', filePath)
+    })
     
-    const filePath = path.join(req.file.path);
-    const filename = req.file.originalname;
-    uploadedFiles[1] = filePath
     exec(`"${pythonPath}" parse.py "${filePath}"`, { cwd: rootDir }, (error, stdout, stderr) => {
         if (error) {
             console.error(`exec error: ${error}`)
