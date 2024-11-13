@@ -23,12 +23,10 @@
 		ipStatus[index] = ipStatus[index] === 'Allowed' ? 'Off-Limits' : 'Allowed';
 		console.log(ipStatus[index]);
 		if (ipStatus[index] == 'Off-Limits') {
-			console.log('off-limits');
 			disallowedIps.push(ips[index]);
-			disallowedEntryPoints.push([entryPoints[index]]);
-			console.log(disallowedIps);
-			console.log(disallowedEntryPoints);
+			disallowedEntryPoints.push(entryPoints[index]);
 		} else {
+			console.log("is this working?")
 			disallowedIps = disallowedIps.filter((ip) => ip !== ips[index]);
 			disallowedEntryPoints = disallowedEntryPoints.filter((entry) => entry !== entryPoints[index]);
 		}
