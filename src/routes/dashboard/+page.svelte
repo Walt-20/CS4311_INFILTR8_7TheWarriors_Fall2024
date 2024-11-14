@@ -12,11 +12,7 @@
 	console.log("this is a user ", user)
 
 	let greeting = '';
-	let projects = [
-		"Project 1",
-		"Project 2",
-		"Project 3"
-	];
+	let projects = [];
 	let files = [];
     let uploadedfiles = []; //Array of paths to files that have been uploaded
 	let uploadProgress = 0;
@@ -26,6 +22,7 @@
     let showToast = false;
     let showPopup = writable(false);
     let projectName = '';
+	let userId = 1111111;
 
 	onMount(() => {
 		const hours = new Date().getHours();
@@ -62,7 +59,7 @@
 		showToast = false;
 		console.log('uploading files');
 		const formData = new FormData();
-		formData.append('userId', 1111111)
+		formData.append('userId', userId)
 		formData.append('projectName', projectName)
 		formData.append('files', file);
 
@@ -102,7 +99,7 @@
                     headers: {
 					    'Content-Type': 'application/json'
 				    },
-				    body: JSON.stringify({filepath: filepath}),
+				    body: JSON.stringify({ filepath: filepath, userId: 1111111 }),
                 })
 
                 if (!response.ok) {
@@ -163,6 +160,31 @@
 		a.click();
 		URL.revokeObjectURL(url); // Clean up
 	}
+
+	async function fetchUploadedFiles(userId) {
+		const stringifyedUserId = String(userId)
+		console.log(stringifyedUserId)
+		try {
+			const response = await fetch('http://localhost:5001/user-projects',{
+                    method:'POST',
+                    headers: {
+					    'Content-Type': 'application/json'
+				    },
+				    body: JSON.stringify({ userId: stringifyedUserId }),
+                })
+
+			if (!response.ok) {
+				throw new Error('Failed to fetch projects')
+			}
+
+			const serverProjects = await response.json()
+			projects = serverProjects.map(project => project.projectName)
+		} catch (error) {
+			console.error("Error fetching projects: ",error);
+		}
+	}
+
+	fetchUploadedFiles(userId)
 </script>
 
 <Menu {menuOpen} />
@@ -223,15 +245,15 @@
 			</h2>
 		</div>
 		<div class="rounded bg-white p-4 shadow dark:bg-gray-700">
-			{#if projects.length < 0}
-			{#each projects as project}
-			<h3>
-				<span class="material-symbols-outlined mr-2">folder</span>
-				{project}
-			</h3>
-			{/each}
+			{#if projects.length === 0}
+				<p>No Projects Available</p>
 			{:else}
-				<h3>No Projects</h3>
+				{#each projects as project}
+				<h3>
+					<span class="material-symbols-outlined mr-2">folder</span>
+					{project}
+				</h3>
+				{/each}
 			{/if}
 		</div>
 	</div>

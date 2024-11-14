@@ -48,7 +48,7 @@ function createProjectFolder(userId, projectName) {
     if (!fs.existsSync(machineLearningFolderPath)) {
         fs.mkdirSync(machineLearningFolderPath, { recursive: true })
     }
-    
+
     return uploadsFolderPath
 }
 
@@ -70,7 +70,7 @@ app.post('/upload', upload.array('files'), (req, res) => {
     if (!req.files || req.files.length === 0) {
         return res.status(400).send('No file uploaded.');
     }
-    
+
     const userId = req.body.userId
     const projectName = req.body.projectName
     const uploadedFiles = {}
@@ -95,9 +95,9 @@ app.post('/upload', upload.array('files'), (req, res) => {
         const csvFiles = [
             path.join(rootDir, 'machine_learning', 'data_with_exploits.csv'),
         ];
-        
+
         const results = [];
-        
+
         // Function to read a single CSV file
         function parseCSVFile(filePath) {
             return new Promise((resolve, reject) => {
@@ -119,7 +119,7 @@ app.post('/upload', upload.array('files'), (req, res) => {
                     .on('error', (csvError) => reject(csvError));
             });
         }
-        
+
         // Parse all CSV files
         Promise.all(csvFiles.map(parseCSVFile))
             .then((allFilesData) => {
@@ -132,7 +132,7 @@ app.post('/upload', upload.array('files'), (req, res) => {
                     acc[item.ip].push(item)
                     return acc;
                 }, {});
-        
+
                 // Sort results by combined_score in descending order
                 const sortedResults = Object.values(groupedResults).flatMap(group => {
                     return group.sort((a, b) => {
@@ -149,9 +149,9 @@ app.post('/upload', upload.array('files'), (req, res) => {
                 fs.writeFile(jsonPath, jsonData, (err) => {
                     if (err) {
                         console.error('Error writing JSON file: ', err);
-                        return res.status(500).send({message: 'Error savings results'});
+                        return res.status(500).send({ message: 'Error savings results' });
                     }
-                    return res.status(200).send({ message: 'Results saved successfully',filepath: jsonPath });
+                    return res.status(200).send({ message: 'Results saved successfully', filepath: jsonPath });
                 });
             })
             .catch((error) => {
@@ -202,7 +202,7 @@ app.post('/start-analysis', upload.single('file'), (req, res) => {
             })
             .on('end', () => {
                 const jsonData = JSON.stringify(results, null, 2);
-                
+
 
                 fs.writeFile(jsonUserFilePath, jsonData, (err) => {
                     if (err) {
@@ -219,6 +219,31 @@ app.post('/start-analysis', upload.single('file'), (req, res) => {
     });
 });
 
+app.post('/user-projects', (req, res) => {
+    const userId = req.body.userId
+    const userProjectsPath = path.join(rootDir, 'server', 'projects', userId)
+    if (!fs.existsSync(userProjectsPath)) {
+        return res.status(404).send('User not found')
+    }
+
+    fs.readdir(userProjectsPath, (err, projects) => {
+        if (err) {
+            console.error('Error reading user projects: ', err)
+            return res.status(500).send('Error reading user projects')
+        }
+
+        const projectList = projects.map(project => ({
+            projectName: project,
+            projectPath: path.join(userProjectsPath, project)
+        }))
+
+        console.log(projectList)
+
+        res.status(200).json(projectList)
+    })
+
+})
+
 app.get('/parsed', (req, res) => {
     res.sendFile(jsonParsedFilePath);
 })
@@ -231,9 +256,9 @@ app.post('/discard', (req, res) => {
     // console.log(req.body)
     fs.unlinkSync(req.body.filepath, (err) => {
         if (err) {
-            return res.status(500).send({message: 'Error discarding file'});
+            return res.status(500).send({ message: 'Error discarding file' });
         } else {
-            return res.status(200).send({message: "Success discarding file"})
+            return res.status(200).send({ message: "Success discarding file" })
         }
     })
 })
