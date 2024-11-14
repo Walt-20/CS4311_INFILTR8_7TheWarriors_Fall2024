@@ -12,49 +12,79 @@ const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const rootDir = path.join(__dirname, '..');
-const targetParsedDir = path.join(__dirname, 'parsed-results');
-const jsonParsedFilePath = path.join(rootDir, 'server', 'parsed-results', 'results.json')
-const targetUserDir = path.join(__dirname, 'user-results');
 const jsonUserFilePath = path.join(rootDir, 'server', 'user-results', 'results.json')
 const uploadedFiles = {};
 const pythonPath = path.join(rootDir, 'python-backend', 'venv', 'bin', 'python')
 
+app.use(cors(), express.json(), express.urlencoded({ extended: true }));
 
-const uploadDir = path.join(__dirname, 'uploads')
-if (!fs.existsSync(uploadDir)) {
-    fs.mkdirSync(uploadDir, { recursive: true })
+function initializeFolderStructure() {
+    const projectsFolderPath = path.join(rootDir, 'server', 'projects')
+    if (!fs.existsSync(projectsFolderPath)) {
+        fs.mkdirSync(projectsFolderPath, { recursive: true })
+    }
 }
 
-if (!fs.existsSync(targetParsedDir) || !fs.existsSync(targetUserDir)) {
-    fs.mkdirSync(targetParsedDir, { recursive: true })
-    fs.mkdirSync(targetUserDir, { recursive: true })
+initializeFolderStructure();
+
+function createProjectFolder(userId, projectName) {
+    const projectFolderPath = path.join(rootDir, 'server', 'projects', userId, projectName)
+    const uploadsFolderPath = path.join(projectFolderPath, 'uploads')
+    const parsedResultsFolderPath = path.join(projectFolderPath, 'parsed-results')
+    const userResultsFolderPath = path.join(projectFolderPath, 'user-results')
+    const machineLearningFolderPath = path.join(projectFolderPath, 'machine_learning')
+    if (!fs.existsSync(uploadsFolderPath)) {
+        fs.mkdirSync(uploadsFolderPath, { recursive: true })
+    }
+
+    if (!fs.existsSync(parsedResultsFolderPath)) {
+        fs.mkdirSync(parsedResultsFolderPath, { recursive: true })
+    }
+
+    if (!fs.existsSync(userResultsFolderPath)) {
+        fs.mkdirSync(userResultsFolderPath, { recursive: true })
+    }
+
+    if (!fs.existsSync(machineLearningFolderPath)) {
+        fs.mkdirSync(machineLearningFolderPath, { recursive: true })
+    }
+
+    return uploadsFolderPath
 }
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        cb(null, uploadDir)
+        const userId = req.body.userId;
+        const projectName = req.body.projectName
+        const uploadsFolderPath = createProjectFolder(userId, projectName)
+        cb(null, uploadsFolderPath)
     },
     filename: (req, file, cb) => {
-        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
-        const newFilename = uniqueSuffix + path.extname(file.originalname)
-        cb(null, newFilename)
+        cb(null, file.originalname)
     }
 })
 
 const upload = multer({ storage: storage })
 
-app.use(cors(), express.json());
-
-app.post('/upload', upload.single('file'), (req, res) => {
-    
-    if (!req.file) {
+app.post('/upload', upload.array('files'), (req, res) => {
+    if (!req.files || req.files.length === 0) {
         return res.status(400).send('No file uploaded.');
     }
-    
-    const filePath = path.join(req.file.path);
-    const filename = req.file.originalname;
-    uploadedFiles[1] = filePath
-    exec(`"${pythonPath}" parse.py "${filePath}"`, { cwd: rootDir }, (error, stdout, stderr) => {
+
+    const userId = req.body.userId
+    const projectName = req.body.projectName
+    const uploadedFiles = {}
+
+    req.files.forEach(file => {
+        let filePath = path.join(file.destination, file.filename)
+        uploadedFiles[file.originalname] = filePath
+    })
+
+    const filePath = Object.values(uploadedFiles)[0]
+
+    const machineLearningFolderPath = path.join(rootDir, 'server', 'projects', userId, projectName, 'machine_learning')
+
+    exec(`"${pythonPath}" parse.py "${filePath}" "${machineLearningFolderPath}"`, { cwd: rootDir }, (error, stdout, stderr) => {
         if (error) {
             console.error(`exec error: ${error}`)
             return res.status(500).send('Error executing Python script.')
@@ -65,9 +95,9 @@ app.post('/upload', upload.single('file'), (req, res) => {
         const csvFiles = [
             path.join(rootDir, 'machine_learning', 'data_with_exploits.csv'),
         ];
-        
+
         const results = [];
-        
+
         // Function to read a single CSV file
         function parseCSVFile(filePath) {
             return new Promise((resolve, reject) => {
@@ -89,7 +119,7 @@ app.post('/upload', upload.single('file'), (req, res) => {
                     .on('error', (csvError) => reject(csvError));
             });
         }
-        
+
         // Parse all CSV files
         Promise.all(csvFiles.map(parseCSVFile))
             .then((allFilesData) => {
@@ -102,7 +132,7 @@ app.post('/upload', upload.single('file'), (req, res) => {
                     acc[item.ip].push(item)
                     return acc;
                 }, {});
-        
+
                 // Sort results by combined_score in descending order
                 const sortedResults = Object.values(groupedResults).flatMap(group => {
                     return group.sort((a, b) => {
@@ -112,15 +142,16 @@ app.post('/upload', upload.single('file'), (req, res) => {
                     })
                 })
 
+                const jsonParsedFilePath = path.join(rootDir, 'server', 'projects', userId, projectName, 'parsed-results', 'results.json')
                 const jsonData = JSON.stringify(results, null, 2)
                 const jsonPath = path.join(jsonParsedFilePath)
 
                 fs.writeFile(jsonPath, jsonData, (err) => {
                     if (err) {
                         console.error('Error writing JSON file: ', err);
-                        return res.status(500).send({message: 'Error savings results'});
+                        return res.status(500).send({ message: 'Error savings results' });
                     }
-                    return res.status(200).send({ message: 'Results saved successfully',filepath: jsonPath });
+                    return res.status(200).send({ message: 'Results saved successfully', filepath: jsonPath });
                 });
             })
             .catch((error) => {
@@ -171,7 +202,7 @@ app.post('/start-analysis', upload.single('file'), (req, res) => {
             })
             .on('end', () => {
                 const jsonData = JSON.stringify(results, null, 2);
-                
+
 
                 fs.writeFile(jsonUserFilePath, jsonData, (err) => {
                     if (err) {
@@ -187,6 +218,31 @@ app.post('/start-analysis', upload.single('file'), (req, res) => {
             });
     });
 });
+
+app.post('/user-projects', (req, res) => {
+    const userId = req.body.userId
+    const userProjectsPath = path.join(rootDir, 'server', 'projects', userId)
+    if (!fs.existsSync(userProjectsPath)) {
+        return res.status(404).send('User not found')
+    }
+
+    fs.readdir(userProjectsPath, (err, projects) => {
+        if (err) {
+            console.error('Error reading user projects: ', err)
+            return res.status(500).send('Error reading user projects')
+        }
+
+        const projectList = projects.map(project => ({
+            projectName: project,
+            projectPath: path.join(userProjectsPath, project)
+        }))
+
+        console.log(projectList)
+
+        res.status(200).json(projectList)
+    })
+
+})
 
 app.get('/parsed', (req, res) => {
     res.sendFile(jsonParsedFilePath);
@@ -205,44 +261,20 @@ app.post('/discard', (req, res) => {
     // console.log(req.body)
     fs.unlinkSync(req.body.filepath, (err) => {
         if (err) {
-            return res.status(500).send({message: 'Error discarding file'});
+            return res.status(500).send({ message: 'Error discarding file' });
         } else {
-            return res.status(200).send({message: "Success discarding file"})
+            return res.status(200).send({ message: "Success discarding file" })
         }
     })
 })
 
-function deleteDirectory(directoryPath) {
-    if (fs.existsSync(directoryPath)) {
-        fs.readdirSync(directoryPath).forEach((file) => {
-            const currentPath = path.join(directoryPath, file);
-            if (fs.lstatSync(currentPath).isDirectory()) {
-                deleteDirectory(currentPath);
-            } else {
-                fs.unlinkSync(currentPath);
-            }
-        });
-        fs.rmdirSync(directoryPath)
-    }
-}
-
-function cleanup() {
-    console.log('Cleaning up...')
-    deleteDirectory(uploadDir)
-    deleteDirectory(targetParsedDir)
-    deleteDirectory(targetUserDir)
-    console.log('Cleanup complete.')
-}
-
 process.on('SIGINT', () => {
     console.log('Shutting Down....')
-    cleanup()
     process.exit(0)
 })
 
 process.on('SIGTERM', () => {
     console.log('Shutting Down....')
-    cleanup()
     process.exit(0)
 })
 
