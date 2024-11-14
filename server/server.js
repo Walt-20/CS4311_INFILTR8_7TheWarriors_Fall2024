@@ -70,29 +70,11 @@ app.post('/upload', upload.array('files'), (req, res) => {
     if (!req.files || req.files.length === 0) {
         return res.status(400).send('No file uploaded.');
     }
-<<<<<<< HEAD
-
-    const userId = req.body.userId
-    const projectName = req.body.projectName
-    const uploadedFiles = {}
-
-    req.files.forEach(file => {
-        let filePath = path.join(file.destination, file.filename)
-        uploadedFiles[file.originalname] = filePath
-    })
-
-    const filePath = Object.values(uploadedFiles)[0]
-
-    const machineLearningFolderPath = path.join(rootDir, 'server', 'projects', userId, projectName, 'machine_learning')
-
-    exec(`"${pythonPath}" parse.py "${filePath}" "${machineLearningFolderPath}"`, { cwd: rootDir }, (error, stdout, stderr) => {
-=======
     
     const filePath = path.join(req.file.path);
     const filename = req.file.originalname;
     uploadedFiles[1] = filePath
     exec(`"${pythonPath}" parse.py "${filePath}"`, { cwd: rootDir }, (error, stdout, stderr) => {
->>>>>>> 61e2942867a0e04da5b4e56a21c634cda88837c9
         if (error) {
             console.error(`exec error: ${error}`)
             return res.status(500).send('Error executing Python script.')
@@ -103,11 +85,7 @@ app.post('/upload', upload.array('files'), (req, res) => {
         const csvFiles = [
             path.join(rootDir, 'machine_learning', 'data_with_exploits.csv'),
         ];
-<<<<<<< HEAD
-
-=======
         
->>>>>>> 61e2942867a0e04da5b4e56a21c634cda88837c9
         const results = [];
 
         // Function to read a single CSV file
