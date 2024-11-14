@@ -258,8 +258,6 @@ app.post('/discard', (req, res) => {
     })
 })
 
-<<<<<<< HEAD
-=======
 function deleteDirectory(directoryPath) {
     if (fs.existsSync(directoryPath)) {
         fs.readdirSync(directoryPath).forEach((file) => {
@@ -282,7 +280,6 @@ function cleanup() {
     console.log('Cleanup complete.')
 }
 
->>>>>>> 61e2942867a0e04da5b4e56a21c634cda88837c9
 process.on('SIGINT', () => {
     console.log('Shutting Down....')
     process.exit(0)
