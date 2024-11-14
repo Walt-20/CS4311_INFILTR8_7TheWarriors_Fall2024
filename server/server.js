@@ -12,53 +12,79 @@ const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const rootDir = path.join(__dirname, '..');
+const jsonUserFilePath = path.join(rootDir, 'server', 'user-results', 'results.json')
 const uploadedFiles = {};
 const pythonPath = path.join(rootDir, 'python-backend', 'venv', 'bin', 'python')
 
 app.use(cors(), express.json(), express.urlencoded({ extended: true }));
 
-function createProjectFolder(projectName) {
-    const projectFolderPath = path.join(rootDir, 'server', projectName);
-    const uploadsFolderPath = path.join(projectFolderPath, 'uploads');
-    if (!fs.existsSync(uploadsFolderPath)) {
-        fs.mkdirSync(uploadsFolderPath, { recursive: true });
+function initializeFolderStructure() {
+    const projectsFolderPath = path.join(rootDir, 'server', 'projects')
+    if (!fs.existsSync(projectsFolderPath)) {
+        fs.mkdirSync(projectsFolderPath, { recursive: true })
     }
-    return uploadsFolderPath;
 }
 
-// Multer storage configuration
+initializeFolderStructure();
+
+function createProjectFolder(userId, projectName) {
+    const projectFolderPath = path.join(rootDir, 'server', 'projects', userId, projectName)
+    const uploadsFolderPath = path.join(projectFolderPath, 'uploads')
+    const parsedResultsFolderPath = path.join(projectFolderPath, 'parsed-results')
+    const userResultsFolderPath = path.join(projectFolderPath, 'user-results')
+    const machineLearningFolderPath = path.join(projectFolderPath, 'machine_learning')
+    if (!fs.existsSync(uploadsFolderPath)) {
+        fs.mkdirSync(uploadsFolderPath, { recursive: true })
+    }
+
+    if (!fs.existsSync(parsedResultsFolderPath)) {
+        fs.mkdirSync(parsedResultsFolderPath, { recursive: true })
+    }
+
+    if (!fs.existsSync(userResultsFolderPath)) {
+        fs.mkdirSync(userResultsFolderPath, { recursive: true })
+    }
+
+    if (!fs.existsSync(machineLearningFolderPath)) {
+        fs.mkdirSync(machineLearningFolderPath, { recursive: true })
+    }
+    
+    return uploadsFolderPath
+}
+
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        const projectName = req.body.projectName;
-        const uploadsFolderPath = createProjectFolder(projectName);
-        cb(null, uploadsFolderPath);
+        const userId = req.body.userId;
+        const projectName = req.body.projectName
+        const uploadsFolderPath = createProjectFolder(userId, projectName)
+        cb(null, uploadsFolderPath)
     },
     filename: (req, file, cb) => {
-        cb(null, file.originalname);
+        cb(null, file.originalname)
     }
-});
+})
 
-const upload = multer({ storage: storage });
+const upload = multer({ storage: storage })
 
-app.post('/upload', (req, res, next) => {
-    console.log(req.body)
-    console.log("uploading files")
-    const projectName = req.body.projectName;
-    console.log(projectName)
+app.post('/upload', upload.array('files'), (req, res) => {
+    if (!req.files || req.files.length === 0) {
+        return res.status(400).send('No file uploaded.');
+    }
     
-    console.log("created project")
-    let filePath = '';
+    const userId = req.body.userId
+    const projectName = req.body.projectName
+    const uploadedFiles = {}
 
-    console.log("projectFolderPath: ", projectFolderPath)
-    console.log("this work")
-
-    const uploadedFiles = req.files.map(file => {
-        console.log("uploaded files")
-        filePath = path.join(file.destination + "/" + file.filename)
-        console.log('File Path: ', filePath)
+    req.files.forEach(file => {
+        let filePath = path.join(file.destination, file.filename)
+        uploadedFiles[file.originalname] = filePath
     })
-    
-    exec(`"${pythonPath}" parse.py "${filePath}"`, { cwd: rootDir }, (error, stdout, stderr) => {
+
+    const filePath = Object.values(uploadedFiles)[0]
+
+    const machineLearningFolderPath = path.join(rootDir, 'server', 'projects', userId, projectName, 'machine_learning')
+
+    exec(`"${pythonPath}" parse.py "${filePath}" "${machineLearningFolderPath}"`, { cwd: rootDir }, (error, stdout, stderr) => {
         if (error) {
             console.error(`exec error: ${error}`)
             return res.status(500).send('Error executing Python script.')
@@ -116,6 +142,7 @@ app.post('/upload', (req, res, next) => {
                     })
                 })
 
+                const jsonParsedFilePath = path.join(rootDir, 'server', 'projects', userId, projectName, 'parsed-results', 'results.json')
                 const jsonData = JSON.stringify(results, null, 2)
                 const jsonPath = path.join(jsonParsedFilePath)
 
@@ -134,63 +161,63 @@ app.post('/upload', (req, res, next) => {
     });
 });
 
-// app.post('/start-analysis', upload.single('file'), (req, res) => {
-//     const { disallowedIps, disallowedEntryPoints } = req.body;
+app.post('/start-analysis', upload.single('file'), (req, res) => {
+    const { disallowedIps, disallowedEntryPoints } = req.body;
 
-//     if (!disallowedIps || !disallowedEntryPoints) {
-//         return res.status(400).send('Invalid data')
-//     }
+    if (!disallowedIps || !disallowedEntryPoints) {
+        return res.status(400).send('Invalid data')
+    }
 
-//     const disallowedIpsStr = disallowedIps.join(','); // Convert array to comma-separated string
-//     const disallowedEntryPointsStr = disallowedEntryPoints.join(','); // Convert array to comma-separated string
+    const disallowedIpsStr = disallowedIps.join(','); // Convert array to comma-separated string
+    const disallowedEntryPointsStr = disallowedEntryPoints.join(','); // Convert array to comma-separated string
 
-//     const command = `"${pythonPath}" main.py "${uploadedFiles[1]}" "${disallowedIpsStr}" "${disallowedEntryPointsStr}"`
+    const command = `"${pythonPath}" main.py "${uploadedFiles[1]}" "${disallowedIpsStr}" "${disallowedEntryPointsStr}"`
 
 
-//     exec(command, { cwd: rootDir }, (error, stdout, stderr) => {
-//         if (error) {
-//             console.error(`Error executing Python script: ${error}`);
-//             return res.status(500).send('Error executing analysis');
-//         }
+    exec(command, { cwd: rootDir }, (error, stdout, stderr) => {
+        if (error) {
+            console.error(`Error executing Python script: ${error}`);
+            return res.status(500).send('Error executing analysis');
+        }
 
-//         // After Python execution, read and process the CSV file
-//         const csvFilePath = path.join(rootDir, 'machine_learning', 'data_with_exploits.csv');
-//         const columnsToExtract = ['ip', 'archetype', 'pluginName', 'severity'];
+        // After Python execution, read and process the CSV file
+        const csvFilePath = path.join(rootDir, 'machine_learning', 'data_with_exploits.csv');
+        const columnsToExtract = ['ip', 'archetype', 'pluginName', 'severity'];
 
-//         const results = [];
+        const results = [];
 
-//         // Reading the CSV file and extracting specific columns
-//         fs.createReadStream(csvFilePath)
-//             .pipe(csv())
-//             .on('data', (data) => {
-//                 const filteredData = {};
-//                 columnsToExtract.forEach(col => {
-//                     if (data[col]) {
-//                         filteredData[col] = data[col];
-//                     }
-//                 });
-//                 if (filteredData.archetype && filteredData.archetype.toLowerCase() !== 'other') {
-//                     results.push(filteredData);
-//                 }
-//             })
-//             .on('end', () => {
-//                 const jsonData = JSON.stringify(results, null, 2);
+        // Reading the CSV file and extracting specific columns
+        fs.createReadStream(csvFilePath)
+            .pipe(csv())
+            .on('data', (data) => {
+                const filteredData = {};
+                columnsToExtract.forEach(col => {
+                    if (data[col]) {
+                        filteredData[col] = data[col];
+                    }
+                });
+                if (filteredData.archetype && filteredData.archetype.toLowerCase() !== 'other') {
+                    results.push(filteredData);
+                }
+            })
+            .on('end', () => {
+                const jsonData = JSON.stringify(results, null, 2);
                 
 
-//                 fs.writeFile(jsonUserFilePath, jsonData, (err) => {
-//                     if (err) {
-//                         console.error('Error writing JSON file:', err);
-//                         return res.status(500).send('Error saving results');
-//                     }
-//                     res.status(200).send('Results saved successfully');
-//                 });
-//             })
-//             .on('error', (csvError) => {
-//                 console.error('Error reading CSV:', csvError);
-//                 return res.status(500).send('Error processing CSV file');
-//             });
-//     });
-// });
+                fs.writeFile(jsonUserFilePath, jsonData, (err) => {
+                    if (err) {
+                        console.error('Error writing JSON file:', err);
+                        return res.status(500).send('Error saving results');
+                    }
+                    res.status(200).send('Results saved successfully');
+                });
+            })
+            .on('error', (csvError) => {
+                console.error('Error reading CSV:', csvError);
+                return res.status(500).send('Error processing CSV file');
+            });
+    });
+});
 
 app.get('/parsed', (req, res) => {
     res.sendFile(jsonParsedFilePath);
@@ -211,37 +238,13 @@ app.post('/discard', (req, res) => {
     })
 })
 
-function deleteDirectory(directoryPath) {
-    if (fs.existsSync(directoryPath)) {
-        fs.readdirSync(directoryPath).forEach((file) => {
-            const currentPath = path.join(directoryPath, file);
-            if (fs.lstatSync(currentPath).isDirectory()) {
-                deleteDirectory(currentPath);
-            } else {
-                fs.unlinkSync(currentPath);
-            }
-        });
-        fs.rmdirSync(directoryPath)
-    }
-}
-
-function cleanup() {
-    console.log('Cleaning up...')
-    deleteDirectory(uploadDir)
-    deleteDirectory(targetParsedDir)
-    deleteDirectory(targetUserDir)
-    console.log('Cleanup complete.')
-}
-
 process.on('SIGINT', () => {
     console.log('Shutting Down....')
-    cleanup()
     process.exit(0)
 })
 
 process.on('SIGTERM', () => {
     console.log('Shutting Down....')
-    cleanup()
     process.exit(0)
 })
 
