@@ -79,6 +79,7 @@
 			}
 			showToast = true;
 			setTimeout(() => (showToast = false), 3000);
+			fetchUploadedFiles(userId)
 		} catch (error) {
 			console.error('Error uploading file:', error);
 		}
@@ -249,10 +250,10 @@
 				<p>No Projects Available</p>
 			{:else}
 				{#each projects as project}
-				<h3>
-					<span class="material-symbols-outlined mr-2">folder</span>
+				<h2 class="cursor-pointer mb-2 flex items-center text-md font-bold dark:text-gray-200 transition transform hover:scale-105 hover:shadow-xl">
+					<span class="mr-4">📁</span>
 					{project}
-				</h3>
+				</h2>
 				{/each}
 			{/if}
 		</div>
