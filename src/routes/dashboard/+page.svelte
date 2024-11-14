@@ -8,6 +8,8 @@
 	import { get, writable } from 'svelte/store'; // To retrieve the logs
 	import { fly } from 'svelte/transition';
 
+	console.log("this is a user ", user)
+
 	let greeting = '';
 	let projects = [
 		"Project 1",
@@ -59,6 +61,7 @@
 		showToast = false;
 		console.log('uploading files');
 		const formData = new FormData();
+		formData.append('userId', 1111111)
 		formData.append('projectName', projectName)
 		formData.append('files', file);
 
