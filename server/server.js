@@ -70,6 +70,7 @@ app.post('/upload', upload.array('files'), (req, res) => {
     if (!req.files || req.files.length === 0) {
         return res.status(400).send('No file uploaded.');
     }
+<<<<<<< HEAD
 
     const userId = req.body.userId
     const projectName = req.body.projectName
@@ -85,18 +86,28 @@ app.post('/upload', upload.array('files'), (req, res) => {
     const machineLearningFolderPath = path.join(rootDir, 'server', 'projects', userId, projectName, 'machine_learning')
 
     exec(`"${pythonPath}" parse.py "${filePath}" "${machineLearningFolderPath}"`, { cwd: rootDir }, (error, stdout, stderr) => {
+=======
+    
+    const filePath = path.join(req.file.path);
+    const filename = req.file.originalname;
+    uploadedFiles[1] = filePath
+    exec(`"${pythonPath}" parse.py "${filePath}"`, { cwd: rootDir }, (error, stdout, stderr) => {
+>>>>>>> 61e2942867a0e04da5b4e56a21c634cda88837c9
         if (error) {
             console.error(`exec error: ${error}`)
             return res.status(500).send('Error executing Python script.')
         }
         // After Python execution, read and process the CSV file
-        const csvFilePath = path.join(rootDir, 'machine_learning', 'data_with_exploits.csv');
         const columnsToExtract = ['ip', 'archetype', 'pluginName', 'severity'];
 
         const csvFiles = [
             path.join(rootDir, 'machine_learning', 'data_with_exploits.csv'),
         ];
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 61e2942867a0e04da5b4e56a21c634cda88837c9
         const results = [];
 
         // Function to read a single CSV file
@@ -169,15 +180,13 @@ app.post('/start-analysis', upload.single('file'), (req, res) => {
         return res.status(400).send('Invalid data')
     }
 
-    console.log('disallowedIps: ', disallowedIps)
-    console.log('disallowedEntryPoints: ', disallowedEntryPoints)
-
-    const filePath = path.join(__dirname, req.file.path);
-    const rootDir = path.join(__dirname, '..');
     const disallowedIpsStr = disallowedIps.join(','); // Convert array to comma-separated string
     const disallowedEntryPointsStr = disallowedEntryPoints.join(','); // Convert array to comma-separated string
 
-    exec(`python main.py "${filePath}" "${disallowedIpsStr}" "${disallowedEntryPointsStr}"`, { cwd: rootDir }, (error, stdout, stderr) => {
+    const command = `"${pythonPath}" main.py "${uploadedFiles[1]}" "${disallowedIpsStr}" "${disallowedEntryPointsStr}"`
+
+
+    exec(command, { cwd: rootDir }, (error, stdout, stderr) => {
         if (error) {
             console.error(`Error executing Python script: ${error}`);
             return res.status(500).send('Error executing analysis');
@@ -252,7 +261,12 @@ app.get('/parsed', (req, res) => {
 })
 
 app.get('/user-results', (req, res) => {
-    res.sendFile(jsonUserFilePath);
+    try {
+        res.sendFile(jsonUserFilePath);
+    } catch(error) {
+        res.send({message: "No results."})
+    }
+
 })
 
 app.post('/discard', (req, res) => {
@@ -266,6 +280,31 @@ app.post('/discard', (req, res) => {
     })
 })
 
+<<<<<<< HEAD
+=======
+function deleteDirectory(directoryPath) {
+    if (fs.existsSync(directoryPath)) {
+        fs.readdirSync(directoryPath).forEach((file) => {
+            const currentPath = path.join(directoryPath, file);
+            if (fs.lstatSync(currentPath).isDirectory()) {
+                deleteDirectory(currentPath);
+            } else {
+                fs.unlinkSync(currentPath);
+            }
+        });
+        fs.rmdirSync(directoryPath)
+    }
+}
+
+function cleanup() {
+    console.log('Cleaning up...')
+    deleteDirectory(uploadDir)
+    deleteDirectory(targetParsedDir)
+    deleteDirectory(targetUserDir)
+    console.log('Cleanup complete.')
+}
+
+>>>>>>> 61e2942867a0e04da5b4e56a21c634cda88837c9
 process.on('SIGINT', () => {
     console.log('Shutting Down....')
     process.exit(0)

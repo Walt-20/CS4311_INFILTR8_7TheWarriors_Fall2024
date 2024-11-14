@@ -2,10 +2,7 @@
     import Menu from '$lib/Menu.svelte';
     import { addLog } from '$lib/logStore.js'; // Import log function
 
-    import { getContent } from 'svelte';
-
-    const disallowedIps = getContent('disallowedIps');
-    const disallowedEntryPoints = getContent('disallowedEntryPoints');
+    import {disallowedEntryPoints,disallowedIps} from '../../disallowedfilter';
 
     let entryPoints = [
         { name: "Unauthorized Port Bypass", selected: false },
