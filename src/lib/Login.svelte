@@ -53,7 +53,7 @@
                 user.update((val) => (val = { ...data.user }));
                 setTimeout(() => {
                     navigateTo('/dashboard'); // Redirect after a delay
-                }, 3000); // 3000 milliseconds = 3 seconds
+                }, 1000); // 3000 milliseconds = 3 seconds
             }
         })
         .catch((error) => {

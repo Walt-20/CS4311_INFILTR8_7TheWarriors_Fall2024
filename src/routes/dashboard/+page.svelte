@@ -1,4 +1,5 @@
 <script>
+	// import {user} from "../../user";
 	import { onMount } from 'svelte';
 	import Menu from '$lib/Menu.svelte';
 	import Notification from '$lib/Notification.svelte';
@@ -8,7 +9,7 @@
 	import { get, writable } from 'svelte/store'; // To retrieve the logs
 	import { fly } from 'svelte/transition';
 
-	console.log("this is a user ", user)
+	// console.log("this is a user ", user)
 
 	let greeting = '';
 	let projects = [];
