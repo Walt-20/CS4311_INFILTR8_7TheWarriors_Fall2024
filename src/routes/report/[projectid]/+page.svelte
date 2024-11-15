@@ -178,6 +178,13 @@
 		<h1 class="text-4xl font-bold text-gray-800 dark:text-gray-200">{projectname}'s Report</h1>
 	</div>
 
+	<select class={`bg-gray-200 border rounded-md py-2 px-4 focus:ring-2 focus:ring-blue-500 ${$colorBlindMode ? 'color-blind-border' : 'border-gray-300'}`}>
+        <option>data_with_exploits.csv</option>
+        <option>entrypoint_most_info.csv</option>
+        <option>port_0_entries.csv</option>
+        <option>ranked_entry_points.csv</option>
+    </select>
+
 	<!-- Search Section -->
 	<div class="mb-6">
 		<label class="mb-2 block text-gray-700 dark:text-white">Search by</label>
