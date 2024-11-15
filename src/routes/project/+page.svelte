@@ -115,7 +115,7 @@
 			errorMessage = 'IP already exists in the List.';
 		} else {
 			ips = [...ips, newIp];
-			ipStatus = [...ipStatus, 'allowed']; // Default status for new IP
+			ipStatus = [...ipStatus, 'Allowed']; // Default status for new IP
 			newIp = ''; // Clear the input field
 			errorMessage = ''; // Clear any previous error
 		}
