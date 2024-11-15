@@ -94,7 +94,7 @@ app.post('/upload', upload.array('files'), (req, res) => {
         const columnsToExtract = ['ip', 'archetype', 'pluginName', 'severity'];
 
         const csvFiles = [
-            path.join(rootDir, 'machine_learning', 'data_with_exploits.csv'),
+            path.join(machineLearningFolderPath, 'data_with_exploits.csv'),
         ];
 
         const results = [];
@@ -246,11 +246,17 @@ app.post('/user-projects', (req, res) => {
 
 })
 
-app.get('/parsed', (req, res) => {
+app.post('/parsed', (req, res) => {
     try {
-        res.sendFile(jsonParsedFilePath);
+        console.log(req.body.userId)
+        console.log(req.body.projectName)
+        const userId = req.body.userId;
+        const projectname = req.body.projectName;
+        const reqParsedPath = path.join(rootDir, 'server', 'projects', userId, projectname, 'parsed-results', 'results.json')
+        console.log("Fetching for user "+req.body.userId+" project "+req.body.projectName);
+        res.sendFile(reqParsedPath);
     } catch(error) {
-        res.send({message: "No results."})
+        return res.status(404).send('Parsed not found')
     }
 })
 
@@ -284,6 +290,10 @@ process.on('SIGINT', () => {
 process.on('SIGTERM', () => {
     console.log('Shutting Down....')
     process.exit(0)
+})
+
+app.get("/",(req,res)=>{
+    res.send("hello");
 })
 
 app.listen(5001, () => {

@@ -2,7 +2,10 @@
 	import Menu from '../../../lib/Menu.svelte';
 	import { navigateTo } from '../../../utils';
 	import {disallowedIps,disallowedEntryPoints} from '../../../disallowedfilter';
+	import user from "../../../user"
 
+
+    const userId = $user.username;
 	export let data;
 
 	let projectname = data.projectid;
@@ -134,14 +137,20 @@
 
 	async function fetchResults() {
 		try {
-			const response = await fetch('http://localhost:5001/parsed');
+			const response = await fetch('http://localhost:5001/parsed',{
+				method:'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({ userId: userId,projectName: projectname }),
+			});
 
 			if (!response.ok) {
 				throw new Error('Error, Network response: ', response);
 			}
 
 			const data = await response.json();
-
+			console.log(data)
 			const inIps = [];
 			const inEntryPoints = [];
 			const inSeverity = [];
@@ -209,29 +218,5 @@
         <div class="text-center py-50">
             <button on:click={startAnalysis} class="mt-2 w-60 py-2 bg-blue-600 text-white rounded">Start Analysis</button>
         </div>
-    </div>
-
-    <!-- Right Section: Create Project and Load Projects -->
-    <div class="flex flex-col w-full md:w-1/2 space-y-5 mt-5 md:mt-0">
-        <div class="projects">
-			<div class="mb-4 rounded bg-gray-50 p-4 shadow dark:bg-gray-700">
-				<h2 class="flex items-center text-xl font-bold dark:text-gray-200">
-					<span class="material-symbols-outlined mr-2">folder</span>
-					Load Projects
-				</h2>
-			</div>
-			<div class="rounded bg-white p-4 shadow dark:bg-gray-700">
-				{#if projects.length === 0}
-					<p>No Projects Available</p>
-				{:else}
-					{#each projects as project}
-					<h2 class="cursor-pointer mb-2 flex items-center text-md font-bold dark:text-gray-200 transition transform hover:scale-105 hover:shadow-xl">
-						<span class="mr-4">📁</span>
-						<a href="./project/{project}">{project}</a>
-					</h2>
-					{/each}
-				{/if}
-			</div>
-		</div>
     </div>
 </div>
