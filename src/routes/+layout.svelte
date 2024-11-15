@@ -1,7 +1,6 @@
 <script>
 	import '../app.css';
 	import { DarkMode } from 'flowbite-svelte';
-	import { Notification } from '$lib/Notification.svelte'
 </script>
 
 <div class="relative flex min-h-screen flex-col bg-white dark:bg-gray-800">

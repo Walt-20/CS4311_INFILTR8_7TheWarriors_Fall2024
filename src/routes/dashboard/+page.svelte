@@ -223,17 +223,19 @@
 				<div class="relative inline-block">
 					<button
 						type="button"
-						class="inline-flex items-center rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+						class="inline-flex items-center rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50"
+						disabled={!projectName}
 					>
 						Select Files
 					</button>
 					<input
 						id="file-input"
-						class="absolute left-0 top-0 h-full w-full cursor-pointer opacity-0"
+						class="hidden"
 						type="file"
 						multiple
 						accept=".nessus"
 						on:change={handleFileSelect}
+						disabled={!projectName}
 					/>
 				</div>
 			</div>
