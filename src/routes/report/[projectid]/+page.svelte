@@ -15,7 +15,7 @@
 	let port0Entries = {};
 	let rankedEntryPoints = {};
 
-	let exportFormats = ['PDF', 'CSV', 'Excel'];
+	let exportFormats = ['PDF', 'XML'];
 	let selectedFormat = exportFormats[0];
 	let menuOpen = false;
 
@@ -124,51 +124,43 @@
 	}
 
 	function handleExport() {
-		if (selectedFormat === 'CSV') {
+		if (selectedFormat === 'XML') {
 			exportAsCSV();
 		} else if (selectedFormat === 'PDF') {
 			exportAsPDF();
-		} else if (selectedFormat === 'Excel') {
-			exportAsExcel();
 		}
 	}
 
-	function exportAsCSV() {
-		const csvContent = [
-			['IP Address', 'Device', 'Vulnerability'], // Header row
-			...filteredResults.map((item) => [item.ip, item.device, item.vulnerability].join(',')) // Data rows
-		].join('\n');
-
-		const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-		const url = URL.createObjectURL(blob);
-		const link = document.createElement('a');
-		link.href = url;
-		link.setAttribute('download', 'export.csv');
-		document.body.appendChild(link);
-		link.click();
-		document.body.removeChild(link);
-	}
-
 	function exportAsPDF() {
-		const doc = new jsPDF();
-		doc.text('Report', 10, 10);
-		filteredResults.forEach((item, index) => {
-			doc.text(`${item.ip} - ${item.device} - ${item.vulnerability}`, 10, 20 + 10 * index);
-		});
-		doc.save('report.pdf');
-	}
+        const doc = new jsPDF();
+        doc.text("Report", 10, 10);
+        ips.forEach((ip, index) => {
+            doc.text(`${ip} - ${entryPoints[index]} - ${severity[index]}`, 10, 20 + (10 * index));
+        });
+        doc.save('report.pdf');
+    }
 
-	function exportAsExcel() {
-		const data = filteredResults.map((item) => ({
-			IP: item.ip,
-			Device: item.device,
-			Vulnerability: item.vulnerability
-		}));
-		const ws = XLSX.utils.json_to_sheet(data);
-		const wb = XLSX.utils.book_new();
-		XLSX.utils.book_append_sheet(wb, ws, 'Report');
-		XLSX.writeFile(wb, 'report.xlsx');
-	}
+    function exportAsXML() {
+        let xmlContent = '<?xml version="1.0" encoding="UTF-8"?>\n';
+        xmlContent += '<report>\n';
+        ips.forEach((ip, index) => {
+            xmlContent += `  <entry>\n`;
+            xmlContent += `    <ip>${ip}</ip>\n`;
+            xmlContent += `    <device>${entryPoints[index]}</device>\n`;
+            xmlContent += `    <vulnerability>${severity[index]}</vulnerability>\n`;
+            xmlContent += `  </entry>\n`;
+        });
+        xmlContent += '</report>';
+
+        const blob = new Blob([xmlContent], { type: 'text/xml;charset=utf-8;' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', 'report.xml');
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
 </script>
 
 <Menu {menuOpen} />
@@ -179,25 +171,45 @@
 	</div>
 
 	<!-- Search Section -->
-	<div class="mb-6">
-		<label class="mb-2 block text-gray-700 dark:text-white">Search by</label>
-		<div class="flex items-center space-x-2">
-			<select
-				bind:value={searchCategory}
-				class="rounded-md border border-gray-300 bg-gray-200 px-4 py-2 focus:ring-2 focus:ring-blue-500"
-				on:change={filterDevices}
-			>
-				<option>IP Addresses</option>
-				<option>Device</option>
-				<option>Vulnerability</option>
-			</select>
-			<input
-				type="text"
-				bind:value={searchQuery}
-				on:input={filterDevices}
-				placeholder={`Search ${searchCategory.toLowerCase()}...`}
-				class="flex-grow rounded-md border border-gray-300 bg-gray-200 px-4 py-2 focus:ring-2 focus:ring-blue-500"
-			/>
+	<div>
+		<div class="flex flex-row space-x-2 py-2">
+			<div class="w-1/2 space-y-2 order-1">
+				<label class="block text-gray-700 dark:text-white">Search by</label>
+				<select
+					bind:value={searchCategory}
+					class="rounded-md border border-gray-300 bg-gray-200 px-4 py-2 focus:ring-2 focus:ring-blue-500"
+					on:change={filterDevices}
+				>
+					<option>IP Addresses</option>
+					<option>Device</option>
+					<option>Vulnerability</option>
+				</select>
+				<input
+					type="text"
+					bind:value={searchQuery}
+					on:input={filterDevices}
+					placeholder={`Search ${searchCategory.toLowerCase()}...`}
+					class="flex-grow rounded-md border border-gray-300 bg-gray-200 px-4 py-2 focus:ring-2 focus:ring-blue-500"
+				/>
+			</div>
+
+			<!-- Export Format Dropdown -->
+			<div class="w-1/2 space-y-2 order-2">
+				<label for="export-format" class="block text-gray-700 dark:text-white">Format to export</label>
+				<select
+					id="export-format"
+					bind:value={selectedFormat}
+					class="w-40 rounded-md border border-gray-300 bg-gray-200 px-4 py-2 focus:ring-2 focus:ring-blue-500"
+				>
+					{#each exportFormats as format}
+						<option value={format}>{format}</option>
+					{/each}
+				</select>
+				<button
+					class="rounded-md bg-blue-600 px-6 py-2 text-white shadow-md transition duration-300 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+					on:click={handleExport}>Export</button
+				>
+			</div>
 		</div>
 	</div>
 
@@ -292,25 +304,4 @@
 			{/each}
 		</ul>
 	</div>
-
-	<!-- Export Format Dropdown -->
-	<div class="mb-6">
-		<label for="export-format" class="mb-2 block text-gray-700 dark:text-white"
-			>Format to export</label
-		>
-		<select
-			id="export-format"
-			bind:value={selectedFormat}
-			class="w-40 rounded-md border border-gray-300 bg-gray-200 px-4 py-2 focus:ring-2 focus:ring-blue-500"
-		>
-			{#each exportFormats as format}
-				<option value={format}>{format}</option>
-			{/each}
-		</select>
-	</div>
-
-	<button
-		class="rounded-md bg-blue-600 px-6 py-2 text-white shadow-md transition duration-300 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-		on:click={handleExport}>Export</button
-	>
 </div>
