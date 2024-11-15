@@ -160,7 +160,7 @@
     <h1 class={`text-4xl font-bold ${$colorBlindMode ? 'color-blind-text' : 'text-gray-800 dark:text-gray-200'}`}>Current Project</h1>
 </div>
 
-<div class={`flex flex-wrap p-5 min-h-screen ${$colorBlindMode ? 'color-blind-bg' : 'bg-gray-100 dark:bg-gray-900'}`}>
+<div class={`flex flex-wrap md:flex-nowrap gap-x-5 p-5 min-h-screen ${$colorBlindMode ? 'color-blind-bg' : 'bg-gray-100 dark:bg-gray-900'}`}>
     <!-- Left Section: IP List & Entry Points -->
     <div class="flex flex-col w-full md:w-1/2 space-y-5">
         <!-- IP List -->

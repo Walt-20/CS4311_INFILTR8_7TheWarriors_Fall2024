@@ -1,6 +1,8 @@
 <script>
 	import '../app.css';
 	import { DarkMode } from 'flowbite-svelte';
+	import { textSize } from '$lib/settingStore.js'; // Import the global store
+	$: document.documentElement.style.setProperty('--text-font-size', `${$textSize}px`);
 </script>
 
 <div class="relative flex min-h-screen flex-col bg-white dark:bg-gray-800">

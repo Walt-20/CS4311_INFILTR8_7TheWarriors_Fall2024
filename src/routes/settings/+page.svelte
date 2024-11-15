@@ -3,6 +3,7 @@
   import { logs, addLog } from '$lib/logStore.js';
   import { onMount } from 'svelte';
   import { colorBlindMode } from '$lib/settingStore.js'; // Import the global store
+  import { textSize } from '$lib/settingStore.js'; // Import the global store
 
   let menuOpen = false;
   let startTimes = ["08:00 AM", "12:00 PM", "04:00 PM"];
@@ -41,6 +42,8 @@
         <h2 class={`text-xl font-semibold ${$colorBlindMode ? 'color-blind-text' : 'text-gray-800 dark:text-gray-100'} mb-4`}>
           <i class="fas fa-door-open mr-2"></i> Adjust Text Size
         </h2>
+        <input type="range" min="12" max="24" bind:value={$textSize} class="w-full" />
+        <span class="text-sm text-gray-500 dark:text-gray-300">Text Size: {$textSize}px</span>
       </div>
 
       <!-- Color Blind Mode Section -->
