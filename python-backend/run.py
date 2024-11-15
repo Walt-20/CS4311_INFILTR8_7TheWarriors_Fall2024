@@ -205,7 +205,19 @@ def create_analyst():
         password = data.get('password')
         token = data.get('token')
 
-        # Hash the password and token before saving
+        # Check if username already exists
+        check_query = """
+        MATCH (n:Analyst {username: $username})
+        RETURN n
+        """
+        with driver.session() as session:
+            existing_user = session.run(check_query, username=username).single()
+        
+        if existing_user:
+            # If the user already exists, return an error message
+            return jsonify({"error": "Username already exists. Please choose another one."}), 400
+
+        # Proceed with user creation if the username doesn't exist
         hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
         hashed_token = bcrypt.hashpw(token.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
 

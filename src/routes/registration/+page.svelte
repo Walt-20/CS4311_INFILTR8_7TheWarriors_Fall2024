@@ -46,54 +46,54 @@
     };
 
     const registerUser = async () => {
-        errorMessage = '';
+    errorMessage = '';
 
-        if (password !== confirmPassword) {
-            errorMessage = "Passwords do not match. Please try again.";
-            return;
+    if (password !== confirmPassword) {
+        errorMessage = "Passwords do not match. Please try again.";
+        return;
+    }
+
+    const passwordValidationMessage = validatePassword(password);
+    if (passwordValidationMessage) {
+        errorMessage = passwordValidationMessage;
+        return;
+    }
+
+    token = generateToken();
+
+    try {
+        const response = await fetch('http://127.0.0.1:8080/registration', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                username,
+                password,
+                token
+            }),
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+            alert('New DAC Analyst User Registered!');
+            console.log("Success", result);
+
+            alert(`Copy and paste your token in your local machine, your generated token is: ${token}`);
+
+            navigateTo('/');
+        } else {
+            errorMessage = result.error || 'Unsuccessful request to register new DAC Analyst';
+            console.log("Error", result);
         }
+    } catch (error) {
+        console.error('Error:', error);
+        errorMessage = 'There was an issue registering your user';
+        location.reload();
+    }
+};
 
-        const passwordValidationMessage = validatePassword(password);
-        if (passwordValidationMessage) {
-            errorMessage = passwordValidationMessage;
-            return;
-        }
-
-        token = generateToken();
-
-        try {
-            const response = await fetch('http://127.0.0.1:8080/registration', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    username,
-                    password,
-                    token
-                }),
-            });
-
-            const result = await response.json();
-
-            if (response.ok) {
-                alert('New DAC Analyst User Registered!');
-                console.log("Success", result);
-
-                alert(`Copy and paste your token in your local machine, your generated token is: ${token}`);
-
-                navigateTo('/');
-
-            } else {
-                errorMessage = 'Unsuccessful request to register new DAC Analyst';
-                console.log("Error", result);
-            }
-        } catch (error) {
-            console.error('Error:', error);
-            errorMessage = 'There was an issue registering your user';
-            location.reload();
-        }
-    };
 </script>
 
 <div class="flex justify-center items-center h-screen bg-white dark:bg-gray-800">
