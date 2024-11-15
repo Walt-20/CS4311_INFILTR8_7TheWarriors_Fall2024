@@ -125,9 +125,9 @@
 
 	function handleExport() {
 		if (selectedFormat === 'XML') {
-			exportAsCSV();
+			exportAsXML(1);
 		} else if (selectedFormat === 'PDF') {
-			exportAsPDF();
+			exportAsPDF(1);
 		}
 	}
 
