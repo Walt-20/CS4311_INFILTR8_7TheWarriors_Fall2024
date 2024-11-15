@@ -1,7 +1,13 @@
 <script>
-	import Menu from '../../lib/Menu.svelte';
-	import { navigateTo } from '../../utils';
-	import {disallowedIps,disallowedEntryPoints} from '../../disallowedfilter';
+	import Menu from '../../../lib/Menu.svelte';
+	import { navigateTo } from '../../../utils';
+	import {disallowedIps,disallowedEntryPoints} from '../../../disallowedfilter';
+    import user from "../../../user"
+
+    const userId = $user.username;
+	export let data;
+
+	let projectname = data.projectid;
 
 	let newIp = ''; // Stores the input for new IP
 	let errorMessage = ''; // To store and display error messages
@@ -119,6 +125,7 @@
 			newIp = ''; // Clear the input field
 			errorMessage = ''; // Clear any previous error
 		}
+        setTimeout(() => (errorMessage = ""), 3000);
 	}
 
 	function moveUp(list, statusList, index) {
@@ -160,10 +167,11 @@
 	async function startAnalysis() {
 		
 		const currentDisallowedIps = $disallowedIps; 
-		const currentDisallowedEntryPoints = $disallowedEntryPoints; 
+		const currentDisallowedEntryPoints = $disallowedEntryPoints;
+		
+		console.log("the currentDisallowedIps are ", currentDisallowedIps)
 
-        const requestBody = JSON.stringify({ disallowedIps: currentDisallowedIps, disallowedEntryPoints: currentDisallowedEntryPoints })
-
+        const requestBody = JSON.stringify({ disallowedIps: currentDisallowedIps, disallowedEntryPoints: currentDisallowedEntryPoints,userId:userId,projectName: projectname })
 		console.log('Request body: ', requestBody);
 		try {
 			const response = await fetch('http://localhost:5001/start-analysis', {
@@ -177,7 +185,7 @@
 			console.log('response is: ', response);
 
 			if (response.ok) {
-				navigateTo('/report');
+				navigateTo('/report/'+projectname);
 			} else {
 				throw new Error('Error, Network response: ', response);
 			}
@@ -186,66 +194,59 @@
 		}
 	}
 
-	// create function here to make a call to http://localhost:5001/parsed-results
-
-	// this will give you back the json.
-
-	// parse that json into two separate lists, one for ips and one for entry points
-
-	/* 
-    
-    * {
-    *    "ip": "10.31.112.29",
-    *    "archetype": "Other",
-    *    "pluginName": "Nessus Scan Information"
-    * },
-    
-    */
-
 	async function fetchResults() {
-		try {
-			const response = await fetch('http://localhost:5001/parsed');
+        try {
+            const response = await fetch('http://localhost:5001/parsed', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ userId: userId, projectName: projectname }),
+            });
 
-			if (!response.ok) {
-				throw new Error('Error, Network response: ', response);
-			}
+            if (!response.ok) {
+                throw new Error('Error, Network response: ', response);
+            }
 
-			const data = await response.json();
+            const data = await response.json();
 
-			const uniqueData = [];
-			const seenIps = new Set();
-			const seenEntryPoints = new Set();
+            const seenIps = new Set();
+            const seenEntryPoints = new Set();
 
-			data.forEach((item) => {
-				if (!seenIps.has(item.ip) && !seenEntryPoints.has(item.archetype)) {
-					seenIps.add(item.ip);
-					seenEntryPoints.add(item.archetype);
-					uniqueData.push(item);
-				}
-			});
+            // Separate unique IPs and entry points
+            const uniqueIps = [];
+            const uniqueEntryPoints = [];
+            const severityMap = new Map(); // Map to keep severity by IP
+            const pluginNameMap = new Map(); // Map to keep pluginName by IP
 
-			const inIps = [];
-			const inEntryPoints = [];
-			const inSeverity = [];
-			const inPluginName = [];
+            data.forEach((item) => {
+                // Add unique IPs
+                if (!seenIps.has(item.ip)) {
+                    seenIps.add(item.ip);
+                    uniqueIps.push(item.ip);
+                    severityMap.set(item.ip, item.severity);
+                    pluginNameMap.set(item.ip, item.pluginName);
+                }
 
-			uniqueData.forEach((item) => {
-				inIps.push(item.ip);
-				inEntryPoints.push(item.archetype);
-				inSeverity.push(item.severity);
-				inPluginName.push(item.pluginName);
-			});
+                // Add unique entry points
+                if (!seenEntryPoints.has(item.archetype)) {
+                    seenEntryPoints.add(item.archetype);
+                    uniqueEntryPoints.push(item.archetype);
+                }
+            });
 
-			ips = inIps;
-			entryPoints = inEntryPoints;
-			pluginName = inPluginName;
-			severity = inSeverity;
-			ipStatus = ips.map(() => 'Allowed');
-			entryPointStatus = entryPoints.map(() => 'Allowed');
-		} catch (error) {
-			console.error('Error fetching results: ', error);
-		}
-	}
+            // Update the component state
+            ips = uniqueIps;
+            entryPoints = uniqueEntryPoints;
+            severity = ips.map((ip) => severityMap.get(ip));
+            pluginName = ips.map((ip) => pluginNameMap.get(ip));
+            ipStatus = ips.map(() => 'Allowed');
+            entryPointStatus = entryPoints.map(() => 'Allowed');
+        } catch (error) {
+            console.error('Error fetching results: ', error);
+        }
+    }
+
 
 	fetchResults();
 </script>
@@ -263,7 +264,7 @@
 <Menu {menuOpen} />
 
 <div class="text-center py-4">
-    <h1 class="text-4xl font-bold text-gray-800 dark:text-gray-200">Current Project</h1>
+    <h1 class="text-4xl font-bold text-gray-800 dark:text-gray-200">{projectname}</h1>
 </div>
 
 <div class="flex flex-wrap md:flex-nowrap gap-x-5 p-5 bg-gray-100 dark:bg-gray-900 min-h-screen">

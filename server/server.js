@@ -97,7 +97,7 @@ app.post('/upload', upload.array('files'), (req, res) => {
         const csvFiles = [
             path.join(machineLearningFolderPath, 'data_with_exploits.csv'),
         ];
-        
+
         const results = [];
 
         // Function to read a single CSV file
@@ -362,28 +362,6 @@ app.post('/discard', (req, res) => {
         }
     })
 })
-
-function deleteDirectory(directoryPath) {
-    if (fs.existsSync(directoryPath)) {
-        fs.readdirSync(directoryPath).forEach((file) => {
-            const currentPath = path.join(directoryPath, file);
-            if (fs.lstatSync(currentPath).isDirectory()) {
-                deleteDirectory(currentPath);
-            } else {
-                fs.unlinkSync(currentPath);
-            }
-        });
-        fs.rmdirSync(directoryPath)
-    }
-}
-
-function cleanup() {
-    console.log('Cleaning up...')
-    deleteDirectory(uploadDir)
-    deleteDirectory(targetParsedDir)
-    deleteDirectory(targetUserDir)
-    console.log('Cleanup complete.')
-}
 
 process.on('SIGINT', () => {
     console.log('Shutting Down....')
