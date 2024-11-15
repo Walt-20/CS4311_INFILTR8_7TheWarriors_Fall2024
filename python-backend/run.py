@@ -18,8 +18,6 @@ driver.verify_connectivity()
  
 def serialize_analyst(user):
     return {
-        "first_name": user.get("first_name"),
-        "last_name": user.get("last_name"),
         "username": user.get("username"),
         "password": user.get("password"),
         "token": user.get("token")
@@ -33,7 +31,7 @@ def login():
 
     query = """
     MATCH (u:Analyst {username: $username})
-    RETURN u.password AS stored_password, u.first_name AS first_name, u.last_name AS last_name, u.username AS username
+    RETURN u.password AS stored_password, u.username AS username
     """
     
     with driver.session() as session:
@@ -45,8 +43,6 @@ def login():
         
         if bcrypt.checkpw(password.encode('utf-8'), stored_password.encode('utf-8')):
             user_data = {
-                "first_name": record["first_name"],
-                "last_name": record["last_name"],
                 "username": record["username"]
             }
             return jsonify({"message": "Login successful", "user": user_data}), 200
@@ -205,8 +201,6 @@ def create_analyst():
  
     if request.method == 'POST':
         data = request.get_json()
-        first_name = data.get('firstName')
-        last_name = data.get('lastName')
         username = data.get('username')
         password = data.get('password')
         token = data.get('token')
@@ -216,11 +210,11 @@ def create_analyst():
         hashed_token = bcrypt.hashpw(token.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
 
         query = """
-        CREATE (n:Analyst {first_name: $first_name, last_name: $last_name, username: $username, password: $password, token: $token})
+        CREATE (n:Analyst {username: $username, password: $password, token: $token})
         RETURN n
         """
         with driver.session() as session:
-            result = session.run(query, first_name=first_name, last_name=last_name, username=username, password=hashed_password, token=hashed_token)
+            result = session.run(query, username=username, password=hashed_password, token=hashed_token)
             record = result.single()
 
         if record:

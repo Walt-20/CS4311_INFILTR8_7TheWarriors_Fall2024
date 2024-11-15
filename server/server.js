@@ -67,6 +67,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage })
 
 app.post('/upload', upload.array('files'), (req, res) => {
+    console.log("in upload")
     if (!req.files || req.files.length === 0) {
         return res.status(400).send('No file uploaded.');
     }
@@ -80,11 +81,14 @@ app.post('/upload', upload.array('files'), (req, res) => {
         uploadedFiles[file.originalname] = filePath
     })
 
+    console.log("this still works")
     const filePath = Object.values(uploadedFiles)[0]
 
     const machineLearningFolderPath = path.join(rootDir, 'server', 'projects', userId, projectName, 'machine_learning')
+    console.log("still working")
 
     exec(`"${pythonPath}" parse.py "${filePath}" "${machineLearningFolderPath}"`, { cwd: rootDir }, (error, stdout, stderr) => {
+        console.log("executing parser")
         if (error) {
             console.error(`exec error: ${error}`)
             return res.status(500).send('Error executing Python script.')
@@ -93,7 +97,7 @@ app.post('/upload', upload.array('files'), (req, res) => {
         const columnsToExtract = ['ip', 'archetype', 'pluginName', 'severity'];
 
         const csvFiles = [
-            path.join(rootDir, 'machine_learning', 'data_with_exploits.csv'),
+            path.join(machineLearningFolderPath, 'data_with_exploits.csv'),
         ];
 
         const results = [];
