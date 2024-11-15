@@ -5,23 +5,18 @@
 	import { colorBlindMode } from '$lib/settingStore.js'; // Import the store
 	import { browser } from '$app/environment';
 	$: {
-        if (browser) {
-            console.log('Running in the browser:', $textSize);  // Log to check if it's running correctly
-            if ($textSize) {
-                document.documentElement.style.setProperty('--text-font-size', `${$textSize}px`);
-            }
-        } else {
-            console.log('Not in the browser (SSR)');
-        }
 		if (browser) {
-            console.log('Running in the browser:', $colorBlindMode);  // Log to check if it's running correctly
-            if ($colorBlindMode) {
-                document.documentElement.style.setProperty('--text-font-size', `${$colorBlindMode}px`);
-            }
-        } else {
-            console.log('Not in the browser (SSR)');
-        }
-    }
+			// Update font size globally
+			document.documentElement.style.setProperty('--text-font-size', `${$textSize}px`);
+			
+			// Update color-blind mode class globally
+			if ($colorBlindMode) {
+				document.documentElement.classList.add('color-blind-mode');
+			} else {
+				document.documentElement.classList.remove('color-blind-mode');
+			}
+		}
+	}
 </script>
 
 <!-- In case we want to revert to where the light/dark mode is in the top right of each page, bring these lines back! - Adrian -->

@@ -24,8 +24,8 @@
   }
 
   function toggleColorBlindMode() {
-    colorBlindMode.update(mode => !mode); // Toggle the global store
-  }
+		colorBlindMode.update(value => !value); // Toggle the mode
+	}
 </script>
 
 <Menu {menuOpen} />

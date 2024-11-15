@@ -26,3 +26,18 @@ h1, h2, h3, h4, h5, h6, p, span, li {
 button, label, select {
     font-size: var(--text-font-size);
 }
+
+/* Global styles for Color Blind Mode */
+.color-blind-mode {
+    filter: contrast(1.2);
+    background-color: #f0f8ff; /* Light blue background */
+    color: #000; /* High contrast text */
+}
+
+.color-blind-mode h1, .color-blind-mode h2, .color-blind-mode h3, .color-blind-mode p, .color-blind-mode li {
+    color: #264653; /* High-contrast heading colors */
+}
+
+.color-blind-mode .button, .color-blind-mode .label, .color-blind-mode .input {
+    border-color: #e76f51; /* Adjust interactive elements */
+}
