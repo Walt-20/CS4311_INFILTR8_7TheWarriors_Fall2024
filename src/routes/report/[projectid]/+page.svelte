@@ -177,6 +177,14 @@
 	<div class="py-4 text-center">
 		<h1 class="text-4xl font-bold text-gray-800 dark:text-gray-200">{projectname}'s Report</h1>
 	</div>
+	<div>
+	<select>
+        <option>data_with_exploits.csv</option>
+        <option>entrypoint_most_info.csv</option>
+        <option>port_0_entries.csv</option>
+        <option>ranked_entry_points.csv</option>
+    </select> 
+	</div>
 
 	<!-- Search Section -->
 	<div class="mb-6">

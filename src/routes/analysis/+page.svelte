@@ -176,4 +176,3 @@ async function startAnalysis() {
     </div>
   </div>
 </div>
-
