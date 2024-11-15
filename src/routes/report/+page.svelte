@@ -126,6 +126,13 @@
 
     <button class={`bg-gray-600 hover:bg-gray-700 text-white py-2 px-6 rounded-md shadow-md mb-6 ${$colorBlindMode ? 'color-blind-button' : ''}`}>Go to Current Project Folder</button>
 
+    <select class={`bg-gray-200 border rounded-md py-2 px-4 focus:ring-2 focus:ring-blue-500 ${$colorBlindMode ? 'color-blind-border' : 'border-gray-300'}`}>
+        <option>data_with_exploits.csv</option>
+        <option>entrypoint_most_info.csv</option>
+        <option>port_0_entries.csv</option>
+        <option>ranked_entry_points.csv</option>
+    </select>
+
     <!-- Search Section -->
     <div class="mb-6">
         <label class={`block mb-2 ${$colorBlindMode ? 'color-blind-text' : 'text-gray-700 dark:text-white'}`}>Search by</label>
