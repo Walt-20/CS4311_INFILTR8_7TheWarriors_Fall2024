@@ -55,6 +55,47 @@
         }
 	}
 
+	function handleFileSelect(event) {
+		const selectedFiles = Array.from(event.target.files);
+		const validFiles = selectedFiles.filter(file => file.name.endsWith('.txt'));
+
+		if (validFiles.length !== selectedFiles.length) {
+			alert('Only .txt files are allowed.');
+			console.log('Invalid file type selected.');
+		}
+
+		validFiles.forEach(file => addIpsFromFile(file));
+	}
+
+	function addIpsFromFile(file) {
+		const reader = new FileReader();
+
+		reader.onload = () => {
+			const content = reader.result;
+
+			const lines = content.split(/\s+/);
+
+			const validIps = lines.filter(ip => isValidIp(ip) && !ips.includes(ip));
+
+			if (validIps.length > 0) {
+				ips = [...ips, ...validIps];
+				ipStatus = [...ipStatus, ...validIps.map(() => 'Allowed')]; // Default status for new IPs
+				console.log('Added IPs:', validIps);
+			} else {
+				console.log('No valid IPs found in the file or all IPs are already in the list.');
+			}
+		};
+
+		// Handle file reading errors
+		reader.onerror = () => {
+			console.error('Error reading file:', reader.error);
+		};
+
+		// Start reading the file
+		reader.readAsText(file);
+	}
+
+
 	// Regular expression to validate an IP address with sections ranging 0-255
 	const ipRegex =
 		/^(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])(\.(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])){3}$/;
