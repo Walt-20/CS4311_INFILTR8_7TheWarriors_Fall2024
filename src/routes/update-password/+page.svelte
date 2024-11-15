@@ -44,17 +44,17 @@
         .then((data) => {
             if (data.error) {
                 currentError = data.error;
-                successMessage = null; // Reset success message on failure
+                successMessage = null;
                 addLog(`Failed to update password for user: ${username}. Error: ${currentError}`);
             } else {
-                currentError = null; // Reset error message on success
-                successMessage = "Password updated successfully!"; // Set success message
+                currentError = null; 
+                successMessage = "Password updated successfully!"; 
                 addLog(`Password updated for user: ${username}`);
                 
                 // Wait for 3 seconds before redirecting to login page
                 setTimeout(() => {
-                    navigateTo('/'); // Navigate back to login page after 3 seconds
-                }, 3000); // 3 seconds delay
+                    navigateTo('/'); 
+                }, 3000); 
             }
         })
         .catch((error) => {

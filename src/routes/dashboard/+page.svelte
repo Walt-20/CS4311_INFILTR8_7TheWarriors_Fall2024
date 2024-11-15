@@ -1,5 +1,5 @@
 <script>
-    import user from '../../user';
+	import user from '../../user'
 	import { onMount } from 'svelte';
 	import Menu from '$lib/Menu.svelte';
 	import Notification from '$lib/Notification.svelte';
@@ -8,8 +8,6 @@
 	import { addLog, logs } from '$lib/logStore.js';
 	import { get, writable } from 'svelte/store'; // To retrieve the logs
 	import { fly } from 'svelte/transition';
-
-	console.log("this is a user ", user)
 
 	let greeting = '';
 	let projects = [];
@@ -22,7 +20,8 @@
     let showToast = false;
     let showPopup = writable(false);
     let projectName = '';
-	let userId = 1111111;
+
+	const userId = $user.username;
 
 	onMount(() => {
 		const hours = new Date().getHours();
@@ -47,6 +46,7 @@
 
 		// Added this - Darien ///////////////////
 		if (isValidFile) {
+			console.log("Truly a valid file")
 			// Upload the file to the server for parsing
 			files.forEach((file) => uploadFileToServer(file));
 		}
@@ -163,6 +163,9 @@
 	}
 
 	async function fetchUploadedFiles(userId) {
+		if (!userId) {
+			return
+		}
 		const stringifyedUserId = String(userId)
 		console.log(stringifyedUserId)
 		try {
@@ -191,7 +194,7 @@
 <Menu {menuOpen} />
 
 <div class="py-6 text-center">
-	<h1 class="text-2xl font-semibold dark:text-gray-200">{greeting}, {$user?.first_name ?? "Analyst"}!</h1>
+	<h1 class="text-2xl font-semibold dark:text-gray-200">{greeting}, {userId}!</h1>
 </div>
 
 <div class="grid grid-cols-2 gap-6 p-6">
@@ -237,7 +240,7 @@
 		</div>
 	</div>
 
-	<!-- Notifications Section -->
+	<!-- Project Section -->
 	<div class="projects">
 		<div class="mb-4 rounded bg-gray-50 p-4 shadow dark:bg-gray-700">
 			<h2 class="flex items-center text-xl font-bold dark:text-gray-200">
@@ -252,7 +255,7 @@
 				{#each projects as project}
 				<h2 class="cursor-pointer mb-2 flex items-center text-md font-bold dark:text-gray-200 transition transform hover:scale-105 hover:shadow-xl">
 					<span class="mr-4">📁</span>
-					{project}
+					<a href="./project/{project}">{project}</a>
 				</h2>
 				{/each}
 			{/if}
