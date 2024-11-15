@@ -67,10 +67,11 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage })
 
 app.post('/upload', upload.array('files'), (req, res) => {
+    console.log("Upload was pinged,this was before the check.")
     if (!req.files || req.files.length === 0) {
         return res.status(400).send('No file uploaded.');
     }
-
+    console.log("Upload was pinged.")
     const userId = req.body.userId
     const projectName = req.body.projectName
     const uploadedFiles = {}
@@ -220,6 +221,7 @@ app.post('/start-analysis', upload.single('file'), (req, res) => {
 });
 
 app.post('/user-projects', (req, res) => {
+    console.log("Fetching user projects")
     const userId = req.body.userId
     const userProjectsPath = path.join(rootDir, 'server', 'projects', userId)
     if (!fs.existsSync(userProjectsPath)) {
@@ -245,16 +247,22 @@ app.post('/user-projects', (req, res) => {
 })
 
 app.get('/parsed', (req, res) => {
-    res.sendFile(jsonParsedFilePath);
-})
-
-app.get('/user-results', (req, res) => {
     try {
-        res.sendFile(jsonUserFilePath);
+        res.sendFile(jsonParsedFilePath);
     } catch(error) {
         res.send({message: "No results."})
     }
+})
 
+app.get('/user-results', (req, res) => {
+    console.log("Fetching user projects")
+    const userId = req.body.userId;
+    const projectname = req.body.projectname;
+    const userResultsPath = path.join(rootDir, 'server', 'projects', userId, projectname,'user-results','results.json')
+    if (!fs.existsSync(userResultsPath)) {
+        return res.status(404).send('User not found')
+    }
+    res.sendFile(userResultsPath);
 })
 
 app.post('/discard', (req, res) => {
