@@ -1,14 +1,55 @@
 <script>
-	import '../app.css';
-	import { DarkMode } from 'flowbite-svelte';
+    import { DarkMode } from 'flowbite-svelte';
+    import Notification from '$lib/Notification.svelte';
+    import { notifications } from '$lib/notificationStore.js';
+    import { BellSolid } from 'flowbite-svelte-icons';
+
+    let showNotificationList = false;
+    let notificationsArray = [];
+
+    // Subscribe to the notifications store
+    $: notificationsArray = $notifications;
+
+    function toggleNotifications() {
+        showNotificationList = !showNotificationList;
+
+        if (!showNotificationList) {
+            notifications.update(n =>
+                n.map(notification => ({ ...notification, unread: false }))
+            );
+        }
+    }
 </script>
 
 <div class="relative flex min-h-screen flex-col bg-white dark:bg-gray-800">
-	<!-- Dark Mode toggle button in the top-right corner -->
-	<div class="absolute right-4 top-4 z-10">
-		<DarkMode></DarkMode>
-	</div>
+    <!-- Dark Mode toggle button in the top-right corner -->
+    <div class="absolute right-4 top-4 z-10 flex items-center space-x-4">
+        <!-- Notification Icon -->
+        <button on:click={toggleNotifications} class="relative">
+            <span class="material-icons text-gray-800 dark:text-gray-200"><BellSolid class="w-5 h-5" /></span>
+            {#if notificationsArray.some(n => n.unread)}
+                <span class="absolute top-0 right-0 h-2 w-2 rounded-full bg-red-500"></span>
+            {/if}
+        </button>
+        <DarkMode></DarkMode>
+    </div>
 
-	<!-- Slot for the rest of the content -->
-	<slot></slot>
+    <!-- Notification List -->
+    {#if showNotificationList}
+        <div class="absolute right-4 top-16 z-20 w-64 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-4">
+            {#each notificationsArray as notification}
+                <Notification message={notification.message} unread={notification.unread}></Notification>
+            {/each}
+        </div>
+    {/if}
+
+    <!-- Slot for the rest of the content -->
+    <slot></slot>
 </div>
+
+<style>
+    .material-icons {
+        font-size: 24px;
+        cursor: pointer;
+    }
+</style>

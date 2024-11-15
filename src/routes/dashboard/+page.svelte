@@ -2,7 +2,7 @@
 	import user from '../../user'
 	import { onMount } from 'svelte';
 	import Menu from '$lib/Menu.svelte';
-	import Notification from '$lib/Notification.svelte';
+	import { notifications } from '$lib/notificationStore.js'
 	import { navigateTo } from '../../utils';
 	import { BookOpenOutline } from 'flowbite-svelte-icons';
 	import { addLog, logs } from '$lib/logStore.js';
@@ -83,6 +83,11 @@
 			console.log("Truly a valid file")
 			// Upload the file to the server for parsing
 			files.forEach((file) => uploadFileToServer(file));
+
+			notifications.update(n => [
+				...n,
+				{ message: `Project "${projectName}" created successfully.`, unread: true},
+			])
 		}
 		addLog('Creating project with selected files.');
 		navigateTo('/project');
