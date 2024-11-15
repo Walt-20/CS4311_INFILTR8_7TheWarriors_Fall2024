@@ -2,6 +2,7 @@
   import Menu from '$lib/Menu.svelte';
   import { logs, addLog } from '$lib/logStore.js';
   import { onMount } from 'svelte';
+  import { DarkMode } from 'flowbite-svelte';
   import { colorBlindMode } from '$lib/settingStore.js'; // Import the global store
   import { textSize } from '$lib/settingStore.js'; // Import the global store
 
@@ -38,8 +39,8 @@
 
     <!-- Left Section: Adjust Text Size and Color Blind Mode -->
     <div class="flex flex-col gap-8 w-1/2">
-      <div class={`p-6 rounded-lg shadow-md border ${$colorBlindMode ? 'color-blind-section' : 'bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600'}`}>
-        <h2 class={`text-xl font-semibold ${$colorBlindMode ? 'color-blind-text' : 'text-gray-800 dark:text-gray-100'} mb-4`}>
+      <div class={`p-6 rounded-lg shadow-md border ${$colorBlindMode ? 'color-blind-section' : 'bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600'} flex-1 min-h-[100px]`}>
+        <h2 class={`flex justify-center items-center text-xl font-semibold ${$colorBlindMode ? 'color-blind-text' : 'text-gray-800 dark:text-gray-100'} mb-4`}>
           <i class="fas fa-door-open mr-2"></i> Adjust Text Size
         </h2>
         <input type="range" min="12" max="24" bind:value={$textSize} class="w-full" />
@@ -47,24 +48,41 @@
       </div>
 
       <!-- Color Blind Mode Section -->
-      <div class={`p-6 rounded-lg shadow-md border ${$colorBlindMode ? 'color-blind-section' : 'bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600'}`}>
-        <h2 class={`text-xl font-semibold ${$colorBlindMode ? 'color-blind-text' : 'text-gray-800 dark:text-gray-100'} mb-4`}>
+      <div class={`p-6 rounded-lg shadow-md border ${$colorBlindMode ? 'color-blind-section' : 'bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600'} flex-1 min-h-[100px]`}>
+        <h2 class={`flex justify-center items-center text-xl font-semibold ${$colorBlindMode ? 'color-blind-text' : 'text-gray-800 dark:text-gray-100'} mb-4`}>
           <i class="fas fa-eye mr-2"></i> Color Blind Mode
         </h2>
-        <button class="color-blind-btn mt-4" on:click={toggleColorBlindMode}>
-          <i class="fas fa-adjust mr-2"></i> Toggle Color Blind Mode
-        </button>
+        <div class="flex justify-center items-center">
+          <button class="color-blind-btn mt-4" on:click={toggleColorBlindMode}>
+            <i class="fas fa-adjust mr-2"></i> Toggle Color Blind Mode
+          </button>
+        </div>
       </div>
     </div>
 
-    <!-- Test Results Section -->
-    <div class={`p-6 rounded-lg shadow-md border ${$colorBlindMode ? 'color-blind-section' : 'bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600'} w-[45%]`}>
-      <h2 class={`text-xl font-semibold ${$colorBlindMode ? 'color-blind-text' : 'text-gray-800 dark:text-gray-100'} mb-4`}>
-        <i class="fas fa-chart-line mr-2"></i> Logs
-      </h2>
-      <button class="download-btn mt-4" on:click={downloadLogs}>
-        <i class="fas fa-download mr-2"></i> Download Logs
-      </button>
+    <!-- Right Section: Download Logs -->
+    <div class="flex flex-col gap-8 w-1/2">
+      <div class={`p-6 rounded-lg shadow-md border ${$colorBlindMode ? 'color-blind-section' : 'bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600'} flex-1 min-h-[100px]`}>
+        <h2 class={`flex justify-center items-center text-xl font-semibold ${$colorBlindMode ? 'color-blind-text' : 'text-gray-800 dark:text-gray-100'} mb-4`}>
+          <i class="fas fa-chart-line mr-2"></i> Logs
+        </h2>
+        <div class="flex justify-center">
+          <button class="download-btn mt-4" on:click={downloadLogs}>
+            <i class="fas fa-download mr-2"></i> Download Logs
+          </button>
+        </div>
+      </div>
+    
+      <!-- Light & Dark Mode Section -->
+      <div class={`p-6 rounded-lg shadow-md border ${$colorBlindMode ? 'color-blind-section' : 'bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600'} flex-1 min-h-[100px]`}>
+        <h2 class={`flex justify-center items-center text-xl font-semibold ${$colorBlindMode ? 'color-blind-text' : 'text-gray-800 dark:text-gray-100'} mb-4`}>
+          <i class="fas fa-eye mr-2"></i> Light/Dark Mode
+        </h2>
+        <div class="flex justify-center items-center">
+          <DarkMode class="transition-colors duration-300 hover:bg-gray-300 dark:hover:bg-gray-600" />
+        </div>
+      </div>
+      
     </div>
   </div>
 </div>
