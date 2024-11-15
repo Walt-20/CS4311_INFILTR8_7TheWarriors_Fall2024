@@ -3,7 +3,10 @@
     import Menu from '$lib/Menu.svelte';
     import { jsPDF } from 'jspdf';
     import * as XLSX from 'xlsx';
+    import user from "../../../user"
 
+
+    const userId = $user.username;
     export let data;
     
 	let projectname = data.projectid;
@@ -31,7 +34,7 @@
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ userId: stringifyedUserId,projectname: projectname }),
+                body: JSON.stringify({ userId: userId,projectname: projectname }),
             });
 
             if (!response.ok) {
@@ -129,7 +132,7 @@
 
 <div class="ml p-5">
     <div class="text-center py-4">
-        <h1 class="text-4xl font-bold text-gray-800 dark:text-gray-200">Report</h1>
+        <h1 class="text-4xl font-bold text-gray-800 dark:text-gray-200">{projectname}'s Report</h1>
     </div>
 
     <button class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md mb-6" on:click={toggleMenu}>☰ Menu</button>

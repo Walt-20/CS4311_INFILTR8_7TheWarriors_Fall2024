@@ -112,7 +112,7 @@
 		const currentDisallowedIps = $disallowedIps; 
 		const currentDisallowedEntryPoints = $disallowedEntryPoints; 
 
-        const requestBody = JSON.stringify({ disallowedIps: currentDisallowedIps, disallowedEntryPoints: currentDisallowedEntryPoints })
+        const requestBody = JSON.stringify({ disallowedIps: currentDisallowedIps, disallowedEntryPoints: currentDisallowedEntryPoints,userId:userId,projectName: projectname })
 		console.log('Request body: ', requestBody);
 		try {
 			const response = await fetch('http://localhost:5001/start-analysis', {
@@ -126,7 +126,7 @@
 			console.log('response is: ', response);
 
 			if (response.ok) {
-				navigateTo('/report');
+				navigateTo('/report/'+projectname);
 			} else {
 				throw new Error('Error, Network response: ', response);
 			}

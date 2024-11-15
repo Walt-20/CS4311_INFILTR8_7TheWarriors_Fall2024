@@ -8,14 +8,14 @@
     let projects = []
     let menuOpen = false;
 
-    async function fetchUploadedFiles(userId) {
+    async function fetchAllUserResults(userId) {
         if (!userId) {
             return
         }
         const stringifyedUserId = String(userId)
         console.log(stringifyedUserId)
         try {
-            const response = await fetch('http://localhost:5001/user-projects',{
+            const response = await fetch('http://localhost:5001/all-user-results',{
                     method:'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -34,7 +34,7 @@
         }
     }
 
-    fetchUploadedFiles(userId)
+    fetchAllUserResults(userId)
 </script>
 
 <Menu {menuOpen} />
@@ -49,12 +49,12 @@
         </div>
         <div class="rounded bg-white p-4 shadow dark:bg-gray-700">
             {#if projects.length === 0}
-                <p>No Projects Available</p>
+                <p>No Results Available</p>
             {:else}
                 {#each projects as project}
                 <h2 class="cursor-pointer mb-2 flex items-center text-md font-bold dark:text-gray-200 transition transform hover:scale-105 hover:shadow-xl">
                     <span class="mr-4">📁</span>
-                    <a href="./project/{project}">{project}</a>
+                    <a href="./report/{project}">{project}</a>
                 </h2>
                 {/each}
             {/if}
