@@ -3,6 +3,7 @@
     import Menu from '$lib/Menu.svelte';
     import { jsPDF } from 'jspdf';
     import * as XLSX from 'xlsx';
+    import { colorBlindMode } from '$lib/settingStore.js'; // Import the colorBlindMode store
 
     let ips = [];
     let entryPoints = [];
@@ -12,9 +13,9 @@
     let selectedFormat = exportFormats[0];
     let menuOpen = false;
 
-    let searchCategory = 'IP Addresses'; // Declare searchCategory
-    let searchQuery = ''; // Declare searchQuery
-    let filteredResults = []; // Store filtered results
+    let searchCategory = 'IP Addresses'; 
+    let searchQuery = ''; 
+    let filteredResults = []; 
 
     onMount(async () => {
         await fetchResults();
@@ -34,7 +35,6 @@
             severity = data.map(item => item.severity);
             pluginName = data.map(item => item.pluginName);
 
-            // Initialize filteredResults with the full list on mount
             filterDevices();
         } catch (error) {
             console.error('Error fetching results:', error);
@@ -79,8 +79,8 @@
 
     function exportAsCSV() {
         const csvContent = [
-            ["IP Address", "Device", "Vulnerability"], // Header row
-            ...filteredResults.map(item => [item.ip, item.device, item.vulnerability].join(",")) // Data rows
+            ["IP Address", "Device", "Vulnerability"], 
+            ...filteredResults.map(item => [item.ip, item.device, item.vulnerability].join(","))
         ].join("\n");
 
         const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
@@ -119,18 +119,18 @@
 
 <div class="ml p-5">
     <div class="text-center py-4">
-        <h1 class="text-4xl font-bold text-gray-800 dark:text-gray-200">Report</h1>
+        <h1 class={`text-4xl font-bold ${$colorBlindMode ? 'color-blind-text' : 'text-gray-800 dark:text-gray-200'}`}>Report</h1>
     </div>
 
-    <button class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md mb-6" on:click={toggleMenu}>☰ Menu</button>
+    <button class={`bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md mb-6 ${$colorBlindMode ? 'color-blind-button' : ''}`} on:click={toggleMenu}>☰ Menu</button>
 
-    <button class="bg-gray-600 hover:bg-gray-700 text-white py-2 px-6 rounded-md shadow-md mb-6">Go to Current Project Folder</button>
+    <button class={`bg-gray-600 hover:bg-gray-700 text-white py-2 px-6 rounded-md shadow-md mb-6 ${$colorBlindMode ? 'color-blind-button' : ''}`}>Go to Current Project Folder</button>
 
     <!-- Search Section -->
     <div class="mb-6">
-        <label class="block text-gray-700 dark:text-white mb-2">Search by</label>
+        <label class={`block mb-2 ${$colorBlindMode ? 'color-blind-text' : 'text-gray-700 dark:text-white'}`}>Search by</label>
         <div class="flex items-center space-x-2">
-            <select bind:value={searchCategory} class="bg-gray-200 border border-gray-300 rounded-md py-2 px-4 focus:ring-2 focus:ring-blue-500" on:change={filterDevices}>
+            <select bind:value={searchCategory} class={`bg-gray-200 border rounded-md py-2 px-4 focus:ring-2 focus:ring-blue-500 ${$colorBlindMode ? 'color-blind-border' : 'border-gray-300'}`} on:change={filterDevices}>
                 <option>IP Addresses</option>
                 <option>Device</option>
                 <option>Vulnerability</option>
@@ -140,13 +140,13 @@
                 bind:value={searchQuery} 
                 on:input={filterDevices} 
                 placeholder={`Search ${searchCategory.toLowerCase()}...`} 
-                class="bg-gray-200 border border-gray-300 rounded-md py-2 px-4 flex-grow focus:ring-2 focus:ring-blue-500" 
+                class={`bg-gray-200 border rounded-md py-2 px-4 flex-grow focus:ring-2 focus:ring-blue-500 ${$colorBlindMode ? 'color-blind-border' : 'border-gray-300'}`} 
             />
         </div>
     </div>
 
     <!-- Filtered Device List -->
-    <div class="border border-gray-300 bg-gray-300 dark:bg-gray-600 rounded-lg shadow-sm mb-6 p-4">
+    <div class={`border rounded-lg shadow-sm mb-6 p-4 ${$colorBlindMode ? 'color-blind-bg-dark' : 'border-gray-300 bg-gray-300 dark:bg-gray-600'}`}>
         <ul class="space-y-2">
             <li class="font-bold text-gray-700 flex justify-between bg-gray-100 p-2 rounded-md overflow-x-auto">
                 <span>IP Addresses</span>
@@ -154,7 +154,7 @@
                 <span>Vulnerability</span>
             </li>
             {#each filteredResults as item}
-                <li class="flex justify-between p-2 rounded-md hover:bg-gray-50 overflow-x-auto">
+                <li class={`flex justify-between p-2 rounded-md overflow-x-auto ${$colorBlindMode ? 'color-blind-item' : 'hover:bg-gray-50'}`}>
                     <span>{item.ip}</span>
                     <span>{item.device}</span>
                     <span>{item.vulnerability}</span>
@@ -165,14 +165,35 @@
 
     <!-- Export Format Dropdown -->
     <div class="mb-6">
-        <label for="export-format" class="block text-gray-700 dark:text-white mb-2">Format to export</label>
-        <select id="export-format" bind:value={selectedFormat} class="bg-gray-200 border border-gray-300 rounded-md py-2 px-4 w-40 focus:ring-2 focus:ring-blue-500">
+        <label for="export-format" class={`block mb-2 ${$colorBlindMode ? 'color-blind-text' : 'text-gray-700 dark:text-white'}`}>Format to export</label>
+        <select id="export-format" bind:value={selectedFormat} class={`bg-gray-200 border rounded-md py-2 px-4 w-40 focus:ring-2 focus:ring-blue-500 ${$colorBlindMode ? 'color-blind-border' : 'border-gray-300'}`}>
             {#each exportFormats as format}
                 <option value={format}>{format}</option>
             {/each}
         </select>
     </div>
 
-    <button class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-6 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300"
+    <button class={`bg-blue-600 hover:bg-blue-700 text-white py-2 px-6 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300 ${$colorBlindMode ? 'color-blind-button' : ''}`}
         on:click={handleExport}>Export</button>
 </div>
+
+<style>
+    .color-blind-text {
+        color: #264653;
+    }
+    .color-blind-bg-dark {
+        background-color: #273043;
+    }
+    .color-blind-item {
+        background-color: #F4A261;
+        color: #264653;
+    }
+    .color-blind-border {
+        border-color: #E76F51;
+    }
+    .color-blind-button {
+        background-color: #FF7F11;
+        color: #ffffff;
+    }
+</style>
+
