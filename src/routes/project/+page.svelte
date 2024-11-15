@@ -7,19 +7,13 @@
 	let errorMessage = ''; // To store and display error messages
 
 	let ips = [];
-<<<<<<< HEAD
-	let disallowedIps = [];
-	let ipStatus = [];
-
-	let entryPoints = [];
-	let disallowedEntryPoints = [];
-=======
     //let disallowedIps = [];
 	let ipStatus = [];
 
 	let entryPoints = [];
+	let entryPointStatus =[];
     //let disallowedEntryPoints = [];
->>>>>>> 61e2942867a0e04da5b4e56a21c634cda88837c9
+
 	let projects = ['Project 1', 'Project 2', 'Project 3'];
 	let menuOpen = false;
 
@@ -28,35 +22,37 @@
 	let pluginName = [];
 
 	// Toggle IP status between 'allowed' and 'off-limits'
-	function toggleStatus(index) {
+	function toggleIpStatus(index) {
 		ipStatus[index] = ipStatus[index] === 'Allowed' ? 'Off-Limits' : 'Allowed';
-<<<<<<< HEAD
-		console.log(ipStatus[index]);
-		if (ipStatus[index] == 'Off-Limits') {
-			disallowedIps.push(ips[index]);
-			disallowedEntryPoints.push(entryPoints[index]);
-		} else {
-			console.log("is this working?")
-			disallowedIps = disallowedIps.filter((ip) => ip !== ips[index]);
-			disallowedEntryPoints = disallowedEntryPoints.filter((entry) => entry !== entryPoints[index]);
-		}
-=======
         console.log(ipStatus[index])
         if (ipStatus[index] == 'Off-Limits') {
             console.log("off-limits")
 
             disallowedIps.update(currentIps => { return [...currentIps, ips[index]]; });
-            disallowedEntryPoints.update(currentEntryPoints => { return [...currentEntryPoints, entryPoints[index]]; });
 
             console.log(disallowedIps)
-            console.log(disallowedEntryPoints)
         } else {
 
             disallowedIps.update(currentIps => { return currentIps.filter(ip => ip !== ips[index]); });
+
+        }
+	}
+
+	// Toggle EntryPoint status between 'allowed' and 'off-limits'
+	function toggleEntryPointStatus(index) {
+		entryPointStatus[index] = entryPointStatus[index] === 'Allowed' ? 'Off-Limits' : 'Allowed';
+        console.log(entryPointStatus[index])
+        if (entryPointStatus[index] == 'Off-Limits') {
+            console.log("off-limits")
+
+            disallowedEntryPoints.update(currentEntryPoints => { return [...currentEntryPoints, entryPoints[index]]; });
+
+            console.log(disallowedEntryPoints)
+        } else {
+
             disallowedEntryPoints.update(currentEntryPoints => { return currentEntryPoints.filter(entry => entry !== entryPoints[index]); });
 
         }
->>>>>>> 61e2942867a0e04da5b4e56a21c634cda88837c9
 	}
 
 	// Regular expression to validate an IP address with sections ranging 0-255
@@ -121,15 +117,11 @@
 	}
 
 	async function startAnalysis() {
-<<<<<<< HEAD
-		const requestBody = JSON.stringify({ disallowedIps, disallowedEntryPoints });
-=======
 		
 		const currentDisallowedIps = $disallowedIps; 
 		const currentDisallowedEntryPoints = $disallowedEntryPoints; 
 
         const requestBody = JSON.stringify({ disallowedIps: currentDisallowedIps, disallowedEntryPoints: currentDisallowedEntryPoints })
->>>>>>> 61e2942867a0e04da5b4e56a21c634cda88837c9
 
 		console.log('Request body: ', requestBody);
 		try {
@@ -179,12 +171,24 @@
 
 			const data = await response.json();
 
+			const uniqueData = [];
+			const seenIps = new Set();
+			const seenEntryPoints = new Set();
+
+			data.forEach((item) => {
+				if (!seenIps.has(item.ip) && !seenEntryPoints.has(item.archetype)) {
+					seenIps.add(item.ip);
+					seenEntryPoints.add(item.archetype);
+					uniqueData.push(item);
+				}
+			});
+
 			const inIps = [];
 			const inEntryPoints = [];
 			const inSeverity = [];
 			const inPluginName = [];
 
-			data.forEach((item) => {
+			uniqueData.forEach((item) => {
 				inIps.push(item.ip);
 				inEntryPoints.push(item.archetype);
 				inSeverity.push(item.severity);
@@ -196,6 +200,7 @@
 			pluginName = inPluginName;
 			severity = inSeverity;
 			ipStatus = ips.map(() => 'Allowed');
+			entryPointStatus = entryPoints.map(() => 'Allowed');
 		} catch (error) {
 			console.error('Error fetching results: ', error);
 		}
@@ -221,7 +226,7 @@
 </div>
 
 <div class="flex flex-wrap md:flex-nowrap gap-x-5 p-5 bg-gray-100 dark:bg-gray-900 min-h-screen">
-    <!-- Left Section: IP List & Entry Points -->
+    <!-- Left Section: IP List -->
     <div class="flex flex-col w-full md:w-1/2 space-y-5">
         <!-- IP List -->
         <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-5">
@@ -229,11 +234,10 @@
             <ul class="space-y-3 mt-4">
                 {#each ips as ip, index}
                     <li class="flex items-center justify-between">
-                        <span class="cursor-pointer rounded-full w-5 h-5 flex items-center justify-center" on:click={() => toggleStatus(index)}
+                        <span class="cursor-pointer rounded-full w-5 h-5 flex items-center justify-center" on:click={() => toggleIpsStatus(index)}
 							class:allowed_box={ipStatus[index] === 'Allowed'}
 							class:off-limits_box={ipStatus[index] === 'Off-Limits'}></span>
                         <span class="ml-4 text-gray-800 dark:text-gray-200">{ip}</span>
-                        <span class="ml-4 text-gray-800 dark:text-gray-200">{entryPoints[index]}</span>
                     </li>
                 {/each}
             </ul>
@@ -248,20 +252,20 @@
         </div>
     </div>
 
-    <!-- Right Section: Create Project and Load Projects -->
+    <!-- Right Section: Archetype List -->
     <div class="flex flex-col w-full md:w-1/2 space-y-5 mt-5 md:mt-0">
-        <!-- Load Projects Box -->
+        <!-- Archetype List -->
         <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-5">
-            <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Load Projects</h2>
-            <ul class="mt-4 space-y-3">
-                <li class="flex items-center p-3 bg-gray-200 dark:bg-gray-700 rounded cursor-pointer hover:bg-gray-300 dark:hover:bg-gray-600">
-                    <span class="mr-4">📁</span>
-                    <span class="text-gray-800 dark:text-gray-200">Project 1</span>
-                </li>
-                <li class="flex items-center p-3 bg-gray-200 dark:bg-gray-700 rounded cursor-pointer hover:bg-gray-300 dark:hover:bg-gray-600">
-                    <span class="mr-4">📁</span>
-                    <span class="text-gray-800 dark:text-gray-200">Project 2</span>
-                </li>
+            <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Archetype List</h2>
+            <ul class="space-y-3 mt-4">
+                {#each entryPoints as entryPoint, index}
+                    <li class="flex items-center justify-between">
+                        <span class="cursor-pointer rounded-full w-5 h-5 flex items-center justify-center" on:click={() => toggleEntryPointStatus(index)}
+							class:allowed_box={entryPointStatus[index] === 'Allowed'}
+							class:off-limits_box={entryPointStatus[index] === 'Off-Limits'}></span>
+                        <span class="ml-4 text-gray-800 dark:text-gray-200">{entryPoint}</span>
+                    </li>
+                {/each}
             </ul>
         </div>
     </div>
