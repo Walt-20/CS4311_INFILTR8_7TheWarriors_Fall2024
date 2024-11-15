@@ -272,7 +272,7 @@
 		<button
 			class="mr-4 rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 disabled:cursor-not-allowed disabled:opacity-50 dark:focus:ring-blue-800"
 			on:click={handleCreateProject}
-			disabled={!isValidFile && projectName != null}
+			disabled={!isValidFile || !projectName}
 		>
 			Create Project
 		</button>
