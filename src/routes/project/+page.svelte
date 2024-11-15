@@ -226,34 +226,67 @@
 </div>
 
 <div class="flex flex-wrap md:flex-nowrap gap-x-5 p-5 bg-gray-100 dark:bg-gray-900 min-h-screen">
-    <!-- Left Section: IP List -->
     <div class="flex flex-col w-full md:w-1/2 space-y-5">
+
+	<!-- Left Section -->
+	<div>
+		<!-- File Upload -->
+		<div class="file-upload cursor-pointer rounded border-2 border-dashed border-gray-300 p-2 text-center hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:border-gray-500 dark:hover:bg-gray-600">
+    		<div class="flex flex-row items-center justify-center space-x-2">
+        		<!-- Text -->
+        		<h2 class="text-m flex dark:text-gray-200">Drag & Drop IP File --- OR ---></h2>
+
+			<!-- Button -->
+			<div class="relative inline-block">
+				<button
+					type="button"
+					class="inline-flex rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+				>
+					Upload IP File
+				</button>
+				<input
+					id="file-input"
+					class="absolute left-0 top-0 h-full w-full cursor-pointer opacity-0"
+					type="file"
+					multiple
+					accept=".txt"
+					on:change={handleFileSelect}
+				/>
+			</div>
+    	</div>
+</div>
+
+	</div>
+
         <!-- IP List -->
         <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-5">
             <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Scope IP List</h2>
+			<input type="text" bind:value={newIp} placeholder="Enter IP" class="mt-4 w-full p-2 rounded border dark:bg-gray-700 dark:border-gray-600" />
+            <button on:click={addNewIp} class="mt-2 w-full py-2 bg-blue-600 text-white rounded">Add</button>
+			{#if errorMessage}
+                <p class="text-red-500 mt-2">{errorMessage}</p>
+            {/if}
             <ul class="space-y-3 mt-4">
                 {#each ips as ip, index}
                     <li class="flex items-center justify-between">
-                        <span class="cursor-pointer rounded-full w-5 h-5 flex items-center justify-center" on:click={() => toggleIpsStatus(index)}
+                        <span class="cursor-pointer rounded-full w-5 h-5 flex items-center justify-center" on:click={() => toggleIpStatus(index)}
 							class:allowed_box={ipStatus[index] === 'Allowed'}
 							class:off-limits_box={ipStatus[index] === 'Off-Limits'}></span>
                         <span class="ml-4 text-gray-800 dark:text-gray-200">{ip}</span>
                     </li>
                 {/each}
             </ul>
-            <input type="text" bind:value={newIp} placeholder="Enter IP" class="mt-4 w-full p-2 rounded border dark:bg-gray-700 dark:border-gray-600" />
-            <button on:click={addNewIp} class="mt-2 w-full py-2 bg-blue-600 text-white rounded">Add</button>
-            {#if errorMessage}
-                <p class="text-red-500 mt-2">{errorMessage}</p>
-            {/if}
-        </div>
-        <div class="text-center py-50">
-            <button on:click={startAnalysis} class="mt-2 w-60 py-2 bg-blue-600 text-white rounded">Start Analysis</button>
         </div>
     </div>
 
-    <!-- Right Section: Archetype List -->
+    <!-- Right Section -->
     <div class="flex flex-col w-full md:w-1/2 space-y-5 mt-5 md:mt-0">
+		<!-- Start Analysis Button -->
+		<div class="flex flex-col w-full md:w-full space-y-4 mt-5 md:mt-0">
+			<div class="text-center py-50">
+				<button on:click={startAnalysis} class="mt-2 w-60 py-3 bg-blue-600 text-white rounded">Start Analysis</button>
+			</div>
+		</div>
         <!-- Archetype List -->
         <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-5">
             <h2 class="text-xl font-semibold text-gray-800 dark:text-white">Archetype List</h2>
