@@ -4,7 +4,6 @@
 	import {disallowedIps,disallowedEntryPoints} from '../../../disallowedfilter';
 	import user from "../../../user"
 
-
     const userId = $user.username;
 	export let data;
 
@@ -19,12 +18,14 @@
 
 	let entryPoints = [];
     //let disallowedEntryPoints = [];
-	let projects = [];
 	let menuOpen = false;
 
 	let severity = [];
 
 	let pluginName = [];
+
+	disallowedIps.set([])
+	disallowedEntryPoints.set([])
 
 	// Toggle IP status between 'allowed' and 'off-limits'
 	function toggleStatus(index) {
@@ -71,46 +72,12 @@
 		}
 	}
 
-	function moveUp(list, statusList, index) {
-		if (index > 0) {
-			const newList = [...list];
-			const newStatusList = [...statusList];
-			[newList[index - 1], newList[index]] = [newList[index], newList[index - 1]];
-			[newStatusList[index - 1], newStatusList[index]] = [
-				newStatusList[index],
-				newStatusList[index - 1]
-			];
-			if (list === ips) {
-				ips = newList;
-				ipStatus = newStatusList;
-			} else {
-				entryPoints = newList;
-			}
-		}
-	}
-
-	function moveDown(list, statusList, index) {
-		if (index < list.length - 1) {
-			const newList = [...list];
-			const newStatusList = [...statusList];
-			[newList[index + 1], newList[index]] = [newList[index], newList[index + 1]];
-			[newStatusList[index + 1], newStatusList[index]] = [
-				newStatusList[index],
-				newStatusList[index + 1]
-			];
-			if (list === ips) {
-				ips = newList;
-				ipStatus = newStatusList;
-			} else {
-				entryPoints = newList;
-			}
-		}
-	}
-
 	async function startAnalysis() {
 		
 		const currentDisallowedIps = $disallowedIps; 
-		const currentDisallowedEntryPoints = $disallowedEntryPoints; 
+		const currentDisallowedEntryPoints = $disallowedEntryPoints;
+		
+		console.log("the currentDisallowedIps are ", currentDisallowedIps)
 
         const requestBody = JSON.stringify({ disallowedIps: currentDisallowedIps, disallowedEntryPoints: currentDisallowedEntryPoints,userId:userId,projectName: projectname })
 		console.log('Request body: ', requestBody);

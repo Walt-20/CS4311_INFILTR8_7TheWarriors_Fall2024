@@ -13,14 +13,15 @@ nessus_file = sys.argv[1]
 # Accept disallowed IPs and entry points as additional command-line arguments       
 disallowed_ips = sys.argv[2].split(',')  # Comma-separated list of disallowed IPs
 disallowed_entry_points = sys.argv[3].split(',')  # Comma-separated list of disallowed archetypes
+output_base_dir = sys.argv[4]
 
 # Combine disallowed_ips and disallowed_entry_points into pairs
 disallowed_pairs = list(zip(disallowed_ips, disallowed_entry_points))
 
-# Base directory for output CSV files, change line 13 to where you want output CSVs to go
-current_dir = os.getcwd()
-output_base_dir = os.path.join(current_dir, 'machine_learning')
-os.makedirs(output_base_dir, exist_ok=True)
+# # Base directory for output CSV files, change line 13 to where you want output CSVs to go
+# current_dir = os.getcwd()
+# output_base_dir = os.path.join(current_dir, 'machine_learning')
+# os.makedirs(output_base_dir, exist_ok=True)
 
 # Construct paths for output CSV files
 data_with_exploits_path = os.path.join(output_base_dir, 'data_with_exploits.csv')

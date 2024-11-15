@@ -12,8 +12,6 @@ const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const rootDir = path.join(__dirname, '..');
-const jsonUserFilePath = path.join(rootDir, 'server', 'user-results', 'results.json')
-const uploadedFiles = {};
 const pythonPath = path.join(rootDir, 'python-backend', 'venv', 'bin', 'python')
 
 app.use(cors(), express.json(), express.urlencoded({ extended: true }));
@@ -172,6 +170,8 @@ app.post('/start-analysis', upload.single('file'), (req, res) => {
         return res.status(400).send('Invalid data')
     }
 
+    console.log("disallowedIps ", disallowedIps)
+
     const folderToAnalyze = path.join(rootDir,'server','projects',userId,projectName,'uploads')
     let fileList = fs.readdirSync(folderToAnalyze, (err, folder) => {
         if (err) {
@@ -193,7 +193,7 @@ app.post('/start-analysis', upload.single('file'), (req, res) => {
     const disallowedIpsStr = disallowedIps.join(','); // Convert array to comma-separated string
     const disallowedEntryPointsStr = disallowedEntryPoints.join(','); // Convert array to comma-separated string
 
-    const command = `"${pythonPath}" main.py "${fileToAnalyze}" "${disallowedIpsStr}" "${disallowedEntryPointsStr}"`
+    const command = `"${pythonPath}" main.py "${fileToAnalyze}" "${disallowedIpsStr}" "${disallowedEntryPointsStr}" "${machineLearningFolderPath}"`
 
 
     exec(command, { cwd: rootDir }, (error, stdout, stderr) => {
