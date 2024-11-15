@@ -1,13 +1,13 @@
 <script>
     import user from '../user';
     import { navigateTo } from '../utils.js';
-    import { addLog } from '$lib/logStore.js'; // Import the log store function
-    import bcrypt from 'bcryptjs'; // Import bcryptjs for client-side hashing
+    import { addLog } from '$lib/logStore.js'; 
+    import bcrypt from 'bcryptjs'; 
 
     let username = '';
     let password = '';
     let currentError = null;
-    let sessionToken = null; // Store the session token
+    let sessionToken = null; 
 
     const generateToken = () => {
         return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
@@ -30,10 +30,7 @@
         })
         .then((response) => {
             if (response.status === 200) {
-                // Generate a token after a successful response
                 sessionToken = generateToken();
-
-                // Hash the session token using bcryptjs
                 sessionToken = bcrypt.hashSync(sessionToken, 10);
                 
                 addLog(`User "${username}" logged in successfully. Token: ${sessionToken}`);
@@ -51,9 +48,7 @@
         .then((data) => {
             if (data && data.user) {
                 user.update((val) => (val = { ...data.user }));
-                setTimeout(() => {
-                    navigateTo('/dashboard'); // Redirect after a delay
-                }, 1000); // 3000 milliseconds = 3 seconds
+                navigateTo('/dashboard');
             }
         })
         .catch((error) => {

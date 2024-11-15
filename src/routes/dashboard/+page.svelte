@@ -193,19 +193,19 @@
 
 <Menu {menuOpen} />
 
-<div class="py-6 text-center">
-	<h1 class="text-2xl font-semibold dark:text-gray-200">{greeting}, {userId}!</h1>
+<div class="text-center py-6">
+    <h1 class="text-2xl font-semibold dark:text-gray-200">{greeting}, Analyst!</h1>
 </div>
 
 <div class="grid grid-cols-2 gap-6 p-6">
-	<!-- Create New Project Section -->
-	<div class="create-project">
-		<div class="mb-4 rounded bg-gray-50 p-4 shadow dark:bg-gray-700">
-			<h2 class="flex items-center text-xl font-bold dark:text-gray-200">
-				<BookOpenOutline class="mr-2 h-6 w-6" />
-				Create New Project
-			</h2>
-		</div>
+      <!-- Create New Project Section -->
+      <div class="create-project">
+        <div class="mb-4 p-4 bg-gray-50 dark:bg-gray-700 rounded shadow">
+            <h2 class="text-xl font-bold flex items-center dark:text-gray-200">
+                <BookOpenOutline class = "w-6 h-6 mr-2" /> 
+                Create New Project
+            </h2>
+        </div>
 
 
 		<div class="flex items-center space-x-20">
@@ -301,23 +301,24 @@
 			Discard All
 		</button> -->
 
-		{#if files.length > 0}
-			<h2 class="mt-6 text-xl font-bold dark:text-gray-200">Uploading Files</h2>
-			<ul class="mt-2 list-inside list-disc dark:text-gray-300">
-				{#each files as file}
-					<li>{file.name}</li>
-				{/each}
-			</ul>
+        {#if files.length > 0}
+            <ul class="list-disc list-inside dark:text-gray-300 mt-2">
+                {#each files as file}
+                    <li>{file.name}</li>
+                {/each}
+            </ul>
 
-			<!-- Progress Bar -->
-			<div class="progress-bar mt-4 overflow-hidden rounded bg-gray-200">
-				<div class="h-2 rounded bg-green-500" style="width: {uploadProgress}%"></div>
-			</div>
-		{/if}
-	</div>
+            <!-- Progress Bar -->
+            <div class="progress-bar bg-gray-200 rounded overflow-hidden mt-4">
+                <div class="bg-green-500 h-2 rounded" style="width: {uploadProgress}%"></div>
+            </div>
+        {:else}
+            <p class="mt-4 text-gray-600 dark:text-gray-300">No files being uploaded.</p>
+        {/if}
+    </div>
 
-	<!-- New Download Logs Section -->
-	<!-- <div class="download-logs">
-		<button class="button" on:click={downloadLogs}>Download Logs</button>
-	</div> -->
+    <!-- New Download Logs Section -->
+    <div class="download-logs">
+        <button class="button" on:click={downloadLogs}>Download Logs</button>
+    </div>
 </div>
