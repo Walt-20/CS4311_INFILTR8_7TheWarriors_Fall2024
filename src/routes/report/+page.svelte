@@ -1,114 +1,63 @@
+
 <script>
-	import { onMount } from 'svelte';
-	import Menu from '$lib/Menu.svelte';
+    import Menu from '$lib/Menu.svelte';
+    import user from "../../user"
 
-	let ips = [];
-	let entryPoints = [];
-	let severity = [];
-	let pluginName = [];
-	let exportFormats = ['PDF', 'CSV', 'Excel'];
-	let selectedFormat = exportFormats[0];
-	let menuOpen = false;
 
-	function handleExport() {
-		// Handle export action
-	}
+    const userId = $user.username;
+    let projects = []
+    let menuOpen = false;
 
-	function toggleMenu() {
-		menuOpen = !menuOpen;
-	}
+    async function fetchAllUserResults(userId) {
+        if (!userId) {
+            return
+        }
+        const stringifyedUserId = String(userId)
+        console.log(stringifyedUserId)
+        try {
+            const response = await fetch('http://localhost:5001/all-user-results',{
+                    method:'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ userId: stringifyedUserId }),
+                })
 
-	async function fetchResults() {
-		try {
-			const response = await fetch('http://localhost:5001/user-results');
+            if (!response.ok) {
+                throw new Error('Failed to fetch projects')
+            }
 
-			if (!response.ok) {
-				throw new Error('Error, Network response: ', response);
-			}
+            const serverProjects = await response.json()
+            projects = serverProjects.map(project => project.projectName)
+        } catch (error) {
+            console.error("Error fetching projects: ",error);
+        }
+    }
 
-			const data = await response.json();
-
-			const inIps = [];
-			const inEntryPoints = [];
-			const inSeverity = [];
-			const inPluginName = [];
-
-			data.forEach((item) => {
-				inIps.push(item.ip);
-				inEntryPoints.push(item.archetype);
-				inSeverity.push(item.severity);
-				inPluginName.push(item.pluginName);
-			});
-
-			ips = inIps;
-			entryPoints = inEntryPoints;
-			pluginName = inPluginName;
-			severity = inSeverity;
-		} catch (error) {
-			console.error('Error fetching results: ', error);
-		}
-	}
-
-	fetchResults();
+    fetchAllUserResults(userId)
 </script>
 
 <Menu {menuOpen} />
-
-<div class="ml p-5">
-	<div class="text-center py-4">
-		<h1 class="text-4xl font-bold text-gray-800 dark:text-gray-200">Report</h1>
-	</div>
-
-	<!-- Menu Toggle Button -->
-	<button
-		class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-md mb-6"
-		on:click={toggleMenu}>☰ Menu</button
-	>
-
-	<!-- Go to Current Project Folder Button -->
-	<button class="bg-gray-600 hover:bg-gray-700 text-white py-2 px-6 rounded-md shadow-md mb-6"
-		>Go to Current Project Folder</button
-	>
-
-	<!-- Device List -->
-	<div class="border border-gray-300 bg-gray-300 dark:bg-gray-600 rounded-lg shadow-sm mb-6 p-4">
-		<ul class="space-y-2">
-			<li class="font-bold text-gray-700 flex justify-between bg-gray-100 p-2 rounded-md">
-				<span>IP Addresses</span>
-				<!-- <span>Device</span> -->
-				<span>Vulnerability</span>
-				<span>Severity</span>
-			</li>
-			{#each ips as ip, index}
-				<li class="flex justify-between p-2 rounded-md hover:bg-gray-50">
-					<span>{ip}</span>
-					<span>{entryPoints[index]}</span>
-					<span>{severity[index]}</span>
-					<!-- <span>{pluginName[index]}</span> -->
-				</li>
-			{/each}
-		</ul>
-	</div>
-
-	<!-- Export Format Dropdown -->
-	<div class="mb-6">
-		<label for="export-format" class="block text-gray-700 dark:text-white mb-2"
-			>Format to export</label
-		>
-		<select
-			id="export-format"
-			bind:value={selectedFormat}
-			class="bg-gray-200 border border-gray-300 rounded-md py-2 px-4 w-40 focus:ring-2 focus:ring-blue-500"
-		>
-			{#each exportFormats as format}
-				<option value={format}>{format}</option>
-			{/each}
-		</select>
-	</div>
-
-	<!-- Export Button -->
-	<button
-		class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-6 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300"
-		on:click={handleExport}>Export</button
-	>
+<!-- Project Section -->
+<div style="width:70%; margin-left:auto;margin-right:auto;margin-top:1%">
+    <div class="projects">
+        <div class="mb-4 rounded bg-gray-50 p-4 shadow dark:bg-gray-700">
+            <h2 class="flex items-center text-xl font-bold dark:text-gray-200">
+                <span class="material-symbols-outlined mr-2">folder</span>
+                Reports
+            </h2>
+        </div>
+        <div class="rounded bg-white p-4 shadow dark:bg-gray-700">
+            {#if projects.length === 0}
+                <p>No Results Available</p>
+            {:else}
+                {#each projects as project}
+                <h2 class="cursor-pointer mb-2 flex items-center text-md font-bold dark:text-gray-200 transition transform hover:scale-105 hover:shadow-xl">
+                    <span class="mr-4">📁</span>
+                    <a href="./report/{project}">{project}</a>
+                </h2>
+                {/each}
+            {/if}
+        </div>
+    </div>
 </div>
