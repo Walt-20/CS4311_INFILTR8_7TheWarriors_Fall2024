@@ -166,16 +166,34 @@ app.post('/upload', upload.array('files'), (req, res) => {
 });
 
 app.post('/start-analysis', upload.single('file'), (req, res) => {
-    const { disallowedIps, disallowedEntryPoints } = req.body;
+    const { disallowedIps, disallowedEntryPoints,userId,projectName } = req.body;
 
     if (!disallowedIps || !disallowedEntryPoints) {
         return res.status(400).send('Invalid data')
     }
 
+    const folderToAnalyze = path.join(rootDir,'server','projects',userId,projectName,'uploads')
+    let fileList = fs.readdirSync(folderToAnalyze, (err, folder) => {
+        if (err) {
+            console.error('Error reading user projects: ', err)
+        }
+
+        const fileMapping = folder.map(file => ({
+            fileName: file,
+        }))
+        console.log(fileMapping)
+        console.log("Inside")
+        return fileMapping
+    })
+
+    console.log(fileList)
+    const fileToAnalyze = path.join(folderToAnalyze,fileList[0])
+    const machineLearningFolderPath = path.join(rootDir, 'server', 'projects', userId, projectName, 'machine_learning')
+
     const disallowedIpsStr = disallowedIps.join(','); // Convert array to comma-separated string
     const disallowedEntryPointsStr = disallowedEntryPoints.join(','); // Convert array to comma-separated string
 
-    const command = `"${pythonPath}" main.py "${uploadedFiles[1]}" "${disallowedIpsStr}" "${disallowedEntryPointsStr}"`
+    const command = `"${pythonPath}" main.py "${fileToAnalyze}" "${disallowedIpsStr}" "${disallowedEntryPointsStr}"`
 
 
     exec(command, { cwd: rootDir }, (error, stdout, stderr) => {
@@ -185,7 +203,7 @@ app.post('/start-analysis', upload.single('file'), (req, res) => {
         }
 
         // After Python execution, read and process the CSV file
-        const csvFilePath = path.join(rootDir, 'machine_learning', 'data_with_exploits.csv');
+        const csvFilePath = path.join(machineLearningFolderPath, 'data_with_exploits.csv');
         const columnsToExtract = ['ip', 'archetype', 'pluginName', 'severity'];
 
         const results = [];
@@ -207,8 +225,8 @@ app.post('/start-analysis', upload.single('file'), (req, res) => {
             .on('end', () => {
                 const jsonData = JSON.stringify(results, null, 2);
 
-
-                fs.writeFile(jsonUserFilePath, jsonData, (err) => {
+                const userResult = path.join(rootDir,'server','projects',userId,projectName,'user-results','results.json')
+                fs.writeFile(userResult, jsonData, (err) => {
                     if (err) {
                         console.error('Error writing JSON file:', err);
                         return res.status(500).send('Error saving results');
@@ -249,15 +267,47 @@ app.post('/user-projects', (req, res) => {
 
 })
 
-app.get('/parsed', (req, res) => {
+app.post('/parsed', (req, res) => {
     try {
-        res.sendFile(jsonParsedFilePath);
+        console.log(req.body.userId)
+        console.log(req.body.projectName)
+        const userId = req.body.userId;
+        const projectname = req.body.projectName;
+        const reqParsedPath = path.join(rootDir, 'server', 'projects', userId, projectname, 'parsed-results', 'results.json')
+        console.log("Fetching for user "+req.body.userId+" project "+req.body.projectName);
+        res.sendFile(reqParsedPath);
     } catch(error) {
-        res.send({message: "No results."})
+        return res.status(404).send('Parsed not found')
     }
 })
 
-app.get('/user-results', (req, res) => {
+app.post('/all-user-results', (req, res) => {
+    console.log("Fetching user results")
+    const userId = req.body.userId
+    const userResults = path.join(rootDir, 'server', 'projects', userId)
+    if (!fs.existsSync(userResults)) {
+        return res.status(404).send('User not found')
+    }
+
+    fs.readdir(userResults, (err, projects) => {
+        if (err) {
+            console.error('Error reading user projects: ', err)
+            return res.status(500).send('Error reading user projects')
+        }
+
+        const projectList = projects.map(project => ({
+            projectName: project,
+            projectPath: path.join(userResults, project)
+        }))
+
+        console.log(projectList)
+
+        res.status(200).json(projectList)
+    })
+
+})
+
+app.post('/user-results', (req, res) => {
     console.log("Fetching user projects")
     const userId = req.body.userId;
     const projectname = req.body.projectname;
@@ -287,6 +337,10 @@ process.on('SIGINT', () => {
 process.on('SIGTERM', () => {
     console.log('Shutting Down....')
     process.exit(0)
+})
+
+app.get("/",(req,res)=>{
+    res.send("hello");
 })
 
 app.listen(5001, () => {
