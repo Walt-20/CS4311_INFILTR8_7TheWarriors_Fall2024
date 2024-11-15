@@ -20,7 +20,6 @@
 	let entryPointStatus =[];
     //let disallowedEntryPoints = [];
 
-	let projects = ['Project 1', 'Project 2', 'Project 3'];
 	let menuOpen = false;
 
 	let severity = [];
