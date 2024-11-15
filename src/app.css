@@ -23,6 +23,6 @@ h1, h2, h3, h4, h5, h6, p, span, li {
     font-size: var(--text-font-size);
 }
 
-/* button, label {
+button, label {
     font-size: var(--text-font-size);
-} */
+}
