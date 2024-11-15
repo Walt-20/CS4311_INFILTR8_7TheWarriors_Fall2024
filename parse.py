@@ -5,6 +5,7 @@ import pandas as pd
 
 # Path to the Nessus XML file, change line 10 to match path where your NESSUS file is
 nessus_file = sys.argv[1]
+folder_to_save_to = sys.argv[2]
 
 # Base directory for output CSV files, change line 13 to where you want output CSVs to go
 current_dir = os.getcwd()
@@ -13,7 +14,7 @@ os.makedirs(output_base_dir, exist_ok=True)
 print("should make directory")
 
 # Construct paths for output CSV files
-data_with_exploits_path = os.path.join(output_base_dir, 'data_with_exploits.csv')
+data_with_exploits_path = os.path.join(folder_to_save_to, 'data_with_exploits.csv')
 
 # Initialize an empty DataFrame
 df = pd.DataFrame(columns=[])

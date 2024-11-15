@@ -1,5 +1,5 @@
 <script>
-    import user from '../../user';
+	import user from '../../user'
 	import { onMount } from 'svelte';
 	import Menu from '$lib/Menu.svelte';
 	import Notification from '$lib/Notification.svelte';
@@ -10,11 +10,7 @@
 	import { fly } from 'svelte/transition';
 
 	let greeting = '';
-	let notifications = [
-		{ message: 'Notification 1', unread: true },
-		{ message: 'Notification 2', unread: false },
-		{ message: 'Notification 3', unread: true }
-	];
+	let projects = [];
 	let files = [];
     let uploadedfiles = []; //Array of paths to files that have been uploaded
 	let uploadProgress = 0;
@@ -24,6 +20,8 @@
     let showToast = false;
     let showPopup = writable(false);
     let projectName = '';
+
+	const userId = $user.username;
 
 	onMount(() => {
 		const hours = new Date().getHours();
@@ -48,6 +46,7 @@
 
 		// Added this - Darien ///////////////////
 		if (isValidFile) {
+			console.log("Truly a valid file")
 			// Upload the file to the server for parsing
 			files.forEach((file) => uploadFileToServer(file));
 		}
@@ -60,11 +59,12 @@
 		showToast = false;
 		console.log('uploading files');
 		const formData = new FormData();
-		formData.append('file', file);
+		formData.append('userId', userId)
+		formData.append('projectName', projectName)
+		formData.append('files', file);
 
 		try {
 			const response = await fetch('http://localhost:5001/upload', {
-				////// <---- Might need to change this
 				method: 'POST',
 				body: formData
 			});
@@ -79,11 +79,11 @@
 			}
 			showToast = true;
 			setTimeout(() => (showToast = false), 3000);
+			fetchUploadedFiles(userId)
 		} catch (error) {
 			console.error('Error uploading file:', error);
 		}
 	}
-	/////////////////////////////////////////////////
 
 	function handleCreateProject() {
         console.log("Project Name",projectName)
@@ -100,7 +100,7 @@
                     headers: {
 					    'Content-Type': 'application/json'
 				    },
-				    body: JSON.stringify({filepath: filepath}),
+				    body: JSON.stringify({ filepath: filepath, userId: 1111111 }),
                 })
 
                 if (!response.ok) {
@@ -161,12 +161,40 @@
 		a.click();
 		URL.revokeObjectURL(url); // Clean up
 	}
+
+	async function fetchUploadedFiles(userId) {
+		if (!userId) {
+			return
+		}
+		const stringifyedUserId = String(userId)
+		console.log(stringifyedUserId)
+		try {
+			const response = await fetch('http://localhost:5001/user-projects',{
+                    method:'POST',
+                    headers: {
+					    'Content-Type': 'application/json'
+				    },
+				    body: JSON.stringify({ userId: stringifyedUserId }),
+                })
+
+			if (!response.ok) {
+				throw new Error('Failed to fetch projects')
+			}
+
+			const serverProjects = await response.json()
+			projects = serverProjects.map(project => project.projectName)
+		} catch (error) {
+			console.error("Error fetching projects: ",error);
+		}
+	}
+
+	fetchUploadedFiles(userId)
 </script>
 
 <Menu {menuOpen} />
 
 <div class="py-6 text-center">
-	<h1 class="text-2xl font-semibold dark:text-gray-200">{greeting}, {$user?.first_name ?? "Analyst"}!</h1>
+	<h1 class="text-2xl font-semibold dark:text-gray-200">{greeting}, {userId}!</h1>
 </div>
 
 <div class="grid grid-cols-2 gap-6 p-6">
@@ -178,6 +206,12 @@
 				Create New Project
 			</h2>
 		</div>
+
+
+		<div class="popup">
+			<input type="text" id="projectName" bind:value={projectName} placeholder="Enter a name for your project" class="mt-1 block w-full p-2 border rounded" />
+		</div>
+		<br>
 
 		<!-- File Upload -->
 		<div
@@ -205,19 +239,26 @@
 			</div>
 		</div>
 	</div>
-	<!-- Notifications Section -->
-	<div class="notifications">
+
+	<!-- Project Section -->
+	<div class="projects">
 		<div class="mb-4 rounded bg-gray-50 p-4 shadow dark:bg-gray-700">
 			<h2 class="flex items-center text-xl font-bold dark:text-gray-200">
-				<span class="material-symbols-outlined mr-2">notifications_active</span>
-				Notifications
+				<span class="material-symbols-outlined mr-2">folder</span>
+				Projects
 			</h2>
 		</div>
-
 		<div class="rounded bg-white p-4 shadow dark:bg-gray-700">
-			{#each notifications as { message, unread }}
-				<Notification {message} {unread} />
-			{/each}
+			{#if projects.length === 0}
+				<p>No Projects Available</p>
+			{:else}
+				{#each projects as project}
+				<h2 class="cursor-pointer mb-2 flex items-center text-md font-bold dark:text-gray-200 transition transform hover:scale-105 hover:shadow-xl">
+					<span class="mr-4">📁</span>
+					<a href="./project/{project}">{project}</a>
+				</h2>
+				{/each}
+			{/if}
 		</div>
 	</div>
 
@@ -233,7 +274,7 @@
 		<button
 			class="mr-4 rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 disabled:cursor-not-allowed disabled:opacity-50 dark:focus:ring-blue-800"
 			on:click={() => showPopup.set(true)}
-			disabled={!isValidFile}
+			disabled={!isValidFile && projectName != null}
 		>
 			Create Project
 		</button>
@@ -245,8 +286,8 @@
 			Discard All
 		</button>
 
-		<h2 class="mt-6 text-xl font-bold dark:text-gray-200">Uploading Files</h2>
 		{#if files.length > 0}
+			<h2 class="mt-6 text-xl font-bold dark:text-gray-200">Uploading Files</h2>
 			<ul class="mt-2 list-inside list-disc dark:text-gray-300">
 				{#each files as file}
 					<li>{file.name}</li>
@@ -257,27 +298,11 @@
 			<div class="progress-bar mt-4 overflow-hidden rounded bg-gray-200">
 				<div class="h-2 rounded bg-green-500" style="width: {uploadProgress}%"></div>
 			</div>
-		{:else}
-			<p class="mt-4 text-gray-600 dark:text-gray-300">No files being uploaded.</p>
 		{/if}
 	</div>
 
-    {#if $showPopup}
-    <div class="popup">
-        <form on:submit|preventDefault={handleCreateProject}>
-        <input type="text" id="projectName" bind:value={projectName} placeholder="Enter a name for your project" class="mt-1 block w-full p-2 border rounded" />
-        <button type="submit" class="mt-6 w-full py-2 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700 text-center block">Submit</button>
-        </form>
-    </div>
-    <br>
-    {/if}
-
-<!-- Download Logs Section -->
-<div class="download-logs mt-6">
-    <button 
-        class="px-4 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-800 transition duration-300" 
-        on:click={downloadLogs}>
-        Download Logs
-    </button>
-</div>
+	<!-- New Download Logs Section -->
+	<!-- <div class="download-logs">
+		<button class="button" on:click={downloadLogs}>Download Logs</button>
+	</div> -->
 </div>
