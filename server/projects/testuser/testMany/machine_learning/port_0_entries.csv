@@ -8,50 +8,14 @@ Nessus_scan_file(1).nessus,192.168.1.20,192.168.1.20,0,False,Other,general,tcp,0
 Nessus_scan_file(1).nessus,192.168.1.20,192.168.1.20,0,False,Other,general,tcp,0,45590,Common Platform Enumeration (CPE),General
 Nessus_scan_file(1).nessus,192.168.1.20,192.168.1.20,0,False,Other,general,tcp,0,19506,Nessus Scan Information,Settings
 Nessus_scan_file(1).nessus,192.168.1.20,192.168.1.20,0,False,Other,general,tcp,0,66334,Patch Report,General
-Nessus_scan_file(1).nessus,192.168.1.20,192.168.1.20,80,False,Other,www,tcp,0,39521,Backported Security Patch Detection (WWW),General
-Nessus_scan_file(1).nessus,192.168.1.20,192.168.1.20,10000,False,missing encryption protocols,www,tcp,0,70544,SSL Cipher Block Chaining Cipher Suites Supported,General
-Nessus_scan_file(1).nessus,192.168.1.20,192.168.1.20,10000,False,missing encryption protocols,www,tcp,0,57041,SSL Perfect Forward Secrecy Cipher Suites Supported,General
-Nessus_scan_file(1).nessus,192.168.1.20,192.168.1.20,10000,False,missing encryption protocols,www,tcp,0,156899,SSL/TLS Recommended Cipher Suites,General
-Nessus_scan_file(1).nessus,192.168.1.20,192.168.1.20,10000,False,Other,www,tcp,0,138330,TLS Version 1.3 Protocol Detection,Service detection
-Nessus_scan_file(1).nessus,192.168.1.20,192.168.1.20,10000,False,Other,www,tcp,0,136318,TLS Version 1.2 Protocol Detection,Service detection
-Nessus_scan_file(1).nessus,192.168.1.20,192.168.1.20,10000,False,missing encryption protocols,www,tcp,0,21643,SSL Cipher Suites Supported,General
 Nessus_scan_file(1).nessus,192.168.1.20,192.168.1.20,0,False,Other,general,tcp,0,54615,Device Type,General
 Nessus_scan_file(1).nessus,192.168.1.20,192.168.1.20,0,False,Other,general,tcp,0,66293,Unix Operating System on Extended Support,General
 Nessus_scan_file(1).nessus,192.168.1.20,192.168.1.20,0,False,Other,general,tcp,0,11936,OS Identification,General
 Nessus_scan_file(1).nessus,192.168.1.20,192.168.1.20,0,False,Other,general,tcp,0,35716,Ethernet Card Manufacturer Detection,Misc.
 Nessus_scan_file(1).nessus,192.168.1.20,192.168.1.20,0,False,Other,general,tcp,0,86420,Ethernet MAC Addresses,General
-Nessus_scan_file(1).nessus,192.168.1.20,192.168.1.20,10000,False,missing encryption protocols,www,tcp,2,57582,SSL Self-Signed Certificate,General
-Nessus_scan_file(1).nessus,192.168.1.20,192.168.1.20,10000,False,missing encryption protocols,www,tcp,2,51192,SSL Certificate Cannot Be Trusted,General
-Nessus_scan_file(1).nessus,192.168.1.20,192.168.1.20,10000,False,missing encryption protocols,www,tcp,0,94761,SSL Root Certification Authority Certificate Information,General
-Nessus_scan_file(1).nessus,192.168.1.20,192.168.1.20,10000,False,missing encryption protocols,www,tcp,0,10863,SSL Certificate Information,General
-Nessus_scan_file(1).nessus,192.168.1.20,192.168.1.20,10000,False,missing encryption protocols,www,tcp,0,56984,SSL / TLS Versions Supported,General
 Nessus_scan_file(1).nessus,192.168.1.20,192.168.1.20,0,False,Other,general,udp,0,10287,Traceroute Information,General
 Nessus_scan_file(1).nessus,192.168.1.20,192.168.1.20,0,False,Other,general,tcp,0,25220,TCP/IP Timestamps Supported,General
-Nessus_scan_file(1).nessus,192.168.1.20,192.168.1.20,80,False,Other,www,tcp,0,48204,Apache HTTP Server Version,Web Servers
-Nessus_scan_file(1).nessus,192.168.1.20,192.168.1.20,80,False,Other,www,tcp,0,24260,HyperText Transfer Protocol (HTTP) Information,Web Servers
-Nessus_scan_file(1).nessus,192.168.1.20,192.168.1.20,22,False,Other,ssh,tcp,0,10881,SSH Protocol Versions Supported,General
-Nessus_scan_file(1).nessus,192.168.1.20,192.168.1.20,22,True,Other,ssh,tcp,2,159491,OpenSSH < 8.0,Misc.
-Nessus_scan_file(1).nessus,192.168.1.20,192.168.1.20,22,True,Other,ssh,tcp,2,159490,OpenSSH < 7.8,Misc.
-Nessus_scan_file(1).nessus,192.168.1.20,192.168.1.20,22,True,Other,ssh,tcp,2,187201,OpenSSH < 9.6 Multiple Vulnerabilities,Misc.
-Nessus_scan_file(1).nessus,192.168.1.20,192.168.1.20,22,False,Other,ssh,tcp,0,181418,OpenSSH Detection,Misc.
-Nessus_scan_file(1).nessus,192.168.1.20,192.168.1.20,22,True,Other,ssh,tcp,2,187315,SSH Terrapin Prefix Truncation Weakness (CVE-2023-48795),Misc.
-Nessus_scan_file(1).nessus,192.168.1.20,192.168.1.20,22,False,Other,ssh,tcp,0,153588,SSH SHA-1 HMAC Algorithms Enabled,Misc.
-Nessus_scan_file(1).nessus,192.168.1.20,192.168.1.20,22,False,Other,ssh,tcp,0,70657,SSH Algorithms and Languages Supported,Misc.
-Nessus_scan_file(1).nessus,192.168.1.20,192.168.1.20,22,False,Other,ssh,tcp,0,10267,SSH Server Type and Version Information,Service detection
-Nessus_scan_file(1).nessus,192.168.1.20,192.168.1.20,80,False,Other,www,tcp,0,10107,HTTP Server Type and Version,Web Servers
-Nessus_scan_file(1).nessus,192.168.1.20,192.168.1.20,10000,False,Other,www,tcp,0,10107,HTTP Server Type and Version,Web Servers
-Nessus_scan_file(1).nessus,192.168.1.20,192.168.1.20,80,False,Other,www,tcp,0,43111,HTTP Methods Allowed (per directory),Web Servers
-Nessus_scan_file(1).nessus,192.168.1.20,192.168.1.20,10000,False,Other,www,tcp,0,19689,Embedded Web Server Detection,Web Servers
-Nessus_scan_file(1).nessus,192.168.1.20,192.168.1.20,10000,False,Other,www,tcp,0,10757,Webmin Detection,CGI abuses
-Nessus_scan_file(1).nessus,192.168.1.20,192.168.1.20,5353,False,Unauthenticated port bypass,mdns,udp,0,66717,mDNS Detection (Local Network),Service detection
-Nessus_scan_file(1).nessus,192.168.1.20,192.168.1.20,80,False,Other,www,tcp,0,22964,Service Detection,Service detection
-Nessus_scan_file(1).nessus,192.168.1.20,192.168.1.20,22,False,Other,ssh,tcp,0,22964,Service Detection,Service detection
-Nessus_scan_file(1).nessus,192.168.1.20,192.168.1.20,10000,False,Other,www,tcp,0,22964,Service Detection,Service detection
-Nessus_scan_file(1).nessus,192.168.1.20,192.168.1.20,10000,False,Other,www,tcp,0,22964,Service Detection,Service detection
 Nessus_scan_file(1).nessus,192.168.1.20,192.168.1.20,0,False,Other,general,icmp,1,10114,ICMP Timestamp Request Remote Date Disclosure,General
-Nessus_scan_file(1).nessus,192.168.1.20,192.168.1.20,10000,False,Other,www,tcp,0,10335,Nessus TCP scanner,Port scanners
-Nessus_scan_file(1).nessus,192.168.1.20,192.168.1.20,22,False,Other,ssh,tcp,0,10335,Nessus TCP scanner,Port scanners
-Nessus_scan_file(1).nessus,192.168.1.20,192.168.1.20,80,False,Other,www,tcp,0,10335,Nessus TCP scanner,Port scanners
 Nessus_scan_file(1).nessus,192.168.1.19,192.168.1.19,0,False,Other,general,tcp,0,19506,Nessus Scan Information,Settings
 Nessus_scan_file(1).nessus,192.168.1.19,192.168.1.19,0,False,Other,general,udp,0,10287,Traceroute Information,General
 Nessus_scan_file(1).nessus,192.168.1.19,192.168.1.19,0,False,Other,general,tcp,0,35716,Ethernet Card Manufacturer Detection,Misc.
@@ -62,7 +26,6 @@ Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,0,False,Other,general,tcp,0
 Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,0,False,default credentials,general,tcp,0,141118,Target Credential Status by Authentication Protocol - Valid Credentials Provided,Settings
 Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,0,False,Other,general,tcp,0,152742,Unix Software Discovery Commands Available,Settings
 Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,0,False,Other,general,tcp,0,117887,OS Security Patch Assessment Available,Settings
-Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,22,False,Other,ssh?,tcp,0,168982,Filepaths contain Dangerous characters (Linux),Misc.
 Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,0,False,default credentials,general,tcp,0,110095,Target Credential Issues by Authentication Protocol - No Issues Found,Settings
 Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,0,False,Other,general,tcp,4,182252,Apache Log4j SEoL (<= 1.x),Misc.
 Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,0,False,Other,general,tcp,4,182252,Apache Log4j SEoL (<= 1.x),Misc.
@@ -133,7 +96,6 @@ Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,0,True,Other,general,tcp,3,
 Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,0,True,Other,general,tcp,2,190856,Node.js 18.x < 18.19.1 / 20.x < 20.11.1 / 21.x < 21.6.2 Multiple Vulnerabilities (Wednesday February 14 2024 Security Releases).,Misc.
 Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,0,True,Other,general,tcp,2,192945,"Node.js 18.x < 18.20.1 / 20.x < 20.12.1 / 21.x < 21.7.2 Multiple Vulnerabilities (Wednesday, April 3, 2024 Security Releases).",Misc.
 Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,0,False,Other,general,tcp,0,11936,OS Identification,General
-Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,8834,False,Other,www,tcp,0,24260,HyperText Transfer Protocol (HTTP) Information,Web Servers
 Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,0,True,missing encryption protocols,general,tcp,1,17754,OpenSSL < 0.9.7f Insecure Temporary File Creation,Web Servers
 Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,0,True,missing encryption protocols,general,tcp,1,17754,OpenSSL < 0.9.7f Insecure Temporary File Creation,Web Servers
 Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,0,True,missing encryption protocols,general,tcp,4,17753,OpenSSL < 0.9.7c ASN.1 Decoding Vulnerabilities,Web Servers
@@ -244,8 +206,6 @@ Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,0,False,unpatched software 
 Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,0,False,unpatched software exploits,general,tcp,2,178475,OpenSSL 1.1.1 < 1.1.1v Vulnerability,Web Servers
 Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,0,False,unpatched software exploits,general,tcp,2,178475,OpenSSL 1.1.1 < 1.1.1v Vulnerability,Web Servers
 Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,0,False,Other,general,tcp,0,56468,Time of Last System Startup,General
-Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,8834,False,Other,www,tcp,0,10147,Nessus Server Detection,Service detection
-Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,8834,False,Other,www,tcp,0,42822,Strict Transport Security (STS) Detection,Service detection
 Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,0,False,Other,general,tcp,0,168980,Enumerate the PATH Variables,General
 Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,0,False,Other,general,tcp,0,171410,IP Assignment Method Detection,General
 Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,0,False,Other,general,tcp,0,193143,Linux Time Zone Information,General
@@ -273,12 +233,6 @@ Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,0,False,Other,general,tcp,0
 Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,0,False,Other,general,tcp,0,189731,Vim Installed (Linux),Misc.
 Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,0,False,Other,general,tcp,0,174788,SQLite Local Detection (Linux),Web Servers
 Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,0,False,Other,general,tcp,0,192709,Tukaani XZ Utils Installed (Linux / Unix),Misc.
-Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,8834,False,missing encryption protocols,www,tcp,0,70544,SSL Cipher Block Chaining Cipher Suites Supported,General
-Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,8834,False,missing encryption protocols,www,tcp,0,57041,SSL Perfect Forward Secrecy Cipher Suites Supported,General
-Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,8834,False,missing encryption protocols,www,tcp,0,156899,SSL/TLS Recommended Cipher Suites,General
-Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,8834,False,Other,www,tcp,0,138330,TLS Version 1.3 Protocol Detection,Service detection
-Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,8834,False,Other,www,tcp,0,136318,TLS Version 1.2 Protocol Detection,Service detection
-Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,8834,False,missing encryption protocols,www,tcp,0,21643,SSL Cipher Suites Supported,General
 Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,0,False,Other,general,tcp,0,106203,DHCP server Detection (Linux),Misc.
 Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,0,False,Other,general,tcp,0,25203,Enumerate IPv4 Interfaces via SSH,General
 Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,0,False,Other,general,tcp,0,45405,Reachable IPv6 address,General
@@ -300,27 +254,7 @@ Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,0,False,Other,general,tcp,0
 Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,0,False,Other,general,tcp,0,71053,VMware Workstation for Linux Installed,General
 Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,0,False,Other,general,tcp,0,55472,Device Hostname,General
 Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,0,False,Other,general,tcp,0,97993,OS Identification and Installed Software Enumeration over SSH v2 (Using New SSH Library),Misc.
-Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,8834,False,missing encryption protocols,www,tcp,2,51192,SSL Certificate Cannot Be Trusted,General
-Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,8834,False,missing encryption protocols,www,tcp,2,15901,SSL Certificate Expiry,General
-Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,8834,False,missing encryption protocols,www,tcp,0,10863,SSL Certificate Information,General
-Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,8834,False,missing encryption protocols,www,tcp,0,56984,SSL / TLS Versions Supported,General
-Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,8834,False,Other,www,tcp,0,10107,HTTP Server Type and Version,Web Servers
-Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,902,False,Other,vmware_auth,tcp,0,20301,VMware ESX/GSX Server detection,Service detection
-Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,8834,False,Other,www,tcp,0,22964,Service Detection,Service detection
-Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,902,False,Other,vmware_auth,tcp,0,22964,Service Detection,Service detection
-Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,1716,False,Other,xmsg?,tcp,0,22964,Service Detection,Service detection
-Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,111,False,Other,rpc-portmapper,tcp,0,53335,RPC portmapper (TCP),RPC
 Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,0,False,Other,general,tcp,0,64582,Netstat Connection Information,General
-Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,8834,False,Other,www,tcp,0,22964,Service Detection,Service detection
-Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,111,False,Other,rpc-portmapper,udp,0,11111,RPC Services Enumeration,Service detection
-Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,111,False,Other,rpc-portmapper,tcp,0,11111,RPC Services Enumeration,Service detection
-Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,111,False,Other,rpc-portmapper,udp,0,10223,RPC portmapper Service Detection,RPC
-Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,1716,False,Other,xmsg?,udp,0,14272,Netstat Portscanner (SSH),Port scanners
-Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,111,False,Other,rpc-portmapper,udp,0,14272,Netstat Portscanner (SSH),Port scanners
-Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,1716,False,Other,xmsg?,tcp,0,14272,Netstat Portscanner (SSH),Port scanners
-Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,8834,False,Other,www,tcp,0,14272,Netstat Portscanner (SSH),Port scanners
-Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,902,False,Other,vmware_auth,tcp,0,14272,Netstat Portscanner (SSH),Port scanners
-Nessus_scan_file(1).nessus,192.168.1.18,192.168.1.18,111,False,Other,rpc-portmapper,tcp,0,14272,Netstat Portscanner (SSH),Port scanners
 Nessus_scan_file(1).nessus,192.168.1.17,192.168.1.17,0,False,Other,general,tcp,0,45590,Common Platform Enumeration (CPE),General
 Nessus_scan_file(1).nessus,192.168.1.17,192.168.1.17,0,False,Other,general,tcp,0,19506,Nessus Scan Information,Settings
 Nessus_scan_file(1).nessus,192.168.1.17,192.168.1.17,0,False,Other,general,tcp,0,54615,Device Type,General
@@ -329,21 +263,6 @@ Nessus_scan_file(1).nessus,192.168.1.17,192.168.1.17,0,False,Other,general,tcp,0
 Nessus_scan_file(1).nessus,192.168.1.17,192.168.1.17,0,False,Other,general,tcp,0,86420,Ethernet MAC Addresses,General
 Nessus_scan_file(1).nessus,192.168.1.17,192.168.1.17,0,False,Other,general,udp,0,10287,Traceroute Information,General
 Nessus_scan_file(1).nessus,192.168.1.17,192.168.1.17,0,False,Other,general,tcp,0,25220,TCP/IP Timestamps Supported,General
-Nessus_scan_file(1).nessus,192.168.1.17,192.168.1.17,80,False,Other,www,tcp,0,24260,HyperText Transfer Protocol (HTTP) Information,Web Servers
-Nessus_scan_file(1).nessus,192.168.1.17,192.168.1.17,80,False,Other,www,tcp,0,10107,HTTP Server Type and Version,Web Servers
-Nessus_scan_file(1).nessus,192.168.1.17,192.168.1.17,80,False,Other,www,tcp,0,43111,HTTP Methods Allowed (per directory),Web Servers
-Nessus_scan_file(1).nessus,192.168.1.17,192.168.1.17,80,False,Other,www,tcp,0,22964,Service Detection,Service detection
-Nessus_scan_file(1).nessus,192.168.1.17,192.168.1.17,2179,False,Other,unknown,tcp,0,10335,Nessus TCP scanner,Port scanners
-Nessus_scan_file(1).nessus,192.168.1.17,192.168.1.17,135,False,Other,epmap,tcp,0,10335,Nessus TCP scanner,Port scanners
-Nessus_scan_file(1).nessus,192.168.1.17,192.168.1.17,80,False,Other,www,tcp,0,10335,Nessus TCP scanner,Port scanners
-Nessus_scan_file(1).nessus,192.168.1.17,192.168.1.17,49674,False,Other,dce-rpc,tcp,0,10736,DCE Services Enumeration,Windows
-Nessus_scan_file(1).nessus,192.168.1.17,192.168.1.17,49668,False,Other,dce-rpc,tcp,0,10736,DCE Services Enumeration,Windows
-Nessus_scan_file(1).nessus,192.168.1.17,192.168.1.17,49667,False,Other,dce-rpc,tcp,0,10736,DCE Services Enumeration,Windows
-Nessus_scan_file(1).nessus,192.168.1.17,192.168.1.17,49666,False,Other,dce-rpc,tcp,0,10736,DCE Services Enumeration,Windows
-Nessus_scan_file(1).nessus,192.168.1.17,192.168.1.17,49665,False,Other,dce-rpc,tcp,0,10736,DCE Services Enumeration,Windows
-Nessus_scan_file(1).nessus,192.168.1.17,192.168.1.17,49664,False,Other,dce-rpc,tcp,0,10736,DCE Services Enumeration,Windows
-Nessus_scan_file(1).nessus,192.168.1.17,192.168.1.17,445,False,Other,microsoft-ds?,tcp,0,10736,DCE Services Enumeration,Windows
-Nessus_scan_file(1).nessus,192.168.1.17,192.168.1.17,135,False,Other,epmap,tcp,0,10736,DCE Services Enumeration,Windows
 Nessus_scan_file(1).nessus,192.168.1.13,192.168.1.13,0,False,Other,general,tcp,0,19506,Nessus Scan Information,Settings
 Nessus_scan_file(1).nessus,192.168.1.13,192.168.1.13,0,False,Other,general,udp,0,10287,Traceroute Information,General
 Nessus_scan_file(1).nessus,192.168.1.13,192.168.1.13,0,False,Other,general,tcp,0,54615,Device Type,General
@@ -355,120 +274,41 @@ Nessus_scan_file(1).nessus,192.168.1.12,192.168.1.12,0,False,Other,general,tcp,0
 Nessus_scan_file(1).nessus,192.168.1.12,192.168.1.12,0,False,Other,general,tcp,0,45590,Common Platform Enumeration (CPE),General
 Nessus_scan_file(1).nessus,192.168.1.12,192.168.1.12,0,False,Other,general,tcp,0,54615,Device Type,General
 Nessus_scan_file(1).nessus,192.168.1.12,192.168.1.12,0,False,Other,general,tcp,0,11936,OS Identification,General
-Nessus_scan_file(1).nessus,192.168.1.12,192.168.1.12,1961,False,Other,www,tcp,0,24260,HyperText Transfer Protocol (HTTP) Information,Web Servers
-Nessus_scan_file(1).nessus,192.168.1.12,192.168.1.12,7000,False,Other,www,tcp,0,24260,HyperText Transfer Protocol (HTTP) Information,Web Servers
-Nessus_scan_file(1).nessus,192.168.1.12,192.168.1.12,36866,False,Other,www,tcp,0,24260,HyperText Transfer Protocol (HTTP) Information,Web Servers
-Nessus_scan_file(1).nessus,192.168.1.12,192.168.1.12,3001,False,Other,www,tcp,0,84502,HSTS Missing From HTTPS Server,Web Servers
-Nessus_scan_file(1).nessus,192.168.1.12,192.168.1.12,1961,False,Other,www,tcp,0,10107,HTTP Server Type and Version,Web Servers
-Nessus_scan_file(1).nessus,192.168.1.12,192.168.1.12,1756,False,Other,www,tcp,0,10107,HTTP Server Type and Version,Web Servers
-Nessus_scan_file(1).nessus,192.168.1.12,192.168.1.12,7000,False,Other,www,tcp,0,10107,HTTP Server Type and Version,Web Servers
-Nessus_scan_file(1).nessus,192.168.1.12,192.168.1.12,1756,False,Other,www,tcp,0,19689,Embedded Web Server Detection,Web Servers
-Nessus_scan_file(1).nessus,192.168.1.12,192.168.1.12,3001,False,Other,www,tcp,0,84821,TLS ALPN Supported Protocol Enumeration,Misc.
 Nessus_scan_file(1).nessus,192.168.1.12,192.168.1.12,0,False,Other,general,tcp,0,35716,Ethernet Card Manufacturer Detection,Misc.
 Nessus_scan_file(1).nessus,192.168.1.12,192.168.1.12,0,False,Other,general,tcp,0,86420,Ethernet MAC Addresses,General
-Nessus_scan_file(1).nessus,192.168.1.12,192.168.1.12,3001,False,missing encryption protocols,www,tcp,2,51192,SSL Certificate Cannot Be Trusted,General
-Nessus_scan_file(1).nessus,192.168.1.12,192.168.1.12,3001,False,missing encryption protocols,www,tcp,0,70544,SSL Cipher Block Chaining Cipher Suites Supported,General
-Nessus_scan_file(1).nessus,192.168.1.12,192.168.1.12,3001,False,missing encryption protocols,www,tcp,0,57041,SSL Perfect Forward Secrecy Cipher Suites Supported,General
-Nessus_scan_file(1).nessus,192.168.1.12,192.168.1.12,3001,False,missing encryption protocols,www,tcp,0,156899,SSL/TLS Recommended Cipher Suites,General
-Nessus_scan_file(1).nessus,192.168.1.12,192.168.1.12,3001,False,Other,www,tcp,0,138330,TLS Version 1.3 Protocol Detection,Service detection
-Nessus_scan_file(1).nessus,192.168.1.12,192.168.1.12,3001,False,Other,www,tcp,0,136318,TLS Version 1.2 Protocol Detection,Service detection
-Nessus_scan_file(1).nessus,192.168.1.12,192.168.1.12,3001,False,missing encryption protocols,www,tcp,0,21643,SSL Cipher Suites Supported,General
-Nessus_scan_file(1).nessus,192.168.1.12,192.168.1.12,3001,False,missing encryption protocols,www,tcp,0,10863,SSL Certificate Information,General
-Nessus_scan_file(1).nessus,192.168.1.12,192.168.1.12,3001,False,missing encryption protocols,www,tcp,0,56984,SSL / TLS Versions Supported,General
-Nessus_scan_file(1).nessus,192.168.1.12,192.168.1.12,18181,False,Other,www,tcp,0,11153,Service Detection (HELP Request),Service detection
-Nessus_scan_file(1).nessus,192.168.1.12,192.168.1.12,1961,False,Other,www,tcp,0,22964,Service Detection,Service detection
-Nessus_scan_file(1).nessus,192.168.1.12,192.168.1.12,1756,False,Other,www,tcp,0,22964,Service Detection,Service detection
-Nessus_scan_file(1).nessus,192.168.1.12,192.168.1.12,3001,False,Other,www,tcp,0,22964,Service Detection,Service detection
-Nessus_scan_file(1).nessus,192.168.1.12,192.168.1.12,7000,False,Other,www,tcp,0,22964,Service Detection,Service detection
-Nessus_scan_file(1).nessus,192.168.1.12,192.168.1.12,36866,False,Other,www,tcp,0,22964,Service Detection,Service detection
 Nessus_scan_file(1).nessus,192.168.1.12,192.168.1.12,0,False,Other,general,udp,0,10287,Traceroute Information,General
 Nessus_scan_file(1).nessus,192.168.1.12,192.168.1.12,0,False,Other,general,tcp,0,25220,TCP/IP Timestamps Supported,General
-Nessus_scan_file(1).nessus,192.168.1.12,192.168.1.12,1956,False,Other,vrtl-vmf-ds?,tcp,0,22964,Service Detection,Service detection
-Nessus_scan_file(1).nessus,192.168.1.12,192.168.1.12,5353,False,Unauthenticated port bypass,mdns,udp,0,66717,mDNS Detection (Local Network),Service detection
-Nessus_scan_file(1).nessus,192.168.1.12,192.168.1.12,1728,False,Other,telindus?,tcp,0,22964,Service Detection,Service detection
-Nessus_scan_file(1).nessus,192.168.1.12,192.168.1.12,3000,False,Other,remoteware-cl?,tcp,0,22964,Service Detection,Service detection
-Nessus_scan_file(1).nessus,192.168.1.12,192.168.1.12,1266,False,Other,dellpwrappks?,tcp,0,22964,Service Detection,Service detection
-Nessus_scan_file(1).nessus,192.168.1.12,192.168.1.12,1327,False,Other,ultrex?,tcp,0,22964,Service Detection,Service detection
-Nessus_scan_file(1).nessus,192.168.1.12,192.168.1.12,1381,False,Other,apple-licman?,tcp,0,22964,Service Detection,Service detection
-Nessus_scan_file(1).nessus,192.168.1.12,192.168.1.12,1736,False,Other,street-stream?,tcp,0,22964,Service Detection,Service detection
-Nessus_scan_file(1).nessus,192.168.1.12,192.168.1.12,3001,False,Other,www,tcp,0,22964,Service Detection,Service detection
 Nessus_scan_file(1).nessus,192.168.1.12,192.168.1.12,0,False,Other,general,icmp,1,10114,ICMP Timestamp Request Remote Date Disclosure,General
-Nessus_scan_file(1).nessus,192.168.1.12,192.168.1.12,7000,False,Other,www,tcp,0,10335,Nessus TCP scanner,Port scanners
-Nessus_scan_file(1).nessus,192.168.1.12,192.168.1.12,1756,False,Other,www,tcp,0,10335,Nessus TCP scanner,Port scanners
-Nessus_scan_file(1).nessus,192.168.1.12,192.168.1.12,1728,False,Other,telindus?,tcp,0,10335,Nessus TCP scanner,Port scanners
-Nessus_scan_file(1).nessus,192.168.1.12,192.168.1.12,1327,False,Other,ultrex?,tcp,0,10335,Nessus TCP scanner,Port scanners
-Nessus_scan_file(1).nessus,192.168.1.12,192.168.1.12,18181,False,Other,www,tcp,0,10335,Nessus TCP scanner,Port scanners
-Nessus_scan_file(1).nessus,192.168.1.12,192.168.1.12,3001,False,Other,www,tcp,0,10335,Nessus TCP scanner,Port scanners
-Nessus_scan_file(1).nessus,192.168.1.12,192.168.1.12,1736,False,Other,street-stream?,tcp,0,10335,Nessus TCP scanner,Port scanners
-Nessus_scan_file(1).nessus,192.168.1.12,192.168.1.12,36866,False,Other,www,tcp,0,10335,Nessus TCP scanner,Port scanners
-Nessus_scan_file(1).nessus,192.168.1.12,192.168.1.12,1961,False,Other,www,tcp,0,10335,Nessus TCP scanner,Port scanners
-Nessus_scan_file(1).nessus,192.168.1.12,192.168.1.12,1956,False,Other,vrtl-vmf-ds?,tcp,0,10335,Nessus TCP scanner,Port scanners
-Nessus_scan_file(1).nessus,192.168.1.12,192.168.1.12,1381,False,Other,apple-licman?,tcp,0,10335,Nessus TCP scanner,Port scanners
-Nessus_scan_file(1).nessus,192.168.1.12,192.168.1.12,1266,False,Other,dellpwrappks?,tcp,0,10335,Nessus TCP scanner,Port scanners
-Nessus_scan_file(1).nessus,192.168.1.12,192.168.1.12,3000,False,Other,remoteware-cl?,tcp,0,10335,Nessus TCP scanner,Port scanners
-Nessus_scan_file(1).nessus,192.168.1.12,192.168.1.12,7250,False,Other,unknown,tcp,0,10335,Nessus TCP scanner,Port scanners
 Nessus_scan_file(1).nessus,192.168.1.11,192.168.1.11,0,False,Other,general,tcp,0,19506,Nessus Scan Information,Settings
 Nessus_scan_file(1).nessus,192.168.1.11,192.168.1.11,0,False,Other,general,tcp,0,54615,Device Type,General
 Nessus_scan_file(1).nessus,192.168.1.11,192.168.1.11,0,False,Other,general,tcp,0,11936,OS Identification,General
 Nessus_scan_file(1).nessus,192.168.1.11,192.168.1.11,0,False,Other,general,tcp,0,86420,Ethernet MAC Addresses,General
-Nessus_scan_file(1).nessus,192.168.1.11,192.168.1.11,49152,False,Other,unknown,tcp,0,22964,Service Detection,Service detection
-Nessus_scan_file(1).nessus,192.168.1.11,192.168.1.11,62078,False,Other,unknown,tcp,0,22964,Service Detection,Service detection
 Nessus_scan_file(1).nessus,192.168.1.11,192.168.1.11,0,False,Other,general,udp,0,10287,Traceroute Information,General
 Nessus_scan_file(1).nessus,192.168.1.11,192.168.1.11,0,False,Other,general,tcp,0,25220,TCP/IP Timestamps Supported,General
-Nessus_scan_file(1).nessus,192.168.1.11,192.168.1.11,62078,False,Other,unknown,tcp,0,10335,Nessus TCP scanner,Port scanners
-Nessus_scan_file(1).nessus,192.168.1.11,192.168.1.11,49152,False,Other,unknown,tcp,0,10335,Nessus TCP scanner,Port scanners
 Nessus_scan_file(1).nessus,192.168.1.8,192.168.1.8,0,False,Other,general,tcp,0,19506,Nessus Scan Information,Settings
 Nessus_scan_file(1).nessus,192.168.1.8,192.168.1.8,0,False,Other,general,tcp,0,45590,Common Platform Enumeration (CPE),General
 Nessus_scan_file(1).nessus,192.168.1.8,192.168.1.8,0,False,Other,general,tcp,0,54615,Device Type,General
 Nessus_scan_file(1).nessus,192.168.1.8,192.168.1.8,0,False,Other,general,tcp,0,11936,OS Identification,General
-Nessus_scan_file(1).nessus,192.168.1.8,192.168.1.8,2869,False,Other,www,tcp,0,35712,Web Server UPnP Detection,Service detection
-Nessus_scan_file(1).nessus,192.168.1.8,192.168.1.8,2869,False,Other,www,tcp,0,35712,Web Server UPnP Detection,Service detection
-Nessus_scan_file(1).nessus,192.168.1.8,192.168.1.8,1900,False,Other,ssdp,udp,0,35711,Universal Plug and Play (UPnP) Protocol Detection,Service detection
 Nessus_scan_file(1).nessus,192.168.1.8,192.168.1.8,0,False,Other,general,tcp,0,35716,Ethernet Card Manufacturer Detection,Misc.
 Nessus_scan_file(1).nessus,192.168.1.8,192.168.1.8,0,False,Other,general,tcp,0,86420,Ethernet MAC Addresses,General
 Nessus_scan_file(1).nessus,192.168.1.8,192.168.1.8,0,False,Other,general,udp,0,10287,Traceroute Information,General
 Nessus_scan_file(1).nessus,192.168.1.8,192.168.1.8,0,False,Other,general,tcp,0,25220,TCP/IP Timestamps Supported,General
-Nessus_scan_file(1).nessus,192.168.1.8,192.168.1.8,10247,False,Other,www,tcp,0,24260,HyperText Transfer Protocol (HTTP) Information,Web Servers
-Nessus_scan_file(1).nessus,192.168.1.8,192.168.1.8,2869,False,Other,www,tcp,0,11153,Service Detection (HELP Request),Service detection
-Nessus_scan_file(1).nessus,192.168.1.8,192.168.1.8,10247,False,Other,www,tcp,0,22964,Service Detection,Service detection
-Nessus_scan_file(1).nessus,192.168.1.8,192.168.1.8,10247,False,Other,www,tcp,0,10335,Nessus TCP scanner,Port scanners
-Nessus_scan_file(1).nessus,192.168.1.8,192.168.1.8,2869,False,Other,www,tcp,0,10335,Nessus TCP scanner,Port scanners
 Nessus_scan_file(1).nessus,192.168.1.4,192.168.1.4,0,False,Other,general,tcp,0,45590,Common Platform Enumeration (CPE),General
 Nessus_scan_file(1).nessus,192.168.1.4,192.168.1.4,0,False,Other,general,tcp,0,19506,Nessus Scan Information,Settings
 Nessus_scan_file(1).nessus,192.168.1.4,192.168.1.4,0,False,Other,general,tcp,0,54615,Device Type,General
 Nessus_scan_file(1).nessus,192.168.1.4,192.168.1.4,0,False,Other,general,tcp,0,11936,OS Identification,General
 Nessus_scan_file(1).nessus,192.168.1.4,192.168.1.4,0,False,Other,general,tcp,0,35716,Ethernet Card Manufacturer Detection,Misc.
 Nessus_scan_file(1).nessus,192.168.1.4,192.168.1.4,0,False,Other,general,tcp,0,86420,Ethernet MAC Addresses,General
-Nessus_scan_file(1).nessus,192.168.1.4,192.168.1.4,7000,False,Other,www,tcp,0,24260,HyperText Transfer Protocol (HTTP) Information,Web Servers
-Nessus_scan_file(1).nessus,192.168.1.4,192.168.1.4,7000,False,Other,www,tcp,0,10107,HTTP Server Type and Version,Web Servers
-Nessus_scan_file(1).nessus,192.168.1.4,192.168.1.4,7000,False,Other,www,tcp,0,22964,Service Detection,Service detection
 Nessus_scan_file(1).nessus,192.168.1.4,192.168.1.4,0,False,Other,general,udp,0,10287,Traceroute Information,General
 Nessus_scan_file(1).nessus,192.168.1.4,192.168.1.4,0,False,Other,general,tcp,0,25220,TCP/IP Timestamps Supported,General
-Nessus_scan_file(1).nessus,192.168.1.4,192.168.1.4,5353,False,Unauthenticated port bypass,mdns,udp,0,66717,mDNS Detection (Local Network),Service detection
-Nessus_scan_file(1).nessus,192.168.1.4,192.168.1.4,7000,False,Other,www,tcp,0,10335,Nessus TCP scanner,Port scanners
-Nessus_scan_file(1).nessus,192.168.1.4,192.168.1.4,51157,False,Other,unknown,tcp,0,10335,Nessus TCP scanner,Port scanners
-Nessus_scan_file(1).nessus,192.168.1.4,192.168.1.4,5000,False,Other,commplex-main?,tcp,0,10335,Nessus TCP scanner,Port scanners
-Nessus_scan_file(1).nessus,192.168.1.4,192.168.1.4,137,False,Other,netbios-ns,udp,0,10150,Windows NetBIOS / SMB Remote Host Information Disclosure,Windows
 Nessus_scan_file(1).nessus,192.168.1.3,192.168.1.3,0,False,Other,general,tcp,0,45590,Common Platform Enumeration (CPE),General
 Nessus_scan_file(1).nessus,192.168.1.3,192.168.1.3,0,False,Other,general,tcp,0,19506,Nessus Scan Information,Settings
-Nessus_scan_file(1).nessus,192.168.1.3,192.168.1.3,54051,False,Other,unknown,tcp,0,11154,Unknown Service Detection: Banner Retrieval,Service detection
 Nessus_scan_file(1).nessus,192.168.1.3,192.168.1.3,0,False,Other,general,tcp,0,54615,Device Type,General
 Nessus_scan_file(1).nessus,192.168.1.3,192.168.1.3,0,False,Other,general,tcp,0,11936,OS Identification,General
 Nessus_scan_file(1).nessus,192.168.1.3,192.168.1.3,0,False,Other,general,tcp,0,35716,Ethernet Card Manufacturer Detection,Misc.
 Nessus_scan_file(1).nessus,192.168.1.3,192.168.1.3,0,False,Other,general,tcp,0,86420,Ethernet MAC Addresses,General
-Nessus_scan_file(1).nessus,192.168.1.3,192.168.1.3,7000,False,Other,www,tcp,0,24260,HyperText Transfer Protocol (HTTP) Information,Web Servers
-Nessus_scan_file(1).nessus,192.168.1.3,192.168.1.3,5000,False,Other,www,tcp,0,24260,HyperText Transfer Protocol (HTTP) Information,Web Servers
-Nessus_scan_file(1).nessus,192.168.1.3,192.168.1.3,7000,False,Other,www,tcp,0,10107,HTTP Server Type and Version,Web Servers
-Nessus_scan_file(1).nessus,192.168.1.3,192.168.1.3,5000,False,Other,www,tcp,0,10107,HTTP Server Type and Version,Web Servers
-Nessus_scan_file(1).nessus,192.168.1.3,192.168.1.3,7000,False,Other,www,tcp,0,22964,Service Detection,Service detection
-Nessus_scan_file(1).nessus,192.168.1.3,192.168.1.3,5000,False,Other,www,tcp,0,22964,Service Detection,Service detection
 Nessus_scan_file(1).nessus,192.168.1.3,192.168.1.3,0,False,Other,general,udp,0,10287,Traceroute Information,General
 Nessus_scan_file(1).nessus,192.168.1.3,192.168.1.3,0,False,Other,general,tcp,0,25220,TCP/IP Timestamps Supported,General
-Nessus_scan_file(1).nessus,192.168.1.3,192.168.1.3,5353,False,Unauthenticated port bypass,mdns,udp,0,66717,mDNS Detection (Local Network),Service detection
-Nessus_scan_file(1).nessus,192.168.1.3,192.168.1.3,57621,False,Other,unknown,tcp,0,10335,Nessus TCP scanner,Port scanners
-Nessus_scan_file(1).nessus,192.168.1.3,192.168.1.3,54051,False,Other,unknown,tcp,0,10335,Nessus TCP scanner,Port scanners
-Nessus_scan_file(1).nessus,192.168.1.3,192.168.1.3,5000,False,Other,www,tcp,0,10335,Nessus TCP scanner,Port scanners
-Nessus_scan_file(1).nessus,192.168.1.3,192.168.1.3,7000,False,Other,www,tcp,0,10335,Nessus TCP scanner,Port scanners
 Nessus_scan_file(1).nessus,192.168.1.2,192.168.1.2,0,False,Other,general,tcp,0,19506,Nessus Scan Information,Settings
 Nessus_scan_file(1).nessus,192.168.1.2,192.168.1.2,0,False,Other,general,udp,0,10287,Traceroute Information,General
 Nessus_scan_file(1).nessus,192.168.1.2,192.168.1.2,0,False,Other,general,tcp,0,35716,Ethernet Card Manufacturer Detection,Misc.
@@ -476,60 +316,12 @@ Nessus_scan_file(1).nessus,192.168.1.2,192.168.1.2,0,False,Other,general,tcp,0,8
 Nessus_scan_file(1).nessus,192.168.1.2,192.168.1.2,0,False,Other,general,icmp,1,10114,ICMP Timestamp Request Remote Date Disclosure,General
 Nessus_scan_file(1).nessus,192.168.1.1,192.168.1.1,0,False,Other,general,tcp,0,19506,Nessus Scan Information,Settings
 Nessus_scan_file(1).nessus,192.168.1.1,192.168.1.1,0,False,Other,general,tcp,0,66334,Patch Report,General
-Nessus_scan_file(1).nessus,192.168.1.1,192.168.1.1,3333,False,Other,dec-notes?,tcp,0,11154,Unknown Service Detection: Banner Retrieval,Service detection
-Nessus_scan_file(1).nessus,192.168.1.1,192.168.1.1,33344,False,Other,unknown,tcp,0,11154,Unknown Service Detection: Banner Retrieval,Service detection
 Nessus_scan_file(1).nessus,192.168.1.1,192.168.1.1,0,False,Other,general,tcp,0,45590,Common Platform Enumeration (CPE),General
-Nessus_scan_file(1).nessus,192.168.1.1,192.168.1.1,49152,False,Other,www,tcp,0,24260,HyperText Transfer Protocol (HTTP) Information,Web Servers
 Nessus_scan_file(1).nessus,192.168.1.1,192.168.1.1,0,False,Other,general,tcp,0,54615,Device Type,General
 Nessus_scan_file(1).nessus,192.168.1.1,192.168.1.1,0,False,Other,general,tcp,0,11936,OS Identification,General
 Nessus_scan_file(1).nessus,192.168.1.1,192.168.1.1,0,False,Other,general,tcp,0,35716,Ethernet Card Manufacturer Detection,Misc.
 Nessus_scan_file(1).nessus,192.168.1.1,192.168.1.1,0,False,Other,general,tcp,0,86420,Ethernet MAC Addresses,General
-Nessus_scan_file(1).nessus,192.168.1.1,192.168.1.1,5555,False,Other,www,tcp,0,24260,HyperText Transfer Protocol (HTTP) Information,Web Servers
-Nessus_scan_file(1).nessus,192.168.1.1,192.168.1.1,1900,True,Other,ssdp,udp,4,64377,MiniUPnP < 1.4 Multiple Vulnerabilities,Gain a shell remotely
-Nessus_scan_file(1).nessus,192.168.1.1,192.168.1.1,443,False,Other,www,tcp,3,11737,NETGEAR Router Default Password (password) for 'admin' Account,CGI abuses
-Nessus_scan_file(1).nessus,192.168.1.1,192.168.1.1,80,False,Other,www,tcp,3,11737,NETGEAR Router Default Password (password) for 'admin' Account,CGI abuses
-Nessus_scan_file(1).nessus,192.168.1.1,192.168.1.1,443,True,default credentials,www,tcp,3,81791,NETGEAR SOAP Request Handling Remote Authentication Bypass,CGI abuses
-Nessus_scan_file(1).nessus,192.168.1.1,192.168.1.1,80,True,default credentials,www,tcp,3,81791,NETGEAR SOAP Request Handling Remote Authentication Bypass,CGI abuses
-Nessus_scan_file(1).nessus,192.168.1.1,192.168.1.1,443,False,Other,www,tcp,0,100322,NETGEAR Web Interface Detection,Misc.
-Nessus_scan_file(1).nessus,192.168.1.1,192.168.1.1,80,False,Other,www,tcp,0,100322,NETGEAR Web Interface Detection,Misc.
-Nessus_scan_file(1).nessus,192.168.1.1,192.168.1.1,5555,False,Other,www,tcp,0,35712,Web Server UPnP Detection,Service detection
-Nessus_scan_file(1).nessus,192.168.1.1,192.168.1.1,443,False,Other,www,tcp,0,84502,HSTS Missing From HTTPS Server,Web Servers
-Nessus_scan_file(1).nessus,192.168.1.1,192.168.1.1,443,False,Other,www,tcp,0,10107,HTTP Server Type and Version,Web Servers
-Nessus_scan_file(1).nessus,192.168.1.1,192.168.1.1,80,False,Other,www,tcp,0,10107,HTTP Server Type and Version,Web Servers
-Nessus_scan_file(1).nessus,192.168.1.1,192.168.1.1,49152,False,Other,www,tcp,0,10107,HTTP Server Type and Version,Web Servers
-Nessus_scan_file(1).nessus,192.168.1.1,192.168.1.1,443,False,missing encryption protocols,www,tcp,0,58768,SSL Resume With Different Cipher Issue,General
-Nessus_scan_file(1).nessus,192.168.1.1,192.168.1.1,443,True,missing encryption protocols,www,tcp,2,51892,OpenSSL SSL_OP_NETSCAPE_REUSE_CIPHER_CHANGE_BUG Session Resume Ciphersuite Downgrade Issue,General
-Nessus_scan_file(1).nessus,192.168.1.1,192.168.1.1,443,False,missing encryption protocols,www,tcp,0,51891,SSL Session Resume Supported,General
-Nessus_scan_file(1).nessus,192.168.1.1,192.168.1.1,443,False,missing encryption protocols,www,tcp,0,70544,SSL Cipher Block Chaining Cipher Suites Supported,General
-Nessus_scan_file(1).nessus,192.168.1.1,192.168.1.1,443,True,missing encryption protocols,www,tcp,2,65821,SSL RC4 Cipher Suites Supported (Bar Mitzvah),General
-Nessus_scan_file(1).nessus,192.168.1.1,192.168.1.1,443,False,missing encryption protocols,www,tcp,0,156899,SSL/TLS Recommended Cipher Suites,General
-Nessus_scan_file(1).nessus,192.168.1.1,192.168.1.1,443,False,missing encryption protocols,www,tcp,2,42873,SSL Medium Strength Cipher Suites Supported (SWEET32),General
-Nessus_scan_file(1).nessus,192.168.1.1,192.168.1.1,443,False,Other,www,tcp,2,104743,TLS Version 1.0 Protocol Detection,Service detection
-Nessus_scan_file(1).nessus,192.168.1.1,192.168.1.1,443,False,missing encryption protocols,www,tcp,0,21643,SSL Cipher Suites Supported,General
-Nessus_scan_file(1).nessus,192.168.1.1,192.168.1.1,443,False,missing encryption protocols,www,tcp,0,56984,SSL / TLS Versions Supported,General
-Nessus_scan_file(1).nessus,192.168.1.1,192.168.1.1,548,True,Other,appleshare,tcp,4,119780,Netatalk OpenSession Remote Code Execution,Gain a shell remotely
-Nessus_scan_file(1).nessus,192.168.1.1,192.168.1.1,548,False,Other,appleshare,tcp,0,10666,Apple Filing Protocol Server Detection,Service detection
-Nessus_scan_file(1).nessus,192.168.1.1,192.168.1.1,49152,False,Other,www,tcp,0,11239,Web Server Crafted Request Vendor/Version Information Disclosure,Web Servers
-Nessus_scan_file(1).nessus,192.168.1.1,192.168.1.1,443,False,Other,www,tcp,0,22964,Service Detection,Service detection
-Nessus_scan_file(1).nessus,192.168.1.1,192.168.1.1,80,False,Other,www,tcp,0,22964,Service Detection,Service detection
-Nessus_scan_file(1).nessus,192.168.1.1,192.168.1.1,49152,False,Other,www,tcp,0,22964,Service Detection,Service detection
-Nessus_scan_file(1).nessus,192.168.1.1,192.168.1.1,5555,False,Other,www,tcp,0,22964,Service Detection,Service detection
-Nessus_scan_file(1).nessus,192.168.1.1,192.168.1.1,1900,False,Other,ssdp,udp,0,35711,Universal Plug and Play (UPnP) Protocol Detection,Service detection
 Nessus_scan_file(1).nessus,192.168.1.1,192.168.1.1,0,False,Other,general,udp,0,10287,Traceroute Information,General
 Nessus_scan_file(1).nessus,192.168.1.1,192.168.1.1,0,False,Other,general,tcp,0,25220,TCP/IP Timestamps Supported,General
 Nessus_scan_file(1).nessus,192.168.1.1,192.168.1.1,0,False,Other,general,tcp,2,50686,IP Forwarding Enabled,Firewalls
 Nessus_scan_file(1).nessus,192.168.1.1,192.168.1.1,0,False,Other,general,icmp,1,10114,ICMP Timestamp Request Remote Date Disclosure,General
-Nessus_scan_file(1).nessus,192.168.1.1,192.168.1.1,443,False,Other,www,tcp,0,22964,Service Detection,Service detection
-Nessus_scan_file(1).nessus,192.168.1.1,192.168.1.1,53,False,Other,dns,tcp,0,11002,DNS Server Detection,DNS
-Nessus_scan_file(1).nessus,192.168.1.1,192.168.1.1,53,False,Other,dns,udp,0,11002,DNS Server Detection,DNS
-Nessus_scan_file(1).nessus,192.168.1.1,192.168.1.1,67,False,Other,bootps?,udp,1,10663,DHCP Server Detection,Service detection
-Nessus_scan_file(1).nessus,192.168.1.1,192.168.1.1,20005,False,Other,btx?,tcp,0,10335,Nessus TCP scanner,Port scanners
-Nessus_scan_file(1).nessus,192.168.1.1,192.168.1.1,33344,False,Other,unknown,tcp,0,10335,Nessus TCP scanner,Port scanners
-Nessus_scan_file(1).nessus,192.168.1.1,192.168.1.1,5555,False,Other,www,tcp,0,10335,Nessus TCP scanner,Port scanners
-Nessus_scan_file(1).nessus,192.168.1.1,192.168.1.1,3333,False,Other,dec-notes?,tcp,0,10335,Nessus TCP scanner,Port scanners
-Nessus_scan_file(1).nessus,192.168.1.1,192.168.1.1,49152,False,Other,www,tcp,0,10335,Nessus TCP scanner,Port scanners
-Nessus_scan_file(1).nessus,192.168.1.1,192.168.1.1,631,False,Other,ipp?,tcp,0,10335,Nessus TCP scanner,Port scanners
-Nessus_scan_file(1).nessus,192.168.1.1,192.168.1.1,548,False,Other,appleshare,tcp,0,10335,Nessus TCP scanner,Port scanners
-Nessus_scan_file(1).nessus,192.168.1.1,192.168.1.1,443,False,Other,www,tcp,0,10335,Nessus TCP scanner,Port scanners
-Nessus_scan_file(1).nessus,192.168.1.1,192.168.1.1,53,False,Other,dns,tcp,0,10335,Nessus TCP scanner,Port scanners
-Nessus_scan_file(1).nessus,192.168.1.1,192.168.1.1,80,False,Other,www,tcp,0,10335,Nessus TCP scanner,Port scanners

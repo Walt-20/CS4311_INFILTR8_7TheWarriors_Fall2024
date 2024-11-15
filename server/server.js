@@ -65,103 +65,113 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage })
 
 app.post('/upload', upload.array('files'), (req, res) => {
-    console.log("Upload was pinged,this was before the check.")
     if (!req.files || req.files.length === 0) {
-        return res.status(400).send('No file uploaded.');
+        return res.status(400).send('No files uploaded.');
     }
-    console.log("Upload was pinged.")
-    const userId = req.body.userId
-    const projectName = req.body.projectName
-    const uploadedFiles = {}
 
-    req.files.forEach(file => {
-        let filePath = path.join(file.destination, file.filename)
-        uploadedFiles[file.originalname] = filePath
-    })
+    const userId = req.body.userId;
+    const projectName = req.body.projectName;
 
-    console.log("this still works")
-    const filePath = Object.values(uploadedFiles)[0]
+    const machineLearningFolderPath = path.join(
+        rootDir,
+        'server',
+        'projects',
+        userId,
+        projectName,
+        'machine_learning'
+    );
+    const combinedCSVFilePath = path.join(machineLearningFolderPath, 'data_with_exploits.csv');
+    const columnsToExtract = ['ip', 'archetype', 'pluginName', 'severity'];
 
-    const machineLearningFolderPath = path.join(rootDir, 'server', 'projects', userId, projectName, 'machine_learning')
-    console.log("still working")
+    const processFilePromises = req.files.map(file => {
+        return new Promise((resolve, reject) => {
+            const filePath = path.join(file.destination, file.filename);
 
-    exec(`"${pythonPath}" parse.py "${filePath}" "${machineLearningFolderPath}"`, { cwd: rootDir }, (error, stdout, stderr) => {
-        console.log("executing parser")
-        if (error) {
-            console.error(`exec error: ${error}`)
-            return res.status(500).send('Error executing Python script.')
-        }
-        // After Python execution, read and process the CSV file
-        const columnsToExtract = ['ip', 'archetype', 'pluginName', 'severity'];
+            // Run the Python script to process the file
+            exec(`"${pythonPath}" parse.py "${filePath}" "${machineLearningFolderPath}"`, { cwd: rootDir }, (error) => {
+                if (error) {
+                    console.error(`Error processing file ${file.filename}:`, error);
+                    return reject(error);
+                }
 
-        const csvFiles = [
-            path.join(machineLearningFolderPath, 'data_with_exploits.csv'),
-        ];
-
-        const results = [];
-
-        // Function to read a single CSV file
-        function parseCSVFile(filePath) {
-            return new Promise((resolve, reject) => {
-                const fileResults = [];
-                fs.createReadStream(filePath)
-                    .pipe(csv())
-                    .on('data', (data) => {
-                        const filteredData = {};
-                        columnsToExtract.forEach(col => {
-                            if (data[col]) {
-                                filteredData[col] = data[col];
+                // Append the results of the current CSV file to `data_with_exploits.csv`
+                const currentCSVFilePath = path.join(machineLearningFolderPath, 'data_with_exploits.csv');
+                if (fs.existsSync(currentCSVFilePath)) {
+                    fs.createReadStream(currentCSVFilePath)
+                        .pipe(csv())
+                        .on('data', (data) => {
+                            const filteredData = {};
+                            columnsToExtract.forEach(col => {
+                                if (data[col]) {
+                                    filteredData[col] = data[col];
+                                }
+                            });
+                            if (
+                                filteredData.archetype &&
+                                filteredData.archetype.toLowerCase() !== 'other'
+                            ) {
+                                const csvLine = `${filteredData.ip},${filteredData.archetype},${filteredData.pluginName},${filteredData.severity}\n`;
+                                fs.appendFileSync(combinedCSVFilePath, csvLine);
                             }
-                        });
-                        if (filteredData.archetype && filteredData.archetype.toLowerCase() !== 'other') {
-                            fileResults.push(filteredData);
-                        }
-                    })
-                    .on('end', () => resolve(fileResults))
-                    .on('error', (csvError) => reject(csvError));
+                        })
+                        .on('end', resolve)
+                        .on('error', reject);
+                } else {
+                    resolve();
+                }
             });
-        }
-
-        // Parse all CSV files
-        Promise.all(csvFiles.map(parseCSVFile))
-            .then((allFilesData) => {
-                allFilesData.forEach(fileData => results.push(...fileData));
-
-                const groupedResults = results.reduce((acc, item) => {
-                    if (!acc[item.ip]) {
-                        acc[item.ip] = [];
-                    }
-                    acc[item.ip].push(item)
-                    return acc;
-                }, {});
-
-                // Sort results by combined_score in descending order
-                const sortedResults = Object.values(groupedResults).flatMap(group => {
-                    return group.sort((a, b) => {
-                        const scoreA = parseFloat(a.combined_score) || 0
-                        const scoreB = parseFloat(b.combined_score) || 0
-                        return scoreB - scoreA;
-                    })
-                })
-
-                const jsonParsedFilePath = path.join(rootDir, 'server', 'projects', userId, projectName, 'parsed-results', 'results.json')
-                const jsonData = JSON.stringify(results, null, 2)
-                const jsonPath = path.join(jsonParsedFilePath)
-
-                fs.writeFile(jsonPath, jsonData, (err) => {
-                    if (err) {
-                        console.error('Error writing JSON file: ', err);
-                        return res.status(500).send({ message: 'Error savings results' });
-                    }
-                    return res.status(200).send({ message: 'Results saved successfully', filepath: jsonPath });
-                });
-            })
-            .catch((error) => {
-                console.error('Error processing CSV files:', error);
-                return res.status(500).send('Error processing CSV files');
-            });
+        });
     });
+
+    Promise.all(processFilePromises)
+        .then(() => {
+            // After combining, generate JSON from `data_with_exploits.csv`
+            const results = [];
+            fs.createReadStream(combinedCSVFilePath)
+                .pipe(csv())
+                .on('data', (data) => {
+                    const filteredData = {};
+                    columnsToExtract.forEach(col => {
+                        if (data[col]) {
+                            filteredData[col] = data[col];
+                        }
+                    });
+                    if (filteredData.archetype && filteredData.archetype.toLowerCase() !== 'other') {
+                        results.push(filteredData);
+                    }
+                })
+                .on('end', () => {
+                    const jsonParsedFilePath = path.join(
+                        rootDir,
+                        'server',
+                        'projects',
+                        userId,
+                        projectName,
+                        'parsed-results',
+                        'results.json'
+                    );
+                    fs.writeFile(jsonParsedFilePath, JSON.stringify(results, null, 2), (err) => {
+                        if (err) {
+                            console.error('Error writing JSON file:', err);
+                            return res.status(500).send({ message: 'Error saving results.' });
+                        }
+                        return res.status(200).send({
+                            message: 'Results saved successfully.',
+                            filepath: jsonParsedFilePath,
+                        });
+                    });
+                })
+                .on('error', (error) => {
+                    console.error('Error reading combined CSV file:', error);
+                    return res.status(500).send('Error processing combined CSV.');
+                });
+        })
+        .catch((error) => {
+            console.error('Error processing files:', error);
+            return res.status(500).send('Error processing files.');
+        });
 });
+
 
 app.post('/start-analysis', upload.single('file'), (req, res) => {
     const { disallowedIps, disallowedEntryPoints, userId, projectName } = req.body;
