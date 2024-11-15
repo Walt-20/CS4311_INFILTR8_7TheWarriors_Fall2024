@@ -131,36 +131,89 @@
 		}
 	}
 
-	function exportAsPDF() {
-        const doc = new jsPDF();
-        doc.text("Report", 10, 10);
-        ips.forEach((ip, index) => {
-            doc.text(`${ip} - ${entryPoints[index]} - ${severity[index]}`, 10, 20 + (10 * index));
-        });
-        doc.save('report.pdf');
-    }
+	function exportAsPDF(selectedDataNumber) {
+		const doc = new jsPDF();
+		let dataToExport;
 
-    function exportAsXML() {
-        let xmlContent = '<?xml version="1.0" encoding="UTF-8"?>\n';
-        xmlContent += '<report>\n';
-        ips.forEach((ip, index) => {
-            xmlContent += `  <entry>\n`;
-            xmlContent += `    <ip>${ip}</ip>\n`;
-            xmlContent += `    <device>${entryPoints[index]}</device>\n`;
-            xmlContent += `    <vulnerability>${severity[index]}</vulnerability>\n`;
-            xmlContent += `  </entry>\n`;
-        });
-        xmlContent += '</report>';
+		switch (selectedDataNumber) {
+			case 1:
+				dataToExport = dataWithExploits;
+				doc.text("Data With Exploits Report", 10, 10);
+				break;
+			case 2:
+				dataToExport = entrypointMostInfo;
+				doc.text("Entrypoint Most Info Report", 10, 10);
+				break;
+			case 3:
+				dataToExport = port0Entries;
+				doc.text("Port 0 Entries Report", 10, 10);
+				break;
+			case 4:
+				dataToExport = rankedEntryPoints;
+				doc.text("Ranked Entry Points Report", 10, 10);
+				break;
+			default:
+				console.error("Invalid data number");
+				return;
+		}
 
-        const blob = new Blob([xmlContent], { type: 'text/xml;charset=utf-8;' });
-        const url = URL.createObjectURL(blob);
-        const link = document.createElement('a');
-        link.href = url;
-        link.setAttribute('download', 'report.xml');
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-    }
+		let y = 20;
+		Object.values(dataToExport).forEach((item) => {
+			const row = Object.values(item).join(" - ");
+			doc.text(row, 10, y);
+			y += 10;
+		});
+
+		doc.save(`report_${selectedDataNumber}.pdf`);
+	}
+
+	function exportAsXML(selectedDataNumber) {
+		let dataToExport;
+		let rootName;
+
+		switch (selectedDataNumber) {
+			case 1:
+				dataToExport = dataWithExploits;
+				rootName = "DataWithExploits";
+				break;
+			case 2:
+				dataToExport = entrypointMostInfo;
+				rootName = "EntrypointMostInfo";
+				break;
+			case 3:
+				dataToExport = port0Entries;
+				rootName = "Port0Entries";
+				break;
+			case 4:
+				dataToExport = rankedEntryPoints;
+				rootName = "RankedEntryPoints";
+				break;
+			default:
+				console.error("Invalid data number");
+				return;
+		}
+		
+		let xmlContent = `<?xml version="1.0" encoding="UTF-8"?>\n<${rootName}>\n`;
+		Object.values(dataToExport).forEach((item) => {
+			xmlContent += "  <entry>\n";
+			for (const [key, value] of Object.entries(item)) {
+				xmlContent += `    <${key}>${value}</${key}>\n`;
+			}
+			xmlContent += "  </entry>\n";
+		});
+		xmlContent += `</${rootName}>`;
+
+		// Export the XML
+		const blob = new Blob([xmlContent], { type: "text/xml;charset=utf-8;" });
+		const url = URL.createObjectURL(blob);
+		const link = document.createElement("a");
+		link.href = url;
+		link.setAttribute("download", `report_${selectedDataNumber}.xml`);
+		document.body.appendChild(link);
+		link.click();
+		document.body.removeChild(link);
+	}
+
 </script>
 
 <Menu {menuOpen} />
