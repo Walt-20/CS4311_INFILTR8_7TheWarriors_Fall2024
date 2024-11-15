@@ -191,8 +191,17 @@
 				Create New Project
 			</h2>
 		</div>
-		<div class="popup">
-			<input type="text" id="projectName" bind:value={projectName} placeholder="Enter a name for your project" class="mt-1 block w-full p-2 border rounded" />
+		<div class="flex items-center space-x-64">
+			<div class="popup">
+				<input type="text" id="projectName" bind:value={projectName} placeholder="Enter a name for your project" class="mt-1 block w-full p-2 border rounded" />
+			</div>
+			<button
+				class="mr-4 rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 disabled:cursor-not-allowed disabled:opacity-50 dark:focus:ring-blue-800"
+				on:click={() => showPopup.set(true)}
+				disabled={!isValidFile && projectName != null}
+			>
+				Create Project
+			</button>
 		</div>
 		<br>
 		<div
@@ -248,14 +257,6 @@
 	{/if}
 
 	<div class="upload-files col-span-2 mt-6">
-		<button
-			class="mr-4 rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 disabled:cursor-not-allowed disabled:opacity-50 dark:focus:ring-blue-800"
-			on:click={() => showPopup.set(true)}
-			disabled={!isValidFile && projectName != null}
-		>
-			Create Project
-		</button>
-
 		<button
 			class="rounded bg-red-600 px-4 py-2 text-white hover:bg-red-700 focus:ring-4 focus:ring-red-300 dark:focus:ring-red-800"
 			on:click={handleDiscardAll}
