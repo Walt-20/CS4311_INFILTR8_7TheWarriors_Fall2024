@@ -13,7 +13,7 @@ CORS(app, resources={r"/*": {"origins": "*"}})
 
 # 'bolt://localhost:7687' for local database
 # 'neo4j+s://36954b0e.databases.neo4j.io' for online
-driver = GraphDatabase.driver('bolt://localhost:7687',auth=basic_auth("neo4j",os.environ.get("NEO4J_AUTH_KEY")))
+driver = GraphDatabase.driver('neo4j+s://36954b0e.databases.neo4j.io',auth=basic_auth("neo4j",os.environ.get("NEO4J_AUTH_KEY")))
 driver.verify_connectivity()
  
 def serialize_analyst(user):
@@ -205,7 +205,19 @@ def create_analyst():
         password = data.get('password')
         token = data.get('token')
 
-        # Hash the password and token before saving
+        # Check if username already exists
+        check_query = """
+        MATCH (n:Analyst {username: $username})
+        RETURN n
+        """
+        with driver.session() as session:
+            existing_user = session.run(check_query, username=username).single()
+        
+        if existing_user:
+            # If the user already exists, return an error message
+            return jsonify({"error": "Username already exists. Please choose another one."}), 400
+
+        # Proceed with user creation if the username doesn't exist
         hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
         hashed_token = bcrypt.hashpw(token.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
 

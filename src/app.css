@@ -1,11 +1,117 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
 @import 'flowbite';
+
 body {
 	height: 100vh;
 	background-color: rgba(38, 55, 77, 255);
+}
+
+:root {
+    --text-font-size: 16px; /* Default size */
+    --background-color: #273043; /* High-contrast background */
+    --text-color: #264653;       /* High-contrast text */
+    --accent-color: #F4A261;     /* Accent color */
+    --border-color: #E76F51;     /* Border color */
+}
+
+body {
+    font-size: var(--text-font-size); /* Apply the global font size for text */
+}
+
+/* Adjust text size only for text elements */
+h1, h2, h3, h4, h5, h6, p, span, li {
+    font-size: var(--text-font-size);
+}
+
+button, label, select {
+    font-size: var(--text-font-size);
+}
+
+/* Global styles for Color Blind Mode */
+.color-blind-mode {
+    filter: contrast(1.2);
+    background-color: var(--background-color); /* High-contrast background */
+    color: var(--text-color); /* High contrast text */
+}
+
+/* Headings and text colors for Color Blind Mode */
+.color-blind-mode h1, 
+.color-blind-mode h2, 
+.color-blind-mode h3, 
+.color-blind-mode p, 
+.color-blind-mode li {
+    color: var(--text-color);
+}
+
+/* Links in Color Blind Mode */
+.color-blind-mode a {
+    color: var(--accent-color);
+}
+
+.color-blind-mode a:hover {
+    color: #FF7F11; /* Brighter accent on hover */
+}
+
+/* Buttons and interactive elements */
+.color-blind-mode button, 
+.color-blind-mode label, 
+.color-blind-mode select, 
+.color-blind-mode input {
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+}
+
+.color-blind-mode button:hover, 
+.color-blind-mode input:hover, 
+.color-blind-mode select:hover {
+    background-color: #FF7F11; /* Brighter hover */
+    color: var(--text-color);
+}
+
+/* Placeholder text */
+.color-blind-mode input::placeholder, 
+.color-blind-mode textarea::placeholder {
+    color: var(--text-color);
+}
+
+/* Table styles */
+.color-blind-mode table {
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    border-collapse: collapse;
+}
+
+.color-blind-mode table th, 
+.color-blind-mode table td {
+    border: 1px solid var(--border-color);
+    padding: 0.5rem;
+}
+
+.color-blind-mode table th {
+    background-color: var(--border-color);
+    color: var(--text-color);
+}
+
+/* Lists */
+.color-blind-mode ul, 
+.color-blind-mode ol {
+    list-style-type: disc;
+    margin: 0 0 1rem 1.5rem;
+    color: var(--text-color);
+}
+
+/* Ensure contrast for hover states */
+.color-blind-mode .button:hover {
+    filter: brightness(1.1);
+    background-color: #FF7F11;
+}
+
+/* Keep existing flowbite styles functional */
+.flowbite .color-blind-mode {
+    color: var(--text-color);
+    background-color: var(--background-color);
+    border-color: var(--border-color);
 }
