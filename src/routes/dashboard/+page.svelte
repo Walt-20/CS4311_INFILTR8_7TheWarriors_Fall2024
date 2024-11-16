@@ -2,7 +2,7 @@
 	import user from '../../user'
 	import { onMount } from 'svelte';
 	import Menu from '$lib/Menu.svelte';
-	import Notification from '$lib/Notification.svelte';
+	import { notifications } from '$lib/notificationStore.js'
 	import { navigateTo } from '../../utils';
 	import { BookOpenOutline } from 'flowbite-svelte-icons';
 	import { addLog, logs } from '$lib/logStore.js';
@@ -43,14 +43,6 @@
 		isValidFile = files.length > 0;
 		addLog(`${files.length} valid files selected.`);
 		handleShowProgress();
-
-		// Added this - Darien ///////////////////
-		if (isValidFile) {
-			console.log("Truly a valid file")
-			// Upload the file to the server for parsing
-			files.forEach((file) => uploadFileToServer(file));
-		}
-		///////////////////////////////////////////
 	}
 
 	// Added this - Darien  ///////////////////////
@@ -87,6 +79,16 @@
 
 	function handleCreateProject() {
         console.log("Project Name",projectName)
+		if (isValidFile) {
+			console.log("Truly a valid file")
+			// Upload the file to the server for parsing
+			files.forEach((file) => uploadFileToServer(file));
+
+			notifications.update(n => [
+				...n,
+				{ message: `Project "${projectName}" created successfully.`, unread: true},
+			])
+		}
 		addLog('Creating project with selected files.');
 		navigateTo('/project');
 	}
@@ -239,12 +241,13 @@
 					<button
 						type="button"
 						class="inline-flex items-center rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+						on:click={() => document.getElementById('file-input').click()}
 					>
 						Select Files
 					</button>
 					<input
 						id="file-input"
-						class="absolute left-0 top-0 h-full w-full cursor-pointer opacity-0"
+						class="hidden"
 						type="file"
 						multiple
 						accept=".nessus"
@@ -288,8 +291,8 @@
 	<div class="upload-files col-span-2 mt-6">
 		<!-- <button
 			class="mr-4 rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 disabled:cursor-not-allowed disabled:opacity-50 dark:focus:ring-blue-800"
-			on:click={() => showPopup.set(true)}
-			disabled={!isValidFile && projectName != null}
+			on:click={handleCreateProject}
+			disabled={!isValidFile || !projectName}
 		>
 			Create Project
 		</button>
