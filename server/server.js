@@ -12,8 +12,6 @@ const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const rootDir = path.join(__dirname, '..');
-const jsonUserFilePath = path.join(rootDir, 'server', 'user-results', 'results.json')
-const uploadedFiles = {};
 const pythonPath = path.join(rootDir, 'python-backend', 'venv', 'bin', 'python')
 
 app.use(cors(), express.json(), express.urlencoded({ extended: true }));
@@ -67,109 +65,124 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage })
 
 app.post('/upload', upload.array('files'), (req, res) => {
-    console.log("Upload was pinged,this was before the check.")
     if (!req.files || req.files.length === 0) {
-        return res.status(400).send('No file uploaded.');
+        return res.status(400).send('No files uploaded.');
     }
-    console.log("Upload was pinged.")
-    const userId = req.body.userId
-    const projectName = req.body.projectName
-    const uploadedFiles = {}
 
-    req.files.forEach(file => {
-        let filePath = path.join(file.destination, file.filename)
-        uploadedFiles[file.originalname] = filePath
-    })
+    const userId = req.body.userId;
+    const projectName = req.body.projectName;
 
-    const filePath = Object.values(uploadedFiles)[0]
+    const machineLearningFolderPath = path.join(
+        rootDir,
+        'server',
+        'projects',
+        userId,
+        projectName,
+        'machine_learning'
+    );
+    const combinedCSVFilePath = path.join(machineLearningFolderPath, 'data_with_exploits.csv');
+    const columnsToExtract = ['ip', 'archetype', 'pluginName', 'severity'];
 
-    const machineLearningFolderPath = path.join(rootDir, 'server', 'projects', userId, projectName, 'machine_learning')
+    const processFilePromises = req.files.map(file => {
+        return new Promise((resolve, reject) => {
+            const filePath = path.join(file.destination, file.filename);
 
-    exec(`"${pythonPath}" parse.py "${filePath}" "${machineLearningFolderPath}"`, { cwd: rootDir }, (error, stdout, stderr) => {
-        if (error) {
-            console.error(`exec error: ${error}`)
-            return res.status(500).send('Error executing Python script.')
-        }
-        // After Python execution, read and process the CSV file
-        const columnsToExtract = ['ip', 'archetype', 'pluginName', 'severity'];
+            // Run the Python script to process the file
+            exec(`"${pythonPath}" parse.py "${filePath}" "${machineLearningFolderPath}"`, { cwd: rootDir }, (error) => {
+                if (error) {
+                    console.error(`Error processing file ${file.filename}:`, error);
+                    return reject(error);
+                }
 
-        const csvFiles = [
-            path.join(machineLearningFolderPath, 'data_with_exploits.csv'),
-        ];
-
-        const results = [];
-
-        // Function to read a single CSV file
-        function parseCSVFile(filePath) {
-            return new Promise((resolve, reject) => {
-                const fileResults = [];
-                fs.createReadStream(filePath)
-                    .pipe(csv())
-                    .on('data', (data) => {
-                        const filteredData = {};
-                        columnsToExtract.forEach(col => {
-                            if (data[col]) {
-                                filteredData[col] = data[col];
+                // Append the results of the current CSV file to `data_with_exploits.csv`
+                const currentCSVFilePath = path.join(machineLearningFolderPath, 'data_with_exploits.csv');
+                if (fs.existsSync(currentCSVFilePath)) {
+                    fs.createReadStream(currentCSVFilePath)
+                        .pipe(csv())
+                        .on('data', (data) => {
+                            const filteredData = {};
+                            columnsToExtract.forEach(col => {
+                                if (data[col]) {
+                                    filteredData[col] = data[col];
+                                }
+                            });
+                            if (
+                                filteredData.archetype &&
+                                filteredData.archetype.toLowerCase() !== 'other'
+                            ) {
+                                const csvLine = `${filteredData.ip},${filteredData.archetype},${filteredData.pluginName},${filteredData.severity}\n`;
+                                fs.appendFileSync(combinedCSVFilePath, csvLine);
                             }
-                        });
-                        if (filteredData.archetype && filteredData.archetype.toLowerCase() !== 'other') {
-                            fileResults.push(filteredData);
-                        }
-                    })
-                    .on('end', () => resolve(fileResults))
-                    .on('error', (csvError) => reject(csvError));
+                        })
+                        .on('end', resolve)
+                        .on('error', reject);
+                } else {
+                    resolve();
+                }
             });
-        }
-
-        // Parse all CSV files
-        Promise.all(csvFiles.map(parseCSVFile))
-            .then((allFilesData) => {
-                allFilesData.forEach(fileData => results.push(...fileData));
-
-                const groupedResults = results.reduce((acc, item) => {
-                    if (!acc[item.ip]) {
-                        acc[item.ip] = [];
-                    }
-                    acc[item.ip].push(item)
-                    return acc;
-                }, {});
-
-                // Sort results by combined_score in descending order
-                const sortedResults = Object.values(groupedResults).flatMap(group => {
-                    return group.sort((a, b) => {
-                        const scoreA = parseFloat(a.combined_score) || 0
-                        const scoreB = parseFloat(b.combined_score) || 0
-                        return scoreB - scoreA;
-                    })
-                })
-
-                const jsonParsedFilePath = path.join(rootDir, 'server', 'projects', userId, projectName, 'parsed-results', 'results.json')
-                const jsonData = JSON.stringify(results, null, 2)
-                const jsonPath = path.join(jsonParsedFilePath)
-
-                fs.writeFile(jsonPath, jsonData, (err) => {
-                    if (err) {
-                        console.error('Error writing JSON file: ', err);
-                        return res.status(500).send({ message: 'Error savings results' });
-                    }
-                    return res.status(200).send({ message: 'Results saved successfully', filepath: jsonPath });
-                });
-            })
-            .catch((error) => {
-                console.error('Error processing CSV files:', error);
-                return res.status(500).send('Error processing CSV files');
-            });
+        });
     });
+
+    Promise.all(processFilePromises)
+        .then(() => {
+            // After combining, generate JSON from `data_with_exploits.csv`
+            const results = [];
+            fs.createReadStream(combinedCSVFilePath)
+                .pipe(csv())
+                .on('data', (data) => {
+                    const filteredData = {};
+                    columnsToExtract.forEach(col => {
+                        if (data[col]) {
+                            filteredData[col] = data[col];
+                        }
+                    });
+                    if (filteredData.archetype && filteredData.archetype.toLowerCase() !== 'other') {
+                        results.push(filteredData);
+                    }
+                })
+                .on('end', () => {
+                    const jsonParsedFilePath = path.join(
+                        rootDir,
+                        'server',
+                        'projects',
+                        userId,
+                        projectName,
+                        'parsed-results',
+                        'results.json'
+                    );
+                    fs.writeFile(jsonParsedFilePath, JSON.stringify(results, null, 2), (err) => {
+                        if (err) {
+                            console.error('Error writing JSON file:', err);
+                            return res.status(500).send({ message: 'Error saving results.' });
+                        }
+                        return res.status(200).send({
+                            message: 'Results saved successfully.',
+                            filepath: jsonParsedFilePath,
+                        });
+                    });
+                })
+                .on('error', (error) => {
+                    console.error('Error reading combined CSV file:', error);
+                    return res.status(500).send('Error processing combined CSV.');
+                });
+        })
+        .catch((error) => {
+            console.error('Error processing files:', error);
+            return res.status(500).send('Error processing files.');
+        });
 });
 
+
 app.post('/start-analysis', upload.single('file'), (req, res) => {
-    const { disallowedIps, disallowedEntryPoints,userId,projectName } = req.body;
+    const { disallowedIps, disallowedEntryPoints, userId, projectName } = req.body;
 
     if (!disallowedIps || !disallowedEntryPoints) {
         return res.status(400).send('Invalid data')
     }
 
-    const folderToAnalyze = path.join(rootDir,'server','projects',userId,projectName,'uploads')
+    console.log("disallowedIps ", disallowedIps)
+
+    const folderToAnalyze = path.join(rootDir, 'server', 'projects', userId, projectName, 'uploads')
     let fileList = fs.readdirSync(folderToAnalyze, (err, folder) => {
         if (err) {
             console.error('Error reading user projects: ', err)
@@ -184,13 +197,13 @@ app.post('/start-analysis', upload.single('file'), (req, res) => {
     })
 
     console.log(fileList)
-    const fileToAnalyze = path.join(folderToAnalyze,fileList[0])
+    const fileToAnalyze = path.join(folderToAnalyze, fileList[0])
     const machineLearningFolderPath = path.join(rootDir, 'server', 'projects', userId, projectName, 'machine_learning')
 
     const disallowedIpsStr = disallowedIps.join(','); // Convert array to comma-separated string
     const disallowedEntryPointsStr = disallowedEntryPoints.join(','); // Convert array to comma-separated string
 
-    const command = `"${pythonPath}" main.py "${fileToAnalyze}" "${disallowedIpsStr}" "${disallowedEntryPointsStr}"`
+    const command = `"${pythonPath}" main.py "${fileToAnalyze}" "${disallowedIpsStr}" "${disallowedEntryPointsStr}" "${machineLearningFolderPath}"`
 
 
     exec(command, { cwd: rootDir }, (error, stdout, stderr) => {
@@ -200,30 +213,64 @@ app.post('/start-analysis', upload.single('file'), (req, res) => {
         }
 
         // After Python execution, read and process the CSV file
-        const csvFilePath = path.join(machineLearningFolderPath, 'data_with_exploits.csv');
-        const columnsToExtract = ['ip', 'archetype', 'pluginName', 'severity'];
+        const csvFiles = [
+            path.join(machineLearningFolderPath, 'data_with_exploits.csv'),
+            path.join(machineLearningFolderPath, 'entrypoint_most_info.csv'),
+            path.join(machineLearningFolderPath, 'port_0_entries.csv'),
+            path.join(machineLearningFolderPath, 'ranked_entry_points.csv'),
+        ]
+        const columnsToExtract = {
+            'data_with_exploits.csv': ['ip', 'port', 'protocol', 'archetype', 'pluginName', 'severity'],
+            'entrypoint_most_info.csv': ['ip', 'port', 'vulnerability_count'],
+            'port_0_entries.csv': ['ip', 'port', 'protocol', 'archetype', 'pluginName', 'severity'],
+            'ranked_entry_points.csv': ['ip', 'port', 'severity_score']
+        }
 
-        const results = [];
+        const results = {};
 
-        // Reading the CSV file and extracting specific columns
-        fs.createReadStream(csvFilePath)
-            .pipe(csv())
-            .on('data', (data) => {
-                const filteredData = {};
-                columnsToExtract.forEach(col => {
-                    if (data[col]) {
-                        filteredData[col] = data[col];
-                    }
+        // Function to read a single CSV file and extract specific columns
+        function parseCSVFile(filePath, columns) {
+            return new Promise((resolve, reject) => {
+                const fileResults = [];
+                fs.createReadStream(filePath)
+                    .pipe(csv())
+                    .on('data', (data) => {
+                        const filteredData = {};
+                        columns.forEach(col => {
+                            if (data[col]) {
+                                filteredData[col] = data[col];
+                            }
+                        });
+                        fileResults.push(filteredData);
+                    })
+                    .on('end', () => resolve(fileResults))
+                    .on('error', (error) => reject(error));
+            });
+        }
+
+        // Parse all CSV files
+        Promise.all(csvFiles.map(filePath => {
+            const fileName = path.basename(filePath);
+            return parseCSVFile(filePath, columnsToExtract[fileName])
+                .then(fileResults => ({ [fileName]: fileResults }));
+        }))
+            .then(fileResults => {
+                // Combine results from all files into a single object
+                fileResults.forEach(result => {
+                    const key = Object.keys(result)[0];
+                    results[key] = result[key];
                 });
-                if (filteredData.archetype && filteredData.archetype.toLowerCase() !== 'other') {
-                    results.push(filteredData);
+
+                // Write combined results to JSON file
+                const userResultsFolderPath = path.join(rootDir, 'server', 'projects', userId, projectName, 'user-results');
+                if (!fs.existsSync(userResultsFolderPath)) {
+                    fs.mkdirSync(userResultsFolderPath, { recursive: true });
                 }
-            })
-            .on('end', () => {
+
+                const jsonParsedFilePath = path.join(userResultsFolderPath, 'results.json');
                 const jsonData = JSON.stringify(results, null, 2);
 
-                const userResult = path.join(rootDir,'server','projects',userId,projectName,'user-results','results.json')
-                fs.writeFile(userResult, jsonData, (err) => {
+                fs.writeFile(jsonParsedFilePath, jsonData, (err) => {
                     if (err) {
                         console.error('Error writing JSON file:', err);
                         return res.status(500).send('Error saving results');
@@ -231,9 +278,9 @@ app.post('/start-analysis', upload.single('file'), (req, res) => {
                     res.status(200).send('Results saved successfully');
                 });
             })
-            .on('error', (csvError) => {
-                console.error('Error reading CSV:', csvError);
-                return res.status(500).send('Error processing CSV file');
+            .catch(error => {
+                console.error('Error processing CSV files:', error);
+                return res.status(500).send('Error processing CSV files');
             });
     });
 });
@@ -271,9 +318,9 @@ app.post('/parsed', (req, res) => {
         const userId = req.body.userId;
         const projectname = req.body.projectName;
         const reqParsedPath = path.join(rootDir, 'server', 'projects', userId, projectname, 'parsed-results', 'results.json')
-        console.log("Fetching for user "+req.body.userId+" project "+req.body.projectName);
+        console.log("Fetching for user " + req.body.userId + " project " + req.body.projectName);
         res.sendFile(reqParsedPath);
-    } catch(error) {
+    } catch (error) {
         return res.status(404).send('Parsed not found')
     }
 })
@@ -308,7 +355,7 @@ app.post('/user-results', (req, res) => {
     console.log("Fetching user projects")
     const userId = req.body.userId;
     const projectname = req.body.projectname;
-    const userResultsPath = path.join(rootDir, 'server', 'projects', userId, projectname,'user-results','results.json')
+    const userResultsPath = path.join(rootDir, 'server', 'projects', userId, projectname, 'user-results', 'results.json')
     if (!fs.existsSync(userResultsPath)) {
         return res.status(404).send('User not found')
     }
@@ -336,7 +383,7 @@ process.on('SIGTERM', () => {
     process.exit(0)
 })
 
-app.get("/",(req,res)=>{
+app.get("/", (req, res) => {
     res.send("hello");
 })
 

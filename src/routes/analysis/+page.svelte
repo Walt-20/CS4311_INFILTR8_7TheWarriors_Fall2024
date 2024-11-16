@@ -128,27 +128,6 @@ async function startAnalysis() {
     <!-- Left Section: Entry Points and Start Time -->
     <div class="flex flex-col gap-8 w-1/2">
 
-      <!-- Select Entry Points -->
-      <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md border border-gray-300 dark:border-gray-600">
-        <h2 class="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-4">
-          <i class="fas fa-door-open mr-2"></i> Select Entry Points
-        </h2>
-        <div class="space-y-4">
-          {#each entryPoints as entryPoint, index}
-            <label class="flex items-center text-gray-800 dark:text-gray-300">
-              <input 
-                type="checkbox" 
-                on:change={() => handleEntryPointChange(index)} 
-                checked={entryPoint.selected}
-                class="mr-3 text-blue-500 rounded border-gray-300 dark:border-gray-600 focus:ring-blue-500"
-                style="width: 18px; height: 18px;" 
-              />
-              {entryPoint.name}
-            </label>
-          {/each}
-        </div>
-      </div>
-
       <!-- Start Time Input -->
       <div class="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md border border-gray-300 dark:border-gray-600">
         <label for="start-time-input" class="text-l font-semibold text-gray-800 dark:text-gray-100 mb-4">
@@ -197,4 +176,3 @@ async function startAnalysis() {
     </div>
   </div>
 </div>
-

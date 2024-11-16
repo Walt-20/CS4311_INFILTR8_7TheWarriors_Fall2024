@@ -13,14 +13,12 @@ nessus_file = sys.argv[1]
 # Accept disallowed IPs and entry points as additional command-line arguments       
 disallowed_ips = sys.argv[2].split(',')  # Comma-separated list of disallowed IPs
 disallowed_entry_points = sys.argv[3].split(',')  # Comma-separated list of disallowed archetypes
+output_base_dir = sys.argv[4]
 
-# Combine disallowed_ips and disallowed_entry_points into pairs
-disallowed_pairs = list(zip(disallowed_ips, disallowed_entry_points))
-
-# Base directory for output CSV files, change line 13 to where you want output CSVs to go
-current_dir = os.getcwd()
-output_base_dir = os.path.join(current_dir, 'machine_learning')
-os.makedirs(output_base_dir, exist_ok=True)
+# # Base directory for output CSV files, change line 13 to where you want output CSVs to go
+# current_dir = os.getcwd()
+# output_base_dir = os.path.join(current_dir, 'machine_learning')
+# os.makedirs(output_base_dir, exist_ok=True)
 
 # Construct paths for output CSV files
 data_with_exploits_path = os.path.join(output_base_dir, 'data_with_exploits.csv')
@@ -56,6 +54,9 @@ def map_to_archetype(plugin_name, plugin_family):
 for host in main_tree.findall('.//ReportHost'):
     host_name = host.get('name')  # Extract host name
     host_ip = host.find('.//HostProperties/tag[@name="host-ip"]').text  # Extract host IP
+
+    if host_ip in disallowed_ips:
+        continue
     
     # Iterate through each child element of ReportHost
     for child in host:
@@ -67,12 +68,9 @@ for host in main_tree.findall('.//ReportHost'):
         plugin_family = child.attrib.get('pluginFamily', '')
         archetype = map_to_archetype(plugin_name, plugin_family)
 
-         # Create a pair for the current entry
-        entry_point = (host_ip, archetype)
-
-        # Check if the current IP-archetype pair is in the disallowed pairs
-        if entry_point in disallowed_pairs:
-            continue  # Skip disallowed entries
+        # Skip if the archetype is disallowed
+        if archetype in disallowed_entry_points:
+            continue
 
         if not have_names:
             have_names = True
