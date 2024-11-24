@@ -21,7 +21,8 @@
     let showPopup = writable(false);
     let projectName = '';
 
-	const userId = $user.username;
+	export let data;
+	const userId = data.user.username;
 
 	onMount(() => {
 		const hours = new Date().getHours();

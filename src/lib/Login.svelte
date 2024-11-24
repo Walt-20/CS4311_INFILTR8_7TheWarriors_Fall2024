@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
     import user from '../user';
     import { navigateTo } from '../utils.js';
     import { addLog } from '$lib/logStore.js'; 
@@ -87,4 +87,4 @@
             Don't have an account? <a href="/registration" class="text-blue-600 hover:underline">Register DAC Analyst</a>
         </div>
     </form>
-</div>
+</div> -->
