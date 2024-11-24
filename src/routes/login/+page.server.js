@@ -9,8 +9,7 @@
 //     }),
 // })
 
-import { redirect } from "@sveltejs/kit"
-import { currentError } from "$lib/error";
+import { redirect,fail, error } from "@sveltejs/kit"
 import {addLog } from "$lib/logStore";
 
 export const actions = {
@@ -23,6 +22,7 @@ export const actions = {
         console.log(username)
         console.log(password)
         let success = false;
+        let errorMessage = "";
         try{
             const response = await fetch('http://127.0.0.1:8080/login', {
                 method: 'POST',
@@ -46,23 +46,24 @@ export const actions = {
                 })
                 success = true;
             } else if (response.status === 401) {
-                const errorMessage = 'Invalid username or password';
-                currentError.set(errorMessage);
+                errorMessage = 'Invalid username or password';
                 addLog(`Failed login attempt for user "${username}". Error: ${errorMessage}`);
             } else {
-                const errorMessage = 'Server response error, contact your administrator';
-                currentError.set(errorMessage);
+                errorMessage = 'Server response error, contact your administrator';
                 addLog(`Failed login attempt for user "${username}". Error: ${errorMessage}`);
             }
         } catch(error) {
             console.log(error)
-            const errorMessage = 'An error occurred, please try again.';
-            currentError.set(errorMessage);
+            errorMessage = 'An error occurred, please try again.';
             addLog(`Error logging in for user "${username}". Details: ${errorMessage}`);
         };
 
         if (success){
             throw redirect(303,'/dashboard');
+        } else {
+            return fail(400,{
+                message: errorMessage,
+            })
         }
 	},
 }

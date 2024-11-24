@@ -1,63 +1,5 @@
 <script>
-    // import user from '../user';
-    // import { navigateTo } from '../utils.js';
-    // import { addLog } from '$lib/logStore.js'; 
-    // import bcrypt from 'bcryptjs'; 
-    import { currentError } from '$lib/error'
-
-    let username = '';
-    let password = '';
-    // let currentError = null;
-    let sessionToken = null; 
-
-    const generateToken = () => {
-        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-            var r = (Math.random() * 16) | 0,
-                v = c === 'x' ? r : (r & 0x3) | 0x8;
-            return v.toString(16);
-        });
-    };
-
-    // const login = () => {
-    //     fetch('http://127.0.0.1:8080/login', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         },
-    //         body: JSON.stringify({
-    //             username: username,
-    //             password: password,
-    //         }),
-    //     })
-    //     .then((response) => {
-    //         if (response.status === 200) {
-    //             sessionToken = generateToken();
-    //             sessionToken = bcrypt.hashSync(sessionToken, 10);
-                
-    //             addLog(`User "${username}" logged in successfully. Token: ${sessionToken}`);
-    //             return response.json();
-    //         } else if (response.status === 401) {
-    //             currentError = 'Invalid username or password';
-    //             addLog(`Failed login attempt for user "${username}". Error: ${currentError}`);
-    //             return response.json();
-    //         } else {
-    //             currentError = 'Server response error, contact your administrator';
-    //             addLog(`Failed login attempt for user "${username}". Error: ${currentError}`);
-    //             return response.json();
-    //         }
-    //     })
-    //     .then((data) => {
-    //         if (data && data.user) {
-    //             user.update((val) => (val = { ...data.user }));
-    //             navigateTo('/dashboard');
-    //         }
-    //     })
-    //     .catch((error) => {
-    //         currentError = error.message || 'An error occurred';
-    //         addLog(`Error logging in for user "${username}". Details: ${currentError}`);
-    //     });
-    // };
-
+    export let form;
 </script>
 
 <style>
@@ -66,13 +8,12 @@
 <div class="flex justify-center items-center h-screen w-full bg-white dark:bg-gray-800">
     <form class="max-w-md w-full bg-gray-100 dark:bg-gray-700 shadow-md rounded-lg p-8" method="POST" action="?/login">
         <h2 class="text-2xl font-semibold text-center mb-6 dark:text-white">Log In</h2>
-        {#if $currentError}
-            <div class="mb-4 text-red-600">{$currentError}</div>
-        {/if}
+
+        <div class="mb-4 text-red-600">{form?.message || ''}</div>
         
         <div class="mb-4">
             <label class="block text-gray-900 dark:text-white" for="username">Username</label>
-            <input type="text" id="username" name="username" placeholder="Username" class="mt-1 block w-full p-2 border rounded"/>
+            <input type="text" id="username" name="username" placeholder="Username" class="mt-1 block w-full p-2 border rounded" value={form?.username ?? ''} />
         </div>
 
         <div class="mb-4">
