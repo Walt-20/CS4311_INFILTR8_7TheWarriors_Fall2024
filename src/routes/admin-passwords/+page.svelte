@@ -17,9 +17,10 @@
 	});
 
     const goToAdmin = () => {
-        addLog('Navigated back to admin homepage from password change page'); // Log navigation
-        navigateTo('/admin-dashboard');
-    };
+    	addLog('Navigated back to admin homepage from password change page'); 
+    	goto('/admin-dashboard'); 
+	};
+
 
 	// Function to validate password based on STIG requirements
 	const validatePassword = (password) => {
@@ -151,8 +152,11 @@
 			Update Password
 		</button>
 
-        <button class="mt-6 w-full py-2 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700 text-center" on:click={goToLogin}>
-			Back to Admin Homepage
+        <button 
+    		class="mt-6 w-full py-2 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700 text-center" 
+    		on:click|preventDefault={goToAdmin}>
+    		Back to Admin Homepage
 		</button>
+
 	</form>
 </div>

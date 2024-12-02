@@ -8,7 +8,7 @@
     let errorMessage = '';
 
     const goToLogin = () => {
-        navigateTo('../');
+        navigateTo('/login');
     };
 
     const generateToken = () => {
