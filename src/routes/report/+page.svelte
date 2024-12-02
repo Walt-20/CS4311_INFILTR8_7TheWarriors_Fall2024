@@ -1,10 +1,9 @@
 
 <script>
     import Menu from '$lib/Menu.svelte';
-    import user from "../../user"
-
-
-    const userId = $user.username;
+    
+	export let data;
+	const userId = data.user.username;
     let projects = []
     let menuOpen = false;
 
