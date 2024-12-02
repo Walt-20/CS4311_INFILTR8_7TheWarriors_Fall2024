@@ -9,7 +9,7 @@
 
     const goToLogin = () => {
         addLog('Navigated back to login from forgot password page'); // Log navigation
-        navigateTo('../');
+        navigateTo('/login');
     };
 
     const verifyToken = () => {

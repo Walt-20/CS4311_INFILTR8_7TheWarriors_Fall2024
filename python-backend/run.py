@@ -30,8 +30,8 @@ def login():
     password = data.get("password")
 
     query = """
-    MATCH (u:Analyst {username: $username})
-    RETURN u.password AS stored_password, u.username AS username
+    MATCH (u {username: $username})
+    RETURN labels(u) AS roles, u.password AS stored_password, u.username AS username
     """
     
     with driver.session() as session:
@@ -40,16 +40,41 @@ def login():
 
     if record:
         stored_password = record["stored_password"]
-        
-        if bcrypt.checkpw(password.encode('utf-8'), stored_password.encode('utf-8')):
-            user_data = {
-                "username": record["username"]
-            }
-            return jsonify({"message": "Login successful", "user": user_data}), 200
+        roles = record["roles"]
+        print(f"Debug: Retrieved roles: {roles}, username: {username}")
+
+        if "Admin" in roles:
+            # For Admin, use plain text comparison
+            print(f"Debug: Admin login attempt with password {password}")
+            if password == stored_password:
+                print("Debug: Admin login successful")
+                user_data = {
+                    "username": record["username"],
+                    "roles": roles
+                }
+                return jsonify({"message": "Login successful", "user": user_data}), 200
+            else:
+                print("Debug: Admin password mismatch")
         else:
-            return jsonify({"error": "Invalid username or password"}), 401
-    else:
+            # For other users (e.g., Analyst), use bcrypt comparison
+            print("Debug: Non-admin login attempt with bcrypt")
+            if bcrypt.checkpw(password.encode('utf-8'), stored_password.encode('utf-8')):
+                print("Debug: Analyst login successful")
+                user_data = {
+                    "username": record["username"],
+                    "roles": roles
+                }
+                return jsonify({"message": "Login successful", "user": user_data}), 200
+            else:
+                print("Debug: Analyst password mismatch")
+
+        # If the password does not match
         return jsonify({"error": "Invalid username or password"}), 401
+    else:
+        # If no record is found
+        print("Debug: No user found with the provided username")
+        return jsonify({"error": "Invalid username or password"}), 401
+
 
 @app.route("/forgot-password", methods=['POST'])
 def verify_token():
@@ -266,7 +291,61 @@ def delete_analyst_nodes():
     except Exception as e:
         print(f"Error during deletion: {e}")
         return {"error": "Failed to delete Analyst nodes"}
+
+@app.route("/analyst-users", methods=["GET"])
+def get_analyst_users():
+    query = """
+    MATCH (a:Analyst)
+    RETURN a.username AS username
+    """
+    try:
+        with driver.session() as session:
+            result = session.run(query)
+            usernames = [record["username"] for record in result]
+        return jsonify({"usernames": usernames}), 200
+    except Exception as e:
+        return jsonify({"error": "Failed to fetch analyst users"}), 500
  
+@app.route('/admin-password', methods=['POST', 'GET'])
+def admin_password():
+    data = request.get_json()
+    username = data.get('username') 
+    new_password = data.get('password') 
+    admin_password = data.get('adminPassword')
+
+    admin_query = """
+    MATCH (admin:Admin {username: 'admin'})
+        RETURN admin.password AS admin_password
+    """
+    with driver.session() as session:
+        admin_record = session.run(admin_query).single()
+
+    if not admin_record:
+        return jsonify({"error": "Admin user not found."}), 404
+
+    stored_admin_password = admin_record['admin_password']
+    
+    if admin_password != stored_admin_password:
+        return jsonify({"error": "Invalid admin password."}), 401
+
+    # Hash the new password for the Analyst
+    hashed_new_password = bcrypt.hashpw(new_password.encode('utf-8'), bcrypt.gensalt())
+
+    # Update the target user's password
+    update_query = """
+    MATCH (u:Analyst {username: $username})
+    SET u.password = $new_password
+    RETURN u.username AS updated_user
+    """
+    with driver.session() as session:
+        analyst_result = session.run(update_query, username=username, new_password=hashed_new_password.decode('utf-8'))
+        analyst_record = analyst_result.single()
+
+    if analyst_record:
+        return jsonify({"message": f"Password for user {username} updated successfully"}), 200
+    else:
+        return jsonify({"error": "User not found or password update failed"}), 404
+
  
 if __name__ == "__main__":
     app.run(host="0.0.0.0",port=8080)
