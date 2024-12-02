@@ -1,0 +1,7630 @@
+{
+  "data_with_exploits.csv": [
+    {
+      "ip": "192.168.1.22",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus Scan Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.22",
+      "port": "0",
+      "protocol": "udp",
+      "archetype": "Other",
+      "pluginName": "Traceroute Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.22",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Ethernet Card Manufacturer Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.22",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Ethernet MAC Addresses",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.22",
+      "port": "0",
+      "protocol": "icmp",
+      "archetype": "Other",
+      "pluginName": "ICMP Timestamp Request Remote Date Disclosure",
+      "severity": "1"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "OS Security Patch Assessment Not Available",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Common Platform Enumeration (CPE)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus Scan Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Patch Report",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "80",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Backported Security Patch Detection (WWW)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "10000",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "SSL Cipher Block Chaining Cipher Suites Supported",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "10000",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "SSL Perfect Forward Secrecy Cipher Suites Supported",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "10000",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "SSL/TLS Recommended Cipher Suites",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "10000",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "TLS Version 1.3 Protocol Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "10000",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "TLS Version 1.2 Protocol Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "10000",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "SSL Cipher Suites Supported",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Device Type",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Unix Operating System on Extended Support",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "OS Identification",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Ethernet Card Manufacturer Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Ethernet MAC Addresses",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "10000",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "SSL Self-Signed Certificate",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "10000",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "SSL Certificate Cannot Be Trusted",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "10000",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "SSL Root Certification Authority Certificate Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "10000",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "SSL Certificate Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "10000",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "SSL / TLS Versions Supported",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "0",
+      "protocol": "udp",
+      "archetype": "Other",
+      "pluginName": "Traceroute Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "TCP/IP Timestamps Supported",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "80",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache HTTP Server Version",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "80",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "HyperText Transfer Protocol (HTTP) Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "22",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "SSH Protocol Versions Supported",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "22",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "OpenSSH < 8.0",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "22",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "OpenSSH < 7.8",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "22",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "OpenSSH < 9.6 Multiple Vulnerabilities",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "22",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "OpenSSH Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "22",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "SSH Terrapin Prefix Truncation Weakness (CVE-2023-48795)",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "22",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "SSH SHA-1 HMAC Algorithms Enabled",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "22",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "SSH Algorithms and Languages Supported",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "22",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "SSH Server Type and Version Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "80",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "HTTP Server Type and Version",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "10000",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "HTTP Server Type and Version",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "80",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "HTTP Methods Allowed (per directory)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "10000",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Embedded Web Server Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "10000",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Webmin Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "5353",
+      "protocol": "udp",
+      "archetype": "Unauthenticated port bypass",
+      "pluginName": "mDNS Detection (Local Network)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "80",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Service Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "22",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Service Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "10000",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Service Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "10000",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Service Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "0",
+      "protocol": "icmp",
+      "archetype": "Other",
+      "pluginName": "ICMP Timestamp Request Remote Date Disclosure",
+      "severity": "1"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "10000",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus TCP scanner",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "22",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus TCP scanner",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "80",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus TCP scanner",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.19",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus Scan Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.19",
+      "port": "0",
+      "protocol": "udp",
+      "archetype": "Other",
+      "pluginName": "Traceroute Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.19",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Ethernet Card Manufacturer Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.19",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Ethernet MAC Addresses",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Common Platform Enumeration (CPE)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus Scan Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Patch Report",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "default credentials",
+      "pluginName": "Target Credential Status by Authentication Protocol - Valid Credentials Provided",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Unix Software Discovery Commands Available",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "OS Security Patch Assessment Available",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "22",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Filepaths contain Dangerous characters (Linux)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "default credentials",
+      "pluginName": "Target Credential Issues by Authentication Protocol - No Issues Found",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j SEoL (<= 1.x)",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j SEoL (<= 1.x)",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j SEoL (<= 1.x)",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j SEoL (<= 1.x)",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j SEoL (<= 1.x)",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j SEoL (<= 1.x)",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j SEoL (<= 1.x)",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j SEoL (<= 1.x)",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j SEoL (<= 1.x)",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j SEoL (<= 1.x)",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j SEoL (<= 1.x)",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j SEoL (<= 1.x)",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j SEoL (<= 1.x)",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j SEoL (<= 1.x)",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j SEoL (<= 1.x)",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j SEoL (<= 1.x)",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j SEoL (<= 1.x)",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j < 2.15.0 Remote Code Execution (Nix)",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j < 2.15.0 Remote Code Execution (Nix)",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j < 2.15.0 Remote Code Execution (Nix)",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 2.x < 2.16.0 RCE",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 2.x < 2.16.0 RCE",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 2.x < 2.16.0 RCE",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 2.x < 2.17.0 DoS",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 2.x < 2.17.0 DoS",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 2.x < 2.17.0 DoS",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 2.0 < 2.3.2 / 2.4 < 2.12.4 / 2.13 < 2.17.1 RCE",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 2.0 < 2.3.2 / 2.4 < 2.12.4 / 2.13 < 2.17.1 RCE",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 2.0 < 2.3.2 / 2.4 < 2.12.4 / 2.13 < 2.17.1 RCE",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 1.x Multiple Vulnerabilities",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 1.x Multiple Vulnerabilities",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 1.x Multiple Vulnerabilities",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 1.x Multiple Vulnerabilities",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 1.x Multiple Vulnerabilities",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 1.x Multiple Vulnerabilities",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 1.x Multiple Vulnerabilities",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 1.x Multiple Vulnerabilities",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 1.x Multiple Vulnerabilities",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 1.x Multiple Vulnerabilities",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 1.x Multiple Vulnerabilities",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 1.x Multiple Vulnerabilities",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 1.x Multiple Vulnerabilities",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 1.x Multiple Vulnerabilities",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 1.x Multiple Vulnerabilities",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 1.x Multiple Vulnerabilities",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 1.x Multiple Vulnerabilities",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 1.2 JMSAppender Remote Code Execution (CVE-2021-4104)",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 1.2 JMSAppender Remote Code Execution (CVE-2021-4104)",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 1.2 JMSAppender Remote Code Execution (CVE-2021-4104)",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 1.2 JMSAppender Remote Code Execution (CVE-2021-4104)",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 1.2 JMSAppender Remote Code Execution (CVE-2021-4104)",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 1.2 JMSAppender Remote Code Execution (CVE-2021-4104)",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 1.2 JMSAppender Remote Code Execution (CVE-2021-4104)",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 1.2 JMSAppender Remote Code Execution (CVE-2021-4104)",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 1.2 JMSAppender Remote Code Execution (CVE-2021-4104)",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 1.2 JMSAppender Remote Code Execution (CVE-2021-4104)",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 1.2 JMSAppender Remote Code Execution (CVE-2021-4104)",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 1.2 JMSAppender Remote Code Execution (CVE-2021-4104)",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j Installed (Linux / Unix)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Device Type",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Unauthenticated port bypass",
+      "pluginName": "Enumerate the Network Routing configuration via SSH",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Node.js Multiple Vulnerabilities (August 2018 Security Releases)",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Node.js multiple vulnerabilities (July 2018 Security Releases).",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Node.js Multiple Vulnerabilities (November 2018 Security Releases)",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Node.js multiple vulnerabilities (March 2018 Security Releases).",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Node.js 18.x < 18.20.2 / 20.x < 20.12.2 / 21.x < 21.7.3 Multiple Vulnerabilities (Wednesday, April 10, 2024 Security Releases).",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Node.js 18.x < 18.19.1 / 20.x < 20.11.1 / 21.x < 21.6.2 Multiple Vulnerabilities (Wednesday February 14 2024 Security Releases).",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Node.js 18.x < 18.20.1 / 20.x < 20.12.1 / 21.x < 21.7.2 Multiple Vulnerabilities (Wednesday, April 3, 2024 Security Releases).",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "OS Identification",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "8834",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "HyperText Transfer Protocol (HTTP) Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL < 0.9.7f Insecure Temporary File Creation",
+      "severity": "1"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL < 0.9.7f Insecure Temporary File Creation",
+      "severity": "1"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL < 0.9.7c ASN.1 Decoding Vulnerabilities",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL < 0.9.7c ASN.1 Decoding Vulnerabilities",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL < 0.9.8i Denial of Service",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL < 0.9.8i Denial of Service",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL < 0.9.8 Weak Default Configuration",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL < 0.9.8 Weak Default Configuration",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL < 0.9.8f Multiple Vulnerabilities",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL < 0.9.8f Multiple Vulnerabilities",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL < 0.9.8k Multiple Vulnerabilities",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL < 0.9.8k Multiple Vulnerabilities",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL SEoL (<= 0.9.8.x)",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL SEoL (<= 0.9.8.x)",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL < 0.9.8s Multiple Vulnerabilities",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL < 0.9.8s Multiple Vulnerabilities",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL < 0.9.8l Multiple Vulnerabilities",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL < 0.9.8l Multiple Vulnerabilities",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL < 0.9.8j Signature Spoofing",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL < 0.9.8j Signature Spoofing",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL < 0.9.8u Multiple Vulnerabilities",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL < 0.9.8u Multiple Vulnerabilities",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL < 0.9.8y Multiple Vulnerabilities",
+      "severity": "1"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL < 0.9.8y Multiple Vulnerabilities",
+      "severity": "1"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL < 0.9.8w ASN.1 asn1_d2i_read_bio Memory Corruption",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL < 0.9.8w ASN.1 asn1_d2i_read_bio Memory Corruption",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL < 0.9.8h Multiple Vulnerabilities",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL < 0.9.8h Multiple Vulnerabilities",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL 0.9.8 < 0.9.8x DTLS CBC Denial of Service",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL 0.9.8 < 0.9.8x DTLS CBC Denial of Service",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL 1.x < 1.0.0f Multiple Vulnerabilities",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL 1.0.0 < 1.0.0j DTLS CBC Denial of Service",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL 1.0.0 < 1.0.0i ASN.1 asn1_d2i_read_bio Memory Corruption",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL 1.0.0 < 1.0.0m Multiple Vulnerabilities",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL 1.x < 1.0.0e Multiple Vulnerabilities",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL 1.0.0 < 1.0.0s Multiple Vulnerabilities",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL 1.0.0 < 1.0.0k Multiple Vulnerabilities",
+      "severity": "1"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL SEoL (1.0.0.x)",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL 1.0.0 < 1.0.0n Multiple Vulnerabilities",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL 1.0.0 < 1.0.1o Multiple Vulnerabilities (POODLE)",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL 1.0.0 < 1.0.0r Multiple Vulnerabilities",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL 1.0.0 < 1.0.0h Multiple Vulnerabilities",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL 1.0.0 < 1.0.0l DTLS Security Bypass",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL 1.0.0 < 1.0.0p Multiple Vulnerabilities (FREAK)",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL SEoL (1.0.2.x)",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL SEoL (1.0.2.x)",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL 1.0.0 < 1.0.0t Multiple DoS",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.0.2 < 1.0.2zd Vulnerability",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.0.2 < 1.0.2zd Vulnerability",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL 1.0.2 < 1.0.2zg Multiple Vulnerabilities",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL 1.0.2 < 1.0.2zg Multiple Vulnerabilities",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.0.2 < 1.0.2ze Vulnerability",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.0.2 < 1.0.2ze Vulnerability",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.0.2 < 1.0.2zi Vulnerability",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL 1.0.2 < 1.0.2zh Multiple Vulnerabilities",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.0.2 < 1.0.2zi Vulnerability",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL 1.0.2 < 1.0.2zh Multiple Vulnerabilities",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.0.2 < 1.0.2zf Vulnerability",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.0.2 < 1.0.2zf Vulnerability",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.0.2 < 1.0.2zj Vulnerability",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.0.2 < 1.0.2zj Vulnerability",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL SEoL (1.1.1.x)",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL SEoL (1.1.1.x)",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL SEoL (1.1.1.x)",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL SEoL (1.1.1.x)",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1m Vulnerability",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1m Vulnerability",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1m Vulnerability",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1m Vulnerability",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1n Vulnerability",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1n Vulnerability",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1n Vulnerability",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1n Vulnerability",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1l Vulnerability",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1l Vulnerability",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1l Vulnerability",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1l Vulnerability",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1p Vulnerability",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1p Vulnerability",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1p Vulnerability",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1p Vulnerability",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1x Vulnerability",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1x Vulnerability",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1x Vulnerability",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1x Vulnerability",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1u Multiple Vulnerabilities",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1u Multiple Vulnerabilities",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1u Multiple Vulnerabilities",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1u Multiple Vulnerabilities",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1t Multiple Vulnerabilities",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1t Multiple Vulnerabilities",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1t Multiple Vulnerabilities",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1t Multiple Vulnerabilities",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1o Vulnerability",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1o Vulnerability",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1o Vulnerability",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1o Vulnerability",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1q Vulnerability",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1q Vulnerability",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1q Vulnerability",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1q Vulnerability",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1y Vulnerability",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1y Vulnerability",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1y Vulnerability",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1y Vulnerability",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1v Vulnerability",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1v Vulnerability",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1v Vulnerability",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1v Vulnerability",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Time of Last System Startup",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "8834",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus Server Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "8834",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Strict Transport Security (STS) Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Enumerate the PATH Variables",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "IP Assignment Method Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Linux Time Zone Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache HTTP Server Site Enumeration",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache HTTP Server Installed (Linux)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Aqua Security Trivy < 0.51.2 Credential Leak (GHSA-xcq4-m2r3-cmrj)",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Aqua Security Trivy Installed (Linux / Unix)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Cisco AnyConnect Secure Mobility Client Installed (Linux)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "ClamAV Installed (Linux)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Curl Installed (Linux / Unix)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Jmcnamara Spreadsheet-ParseExcel Installed (Unix)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Dockerfile Detection for Linux/UNIX",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "FFmpeg Installed (Linux / Unix)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "libcurl 7.69 < 8.4.0 Heap Buffer Overflow",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "libcurl 7.69 < 8.4.0 Heap Buffer Overflow",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "libcurl 7.9.1 < 8.4.0 Cookie Injection",
+      "severity": "1"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "libcurl 7.9.1 < 8.4.0 Cookie Injection",
+      "severity": "1"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "libcurl Installed (Linux / Unix)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "MagniComp SysInfo Installed (Linux/UNIX)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Libgcrypt Installed (Linux/UNIX)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL Installed (Linux)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "nginx Installed (Linux/UNIX)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Node.js Modules Installed (Linux)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Node.js Installed (Linux / UNIX)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Vim Installed (Linux)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "SQLite Local Detection (Linux)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Tukaani XZ Utils Installed (Linux / Unix)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "8834",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "SSL Cipher Block Chaining Cipher Suites Supported",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "8834",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "SSL Perfect Forward Secrecy Cipher Suites Supported",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "8834",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "SSL/TLS Recommended Cipher Suites",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "8834",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "TLS Version 1.3 Protocol Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "8834",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "TLS Version 1.2 Protocol Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "8834",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "SSL Cipher Suites Supported",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "DHCP server Detection (Linux)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Enumerate IPv4 Interfaces via SSH",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Reachable IPv6 address",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Enumerate IPv6 Interfaces via SSH",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Unauthenticated port bypass",
+      "pluginName": "Enumerate the Network Interface configuration via SSH",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Ethernet Card Manufacturer Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Ethernet MAC Addresses",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Enumerate MAC Addresses via SSH",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Linux Mounted Devices",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "PostgreSQL 14.x < 14.12 / 15.x < 15.7 / 16.x < 16.3 Missing Authorization Check",
+      "severity": "1"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "PostgreSQL Client/Server Installed (Linux)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "PostgreSQL Client/Server Installed (Linux)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Unix / Linux Running Processes Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Linux User List Enumeration",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "SELinux Status Check",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Software Enumeration (SSH)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Tenable Nessus Installed (Linux)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "VMware Player for Linux Installed",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "VMware Workstation for Linux Installed",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Device Hostname",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "OS Identification and Installed Software Enumeration over SSH v2 (Using New SSH Library)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "8834",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "SSL Certificate Cannot Be Trusted",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "8834",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "SSL Certificate Expiry",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "8834",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "SSL Certificate Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "8834",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "SSL / TLS Versions Supported",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "8834",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "HTTP Server Type and Version",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "902",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "VMware ESX/GSX Server detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "8834",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Service Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "902",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Service Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "1716",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Service Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "111",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "RPC portmapper (TCP)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Netstat Connection Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "8834",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Service Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "111",
+      "protocol": "udp",
+      "archetype": "Other",
+      "pluginName": "RPC Services Enumeration",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "111",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "RPC Services Enumeration",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "111",
+      "protocol": "udp",
+      "archetype": "Other",
+      "pluginName": "RPC portmapper Service Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "1716",
+      "protocol": "udp",
+      "archetype": "Other",
+      "pluginName": "Netstat Portscanner (SSH)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "111",
+      "protocol": "udp",
+      "archetype": "Other",
+      "pluginName": "Netstat Portscanner (SSH)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "1716",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Netstat Portscanner (SSH)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "8834",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Netstat Portscanner (SSH)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "902",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Netstat Portscanner (SSH)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "111",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Netstat Portscanner (SSH)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.17",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Common Platform Enumeration (CPE)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.17",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus Scan Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.17",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Device Type",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.17",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "OS Identification",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.17",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Ethernet Card Manufacturer Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.17",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Ethernet MAC Addresses",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.17",
+      "port": "0",
+      "protocol": "udp",
+      "archetype": "Other",
+      "pluginName": "Traceroute Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.17",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "TCP/IP Timestamps Supported",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.17",
+      "port": "80",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "HyperText Transfer Protocol (HTTP) Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.17",
+      "port": "80",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "HTTP Server Type and Version",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.17",
+      "port": "80",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "HTTP Methods Allowed (per directory)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.17",
+      "port": "80",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Service Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.17",
+      "port": "2179",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus TCP scanner",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.17",
+      "port": "135",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus TCP scanner",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.17",
+      "port": "80",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus TCP scanner",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.17",
+      "port": "49674",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "DCE Services Enumeration",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.17",
+      "port": "49668",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "DCE Services Enumeration",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.17",
+      "port": "49667",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "DCE Services Enumeration",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.17",
+      "port": "49666",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "DCE Services Enumeration",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.17",
+      "port": "49665",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "DCE Services Enumeration",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.17",
+      "port": "49664",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "DCE Services Enumeration",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.17",
+      "port": "445",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "DCE Services Enumeration",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.17",
+      "port": "135",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "DCE Services Enumeration",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.13",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus Scan Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.13",
+      "port": "0",
+      "protocol": "udp",
+      "archetype": "Other",
+      "pluginName": "Traceroute Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.13",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Device Type",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.13",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "OS Identification",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.13",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "OS Identification : OUI",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.13",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Ethernet Card Manufacturer Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.13",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Ethernet MAC Addresses",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus Scan Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Common Platform Enumeration (CPE)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Device Type",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "OS Identification",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "1961",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "HyperText Transfer Protocol (HTTP) Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "7000",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "HyperText Transfer Protocol (HTTP) Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "36866",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "HyperText Transfer Protocol (HTTP) Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "3001",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "HSTS Missing From HTTPS Server",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "1961",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "HTTP Server Type and Version",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "1756",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "HTTP Server Type and Version",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "7000",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "HTTP Server Type and Version",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "1756",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Embedded Web Server Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "3001",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "TLS ALPN Supported Protocol Enumeration",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Ethernet Card Manufacturer Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Ethernet MAC Addresses",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "3001",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "SSL Certificate Cannot Be Trusted",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "3001",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "SSL Cipher Block Chaining Cipher Suites Supported",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "3001",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "SSL Perfect Forward Secrecy Cipher Suites Supported",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "3001",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "SSL/TLS Recommended Cipher Suites",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "3001",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "TLS Version 1.3 Protocol Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "3001",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "TLS Version 1.2 Protocol Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "3001",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "SSL Cipher Suites Supported",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "3001",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "SSL Certificate Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "3001",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "SSL / TLS Versions Supported",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "18181",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Service Detection (HELP Request)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "1961",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Service Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "1756",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Service Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "3001",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Service Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "7000",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Service Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "36866",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Service Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "0",
+      "protocol": "udp",
+      "archetype": "Other",
+      "pluginName": "Traceroute Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "TCP/IP Timestamps Supported",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "1956",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Service Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "5353",
+      "protocol": "udp",
+      "archetype": "Unauthenticated port bypass",
+      "pluginName": "mDNS Detection (Local Network)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "1728",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Service Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "3000",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Service Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "1266",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Service Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "1327",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Service Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "1381",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Service Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "1736",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Service Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "3001",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Service Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "0",
+      "protocol": "icmp",
+      "archetype": "Other",
+      "pluginName": "ICMP Timestamp Request Remote Date Disclosure",
+      "severity": "1"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "7000",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus TCP scanner",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "1756",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus TCP scanner",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "1728",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus TCP scanner",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "1327",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus TCP scanner",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "18181",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus TCP scanner",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "3001",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus TCP scanner",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "1736",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus TCP scanner",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "36866",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus TCP scanner",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "1961",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus TCP scanner",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "1956",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus TCP scanner",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "1381",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus TCP scanner",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "1266",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus TCP scanner",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "3000",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus TCP scanner",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "7250",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus TCP scanner",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.11",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus Scan Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.11",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Device Type",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.11",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "OS Identification",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.11",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Ethernet MAC Addresses",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.11",
+      "port": "49152",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Service Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.11",
+      "port": "62078",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Service Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.11",
+      "port": "0",
+      "protocol": "udp",
+      "archetype": "Other",
+      "pluginName": "Traceroute Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.11",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "TCP/IP Timestamps Supported",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.11",
+      "port": "62078",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus TCP scanner",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.11",
+      "port": "49152",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus TCP scanner",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.8",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus Scan Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.8",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Common Platform Enumeration (CPE)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.8",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Device Type",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.8",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "OS Identification",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.8",
+      "port": "2869",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Web Server UPnP Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.8",
+      "port": "2869",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Web Server UPnP Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.8",
+      "port": "1900",
+      "protocol": "udp",
+      "archetype": "Other",
+      "pluginName": "Universal Plug and Play (UPnP) Protocol Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.8",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Ethernet Card Manufacturer Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.8",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Ethernet MAC Addresses",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.8",
+      "port": "0",
+      "protocol": "udp",
+      "archetype": "Other",
+      "pluginName": "Traceroute Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.8",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "TCP/IP Timestamps Supported",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.8",
+      "port": "10247",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "HyperText Transfer Protocol (HTTP) Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.8",
+      "port": "2869",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Service Detection (HELP Request)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.8",
+      "port": "10247",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Service Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.8",
+      "port": "10247",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus TCP scanner",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.8",
+      "port": "2869",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus TCP scanner",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.4",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Common Platform Enumeration (CPE)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.4",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus Scan Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.4",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Device Type",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.4",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "OS Identification",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.4",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Ethernet Card Manufacturer Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.4",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Ethernet MAC Addresses",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.4",
+      "port": "7000",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "HyperText Transfer Protocol (HTTP) Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.4",
+      "port": "7000",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "HTTP Server Type and Version",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.4",
+      "port": "7000",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Service Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.4",
+      "port": "0",
+      "protocol": "udp",
+      "archetype": "Other",
+      "pluginName": "Traceroute Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.4",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "TCP/IP Timestamps Supported",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.4",
+      "port": "5353",
+      "protocol": "udp",
+      "archetype": "Unauthenticated port bypass",
+      "pluginName": "mDNS Detection (Local Network)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.4",
+      "port": "7000",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus TCP scanner",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.4",
+      "port": "51157",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus TCP scanner",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.4",
+      "port": "5000",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus TCP scanner",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.4",
+      "port": "137",
+      "protocol": "udp",
+      "archetype": "Other",
+      "pluginName": "Windows NetBIOS / SMB Remote Host Information Disclosure",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.3",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Common Platform Enumeration (CPE)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.3",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus Scan Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.3",
+      "port": "54051",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Unknown Service Detection: Banner Retrieval",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.3",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Device Type",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.3",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "OS Identification",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.3",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Ethernet Card Manufacturer Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.3",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Ethernet MAC Addresses",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.3",
+      "port": "7000",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "HyperText Transfer Protocol (HTTP) Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.3",
+      "port": "5000",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "HyperText Transfer Protocol (HTTP) Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.3",
+      "port": "7000",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "HTTP Server Type and Version",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.3",
+      "port": "5000",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "HTTP Server Type and Version",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.3",
+      "port": "7000",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Service Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.3",
+      "port": "5000",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Service Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.3",
+      "port": "0",
+      "protocol": "udp",
+      "archetype": "Other",
+      "pluginName": "Traceroute Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.3",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "TCP/IP Timestamps Supported",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.3",
+      "port": "5353",
+      "protocol": "udp",
+      "archetype": "Unauthenticated port bypass",
+      "pluginName": "mDNS Detection (Local Network)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.3",
+      "port": "57621",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus TCP scanner",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.3",
+      "port": "54051",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus TCP scanner",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.3",
+      "port": "5000",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus TCP scanner",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.3",
+      "port": "7000",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus TCP scanner",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.2",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus Scan Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.2",
+      "port": "0",
+      "protocol": "udp",
+      "archetype": "Other",
+      "pluginName": "Traceroute Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.2",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Ethernet Card Manufacturer Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.2",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Ethernet MAC Addresses",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.2",
+      "port": "0",
+      "protocol": "icmp",
+      "archetype": "Other",
+      "pluginName": "ICMP Timestamp Request Remote Date Disclosure",
+      "severity": "1"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus Scan Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Patch Report",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "3333",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Unknown Service Detection: Banner Retrieval",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "33344",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Unknown Service Detection: Banner Retrieval",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Common Platform Enumeration (CPE)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "49152",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "HyperText Transfer Protocol (HTTP) Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Device Type",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "OS Identification",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Ethernet Card Manufacturer Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Ethernet MAC Addresses",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "5555",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "HyperText Transfer Protocol (HTTP) Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "1900",
+      "protocol": "udp",
+      "archetype": "Other",
+      "pluginName": "MiniUPnP < 1.4 Multiple Vulnerabilities",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "443",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "NETGEAR Router Default Password (password) for 'admin' Account",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "80",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "NETGEAR Router Default Password (password) for 'admin' Account",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "443",
+      "protocol": "tcp",
+      "archetype": "default credentials",
+      "pluginName": "NETGEAR SOAP Request Handling Remote Authentication Bypass",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "80",
+      "protocol": "tcp",
+      "archetype": "default credentials",
+      "pluginName": "NETGEAR SOAP Request Handling Remote Authentication Bypass",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "443",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "NETGEAR Web Interface Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "80",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "NETGEAR Web Interface Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "5555",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Web Server UPnP Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "443",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "HSTS Missing From HTTPS Server",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "443",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "HTTP Server Type and Version",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "80",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "HTTP Server Type and Version",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "49152",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "HTTP Server Type and Version",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "443",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "SSL Resume With Different Cipher Issue",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "443",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL SSL_OP_NETSCAPE_REUSE_CIPHER_CHANGE_BUG Session Resume Ciphersuite Downgrade Issue",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "443",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "SSL Session Resume Supported",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "443",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "SSL Cipher Block Chaining Cipher Suites Supported",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "443",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "SSL RC4 Cipher Suites Supported (Bar Mitzvah)",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "443",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "SSL/TLS Recommended Cipher Suites",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "443",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "SSL Medium Strength Cipher Suites Supported (SWEET32)",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "443",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "TLS Version 1.0 Protocol Detection",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "443",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "SSL Cipher Suites Supported",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "443",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "SSL / TLS Versions Supported",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "548",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Netatalk OpenSession Remote Code Execution",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "548",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apple Filing Protocol Server Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "49152",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Web Server Crafted Request Vendor/Version Information Disclosure",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "443",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Service Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "80",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Service Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "49152",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Service Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "5555",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Service Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "1900",
+      "protocol": "udp",
+      "archetype": "Other",
+      "pluginName": "Universal Plug and Play (UPnP) Protocol Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "0",
+      "protocol": "udp",
+      "archetype": "Other",
+      "pluginName": "Traceroute Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "TCP/IP Timestamps Supported",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "IP Forwarding Enabled",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "0",
+      "protocol": "icmp",
+      "archetype": "Other",
+      "pluginName": "ICMP Timestamp Request Remote Date Disclosure",
+      "severity": "1"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "443",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Service Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "53",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "DNS Server Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "53",
+      "protocol": "udp",
+      "archetype": "Other",
+      "pluginName": "DNS Server Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "67",
+      "protocol": "udp",
+      "archetype": "Other",
+      "pluginName": "DHCP Server Detection",
+      "severity": "1"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "20005",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus TCP scanner",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "33344",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus TCP scanner",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "5555",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus TCP scanner",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "3333",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus TCP scanner",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "49152",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus TCP scanner",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "631",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus TCP scanner",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "548",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus TCP scanner",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "443",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus TCP scanner",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "53",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus TCP scanner",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "80",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus TCP scanner",
+      "severity": "0"
+    }
+  ],
+  "entrypoint_most_info.csv": [
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "vulnerability_count": "235"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "443",
+      "vulnerability_count": "18"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "8834",
+      "vulnerability_count": "17"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "10000",
+      "vulnerability_count": "17"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "3001",
+      "vulnerability_count": "14"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "0",
+      "vulnerability_count": "12"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "22",
+      "vulnerability_count": "11"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "0",
+      "vulnerability_count": "11"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "0",
+      "vulnerability_count": "9"
+    },
+    {
+      "ip": "192.168.1.17",
+      "port": "0",
+      "vulnerability_count": "8"
+    },
+    {
+      "ip": "192.168.1.3",
+      "port": "0",
+      "vulnerability_count": "8"
+    },
+    {
+      "ip": "192.168.1.4",
+      "port": "0",
+      "vulnerability_count": "8"
+    },
+    {
+      "ip": "192.168.1.8",
+      "port": "0",
+      "vulnerability_count": "8"
+    },
+    {
+      "ip": "192.168.1.13",
+      "port": "0",
+      "vulnerability_count": "7"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "80",
+      "vulnerability_count": "7"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "80",
+      "vulnerability_count": "6"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "111",
+      "vulnerability_count": "6"
+    },
+    {
+      "ip": "192.168.1.11",
+      "port": "0",
+      "vulnerability_count": "6"
+    },
+    {
+      "ip": "192.168.1.17",
+      "port": "80",
+      "vulnerability_count": "5"
+    },
+    {
+      "ip": "192.168.1.22",
+      "port": "0",
+      "vulnerability_count": "5"
+    },
+    {
+      "ip": "192.168.1.2",
+      "port": "0",
+      "vulnerability_count": "5"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "49152",
+      "vulnerability_count": "5"
+    },
+    {
+      "ip": "192.168.1.4",
+      "port": "7000",
+      "vulnerability_count": "4"
+    },
+    {
+      "ip": "192.168.1.19",
+      "port": "0",
+      "vulnerability_count": "4"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "5555",
+      "vulnerability_count": "4"
+    },
+    {
+      "ip": "192.168.1.3",
+      "port": "7000",
+      "vulnerability_count": "4"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "7000",
+      "vulnerability_count": "4"
+    },
+    {
+      "ip": "192.168.1.3",
+      "port": "5000",
+      "vulnerability_count": "4"
+    },
+    {
+      "ip": "192.168.1.8",
+      "port": "2869",
+      "vulnerability_count": "4"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "1961",
+      "vulnerability_count": "4"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "1756",
+      "vulnerability_count": "4"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "548",
+      "vulnerability_count": "3"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "53",
+      "vulnerability_count": "3"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "36866",
+      "vulnerability_count": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "1716",
+      "vulnerability_count": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "902",
+      "vulnerability_count": "3"
+    },
+    {
+      "ip": "192.168.1.8",
+      "port": "10247",
+      "vulnerability_count": "3"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "1900",
+      "vulnerability_count": "2"
+    },
+    {
+      "ip": "192.168.1.11",
+      "port": "49152",
+      "vulnerability_count": "2"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "33344",
+      "vulnerability_count": "2"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "3333",
+      "vulnerability_count": "2"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "1327",
+      "vulnerability_count": "2"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "18181",
+      "vulnerability_count": "2"
+    },
+    {
+      "ip": "192.168.1.11",
+      "port": "62078",
+      "vulnerability_count": "2"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "1266",
+      "vulnerability_count": "2"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "1736",
+      "vulnerability_count": "2"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "1728",
+      "vulnerability_count": "2"
+    },
+    {
+      "ip": "192.168.1.3",
+      "port": "54051",
+      "vulnerability_count": "2"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "3000",
+      "vulnerability_count": "2"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "1381",
+      "vulnerability_count": "2"
+    },
+    {
+      "ip": "192.168.1.17",
+      "port": "135",
+      "vulnerability_count": "2"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "1956",
+      "vulnerability_count": "2"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "20005",
+      "vulnerability_count": "1"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "67",
+      "vulnerability_count": "1"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "5353",
+      "vulnerability_count": "1"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "631",
+      "vulnerability_count": "1"
+    },
+    {
+      "ip": "192.168.1.17",
+      "port": "2179",
+      "vulnerability_count": "1"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "7250",
+      "vulnerability_count": "1"
+    },
+    {
+      "ip": "192.168.1.17",
+      "port": "49668",
+      "vulnerability_count": "1"
+    },
+    {
+      "ip": "192.168.1.17",
+      "port": "49667",
+      "vulnerability_count": "1"
+    },
+    {
+      "ip": "192.168.1.17",
+      "port": "49666",
+      "vulnerability_count": "1"
+    },
+    {
+      "ip": "192.168.1.17",
+      "port": "49665",
+      "vulnerability_count": "1"
+    },
+    {
+      "ip": "192.168.1.17",
+      "port": "49664",
+      "vulnerability_count": "1"
+    },
+    {
+      "ip": "192.168.1.17",
+      "port": "445",
+      "vulnerability_count": "1"
+    },
+    {
+      "ip": "192.168.1.17",
+      "port": "49674",
+      "vulnerability_count": "1"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "22",
+      "vulnerability_count": "1"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "5353",
+      "vulnerability_count": "1"
+    },
+    {
+      "ip": "192.168.1.4",
+      "port": "137",
+      "vulnerability_count": "1"
+    },
+    {
+      "ip": "192.168.1.3",
+      "port": "5353",
+      "vulnerability_count": "1"
+    },
+    {
+      "ip": "192.168.1.3",
+      "port": "57621",
+      "vulnerability_count": "1"
+    },
+    {
+      "ip": "192.168.1.4",
+      "port": "5353",
+      "vulnerability_count": "1"
+    },
+    {
+      "ip": "192.168.1.4",
+      "port": "51157",
+      "vulnerability_count": "1"
+    },
+    {
+      "ip": "192.168.1.4",
+      "port": "5000",
+      "vulnerability_count": "1"
+    },
+    {
+      "ip": "192.168.1.8",
+      "port": "1900",
+      "vulnerability_count": "1"
+    }
+  ],
+  "port_0_entries.csv": [
+    {
+      "ip": "192.168.1.22",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus Scan Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.22",
+      "port": "0",
+      "protocol": "udp",
+      "archetype": "Other",
+      "pluginName": "Traceroute Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.22",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Ethernet Card Manufacturer Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.22",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Ethernet MAC Addresses",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.22",
+      "port": "0",
+      "protocol": "icmp",
+      "archetype": "Other",
+      "pluginName": "ICMP Timestamp Request Remote Date Disclosure",
+      "severity": "1"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "OS Security Patch Assessment Not Available",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Common Platform Enumeration (CPE)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus Scan Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Patch Report",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Device Type",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Unix Operating System on Extended Support",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "OS Identification",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Ethernet Card Manufacturer Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Ethernet MAC Addresses",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "0",
+      "protocol": "udp",
+      "archetype": "Other",
+      "pluginName": "Traceroute Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "TCP/IP Timestamps Supported",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "0",
+      "protocol": "icmp",
+      "archetype": "Other",
+      "pluginName": "ICMP Timestamp Request Remote Date Disclosure",
+      "severity": "1"
+    },
+    {
+      "ip": "192.168.1.19",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus Scan Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.19",
+      "port": "0",
+      "protocol": "udp",
+      "archetype": "Other",
+      "pluginName": "Traceroute Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.19",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Ethernet Card Manufacturer Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.19",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Ethernet MAC Addresses",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Common Platform Enumeration (CPE)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus Scan Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Patch Report",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "default credentials",
+      "pluginName": "Target Credential Status by Authentication Protocol - Valid Credentials Provided",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Unix Software Discovery Commands Available",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "OS Security Patch Assessment Available",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "default credentials",
+      "pluginName": "Target Credential Issues by Authentication Protocol - No Issues Found",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j SEoL (<= 1.x)",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j SEoL (<= 1.x)",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j SEoL (<= 1.x)",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j SEoL (<= 1.x)",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j SEoL (<= 1.x)",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j SEoL (<= 1.x)",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j SEoL (<= 1.x)",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j SEoL (<= 1.x)",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j SEoL (<= 1.x)",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j SEoL (<= 1.x)",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j SEoL (<= 1.x)",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j SEoL (<= 1.x)",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j SEoL (<= 1.x)",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j SEoL (<= 1.x)",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j SEoL (<= 1.x)",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j SEoL (<= 1.x)",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j SEoL (<= 1.x)",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j < 2.15.0 Remote Code Execution (Nix)",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j < 2.15.0 Remote Code Execution (Nix)",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j < 2.15.0 Remote Code Execution (Nix)",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 2.x < 2.16.0 RCE",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 2.x < 2.16.0 RCE",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 2.x < 2.16.0 RCE",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 2.x < 2.17.0 DoS",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 2.x < 2.17.0 DoS",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 2.x < 2.17.0 DoS",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 2.0 < 2.3.2 / 2.4 < 2.12.4 / 2.13 < 2.17.1 RCE",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 2.0 < 2.3.2 / 2.4 < 2.12.4 / 2.13 < 2.17.1 RCE",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 2.0 < 2.3.2 / 2.4 < 2.12.4 / 2.13 < 2.17.1 RCE",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 1.x Multiple Vulnerabilities",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 1.x Multiple Vulnerabilities",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 1.x Multiple Vulnerabilities",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 1.x Multiple Vulnerabilities",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 1.x Multiple Vulnerabilities",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 1.x Multiple Vulnerabilities",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 1.x Multiple Vulnerabilities",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 1.x Multiple Vulnerabilities",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 1.x Multiple Vulnerabilities",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 1.x Multiple Vulnerabilities",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 1.x Multiple Vulnerabilities",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 1.x Multiple Vulnerabilities",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 1.x Multiple Vulnerabilities",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 1.x Multiple Vulnerabilities",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 1.x Multiple Vulnerabilities",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 1.x Multiple Vulnerabilities",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 1.x Multiple Vulnerabilities",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 1.2 JMSAppender Remote Code Execution (CVE-2021-4104)",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 1.2 JMSAppender Remote Code Execution (CVE-2021-4104)",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 1.2 JMSAppender Remote Code Execution (CVE-2021-4104)",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 1.2 JMSAppender Remote Code Execution (CVE-2021-4104)",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 1.2 JMSAppender Remote Code Execution (CVE-2021-4104)",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 1.2 JMSAppender Remote Code Execution (CVE-2021-4104)",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 1.2 JMSAppender Remote Code Execution (CVE-2021-4104)",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 1.2 JMSAppender Remote Code Execution (CVE-2021-4104)",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 1.2 JMSAppender Remote Code Execution (CVE-2021-4104)",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 1.2 JMSAppender Remote Code Execution (CVE-2021-4104)",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 1.2 JMSAppender Remote Code Execution (CVE-2021-4104)",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j 1.2 JMSAppender Remote Code Execution (CVE-2021-4104)",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache Log4j Installed (Linux / Unix)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Device Type",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Unauthenticated port bypass",
+      "pluginName": "Enumerate the Network Routing configuration via SSH",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Node.js Multiple Vulnerabilities (August 2018 Security Releases)",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Node.js multiple vulnerabilities (July 2018 Security Releases).",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Node.js Multiple Vulnerabilities (November 2018 Security Releases)",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Node.js multiple vulnerabilities (March 2018 Security Releases).",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Node.js 18.x < 18.20.2 / 20.x < 20.12.2 / 21.x < 21.7.3 Multiple Vulnerabilities (Wednesday, April 10, 2024 Security Releases).",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Node.js 18.x < 18.19.1 / 20.x < 20.11.1 / 21.x < 21.6.2 Multiple Vulnerabilities (Wednesday February 14 2024 Security Releases).",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Node.js 18.x < 18.20.1 / 20.x < 20.12.1 / 21.x < 21.7.2 Multiple Vulnerabilities (Wednesday, April 3, 2024 Security Releases).",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "OS Identification",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL < 0.9.7f Insecure Temporary File Creation",
+      "severity": "1"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL < 0.9.7f Insecure Temporary File Creation",
+      "severity": "1"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL < 0.9.7c ASN.1 Decoding Vulnerabilities",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL < 0.9.7c ASN.1 Decoding Vulnerabilities",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL < 0.9.8i Denial of Service",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL < 0.9.8i Denial of Service",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL < 0.9.8 Weak Default Configuration",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL < 0.9.8 Weak Default Configuration",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL < 0.9.8f Multiple Vulnerabilities",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL < 0.9.8f Multiple Vulnerabilities",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL < 0.9.8k Multiple Vulnerabilities",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL < 0.9.8k Multiple Vulnerabilities",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL SEoL (<= 0.9.8.x)",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL SEoL (<= 0.9.8.x)",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL < 0.9.8s Multiple Vulnerabilities",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL < 0.9.8s Multiple Vulnerabilities",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL < 0.9.8l Multiple Vulnerabilities",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL < 0.9.8l Multiple Vulnerabilities",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL < 0.9.8j Signature Spoofing",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL < 0.9.8j Signature Spoofing",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL < 0.9.8u Multiple Vulnerabilities",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL < 0.9.8u Multiple Vulnerabilities",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL < 0.9.8y Multiple Vulnerabilities",
+      "severity": "1"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL < 0.9.8y Multiple Vulnerabilities",
+      "severity": "1"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL < 0.9.8w ASN.1 asn1_d2i_read_bio Memory Corruption",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL < 0.9.8w ASN.1 asn1_d2i_read_bio Memory Corruption",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL < 0.9.8h Multiple Vulnerabilities",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL < 0.9.8h Multiple Vulnerabilities",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL 0.9.8 < 0.9.8x DTLS CBC Denial of Service",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL 0.9.8 < 0.9.8x DTLS CBC Denial of Service",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL 1.x < 1.0.0f Multiple Vulnerabilities",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL 1.0.0 < 1.0.0j DTLS CBC Denial of Service",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL 1.0.0 < 1.0.0i ASN.1 asn1_d2i_read_bio Memory Corruption",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL 1.0.0 < 1.0.0m Multiple Vulnerabilities",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL 1.x < 1.0.0e Multiple Vulnerabilities",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL 1.0.0 < 1.0.0s Multiple Vulnerabilities",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL 1.0.0 < 1.0.0k Multiple Vulnerabilities",
+      "severity": "1"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL SEoL (1.0.0.x)",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL 1.0.0 < 1.0.0n Multiple Vulnerabilities",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL 1.0.0 < 1.0.1o Multiple Vulnerabilities (POODLE)",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL 1.0.0 < 1.0.0r Multiple Vulnerabilities",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL 1.0.0 < 1.0.0h Multiple Vulnerabilities",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL 1.0.0 < 1.0.0l DTLS Security Bypass",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL 1.0.0 < 1.0.0p Multiple Vulnerabilities (FREAK)",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL SEoL (1.0.2.x)",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL SEoL (1.0.2.x)",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL 1.0.0 < 1.0.0t Multiple DoS",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.0.2 < 1.0.2zd Vulnerability",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.0.2 < 1.0.2zd Vulnerability",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL 1.0.2 < 1.0.2zg Multiple Vulnerabilities",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL 1.0.2 < 1.0.2zg Multiple Vulnerabilities",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.0.2 < 1.0.2ze Vulnerability",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.0.2 < 1.0.2ze Vulnerability",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.0.2 < 1.0.2zi Vulnerability",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL 1.0.2 < 1.0.2zh Multiple Vulnerabilities",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.0.2 < 1.0.2zi Vulnerability",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL 1.0.2 < 1.0.2zh Multiple Vulnerabilities",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.0.2 < 1.0.2zf Vulnerability",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.0.2 < 1.0.2zf Vulnerability",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.0.2 < 1.0.2zj Vulnerability",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.0.2 < 1.0.2zj Vulnerability",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL SEoL (1.1.1.x)",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL SEoL (1.1.1.x)",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL SEoL (1.1.1.x)",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL SEoL (1.1.1.x)",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1m Vulnerability",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1m Vulnerability",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1m Vulnerability",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1m Vulnerability",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1n Vulnerability",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1n Vulnerability",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1n Vulnerability",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1n Vulnerability",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1l Vulnerability",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1l Vulnerability",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1l Vulnerability",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1l Vulnerability",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1p Vulnerability",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1p Vulnerability",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1p Vulnerability",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1p Vulnerability",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1x Vulnerability",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1x Vulnerability",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1x Vulnerability",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1x Vulnerability",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1u Multiple Vulnerabilities",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1u Multiple Vulnerabilities",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1u Multiple Vulnerabilities",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1u Multiple Vulnerabilities",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1t Multiple Vulnerabilities",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1t Multiple Vulnerabilities",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1t Multiple Vulnerabilities",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1t Multiple Vulnerabilities",
+      "severity": "3"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1o Vulnerability",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1o Vulnerability",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1o Vulnerability",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1o Vulnerability",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1q Vulnerability",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1q Vulnerability",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1q Vulnerability",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1q Vulnerability",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1y Vulnerability",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1y Vulnerability",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1y Vulnerability",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1y Vulnerability",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1v Vulnerability",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1v Vulnerability",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1v Vulnerability",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "unpatched software exploits",
+      "pluginName": "OpenSSL 1.1.1 < 1.1.1v Vulnerability",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Time of Last System Startup",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Enumerate the PATH Variables",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "IP Assignment Method Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Linux Time Zone Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache HTTP Server Site Enumeration",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Apache HTTP Server Installed (Linux)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Aqua Security Trivy < 0.51.2 Credential Leak (GHSA-xcq4-m2r3-cmrj)",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Aqua Security Trivy Installed (Linux / Unix)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Cisco AnyConnect Secure Mobility Client Installed (Linux)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "ClamAV Installed (Linux)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Curl Installed (Linux / Unix)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Jmcnamara Spreadsheet-ParseExcel Installed (Unix)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Dockerfile Detection for Linux/UNIX",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "FFmpeg Installed (Linux / Unix)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "libcurl 7.69 < 8.4.0 Heap Buffer Overflow",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "libcurl 7.69 < 8.4.0 Heap Buffer Overflow",
+      "severity": "4"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "libcurl 7.9.1 < 8.4.0 Cookie Injection",
+      "severity": "1"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "libcurl 7.9.1 < 8.4.0 Cookie Injection",
+      "severity": "1"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "libcurl Installed (Linux / Unix)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "MagniComp SysInfo Installed (Linux/UNIX)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Libgcrypt Installed (Linux/UNIX)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "missing encryption protocols",
+      "pluginName": "OpenSSL Installed (Linux)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "nginx Installed (Linux/UNIX)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Node.js Modules Installed (Linux)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Node.js Installed (Linux / UNIX)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Vim Installed (Linux)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "SQLite Local Detection (Linux)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Tukaani XZ Utils Installed (Linux / Unix)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "DHCP server Detection (Linux)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Enumerate IPv4 Interfaces via SSH",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Reachable IPv6 address",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Enumerate IPv6 Interfaces via SSH",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Unauthenticated port bypass",
+      "pluginName": "Enumerate the Network Interface configuration via SSH",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Ethernet Card Manufacturer Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Ethernet MAC Addresses",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Enumerate MAC Addresses via SSH",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Linux Mounted Devices",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "PostgreSQL 14.x < 14.12 / 15.x < 15.7 / 16.x < 16.3 Missing Authorization Check",
+      "severity": "1"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "PostgreSQL Client/Server Installed (Linux)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "PostgreSQL Client/Server Installed (Linux)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Unix / Linux Running Processes Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Linux User List Enumeration",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "SELinux Status Check",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Software Enumeration (SSH)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Tenable Nessus Installed (Linux)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "VMware Player for Linux Installed",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "VMware Workstation for Linux Installed",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Device Hostname",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "OS Identification and Installed Software Enumeration over SSH v2 (Using New SSH Library)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Netstat Connection Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.17",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Common Platform Enumeration (CPE)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.17",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus Scan Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.17",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Device Type",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.17",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "OS Identification",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.17",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Ethernet Card Manufacturer Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.17",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Ethernet MAC Addresses",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.17",
+      "port": "0",
+      "protocol": "udp",
+      "archetype": "Other",
+      "pluginName": "Traceroute Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.17",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "TCP/IP Timestamps Supported",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.13",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus Scan Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.13",
+      "port": "0",
+      "protocol": "udp",
+      "archetype": "Other",
+      "pluginName": "Traceroute Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.13",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Device Type",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.13",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "OS Identification",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.13",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "OS Identification : OUI",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.13",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Ethernet Card Manufacturer Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.13",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Ethernet MAC Addresses",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus Scan Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Common Platform Enumeration (CPE)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Device Type",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "OS Identification",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Ethernet Card Manufacturer Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Ethernet MAC Addresses",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "0",
+      "protocol": "udp",
+      "archetype": "Other",
+      "pluginName": "Traceroute Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "TCP/IP Timestamps Supported",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "0",
+      "protocol": "icmp",
+      "archetype": "Other",
+      "pluginName": "ICMP Timestamp Request Remote Date Disclosure",
+      "severity": "1"
+    },
+    {
+      "ip": "192.168.1.11",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus Scan Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.11",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Device Type",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.11",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "OS Identification",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.11",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Ethernet MAC Addresses",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.11",
+      "port": "0",
+      "protocol": "udp",
+      "archetype": "Other",
+      "pluginName": "Traceroute Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.11",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "TCP/IP Timestamps Supported",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.8",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus Scan Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.8",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Common Platform Enumeration (CPE)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.8",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Device Type",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.8",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "OS Identification",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.8",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Ethernet Card Manufacturer Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.8",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Ethernet MAC Addresses",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.8",
+      "port": "0",
+      "protocol": "udp",
+      "archetype": "Other",
+      "pluginName": "Traceroute Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.8",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "TCP/IP Timestamps Supported",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.4",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Common Platform Enumeration (CPE)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.4",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus Scan Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.4",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Device Type",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.4",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "OS Identification",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.4",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Ethernet Card Manufacturer Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.4",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Ethernet MAC Addresses",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.4",
+      "port": "0",
+      "protocol": "udp",
+      "archetype": "Other",
+      "pluginName": "Traceroute Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.4",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "TCP/IP Timestamps Supported",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.3",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Common Platform Enumeration (CPE)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.3",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus Scan Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.3",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Device Type",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.3",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "OS Identification",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.3",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Ethernet Card Manufacturer Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.3",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Ethernet MAC Addresses",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.3",
+      "port": "0",
+      "protocol": "udp",
+      "archetype": "Other",
+      "pluginName": "Traceroute Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.3",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "TCP/IP Timestamps Supported",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.2",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus Scan Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.2",
+      "port": "0",
+      "protocol": "udp",
+      "archetype": "Other",
+      "pluginName": "Traceroute Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.2",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Ethernet Card Manufacturer Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.2",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Ethernet MAC Addresses",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.2",
+      "port": "0",
+      "protocol": "icmp",
+      "archetype": "Other",
+      "pluginName": "ICMP Timestamp Request Remote Date Disclosure",
+      "severity": "1"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Nessus Scan Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Patch Report",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Common Platform Enumeration (CPE)",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Device Type",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "OS Identification",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Ethernet Card Manufacturer Detection",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "Ethernet MAC Addresses",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "0",
+      "protocol": "udp",
+      "archetype": "Other",
+      "pluginName": "Traceroute Information",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "TCP/IP Timestamps Supported",
+      "severity": "0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "0",
+      "protocol": "tcp",
+      "archetype": "Other",
+      "pluginName": "IP Forwarding Enabled",
+      "severity": "2"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "0",
+      "protocol": "icmp",
+      "archetype": "Other",
+      "pluginName": "ICMP Timestamp Request Remote Date Disclosure",
+      "severity": "1"
+    }
+  ],
+  "ranked_entry_points.csv": [
+    {
+      "ip": "192.168.1.18",
+      "port": "0",
+      "severity_score": "1.0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "1900",
+      "severity_score": "0.9812108559498955"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "548",
+      "severity_score": "0.6541405706332637"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "80",
+      "severity_score": "0.49060542797494777"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "67",
+      "severity_score": "0.49060542797494777"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "443",
+      "severity_score": "0.38158199953607047"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "22",
+      "severity_score": "0.3568039476181438"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "0",
+      "severity_score": "0.13380148035680392"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "10000",
+      "severity_score": "0.115436571288223"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "8834",
+      "severity_score": "0.115436571288223"
+    },
+    {
+      "ip": "192.168.1.22",
+      "port": "0",
+      "severity_score": "0.09812108559498955"
+    },
+    {
+      "ip": "192.168.1.2",
+      "port": "0",
+      "severity_score": "0.09812108559498955"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "3001",
+      "severity_score": "0.07008648971070681"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "0",
+      "severity_score": "0.05451171421943864"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "0",
+      "severity_score": "0.04088378566457898"
+    },
+    {
+      "ip": "192.168.1.4",
+      "port": "0",
+      "severity_score": "0.0"
+    },
+    {
+      "ip": "192.168.1.17",
+      "port": "0",
+      "severity_score": "0.0"
+    },
+    {
+      "ip": "192.168.1.3",
+      "port": "0",
+      "severity_score": "0.0"
+    },
+    {
+      "ip": "192.168.1.8",
+      "port": "0",
+      "severity_score": "0.0"
+    },
+    {
+      "ip": "192.168.1.13",
+      "port": "0",
+      "severity_score": "0.0"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "80",
+      "severity_score": "0.0"
+    },
+    {
+      "ip": "192.168.1.11",
+      "port": "0",
+      "severity_score": "0.0"
+    },
+    {
+      "ip": "192.168.1.17",
+      "port": "80",
+      "severity_score": "0.0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "49152",
+      "severity_score": "0.0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "5555",
+      "severity_score": "0.0"
+    },
+    {
+      "ip": "192.168.1.3",
+      "port": "7000",
+      "severity_score": "0.0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "7000",
+      "severity_score": "0.0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "1961",
+      "severity_score": "0.0"
+    },
+    {
+      "ip": "192.168.1.3",
+      "port": "5000",
+      "severity_score": "0.0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "1756",
+      "severity_score": "0.0"
+    },
+    {
+      "ip": "192.168.1.4",
+      "port": "7000",
+      "severity_score": "0.0"
+    },
+    {
+      "ip": "192.168.1.19",
+      "port": "0",
+      "severity_score": "0.0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "111",
+      "severity_score": "0.0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "36866",
+      "severity_score": "0.0"
+    },
+    {
+      "ip": "192.168.1.8",
+      "port": "10247",
+      "severity_score": "0.0"
+    },
+    {
+      "ip": "192.168.1.8",
+      "port": "2869",
+      "severity_score": "0.0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "902",
+      "severity_score": "0.0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "3333",
+      "severity_score": "0.0"
+    },
+    {
+      "ip": "192.168.1.11",
+      "port": "49152",
+      "severity_score": "0.0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "53",
+      "severity_score": "0.0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "33344",
+      "severity_score": "0.0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "1327",
+      "severity_score": "0.0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "18181",
+      "severity_score": "0.0"
+    },
+    {
+      "ip": "192.168.1.11",
+      "port": "62078",
+      "severity_score": "0.0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "1266",
+      "severity_score": "0.0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "1736",
+      "severity_score": "0.0"
+    },
+    {
+      "ip": "192.168.1.3",
+      "port": "54051",
+      "severity_score": "0.0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "1716",
+      "severity_score": "0.0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "1956",
+      "severity_score": "0.0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "1381",
+      "severity_score": "0.0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "3000",
+      "severity_score": "0.0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "1728",
+      "severity_score": "0.0"
+    },
+    {
+      "ip": "192.168.1.17",
+      "port": "135",
+      "severity_score": "0.0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "20005",
+      "severity_score": "0.0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "5353",
+      "severity_score": "0.0"
+    },
+    {
+      "ip": "192.168.1.1",
+      "port": "631",
+      "severity_score": "0.0"
+    },
+    {
+      "ip": "192.168.1.17",
+      "port": "2179",
+      "severity_score": "0.0"
+    },
+    {
+      "ip": "192.168.1.12",
+      "port": "7250",
+      "severity_score": "0.0"
+    },
+    {
+      "ip": "192.168.1.17",
+      "port": "49668",
+      "severity_score": "0.0"
+    },
+    {
+      "ip": "192.168.1.17",
+      "port": "49667",
+      "severity_score": "0.0"
+    },
+    {
+      "ip": "192.168.1.17",
+      "port": "49666",
+      "severity_score": "0.0"
+    },
+    {
+      "ip": "192.168.1.17",
+      "port": "49665",
+      "severity_score": "0.0"
+    },
+    {
+      "ip": "192.168.1.17",
+      "port": "49664",
+      "severity_score": "0.0"
+    },
+    {
+      "ip": "192.168.1.17",
+      "port": "445",
+      "severity_score": "0.0"
+    },
+    {
+      "ip": "192.168.1.17",
+      "port": "49674",
+      "severity_score": "0.0"
+    },
+    {
+      "ip": "192.168.1.18",
+      "port": "22",
+      "severity_score": "0.0"
+    },
+    {
+      "ip": "192.168.1.20",
+      "port": "5353",
+      "severity_score": "0.0"
+    },
+    {
+      "ip": "192.168.1.4",
+      "port": "137",
+      "severity_score": "0.0"
+    },
+    {
+      "ip": "192.168.1.3",
+      "port": "5353",
+      "severity_score": "0.0"
+    },
+    {
+      "ip": "192.168.1.3",
+      "port": "57621",
+      "severity_score": "0.0"
+    },
+    {
+      "ip": "192.168.1.4",
+      "port": "5353",
+      "severity_score": "0.0"
+    },
+    {
+      "ip": "192.168.1.4",
+      "port": "51157",
+      "severity_score": "0.0"
+    },
+    {
+      "ip": "192.168.1.4",
+      "port": "5000",
+      "severity_score": "0.0"
+    },
+    {
+      "ip": "192.168.1.8",
+      "port": "1900",
+      "severity_score": "0.0"
+    }
+  ]
+}

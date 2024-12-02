@@ -3,10 +3,10 @@
 	import Menu from '$lib/Menu.svelte';
 	import { jsPDF } from 'jspdf';
 	import * as XLSX from 'xlsx';
-	import user from '../../../user';
 
-	const userId = $user.username;
+	
 	export let data;
+	const userId = data.user.username;
 
 	let projectname = data.projectid;
 
@@ -222,6 +222,14 @@
 <div class="ml p-5">
 	<div class="py-4 text-center">
 		<h1 class="text-4xl font-bold text-gray-800 dark:text-gray-200">{projectname}'s Report</h1>
+	</div>
+	<div>
+	<select>
+        <option>data_with_exploits.csv</option>
+        <option>entrypoint_most_info.csv</option>
+        <option>port_0_entries.csv</option>
+        <option>ranked_entry_points.csv</option>
+    </select> 
 	</div>
 
 	<!-- Search Section -->

@@ -1,8 +1,7 @@
 <script>
-	import user from '../../user'
 	import { onMount } from 'svelte';
 	import Menu from '$lib/Menu.svelte';
-	import Notification from '$lib/Notification.svelte';
+	import { notifications } from '$lib/notificationStore.js';
 	import { navigateTo } from '../../utils';
 	import { BookOpenOutline } from 'flowbite-svelte-icons';
 	import { addLog, logs } from '$lib/logStore.js';
@@ -12,16 +11,17 @@
 	let greeting = '';
 	let projects = [];
 	let files = [];
-    let uploadedfiles = []; //Array of paths to files that have been uploaded
+	let uploadedfiles = []; //Array of paths to files that have been uploaded
 	let uploadProgress = 0;
 	let menuOpen = false;
 	let isValidFile = false;
 	let serverResponse = null;
-    let showToast = false;
-    let showPopup = writable(false);
-    let projectName = '';
+	let showToast = false;
+	let showPopup = writable(false);
+	let projectName = '';
 
-	const userId = $user.username;
+	export let data;
+	const userId = data.user.username;
 
 	onMount(() => {
 		const hours = new Date().getHours();
@@ -39,18 +39,9 @@
 		}
 
 		files = validFiles;
-		console.log(`what is files? ${files}`);
 		isValidFile = files.length > 0;
 		addLog(`${files.length} valid files selected.`);
 		handleShowProgress();
-
-		// Added this - Darien ///////////////////
-		if (isValidFile) {
-			console.log("Truly a valid file")
-			// Upload the file to the server for parsing
-			files.forEach((file) => uploadFileToServer(file));
-		}
-		///////////////////////////////////////////
 	}
 
 	// Added this - Darien  ///////////////////////
@@ -59,8 +50,8 @@
 		showToast = false;
 		console.log('uploading files');
 		const formData = new FormData();
-		formData.append('userId', userId)
-		formData.append('projectName', projectName)
+		formData.append('userId', userId);
+		formData.append('projectName', projectName);
 		formData.append('files', file);
 
 		try {
@@ -72,44 +63,66 @@
 			if (response.ok) {
 				const result = await response.json();
 				serverResponse = `CSV file generated: ${result.message}`;
-                let uploadedfilepath = result.filepath;
-                uploadedfiles.push(uploadedfilepath)
+				let uploadedfilepath = result.filepath;
+				uploadedfiles.push(uploadedfilepath);
 			} else {
 				serverResponse = 'File upload failed';
+				addLog(`Failed to upload file for ${projectName}, ${uploadedfilepath}`)
 			}
 			showToast = true;
 			setTimeout(() => (showToast = false), 3000);
-			fetchUploadedFiles(userId)
+			fetchUploadedFiles(userId);
 		} catch (error) {
+			notifications.update((n) => [
+				...n,
+				{ message: `Error uploading file, check logs`, unread: true }
+			]);
+			addLog(`Error uploading file: ${error}`);
 			console.error('Error uploading file:', error);
 		}
 	}
 
 	function handleCreateProject() {
-        console.log("Project Name",projectName)
+		console.log('Project Name', projectName);
+		if (isValidFile) {
+			console.log('Truly a valid file');
+			// Upload the file to the server for parsing
+			files.forEach((file) => uploadFileToServer(file));
+
+			notifications.update((n) => [
+				...n,
+				{ message: `Project "${projectName}" created successfully.`, unread: true }
+			]);
+		}
 		addLog('Creating project with selected files.');
 		navigateTo('/project');
 	}
 
 	function handleDiscardAll() {
 		files = [];
-        uploadedfiles.forEach(async (filepath) => { 
-            try{
-                const response = await fetch('http://localhost:5001/discard',{
-                    method:'POST',
-                    headers: {
-					    'Content-Type': 'application/json'
-				    },
-				    body: JSON.stringify({ filepath: filepath, userId: 1111111 }),
-                })
+		uploadedfiles.forEach(async (filepath) => {
+			try {
+				const response = await fetch('http://localhost:5001/discard', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify({ filepath: filepath, userId: 1111111 })
+				});
 
-                if (!response.ok) {
-                    throw new Error()
-                }
-            } catch (error) {
-                console.error("Error discarding files: ",error);
-            }
-        });
+				if (!response.ok) {
+					notifications.update((n) => [
+						...n,
+						{ message: `Error discarding file(s), check logs`, unread: true }
+					]);
+					addLog(`Error discarding files ${response.statusText}`);
+					throw new Error('Error discard files');
+				}
+			} catch (error) {
+				addLog(`Error discarding files: ${error}`)
+				console.error('Error discarding files: ', error);
+			}
+		});
 		uploadProgress = 0;
 		addLog('All files discarded.');
 	}
@@ -149,52 +162,49 @@
 		}, 100);
 	}
 
-	function downloadLogs() {
-		const allLogs = get(logs).join('\n'); // Convert logs to string
-		const blob = new Blob([allLogs], { type: 'text/plain' }); // Create Blob
-		const url = URL.createObjectURL(blob); // Create URL for Blob
-
-		// Create temporary link and trigger download
-		const a = document.createElement('a');
-		a.href = url;
-		a.download = 'Logs.log';
-		a.click();
-		URL.revokeObjectURL(url); // Clean up
-	}
-
 	async function fetchUploadedFiles(userId) {
 		if (!userId) {
-			return
+			return;
 		}
-		const stringifyedUserId = String(userId)
-		console.log(stringifyedUserId)
+		const stringifyedUserId = String(userId);
+		console.log(stringifyedUserId);
 		try {
-			const response = await fetch('http://localhost:5001/user-projects',{
-                    method:'POST',
-                    headers: {
-					    'Content-Type': 'application/json'
-				    },
-				    body: JSON.stringify({ userId: stringifyedUserId }),
-                })
+			const response = await fetch('http://localhost:5001/user-projects', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({ userId: stringifyedUserId })
+			});
 
 			if (!response.ok) {
-				throw new Error('Failed to fetch projects')
+				notifications.update((n) => [
+					...n,
+					{ message: `Failed to fetch projects, check logs`, unread: true }
+				]);
+				addLog(`Failed to fetch projects, Network error`);
+				throw new Error('Failed to fetch projects');
 			}
 
-			const serverProjects = await response.json()
-			projects = serverProjects.map(project => project.projectName)
+			const serverProjects = await response.json();
+			projects = serverProjects.map((project) => project.projectName);
 		} catch (error) {
-			console.error("Error fetching projects: ",error);
+			notifications.update((n) => [
+				...n,
+				{ message: `Error communicating with server, check logs`, unread: true }
+			]);
+			addLog(`Network Error, failed to fetch projects: ${error}`)
+			console.error('Error fetching projects: ', error);
 		}
 	}
 
-	fetchUploadedFiles(userId)
+	fetchUploadedFiles(userId);
 </script>
 
 <Menu {menuOpen} />
 
 <div class="py-6 text-center">
-	<h1 class="text-2xl font-semibold dark:text-gray-200">{greeting}, {userId}!</h1>
+	<h1 class="text-2xl font-semibold dark:text-gray-200">{greeting}, Analyst!</h1>
 </div>
 
 <div class="grid grid-cols-2 gap-6 p-6">
@@ -207,11 +217,31 @@
 			</h2>
 		</div>
 
-
-		<div class="popup">
-			<input type="text" id="projectName" bind:value={projectName} placeholder="Enter a name for your project" class="mt-1 block w-full p-2 border rounded" />
+		<div class="flex items-center space-x-20">
+			<div class="popup">
+				<input
+					type="text"
+					id="projectName"
+					bind:value={projectName}
+					placeholder="Enter a name for your project"
+					class="mt-1 block w-full rounded border p-2"
+				/>
+			</div>
+			<button
+				class="mr-4 rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 disabled:cursor-not-allowed disabled:opacity-50 dark:focus:ring-blue-800"
+				on:click={handleCreateProject}
+				disabled={!isValidFile && projectName != null}
+			>
+				Create Project
+			</button>
+			<button
+				class="rounded bg-red-600 px-4 py-2 text-white hover:bg-red-700 focus:ring-4 focus:ring-red-300 dark:focus:ring-red-800"
+				on:click={handleDiscardAll}
+			>
+				Discard All
+			</button>
 		</div>
-		<br>
+		<br />
 
 		<!-- File Upload -->
 		<div
@@ -224,12 +254,13 @@
 					<button
 						type="button"
 						class="inline-flex items-center rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+						on:click={() => document.getElementById('file-input').click()}
 					>
 						Select Files
 					</button>
 					<input
 						id="file-input"
-						class="absolute left-0 top-0 h-full w-full cursor-pointer opacity-0"
+						class="hidden"
 						type="file"
 						multiple
 						accept=".nessus"
@@ -253,10 +284,12 @@
 				<p>No Projects Available</p>
 			{:else}
 				{#each projects as project}
-				<h2 class="cursor-pointer mb-2 flex items-center text-md font-bold dark:text-gray-200 transition transform hover:scale-105 hover:shadow-xl">
-					<span class="mr-4">📁</span>
-					<a href="./project/{project}">{project}</a>
-				</h2>
+					<h2
+						class="text-md mb-2 flex transform cursor-pointer items-center font-bold transition hover:scale-105 hover:shadow-xl dark:text-gray-200"
+					>
+						<span class="mr-4">📁</span>
+						<a href="./project/{project}">{project}</a>
+					</h2>
 				{/each}
 			{/if}
 		</div>
@@ -271,10 +304,10 @@
 
 	<!-- Upload Files Section -->
 	<div class="upload-files col-span-2 mt-6">
-		<button
+		<!-- <button
 			class="mr-4 rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 disabled:cursor-not-allowed disabled:opacity-50 dark:focus:ring-blue-800"
-			on:click={() => showPopup.set(true)}
-			disabled={!isValidFile && projectName != null}
+			on:click={handleCreateProject}
+			disabled={!isValidFile || !projectName}
 		>
 			Create Project
 		</button>
@@ -284,10 +317,9 @@
 			on:click={handleDiscardAll}
 		>
 			Discard All
-		</button>
+		</button> -->
 
 		{#if files.length > 0}
-			<h2 class="mt-6 text-xl font-bold dark:text-gray-200">Uploading Files</h2>
 			<ul class="mt-2 list-inside list-disc dark:text-gray-300">
 				{#each files as file}
 					<li>{file.name}</li>
@@ -298,11 +330,8 @@
 			<div class="progress-bar mt-4 overflow-hidden rounded bg-gray-200">
 				<div class="h-2 rounded bg-green-500" style="width: {uploadProgress}%"></div>
 			</div>
+		{:else}
+			<p class="mt-4 text-gray-600 dark:text-gray-300">No files being uploaded.</p>
 		{/if}
 	</div>
-
-	<!-- New Download Logs Section -->
-	<!-- <div class="download-logs">
-		<button class="button" on:click={downloadLogs}>Download Logs</button>
-	</div> -->
 </div>
