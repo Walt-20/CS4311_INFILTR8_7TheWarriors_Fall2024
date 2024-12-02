@@ -223,7 +223,7 @@
 					type="text"
 					id="projectName"
 					bind:value={projectName}
-					placeholder="Enter a name for your project"
+					placeholder="Project Name"
 					class="mt-1 block w-full rounded border p-2"
 				/>
 			</div>
@@ -304,21 +304,6 @@
 
 	<!-- Upload Files Section -->
 	<div class="upload-files col-span-2 mt-6">
-		<!-- <button
-			class="mr-4 rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 disabled:cursor-not-allowed disabled:opacity-50 dark:focus:ring-blue-800"
-			on:click={handleCreateProject}
-			disabled={!isValidFile || !projectName}
-		>
-			Create Project
-		</button>
-
-		<button
-			class="rounded bg-red-600 px-4 py-2 text-white hover:bg-red-700 focus:ring-4 focus:ring-red-300 dark:focus:ring-red-800"
-			on:click={handleDiscardAll}
-		>
-			Discard All
-		</button> -->
-
 		{#if files.length > 0}
 			<ul class="mt-2 list-inside list-disc dark:text-gray-300">
 				{#each files as file}

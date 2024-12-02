@@ -152,15 +152,10 @@
 			Update Password
 		</button>
 
-<<<<<<< HEAD
-        <button class="mt-6 w-full py-2 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700 text-center" on:click={goToAdmin}>
-			Back to Admin Homepage
-=======
         <button 
     		class="mt-6 w-full py-2 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700 text-center" 
     		on:click|preventDefault={goToAdmin}>
     		Back to Admin Homepage
->>>>>>> 83523f81191fdc1ca4e6680295492eb34b4d84f7
 		</button>
 
 	</form>
