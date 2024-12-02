@@ -108,16 +108,16 @@
 	}
 
 	function filterDevices() {
-		let dataToFilter;
+		let dataToFilter = [];
 		switch (parseInt(fileSelected, 10)) {
 			case 1:
 				dataToFilter = Object.values(dataWithExploits);
 				break;
-			case 3:
-				dataToFilter = Object.values(port0Entries);
-				break;
 			case 2:
 				dataToFilter = Object.values(entrypointMostInfo);
+				break;
+			case 3:
+				dataToFilter = Object.values(port0Entries);
 				break;
 			case 4:
 				dataToFilter = Object.values(rankedEntryPoints);
@@ -126,20 +126,25 @@
 				dataToFilter = [];
 		}
 
-		filteredResults = dataToFilter.filter(item => {
-			const query = searchQuery.toLowerCase();
-			let matches = false;
+		// Ensure structure consistency
+		filteredResults = dataToFilter
+			.filter(item => item) // Remove null/undefined items
+			.filter(item => {
+				const query = searchQuery.toLowerCase();
+				let matches = false;
 
-			// Check based on the selected search category
-			if (searchCategory === "IP Addresses") {
-				matches = item.ip && item.ip.includes(query);
-			} else if (searchCategory === "Port") {
-				matches = item.port && String(item.port).includes(query);
-			} else if (searchCategory === "Archetype" && (fileSelected === "1" || fileSelected === "3")) {
-				matches = item.archetype && item.archetype.toLowerCase().includes(query);
-			}
-			return matches;
-		});
+				if (searchCategory === "IP Addresses") {
+					matches = item.ip && item.ip.toLowerCase().includes(query);
+				} else if (searchCategory === "Port") {
+					matches = item.port && String(item.port).includes(query);
+				} else if (searchCategory === "Archetype" && (fileSelected === "1" || fileSelected === "3")) {
+					matches = item.archetype && item.archetype.toLowerCase().includes(query);
+				}
+				return matches;
+			});
+
+		// Re-render if empty
+		filteredResults = filteredResults || [];
 	}
 
 	function handleExport() {
@@ -293,11 +298,12 @@
 				<select
 					bind:value={fileSelected}
 					class="rounded-md border border-gray-300 bg-gray-200 px-4 py-2 focus:ring-2 focus:ring-blue-500"
+					on:change={filterDevices} 
 				>
-					<option value= "1">data_with_exploits</option>
-					<option value= "2">entrypoint_most_info</option>
-					<option value= "3">port_0_entries</option>
-					<option value= "4">ranked_entry_points</option>
+					<option value="1">data_with_exploits</option>
+					<option value="2">entrypoint_most_info</option>
+					<option value="3">port_0_entries</option>
+					<option value="4">ranked_entry_points</option>
 				</select>
 			</div>
 
