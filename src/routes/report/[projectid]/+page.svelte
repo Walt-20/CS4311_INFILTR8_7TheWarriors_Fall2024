@@ -15,6 +15,7 @@
 	let port0Entries = {};
 	let rankedEntryPoints = {};
 
+	let fileSelected = 1; 
 	let exportFormats = ['PDF', 'XML'];
 	let selectedFormat = exportFormats[0];
 	let menuOpen = false;
@@ -125,17 +126,17 @@
 
 	function handleExport() {
 		if (selectedFormat === 'XML') {
-			exportAsXML(1);
+			exportAsXML(fileSelected);
 		} else if (selectedFormat === 'PDF') {
-			exportAsPDF(1);
+			exportAsPDF(fileSelected);
 		}
 	}
 
-	function exportAsPDF(selectedDataNumber) {
+	function exportAsPDF(fileSelected) {
 		const doc = new jsPDF();
 		let dataToExport;
 
-		switch (selectedDataNumber) {
+		switch (fileSelected) {
 			case 1:
 				dataToExport = dataWithExploits;
 				doc.text("Data With Exploits Report", 10, 10);
@@ -164,14 +165,14 @@
 			y += 10;
 		});
 
-		doc.save(`report_${selectedDataNumber}.pdf`);
+		doc.save(`report_${fileSelected}.pdf`);
 	}
 
-	function exportAsXML(selectedDataNumber) {
+	function exportAsXML(fileSelected) {
 		let dataToExport;
 		let rootName;
 
-		switch (selectedDataNumber) {
+		switch (fileSelected) {
 			case 1:
 				dataToExport = dataWithExploits;
 				rootName = "DataWithExploits";
@@ -208,7 +209,7 @@
 		const url = URL.createObjectURL(blob);
 		const link = document.createElement("a");
 		link.href = url;
-		link.setAttribute("download", `report_${selectedDataNumber}.xml`);
+		link.setAttribute("download", `report_${fileSelected}.xml`);
 		document.body.appendChild(link);
 		link.click();
 		document.body.removeChild(link);
@@ -244,6 +245,20 @@
 					placeholder={`Search ${searchCategory.toLowerCase()}...`}
 					class="flex-grow rounded-md border border-gray-300 bg-gray-200 px-4 py-2 focus:ring-2 focus:ring-blue-500"
 				/>
+			</div>
+
+			<!-- Select File to View -->
+			<div class="w-1/2 space-y-2 order-1">
+				<label class="block text-gray-700 dark:text-white">Select File to View</label>
+				<select
+					bind:value={fileSelected}
+					class="rounded-md border border-gray-300 bg-gray-200 px-4 py-2 focus:ring-2 focus:ring-blue-500"
+				>
+					<option value="1">data_with_exploits</option>
+					<option value="2">entrypoint_most_info</option>
+					<option value="3">port_0_entries</option>
+					<option value="4">ranked_entry_points</option>
+				</select>
 			</div>
 
 			<!-- Export Format Dropdown -->
