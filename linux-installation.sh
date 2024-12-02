@@ -5,8 +5,8 @@ echo $current_directory
 
 sudo apt install gnome-terminal
 sudo apt install nodejs
-sudo apt install python3.11-venv
-sudo apt install python-is-python3
+# sudo apt install python3.11-venv
+# sudo apt install python-is-python3
 
 cd ./src
 npm ci
