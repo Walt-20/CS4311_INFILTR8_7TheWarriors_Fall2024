@@ -3,6 +3,7 @@
 current_directory=$(pwd)
 echo $current_directory
 
+sudo apt install gnome-terminal
 sudo apt install nodejs
 sudo apt install python3.11-venv
 sudo apt install python-is-python3
@@ -37,5 +38,5 @@ pip install -r requirements.txt --no-cache
 deactivate
 
 #Express Server
-cd ./server
+cd ../server
 npm install

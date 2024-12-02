@@ -4,8 +4,6 @@
 	import { jsPDF } from 'jspdf';
 	import autoTable from 'jspdf-autotable';
 	import * as XLSX from 'xlsx';
-
-
 	
 	export let data;
 	const userId = data.user.username;
@@ -110,22 +108,38 @@
 	}
 
 	function filterDevices() {
-		filteredResults = ips
-			.map((ip, index) => ({
-				ip,
-				device: archetype[index],
-				vulnerability: severity[index]
-			}))
-			.filter((item) => {
-				if (searchCategory === 'IP Addresses') {
-					return item.ip.includes(searchQuery);
-				} else if (searchCategory === 'Device') {
-					return item.device.toLowerCase().includes(searchQuery.toLowerCase());
-				} else if (searchCategory === 'Vulnerability') {
-					return item.vulnerability.toLowerCase().includes(searchQuery.toLowerCase());
-				}
-				return true;
-			});
+		let dataToFilter;
+		switch (parseInt(fileSelected, 10)) {
+			case 1:
+				dataToFilter = Object.values(dataWithExploits);
+				break;
+			case 3:
+				dataToFilter = Object.values(port0Entries);
+				break;
+			case 2:
+				dataToFilter = Object.values(entrypointMostInfo);
+				break;
+			case 4:
+				dataToFilter = Object.values(rankedEntryPoints);
+				break;
+			default:
+				dataToFilter = [];
+		}
+
+		filteredResults = dataToFilter.filter(item => {
+			const query = searchQuery.toLowerCase();
+			let matches = false;
+
+			// Check based on the selected search category
+			if (searchCategory === "IP Addresses") {
+				matches = item.ip && item.ip.includes(query);
+			} else if (searchCategory === "Port") {
+				matches = item.port && String(item.port).includes(query);
+			} else if (searchCategory === "Archetype" && (fileSelected === "1" || fileSelected === "3")) {
+				matches = item.archetype && item.archetype.toLowerCase().includes(query);
+			}
+			return matches;
+		});
 	}
 
 	function handleExport() {
@@ -260,14 +274,15 @@
 					on:change={filterDevices}
 				>
 					<option>IP Addresses</option>
-					<option>Device</option>
-					<option>Vulnerability</option>
+					<option>Port</option>
+					<option>Archetype</option>
 				</select>
 				<input
 					type="text"
 					bind:value={searchQuery}
 					on:input={filterDevices}
-					placeholder={`Search ${searchCategory.toLowerCase()}...`}
+					on:keydown={(e) => e.key === 'Enter' && filterDevices()}
+					placeholder={`Search ${fileSelected === '1' || fileSelected === '3' ? 'IP, Port, or Archetype' : 'IP or Port'}...`}
 					class="flex-grow rounded-md border border-gray-300 bg-gray-200 px-4 py-2 focus:ring-2 focus:ring-blue-500"
 				/>
 			</div>
@@ -310,7 +325,6 @@
 	{#if fileSelected === "1"}
 		<div class="table-container">
 			<h2 class="block text-gray-700 dark:text-white">Data With Exploits</h2>
-			<!-- data_with_exploits table -->
 			<div class="mb-6 rounded-lg border border-gray-300 bg-gray-300 p-4 shadow-sm dark:bg-gray-600">
 				<ul class="space-y-2">
 					<li
@@ -323,7 +337,7 @@
 						<span>Plugin Name</span>
 						<span>Severity</span>
 					</li>
-					{#each Object.values(dataWithExploits) as item}
+					{#each filteredResults as item}
 						<li class="grid grid-cols-6 gap-4 overflow-x-auto rounded-md p-2 hover:bg-gray-50">
 							<span>{item.ip}</span>
 							<span>{item.port}</span>
@@ -351,7 +365,7 @@
 						<span>Port</span>
 						<span>Vulnerbaility Count</span>
 					</li>
-					{#each Object.values(entrypointMostInfo) as item}
+					{#each filteredResults as item}
 						<li class="grid grid-cols-6 gap-4 overflow-x-auto rounded-md p-2 hover:bg-gray-50">
 							<span>{item.ip}</span>
 							<span>{item.port}</span>
@@ -379,7 +393,7 @@
 						<span>Plugin Name</span>
 						<span>Severity</span>
 					</li>
-					{#each Object.values(port0Entries) as item}
+					{#each filteredResults as item}
 						<li class="grid grid-cols-6 gap-4 overflow-x-auto rounded-md p-2 hover:bg-gray-50">
 							<span>{item.ip}</span>
 							<span>{item.port}</span>
@@ -407,7 +421,7 @@
 						<span>Port</span>
 						<span>Severity Score</span>
 					</li>
-					{#each Object.values(rankedEntryPoints) as item}
+					{#each filteredResults as item}
 						<li class="grid grid-cols-6 gap-4 overflow-x-auto rounded-md p-2 hover:bg-gray-50">
 							<span>{item.ip}</span>
 							<span>{item.port}</span>

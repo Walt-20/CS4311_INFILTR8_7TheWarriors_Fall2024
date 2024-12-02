@@ -1,0 +1,8 @@
+#! /bin/bash
+
+./linux-installation.sh
+
+./linux-launch.sh
+
+#Kill all background processes
+trap "trap - SIGTERM && kill -- -$$" SIGINT SIGTERM EXIT
