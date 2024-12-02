@@ -19,12 +19,45 @@
         }
     });
 
+    // Function to validate password based on STIG requirements
+	const validatePassword = (password) => {
+		const minLength = 15;
+		const hasUppercase = /[A-Z]/.test(password);
+		const hasLowercase = /[a-z]/.test(password);
+		const hasNumber = /\d/.test(password);
+		const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+
+		if (password.length < minLength) {
+			return `Password must be at least ${minLength} characters long.`;
+		}
+		if (!hasUppercase) {
+			return 'Password must contain at least one uppercase letter.';
+		}
+		if (!hasLowercase) {
+			return 'Password must contain at least one lowercase letter.';
+		}
+		if (!hasNumber) {
+			return 'Password must contain at least one digit.';
+		}
+		if (!hasSpecialChar) {
+			return 'Password must contain at least one special character.';
+		}
+		return '';
+	};
+
     const goToLogin = () => {
         addLog('Navigated back to login from password change page'); // Log navigation
-        navigateTo('../');
+        navigateTo('/login');
     };
 
     const updatePassword = () => {
+        // Validate new password
+		const validationError = validatePassword(password);
+		if (validationError) {
+			currentError = validationError;
+			return;
+		}
+
         if (password !== confirmPassword) {
             currentError = "Passwords do not match";
             return;
