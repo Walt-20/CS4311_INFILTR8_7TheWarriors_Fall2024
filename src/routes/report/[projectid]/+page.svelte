@@ -2,7 +2,9 @@
 	import { onMount } from 'svelte';
 	import Menu from '$lib/Menu.svelte';
 	import { jsPDF } from 'jspdf';
+	import autoTable from 'jspdf-autotable';
 	import * as XLSX from 'xlsx';
+
 
 	
 	export let data;
@@ -15,6 +17,9 @@
 	let port0Entries = {};
 	let rankedEntryPoints = {};
 
+	let ips = []; 
+
+	let fileSelected = "1"; 
 	let exportFormats = ['PDF', 'XML'];
 	let selectedFormat = exportFormats[0];
 	let menuOpen = false;
@@ -125,74 +130,96 @@
 
 	function handleExport() {
 		if (selectedFormat === 'XML') {
-			exportAsXML(1);
+			exportAsXML(fileSelected);
 		} else if (selectedFormat === 'PDF') {
-			exportAsPDF(1);
+			exportAsPDF(fileSelected);
 		}
 	}
 
-	function exportAsPDF(selectedDataNumber) {
+	function exportAsPDF(fileSelected) {
 		const doc = new jsPDF();
 		let dataToExport;
+		let name; 
 
-		switch (selectedDataNumber) {
+		switch (parseInt(fileSelected, 10)) {
 			case 1:
 				dataToExport = dataWithExploits;
+				name = "data_with_exploits";
 				doc.text("Data With Exploits Report", 10, 10);
 				break;
 			case 2:
 				dataToExport = entrypointMostInfo;
+				name = "entrypoint_most_info";
 				doc.text("Entrypoint Most Info Report", 10, 10);
 				break;
 			case 3:
 				dataToExport = port0Entries;
+				name = "port_0_entries";
 				doc.text("Port 0 Entries Report", 10, 10);
 				break;
 			case 4:
 				dataToExport = rankedEntryPoints;
+				name = "ranked_entry_points";
 				doc.text("Ranked Entry Points Report", 10, 10);
 				break;
 			default:
-				console.error("Invalid data number");
+				console.error("Invalid file selection");
 				return;
 		}
 
-		let y = 20;
-		Object.values(dataToExport).forEach((item) => {
-			const row = Object.values(item).join(" - ");
-			doc.text(row, 10, y);
-			y += 10;
+		if (!dataToExport || Object.keys(dataToExport).length === 0) {
+			alert("No data available to export!");
+			return;
+		}
+
+		const tableHeaders = Object.keys(Object.values(dataToExport)[0] || {});
+		const tableRows = Object.values(dataToExport).map((item) => Object.values(item));
+
+		autoTable(doc, {
+			head: [tableHeaders],
+			body: tableRows,
+			startY: 20,
 		});
 
-		doc.save(`report_${selectedDataNumber}.pdf`);
+		doc.save(`${name}.pdf`);
 	}
 
-	function exportAsXML(selectedDataNumber) {
+	function exportAsXML(fileSelected) {
 		let dataToExport;
 		let rootName;
+		let name;
 
-		switch (selectedDataNumber) {
+		switch (parseInt(fileSelected, 10)) {
 			case 1:
 				dataToExport = dataWithExploits;
+				name = "data_with_exploits";
 				rootName = "DataWithExploits";
 				break;
 			case 2:
 				dataToExport = entrypointMostInfo;
+				name = "entrypoint_most_info";
 				rootName = "EntrypointMostInfo";
 				break;
 			case 3:
 				dataToExport = port0Entries;
+				name = "port_0_entries";
 				rootName = "Port0Entries";
 				break;
 			case 4:
 				dataToExport = rankedEntryPoints;
+				name = "ranked_entry_points";
 				rootName = "RankedEntryPoints";
 				break;
 			default:
-				console.error("Invalid data number");
+				console.error("Invalid file selection");
 				return;
 		}
-		
+
+		if (!dataToExport || Object.keys(dataToExport).length === 0) {
+			alert("No data available to export!");
+			return;
+		}
+
 		let xmlContent = `<?xml version="1.0" encoding="UTF-8"?>\n<${rootName}>\n`;
 		Object.values(dataToExport).forEach((item) => {
 			xmlContent += "  <entry>\n";
@@ -203,12 +230,11 @@
 		});
 		xmlContent += `</${rootName}>`;
 
-		// Export the XML
 		const blob = new Blob([xmlContent], { type: "text/xml;charset=utf-8;" });
 		const url = URL.createObjectURL(blob);
 		const link = document.createElement("a");
 		link.href = url;
-		link.setAttribute("download", `report_${selectedDataNumber}.xml`);
+		link.setAttribute("download", `${name}.xml`);
 		document.body.appendChild(link);
 		link.click();
 		document.body.removeChild(link);
@@ -221,14 +247,6 @@
 <div class="ml p-5">
 	<div class="py-4 text-center">
 		<h1 class="text-4xl font-bold text-gray-800 dark:text-gray-200">{projectname}'s Report</h1>
-	</div>
-	<div>
-	<select>
-        <option>data_with_exploits.csv</option>
-        <option>entrypoint_most_info.csv</option>
-        <option>port_0_entries.csv</option>
-        <option>ranked_entry_points.csv</option>
-    </select> 
 	</div>
 
 	<!-- Search Section -->
@@ -254,6 +272,20 @@
 				/>
 			</div>
 
+			<!-- Select File to View -->
+			<div class="w-1/2 space-y-2 order-1">
+				<label class="block text-gray-700 dark:text-white">Select File to View</label>
+				<select
+					bind:value={fileSelected}
+					class="rounded-md border border-gray-300 bg-gray-200 px-4 py-2 focus:ring-2 focus:ring-blue-500"
+				>
+					<option value= "1">data_with_exploits</option>
+					<option value= "2">entrypoint_most_info</option>
+					<option value= "3">port_0_entries</option>
+					<option value= "4">ranked_entry_points</option>
+				</select>
+			</div>
+
 			<!-- Export Format Dropdown -->
 			<div class="w-1/2 space-y-2 order-2">
 				<label for="export-format" class="block text-gray-700 dark:text-white">Format to export</label>
@@ -274,95 +306,117 @@
 		</div>
 	</div>
 
-	<!-- data_with_exploits table -->
-	<div class="mb-6 rounded-lg border border-gray-300 bg-gray-300 p-4 shadow-sm dark:bg-gray-600">
-		<ul class="space-y-2">
-			<li
-				class="flex justify-between overflow-x-auto rounded-md bg-gray-100 p-2 font-bold text-gray-700"
-			>
-				<span>IP Address</span>
-				<span>Port</span>
-				<span>Protocol</span>
-				<span>Archetype</span>
-				<span>Plugin Name</span>
-				<span>Severity</span>
-			</li>
-			{#each Object.values(dataWithExploits) as item}
-				<li class="grid grid-cols-6 gap-4 overflow-x-auto rounded-md p-2 hover:bg-gray-50">
-					<span>{item.ip}</span>
-					<span>{item.port}</span>
-					<span>{item.protocol}</span>
-					<span>{item.archetype}</span>
-					<span>{item.pluginName}</span>
-					<span>{item.severity}</span>
-				</li>
-			{/each}
-		</ul>
-	</div>
+	<!-- Conditional Rendering for Tables -->
+	{#if fileSelected === "1"}
+		<div class="table-container">
+			<h2 class="block text-gray-700 dark:text-white">Data With Exploits</h2>
+			<!-- data_with_exploits table -->
+			<div class="mb-6 rounded-lg border border-gray-300 bg-gray-300 p-4 shadow-sm dark:bg-gray-600">
+				<ul class="space-y-2">
+					<li
+						class="flex justify-between overflow-x-auto rounded-md bg-gray-100 p-2 font-bold text-gray-700"
+					>
+						<span>IP Address</span>
+						<span>Port</span>
+						<span>Protocol</span>
+						<span>Archetype</span>
+						<span>Plugin Name</span>
+						<span>Severity</span>
+					</li>
+					{#each Object.values(dataWithExploits) as item}
+						<li class="grid grid-cols-6 gap-4 overflow-x-auto rounded-md p-2 hover:bg-gray-50">
+							<span>{item.ip}</span>
+							<span>{item.port}</span>
+							<span>{item.protocol}</span>
+							<span>{item.archetype}</span>
+							<span>{item.pluginName}</span>
+							<span>{item.severity}</span>
+						</li>
+					{/each}
+				</ul>
+			</div>
+		</div>
+	{/if}
 
-	<!-- entrypoint_most_info table -->
-	<div class="mb-6 rounded-lg border border-gray-300 bg-gray-300 p-4 shadow-sm dark:bg-gray-600">
-		<ul class="space-y-2">
-			<li
-				class="flex justify-between overflow-x-auto rounded-md bg-gray-100 p-2 font-bold text-gray-700"
-			>
-				<span>IP Address</span>
-				<span>Port</span>
-				<span>Vulnerbaility Count</span>
-			</li>
-			{#each Object.values(entrypointMostInfo) as item}
-				<li class="grid grid-cols-6 gap-4 overflow-x-auto rounded-md p-2 hover:bg-gray-50">
-					<span>{item.ip}</span>
-					<span>{item.port}</span>
-					<span>{item.vulnerability_count}</span>
-				</li>
-			{/each}
-		</ul>
-	</div>
+	{#if fileSelected === "2"}
+		<div class="table-container">
+			<h2 class="block text-gray-700 dark:text-white">Entrypoint Most Info</h2>
+			<!-- entrypoint_most_info table -->
+			<div class="mb-6 rounded-lg border border-gray-300 bg-gray-300 p-4 shadow-sm dark:bg-gray-600">
+				<ul class="space-y-2">
+					<li
+						class="flex justify-between overflow-x-auto rounded-md bg-gray-100 p-2 font-bold text-gray-700"
+					>
+						<span>IP Address</span>
+						<span>Port</span>
+						<span>Vulnerbaility Count</span>
+					</li>
+					{#each Object.values(entrypointMostInfo) as item}
+						<li class="grid grid-cols-6 gap-4 overflow-x-auto rounded-md p-2 hover:bg-gray-50">
+							<span>{item.ip}</span>
+							<span>{item.port}</span>
+							<span>{item.vulnerability_count}</span>
+						</li>
+					{/each}
+				</ul>
+			</div>
+		</div>
+	{/if}
 
-	<!-- port_0_entries table -->
-	<div class="mb-6 rounded-lg border border-gray-300 bg-gray-300 p-4 shadow-sm dark:bg-gray-600">
-		<ul class="space-y-2">
-			<li
-				class="flex justify-between overflow-x-auto rounded-md bg-gray-100 p-2 font-bold text-gray-700"
-			>
-				<span>IP Address</span>
-				<span>Port</span>
-				<span>Protocol</span>
-				<span>Archetype</span>
-				<span>Plugin Name</span>
-				<span>Severity</span>
-			</li>
-			{#each Object.values(port0Entries) as item}
-				<li class="grid grid-cols-6 gap-4 overflow-x-auto rounded-md p-2 hover:bg-gray-50">
-					<span>{item.ip}</span>
-					<span>{item.port}</span>
-					<span>{item.protocol}</span>
-					<span>{item.archetype}</span>
-					<span>{item.pluginName}</span>
-					<span>{item.severity}</span>
-				</li>
-			{/each}
-		</ul>
-	</div>
+	{#if fileSelected === "3"}
+		<div class="table-container">
+			<h2 class="block text-gray-700 dark:text-white">Port 0 Entries</h2>
+			<!-- port_0_entries table -->
+			<div class="mb-6 rounded-lg border border-gray-300 bg-gray-300 p-4 shadow-sm dark:bg-gray-600">
+				<ul class="space-y-2">
+					<li
+						class="flex justify-between overflow-x-auto rounded-md bg-gray-100 p-2 font-bold text-gray-700"
+					>
+						<span>IP Address</span>
+						<span>Port</span>
+						<span>Protocol</span>
+						<span>Archetype</span>
+						<span>Plugin Name</span>
+						<span>Severity</span>
+					</li>
+					{#each Object.values(port0Entries) as item}
+						<li class="grid grid-cols-6 gap-4 overflow-x-auto rounded-md p-2 hover:bg-gray-50">
+							<span>{item.ip}</span>
+							<span>{item.port}</span>
+							<span>{item.protocol}</span>
+							<span>{item.archetype}</span>
+							<span>{item.pluginName}</span>
+							<span>{item.severity}</span>
+						</li>
+					{/each}
+				</ul>
+			</div>
+		</div>
+	{/if}
 
-	<!-- ranked_entry_points table -->
-	<div class="mb-6 rounded-lg border border-gray-300 bg-gray-300 p-4 shadow-sm dark:bg-gray-600">
-		<ul class="space-y-2">
-			<li
-				class="flex justify-between overflow-x-auto rounded-md bg-gray-100 p-2 font-bold text-gray-700"
-			>
-				<span>IP Address</span>
-				<span>Port</span>
-				<span>Severity Score</span>
-			</li>
-			{#each Object.values(rankedEntryPoints) as item}
-				<li class="grid grid-cols-6 gap-4 overflow-x-auto rounded-md p-2 hover:bg-gray-50">
-					<span>{item.ip}</span>
-					<span>{item.port}</span>
-					<span>{item.severity_score}</span>
-				</li>
-			{/each}
-		</ul>
-	</div>
+	{#if fileSelected === "4"}
+		<div class="table-container">
+			<h2 class="block text-gray-700 dark:text-white">Ranked Entry Points</h2>
+			<!-- ranked_entry_points table -->
+			<div class="mb-6 rounded-lg border border-gray-300 bg-gray-300 p-4 shadow-sm dark:bg-gray-600">
+				<ul class="space-y-2">
+					<li
+						class="flex justify-between overflow-x-auto rounded-md bg-gray-100 p-2 font-bold text-gray-700"
+					>
+						<span>IP Address</span>
+						<span>Port</span>
+						<span>Severity Score</span>
+					</li>
+					{#each Object.values(rankedEntryPoints) as item}
+						<li class="grid grid-cols-6 gap-4 overflow-x-auto rounded-md p-2 hover:bg-gray-50">
+							<span>{item.ip}</span>
+							<span>{item.port}</span>
+							<span>{item.severity_score}</span>
+						</li>
+					{/each}
+				</ul>
+			</div>
+		</div>
+	{/if}
+
 </div>
