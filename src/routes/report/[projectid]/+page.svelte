@@ -3,10 +3,10 @@
 	import Menu from '$lib/Menu.svelte';
 	import { jsPDF } from 'jspdf';
 	import * as XLSX from 'xlsx';
-	import user from '../../../user';
 
-	const userId = $user.username;
+	
 	export let data;
+	const userId = data.user.username;
 
 	let projectname = data.projectid;
 

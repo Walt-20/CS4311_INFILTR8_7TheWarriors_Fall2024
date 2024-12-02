@@ -82,7 +82,7 @@
 
             alert(`Copy and paste your token in your local machine, your generated token is: ${token}`);
 
-            navigateTo('/');
+            navigateTo('/login');
         } else {
             errorMessage = result.error || 'Unsuccessful request to register new DAC Analyst';
             console.log("Error", result);

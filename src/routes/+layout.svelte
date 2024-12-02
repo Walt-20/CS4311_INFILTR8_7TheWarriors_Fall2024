@@ -50,7 +50,6 @@
                 <span class="absolute top-0 right-0 h-2 w-2 rounded-full bg-red-500"></span>
             {/if}
         </button>
-        <DarkMode></DarkMode>
     </div>
 
     <!-- Notification List -->

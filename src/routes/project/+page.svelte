@@ -1,10 +1,11 @@
 <script>
 	import Menu from '$lib/Menu.svelte';
-	import user from '../../user';
 	import { notifications } from '$lib/notificationStore.js';
     import { addLog } from '$lib/logStore.js';
 
-	const userId = $user.username;
+	
+	export let data;
+	const userId = data.user.username;
 	let projects = [];
 	let menuOpen = false;
 

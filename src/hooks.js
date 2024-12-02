@@ -6,7 +6,7 @@ export const handle = async ({ event, resolve }) => {
 	event.locals.user = authenticateUser(event)
     console.log("This is from hook:",event.locals.user)
     if (!event.locals.user) {
-        if (event.url.pathname != "/login") {
+        if (event.url.pathname != "/login" && event.url.pathname != "/registration") {
             throw redirect(303, "/login")
         }
     }

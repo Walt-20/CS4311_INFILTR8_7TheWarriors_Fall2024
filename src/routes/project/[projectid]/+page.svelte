@@ -2,12 +2,12 @@
 	import Menu from '../../../lib/Menu.svelte';
 	import { navigateTo } from '../../../utils';
 	import { disallowedIps, disallowedEntryPoints } from '../../../disallowedfilter';
-	import user from '../../../user';
 	import { addLog } from '$lib/logStore.js';
 	import { notifications } from '$lib/notificationStore.js';
 
-	const userId = $user.username;
+	
 	export let data;
+	const userId = data.user.username;
 
 	let projectname = data.projectid;
 

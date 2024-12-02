@@ -290,7 +290,7 @@ app.post('/user-projects', (req, res) => {
     const userId = req.body.userId
     const userProjectsPath = path.join(rootDir, 'server', 'projects', userId)
     if (!fs.existsSync(userProjectsPath)) {
-        return res.status(404).send('User not found')
+        fs.mkdirSync(userProjectsPath, { recursive: true })
     }
 
     fs.readdir(userProjectsPath, (err, projects) => {

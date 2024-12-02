@@ -1,5 +1,4 @@
 <script>
-	import user from '../../user';
 	import { onMount } from 'svelte';
 	import Menu from '$lib/Menu.svelte';
 	import { notifications } from '$lib/notificationStore.js';
@@ -163,19 +162,6 @@
 		}, 100);
 	}
 
-	function downloadLogs() {
-		const allLogs = get(logs).join('\n'); // Convert logs to string
-		const blob = new Blob([allLogs], { type: 'text/plain' }); // Create Blob
-		const url = URL.createObjectURL(blob); // Create URL for Blob
-
-		// Create temporary link and trigger download
-		const a = document.createElement('a');
-		a.href = url;
-		a.download = 'Logs.log';
-		a.click();
-		URL.revokeObjectURL(url); // Clean up
-	}
-
 	async function fetchUploadedFiles(userId) {
 		if (!userId) {
 			return;
@@ -243,7 +229,7 @@
 			</div>
 			<button
 				class="mr-4 rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 disabled:cursor-not-allowed disabled:opacity-50 dark:focus:ring-blue-800"
-				on:click={() => showPopup.set(true)}
+				on:click={handleCreateProject}
 				disabled={!isValidFile && projectName != null}
 			>
 				Create Project
@@ -347,10 +333,5 @@
 		{:else}
 			<p class="mt-4 text-gray-600 dark:text-gray-300">No files being uploaded.</p>
 		{/if}
-	</div>
-
-	<!-- New Download Logs Section -->
-	<div class="download-logs">
-		<button class="button" on:click={downloadLogs}>Download Logs</button>
 	</div>
 </div>

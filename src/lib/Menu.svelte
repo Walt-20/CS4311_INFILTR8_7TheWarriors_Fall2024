@@ -4,7 +4,6 @@
     import { Sidebar, SidebarGroup, SidebarItem, SidebarWrapper } from 'flowbite-svelte';
     import { ChartPieSolid, ArrowRightToBracketOutline, BriefcaseSolid, ChartLineUpOutline, FileChartBarSolid, CogOutline, QuestionCircleOutline } from 'flowbite-svelte-icons';
     import { addLog } from '$lib/logStore.js'; // Import log function
-    import user from '../user';
 
     let menuOpen = false;
     let spanClass = 'flex-1 ms-3 whitespace-nowrap';
