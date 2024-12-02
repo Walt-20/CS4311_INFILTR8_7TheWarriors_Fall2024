@@ -29,7 +29,7 @@ sudo neo4j-admin database load --from-path="$current_directory/INFILTR8-DUMP" IN
 sudo neo4j-admin dbms set-initial-password INFILTR8
 
 #Create Admin node
-# cypher-shell "CREATE (n:Admin {username:'admin',password:'admin'})"
+cypher-shell "CREATE (n:Admin {username:'admin',password:'admin'})"
 
 #Close server
 sudo neo4j-admin server stop
