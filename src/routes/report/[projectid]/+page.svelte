@@ -328,7 +328,7 @@
 			<div class="w-1/2 space-y-2 order-3 grid justify-start place-items-center">
 				<button
 					class="rounded-md bg-blue-600 px-8 py-4 text-white shadow-md transition duration-300 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-					on:click={handleExport}>Export</button
+					on:click={handleExport}>Export Files Here</button
 				>
 			</div>
 		</div>
