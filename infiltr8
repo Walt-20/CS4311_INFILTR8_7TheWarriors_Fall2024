@@ -1,8 +1,43 @@
 #! /bin/bash
 
-./linux-installation.sh
+INSTALL_DIR="/opt/infiltr8"
+CONFIG_FILE="$INSTALL_DIR/config.ini"
 
-./linux-launch.sh
+check_installation() {
+	if [ ! -f "$CONFIG_FILE" ] || ! grep -q "installed = true" "$CONFIG_FILE"; then
+		return 1
+	else
+		return 0
+	fi
+}
 
-#Kill all background processes
-trap "trap - SIGTERM && kill -- -$$" SIGINT SIGTERM EXIT
+# Function to clean up background processes
+cleanup() {
+    echo "Cleaning up background processes..."
+    # Kill processes on specific ports
+    for port in 8080 5001; do
+        if pids=$(lsof -t -i:$port); then
+            kill -9 $pids 2>/dev/null
+        fi
+    done
+    # Kill all processes whose parent is this script
+    pkill -P $$
+}
+
+# Set up trap for cleanup
+trap cleanup EXIT SIGINT SIGTERM
+
+if check_installation; then
+	echo "Project is already installed, launching INFILTR8..."
+	sudo -E ./linux-launch.sh
+else
+	./linux-installation.sh
+	if [ $? -eq 0 ]; then
+		echo "Installation successful, launching INFILTR8..."
+		sudo -E ./linux-launch.sh
+	else
+		echo "Installation failed."
+		exit 1
+	fi
+fi
+
