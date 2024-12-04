@@ -22,6 +22,11 @@
 	let selectedFormat = exportFormats[0];
 	let menuOpen = false;
 
+	// Modal state
+	let showExportModal = false;
+	let selectedFiles = [];
+	let selectedExportFormat = selectedFormat;
+
 	let searchCategory = 'IP Addresses'; // Declare searchCategory
 	let searchQuery = ''; // Declare searchQuery
 	let filteredResults = []; // Store filtered results
@@ -105,6 +110,7 @@
 
 	function handleFormatChange() {
 		addLog(`Export format changed to: ${selectedFormat}`);
+		selectedExportFormat = selectedFormat;
 	}
 
 	function filterDevices() {
@@ -148,11 +154,22 @@
 	}
 
 	function handleExport() {
-		if (selectedFormat === 'XML') {
-			exportAsXML(fileSelected);
-		} else if (selectedFormat === 'PDF') {
-			exportAsPDF(fileSelected);
+		showExportModal = true;
+	}
+
+	function finalizeExport() {
+		if (selectedFiles.length === 0) {
+			alert('Please select at least one file to export.');
+			return;
 		}
+
+		if (selectedExportFormat === 'XML') {
+			selectedFiles.forEach(file => exportAsXML(file));
+		} else if (selectedExportFormat === 'PDF') {
+			selectedFiles.forEach(file => exportAsPDF(file));
+		}
+
+		showExportModal = false; // Close the modal after exporting
 	}
 
 	function exportAsPDF(fileSelected) {
@@ -293,7 +310,7 @@
 			</div>
 
 			<!-- Select File to View -->
-			<div class="w-1/2 space-y-2 order-1">
+			<div class="w-1/2 space-y-2 order-2">
 				<label class="block text-gray-700 dark:text-white">Select File to View</label>
 				<select
 					bind:value={fileSelected}
@@ -308,24 +325,51 @@
 			</div>
 
 			<!-- Export Format Dropdown -->
-			<div class="w-1/2 space-y-2 order-2">
-				<label for="export-format" class="block text-gray-700 dark:text-white">Format to export</label>
-				<select
-					id="export-format"
-					bind:value={selectedFormat}
-					class="w-40 rounded-md border border-gray-300 bg-gray-200 px-4 py-2 focus:ring-2 focus:ring-blue-500"
-				>
-					{#each exportFormats as format}
-						<option value={format}>{format}</option>
-					{/each}
-				</select>
+			<div class="w-1/2 space-y-2 order-3 grid justify-start place-items-center">
 				<button
-					class="rounded-md bg-blue-600 px-6 py-2 text-white shadow-md transition duration-300 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+					class="rounded-md bg-blue-600 px-8 py-4 text-white shadow-md transition duration-300 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
 					on:click={handleExport}>Export</button
 				>
 			</div>
 		</div>
 	</div>
+
+	<!-- Export Modal -->
+	{#if showExportModal}
+		<div>
+			<div class="modal-backdrop" on:click={() => (showExportModal = false)}></div>
+			<div class="modal">
+				<h2 class="text-lg font-bold mb-4">Select Files to Export</h2>
+				<div class="mb-4">
+					{#each ['data_with_exploits', 'entrypoint_most_info', 'port_0_entries', 'ranked_entry_points'] as file, index}
+						<label>
+							<input
+								type="checkbox"
+								bind:group={selectedFiles}
+								value={index + 1}
+							/>
+							{file}
+						</label>
+						<br />
+					{/each}
+				</div>
+				<div class="mb-4">
+					<label>
+						Format:
+						<select bind:value={selectedFormat}>
+							{#each exportFormats as format}
+								<option value={format}>{format}</option>
+							{/each}
+						</select>
+					</label>
+				</div>
+				<div class="flex justify-end space-x-4">
+					<button class="bg-gray-500 text-white px-4 py-2 rounded" on:click={() => (showExportModal = false)}>Cancel</button>
+					<button class="bg-blue-600 text-white px-4 py-2 rounded" on:click={finalizeExport}>Export</button>
+				</div>
+			</div>
+		</div>
+	{/if}
 
 	<!-- Conditional Rendering for Tables -->
 	{#if fileSelected === "1"}
@@ -440,3 +484,27 @@
 	{/if}
 
 </div>
+
+<style>
+	.modal {
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		z-index: 50;
+		background-color: white;
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+		padding: 20px;
+		border-radius: 8px;
+		width: 300px;
+	}
+	.modal-backdrop {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.5);
+		z-index: 40;
+	}
+</style>
