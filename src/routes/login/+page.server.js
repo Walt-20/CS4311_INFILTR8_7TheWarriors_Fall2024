@@ -52,6 +52,13 @@ export const actions = {
                     secure: process.env.NODE_ENV === "production",
                     maxAge: 60 * 60, // 1 hour
                 });
+                cookies.set("role", userRole, {
+                    path: "/",
+                    httpOnly: true,
+                    sameSite: "strict",
+                    secure: process.env.NODE_ENV === "production",
+                    maxAge: 60 * 60, // 1 hour
+                });
 
                 addLog(`User "${username}" logged in successfully.`);
                 success = true;

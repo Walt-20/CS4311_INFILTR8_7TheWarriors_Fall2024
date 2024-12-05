@@ -84,7 +84,7 @@ if [ ! -f "$CONFIG_FILE" ] || ! grep -q "installed = true" "$CONFIG_FILE"; then
 	sudo neo4j-admin dbms set-initial-password INFILTR8
 
 	#Create Admin node
-	cypher-shell "CREATE (n:Admin {username: 'admin',password:'admin'})"
+	cypher-shell "CREATE (n:Admin {username: 'admin',password:'admin'})" -u "neo4j" -p "INFILTR8"
 
 	#Close server
 	sudo neo4j-admin server stop
