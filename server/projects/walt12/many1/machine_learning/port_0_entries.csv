@@ -1,0 +1,67 @@
+file,name,ip,port,viable_exploit,archetype,svc_name,protocol,severity,pluginID,pluginName,pluginFamily
+nessus_v_unknown 1.nessus,qa3app06,10.31.112.26,0,False,Other,general,tcp,0,19506,Nessus Scan Information,Settings
+nessus_v_unknown 1.nessus,qa3app06,10.31.112.26,0,False,Other,general,tcp,0,10919,Open Port Re-check,General
+nessus_v_unknown 1.nessus,qa3app06,10.31.112.26,0,False,Other,general,tcp,0,54615,Device Type,General
+nessus_v_unknown 1.nessus,qa3app06,10.31.112.26,0,False,Other,general,tcp,0,45590,Common Platform Enumeration (CPE),General
+nessus_v_unknown 1.nessus,qa3app06,10.31.112.26,0,False,Other,general,tcp,0,11936,OS Identification,General
+nessus_v_unknown 1.nessus,qa3app06,10.31.112.26,0,False,Other,general,tcp,0,35716,Ethernet Card Manufacturer Detection,Misc.
+nessus_v_unknown 1.nessus,qa3app06,10.31.112.26,0,False,Other,general,tcp,0,20094,VMware Virtual Machine Detection,General
+nessus_v_unknown 1.nessus,qa3app06,10.31.112.26,0,False,Other,general,tcp,0,46215,Inconsistent Hostname and IP Address,Settings
+nessus_v_unknown 1.nessus,qa3app06,10.31.112.26,0,False,Other,general,tcp,0,12053,Host Fully Qualified Domain Name (FQDN) Resolution,General
+nessus_v_unknown 1.nessus,qa3app06,10.31.112.26,0,False,Other,general,udp,0,10287,Traceroute Information,General
+nessus_v_unknown 1.nessus,qa3app06,10.31.112.26,0,False,Other,general,tcp,0,24786,Nessus Windows Scan Not Performed with Admin Privileges,Settings
+nessus_v_unknown 1.nessus,qa3app05,10.31.112.25,0,False,Other,general,tcp,0,19506,Nessus Scan Information,Settings
+nessus_v_unknown 1.nessus,qa3app05,10.31.112.25,0,False,Other,general,tcp,0,10919,Open Port Re-check,General
+nessus_v_unknown 1.nessus,qa3app05,10.31.112.25,0,False,Other,general,tcp,0,54615,Device Type,General
+nessus_v_unknown 1.nessus,qa3app05,10.31.112.25,0,False,Other,general,tcp,0,45590,Common Platform Enumeration (CPE),General
+nessus_v_unknown 1.nessus,qa3app05,10.31.112.25,0,False,Other,general,tcp,0,11936,OS Identification,General
+nessus_v_unknown 1.nessus,qa3app05,10.31.112.25,0,False,Other,general,tcp,0,35716,Ethernet Card Manufacturer Detection,Misc.
+nessus_v_unknown 1.nessus,qa3app05,10.31.112.25,0,False,Other,general,tcp,0,20094,VMware Virtual Machine Detection,General
+nessus_v_unknown 1.nessus,qa3app05,10.31.112.25,0,False,Other,general,tcp,0,46215,Inconsistent Hostname and IP Address,Settings
+nessus_v_unknown 1.nessus,qa3app05,10.31.112.25,0,False,Other,general,tcp,0,12053,Host Fully Qualified Domain Name (FQDN) Resolution,General
+nessus_v_unknown 1.nessus,qa3app05,10.31.112.25,0,False,Other,general,udp,0,10287,Traceroute Information,General
+nessus_v_unknown 1.nessus,qa3app05,10.31.112.25,0,False,Other,general,tcp,0,24786,Nessus Windows Scan Not Performed with Admin Privileges,Settings
+nessus_v_unknown 1.nessus,qa3app04,10.31.112.24,0,False,Other,general,tcp,0,19506,Nessus Scan Information,Settings
+nessus_v_unknown 1.nessus,qa3app04,10.31.112.24,0,False,Other,general,tcp,0,10919,Open Port Re-check,General
+nessus_v_unknown 1.nessus,qa3app04,10.31.112.24,0,False,Other,general,tcp,0,54615,Device Type,General
+nessus_v_unknown 1.nessus,qa3app04,10.31.112.24,0,False,Other,general,tcp,0,45590,Common Platform Enumeration (CPE),General
+nessus_v_unknown 1.nessus,qa3app04,10.31.112.24,0,False,Other,general,tcp,0,11936,OS Identification,General
+nessus_v_unknown 1.nessus,qa3app04,10.31.112.24,0,False,Other,general,tcp,0,35716,Ethernet Card Manufacturer Detection,Misc.
+nessus_v_unknown 1.nessus,qa3app04,10.31.112.24,0,False,Other,general,tcp,0,20094,VMware Virtual Machine Detection,General
+nessus_v_unknown 1.nessus,qa3app04,10.31.112.24,0,False,Other,general,tcp,0,46215,Inconsistent Hostname and IP Address,Settings
+nessus_v_unknown 1.nessus,qa3app04,10.31.112.24,0,False,Other,general,tcp,0,12053,Host Fully Qualified Domain Name (FQDN) Resolution,General
+nessus_v_unknown 1.nessus,qa3app04,10.31.112.24,0,False,Other,general,udp,0,10287,Traceroute Information,General
+nessus_v_unknown 1.nessus,qa3app04,10.31.112.24,0,False,Other,general,tcp,0,24786,Nessus Windows Scan Not Performed with Admin Privileges,Settings
+nessus_v_unknown 1.nessus,qa3app03,10.31.112.23,0,False,Other,general,tcp,0,19506,Nessus Scan Information,Settings
+nessus_v_unknown 1.nessus,qa3app03,10.31.112.23,0,False,Other,general,tcp,0,10919,Open Port Re-check,General
+nessus_v_unknown 1.nessus,qa3app03,10.31.112.23,0,False,Other,general,tcp,0,54615,Device Type,General
+nessus_v_unknown 1.nessus,qa3app03,10.31.112.23,0,False,Other,general,tcp,0,45590,Common Platform Enumeration (CPE),General
+nessus_v_unknown 1.nessus,qa3app03,10.31.112.23,0,False,Other,general,tcp,0,11936,OS Identification,General
+nessus_v_unknown 1.nessus,qa3app03,10.31.112.23,0,False,Other,general,tcp,0,35716,Ethernet Card Manufacturer Detection,Misc.
+nessus_v_unknown 1.nessus,qa3app03,10.31.112.23,0,False,Other,general,tcp,0,20094,VMware Virtual Machine Detection,General
+nessus_v_unknown 1.nessus,qa3app03,10.31.112.23,0,False,Other,general,tcp,0,46215,Inconsistent Hostname and IP Address,Settings
+nessus_v_unknown 1.nessus,qa3app03,10.31.112.23,0,False,Other,general,tcp,0,12053,Host Fully Qualified Domain Name (FQDN) Resolution,General
+nessus_v_unknown 1.nessus,qa3app03,10.31.112.23,0,False,Other,general,udp,0,10287,Traceroute Information,General
+nessus_v_unknown 1.nessus,qa3app03,10.31.112.23,0,False,Other,general,tcp,0,24786,Nessus Windows Scan Not Performed with Admin Privileges,Settings
+nessus_v_unknown 1.nessus,qa3app02,10.31.112.22,0,False,Other,general,tcp,0,19506,Nessus Scan Information,Settings
+nessus_v_unknown 1.nessus,qa3app02,10.31.112.22,0,False,Other,general,tcp,0,10919,Open Port Re-check,General
+nessus_v_unknown 1.nessus,qa3app02,10.31.112.22,0,False,Other,general,tcp,0,45590,Common Platform Enumeration (CPE),General
+nessus_v_unknown 1.nessus,qa3app02,10.31.112.22,0,False,Other,general,tcp,0,54615,Device Type,General
+nessus_v_unknown 1.nessus,qa3app02,10.31.112.22,0,False,Other,general,tcp,0,11936,OS Identification,General
+nessus_v_unknown 1.nessus,qa3app02,10.31.112.22,0,False,Other,general,tcp,0,35716,Ethernet Card Manufacturer Detection,Misc.
+nessus_v_unknown 1.nessus,qa3app02,10.31.112.22,0,False,Other,general,tcp,0,20094,VMware Virtual Machine Detection,General
+nessus_v_unknown 1.nessus,qa3app02,10.31.112.22,0,False,Other,general,tcp,0,46215,Inconsistent Hostname and IP Address,Settings
+nessus_v_unknown 1.nessus,qa3app02,10.31.112.22,0,False,Other,general,tcp,0,12053,Host Fully Qualified Domain Name (FQDN) Resolution,General
+nessus_v_unknown 1.nessus,qa3app02,10.31.112.22,0,False,Other,general,udp,0,10287,Traceroute Information,General
+nessus_v_unknown 1.nessus,qa3app02,10.31.112.22,0,False,Other,general,tcp,0,24786,Nessus Windows Scan Not Performed with Admin Privileges,Settings
+nessus_v_unknown 1.nessus,qa3app01,10.31.112.21,0,False,Other,general,tcp,0,19506,Nessus Scan Information,Settings
+nessus_v_unknown 1.nessus,qa3app01,10.31.112.21,0,False,Other,general,tcp,0,10919,Open Port Re-check,General
+nessus_v_unknown 1.nessus,qa3app01,10.31.112.21,0,False,Other,general,tcp,0,54615,Device Type,General
+nessus_v_unknown 1.nessus,qa3app01,10.31.112.21,0,False,Other,general,tcp,0,45590,Common Platform Enumeration (CPE),General
+nessus_v_unknown 1.nessus,qa3app01,10.31.112.21,0,False,Other,general,tcp,0,11936,OS Identification,General
+nessus_v_unknown 1.nessus,qa3app01,10.31.112.21,0,False,Other,general,tcp,0,35716,Ethernet Card Manufacturer Detection,Misc.
+nessus_v_unknown 1.nessus,qa3app01,10.31.112.21,0,False,Other,general,tcp,0,20094,VMware Virtual Machine Detection,General
+nessus_v_unknown 1.nessus,qa3app01,10.31.112.21,0,False,Other,general,tcp,0,46215,Inconsistent Hostname and IP Address,Settings
+nessus_v_unknown 1.nessus,qa3app01,10.31.112.21,0,False,Other,general,tcp,0,12053,Host Fully Qualified Domain Name (FQDN) Resolution,General
+nessus_v_unknown 1.nessus,qa3app01,10.31.112.21,0,False,Other,general,udp,0,10287,Traceroute Information,General
+nessus_v_unknown 1.nessus,qa3app01,10.31.112.21,0,False,Other,general,tcp,0,24786,Nessus Windows Scan Not Performed with Admin Privileges,Settings

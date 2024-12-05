@@ -12,7 +12,7 @@ app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
 
 # 'bolt://localhost:7687' for local database
-# 'neo4j+s://36954b0e.databases.neo4j.io' for online
+# 'neo4j+s://36954b0e.databases.neo4j.io' for onlines
 driver = GraphDatabase.driver('neo4j+s://36954b0e.databases.neo4j.io',auth=basic_auth("neo4j",os.environ.get("NEO4J_AUTH_KEY")))
 driver.verify_connectivity()
  
@@ -296,18 +296,25 @@ def delete_analyst_nodes():
 def get_analyst_users():
     query = """
     MATCH (a:Analyst)
-    RETURN a.username AS username
+    RETURN a.username AS username, a.token AS hashed_token
     """
     try:
         with driver.session() as session:
             result = session.run(query)
-            usernames = [record["username"] for record in result]
-        return jsonify({"usernames": usernames}), 200
+            users = []
+            for record in result:
+                hashed_token = record["hashed_token"]
+                unhashed_token = bcrypt.hashpw(hashed_token.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+                users.append({
+                    "username": record["username"],
+                    "token": unhashed_token
+                })
+        return jsonify({"users": users}), 200
     except Exception as e:
         return jsonify({"error": "Failed to fetch analyst users"}), 500
  
-@app.route('/admin-password', methods=['POST', 'GET'])
-def admin_password():
+@app.route('/admin-to-user-password', methods=['POST', 'GET'])
+def admin_to_user_password():
     data = request.get_json()
     username = data.get('username') 
     new_password = data.get('password') 
@@ -328,10 +335,8 @@ def admin_password():
     if admin_password != stored_admin_password:
         return jsonify({"error": "Invalid admin password."}), 401
 
-    # Hash the new password for the Analyst
     hashed_new_password = bcrypt.hashpw(new_password.encode('utf-8'), bcrypt.gensalt())
 
-    # Update the target user's password
     update_query = """
     MATCH (u:Analyst {username: $username})
     SET u.password = $new_password
@@ -346,6 +351,32 @@ def admin_password():
     else:
         return jsonify({"error": "User not found or password update failed"}), 404
 
- 
+@app.route("/update-admin-password", methods=["POST"])
+def update_admin_password():
+    data = request.get_json()
+    username = data.get("username")
+    new_password = data.get("password")
+
+    if not username or not new_password:
+        return jsonify({"error": "Username and password are required."}), 400
+
+    if username == "admin":
+        try:
+            with driver.session() as session:
+                query = """
+                MATCH (u:Admin {username: $username})
+                SET u.password = $password
+                RETURN u.username AS username
+                """
+                result = session.run(query, username=username, password=new_password)
+                if result.single():
+                    return jsonify({"message": "Admin password updated successfully."}), 200
+                else:
+                    return jsonify({"error": "Admin not found."}), 404
+        except Exception as e:
+            return jsonify({"error": "Failed to update admin password."}), 500
+    else:
+        return jsonify({"error": "Unauthorized action. Only admins can update this password."}), 403
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0",port=8080)
