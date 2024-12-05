@@ -16,8 +16,8 @@
 	let menuOpen = false;
 	let startTimes = ['08:00 AM'];
 	let selectedStartTime = startTimes[0];
-	let analysisProgress = 50; // Example progress value
-	let overallProgress = 75; // Example overall progress value
+	let analysisProgress = 0; // Example progress value
+	let overallProgress = 0; // Example overall progress value
 	let analysisScheduled = false; // New flag for schedule analysis
 
 	function handleEntryPointChange(index) {

@@ -22,6 +22,11 @@
 	let selectedFormat = exportFormats[0];
 	let menuOpen = false;
 
+	// Modal state
+	let showExportModal = false;
+	let selectedFiles = [];
+	let selectedExportFormat = selectedFormat;
+
 	let searchCategory = 'IP Addresses'; // Declare searchCategory
 	let searchQuery = ''; // Declare searchQuery
 	let filteredResults = []; // Store filtered results
@@ -105,6 +110,7 @@
 
 	function handleFormatChange() {
 		addLog(`Export format changed to: ${selectedFormat}`);
+		selectedExportFormat = selectedFormat;
 	}
 
 	function filterDevices() {
@@ -148,115 +154,125 @@
 	}
 
 	function handleExport() {
-		if (selectedFormat === 'XML') {
-			exportAsXML(fileSelected);
-		} else if (selectedFormat === 'PDF') {
-			exportAsPDF(fileSelected);
-		}
+		showExportModal = true;
 	}
 
-	function exportAsPDF(fileSelected) {
+	function finalizeExport() {
+		if (selectedFiles.length === 0) {
+			alert('Please select at least one file to export.');
+			return;
+		}
+
+		if (selectedExportFormat === 'PDF') {
+			exportAsPDF(selectedFiles);
+		} else if (selectedExportFormat === 'XML') {
+			exportAsXML(selectedFiles);  // Ensure this is called for XML export
+		}
+
+		showExportModal = false; // Close the modal after exporting
+	}
+
+	function exportAsPDF(selectedFiles) {
 		const doc = new jsPDF();
-		let dataToExport;
-		let name; 
+		let startY = 10; // Initial vertical position
 
-		switch (parseInt(fileSelected, 10)) {
-			case 1:
-				dataToExport = dataWithExploits;
-				name = "data_with_exploits";
-				doc.text("Data With Exploits Report", 10, 10);
-				break;
-			case 2:
-				dataToExport = entrypointMostInfo;
-				name = "entrypoint_most_info";
-				doc.text("Entrypoint Most Info Report", 10, 10);
-				break;
-			case 3:
-				dataToExport = port0Entries;
-				name = "port_0_entries";
-				doc.text("Port 0 Entries Report", 10, 10);
-				break;
-			case 4:
-				dataToExport = rankedEntryPoints;
-				name = "ranked_entry_points";
-				doc.text("Ranked Entry Points Report", 10, 10);
-				break;
-			default:
-				console.error("Invalid file selection");
+		const fileMappings = {
+			1: { data: dataWithExploits, name: "Data With Exploits" },
+			2: { data: entrypointMostInfo, name: "Entrypoint Most Info" },
+			3: { data: port0Entries, name: "Port 0 Entries" },
+			4: { data: rankedEntryPoints, name: "Ranked Entry Points" },
+		};
+
+		selectedFiles.forEach(file => {
+			const { data, name } = fileMappings[file];
+
+			// Skip if no data is available for the file
+			if (!data || Object.keys(data).length === 0) {
+				doc.text(`No data available for ${name}`, 10, startY);
+				startY += 10;
 				return;
-		}
+			}
 
-		if (!dataToExport || Object.keys(dataToExport).length === 0) {
-			alert("No data available to export!");
-			return;
-		}
+			// Add table name as a section header
+			doc.setFontSize(14);
+			doc.text(name, 10, startY);
+			startY += 10;
 
-		const tableHeaders = Object.keys(Object.values(dataToExport)[0] || {});
-		const tableRows = Object.values(dataToExport).map((item) => Object.values(item));
+			// Extract table headers and rows
+			const tableHeaders = Object.keys(Object.values(data)[0] || {});
+			const tableRows = Object.values(data).map(item => Object.values(item));
 
-		autoTable(doc, {
-			head: [tableHeaders],
-			body: tableRows,
-			startY: 20,
+			// Add table with autoTable
+			autoTable(doc, {
+				head: [tableHeaders],
+				body: tableRows,
+				startY: startY,
+				margin: { top: 20 },
+			});
+
+			// Update startY for the next table
+			startY = doc.lastAutoTable.finalY + 10;
 		});
 
-		doc.save(`${name}.pdf`);
+		// Save the combined document
+		doc.save(`${projectname}.pdf`);
 	}
 
-	function exportAsXML(fileSelected) {
-		let dataToExport;
-		let rootName;
-		let name;
+	function exportAsXML(selectedFiles) {
+		const fileMappings = {
+			1: { data: dataWithExploits, name: "DataWithExploits" },
+			2: { data: entrypointMostInfo, name: "EntrypointMostInfo" },
+			3: { data: port0Entries, name: "Port0Entries" },
+			4: { data: rankedEntryPoints, name: "RankedEntryPoints" },
+		};
 
-		switch (parseInt(fileSelected, 10)) {
-			case 1:
-				dataToExport = dataWithExploits;
-				name = "data_with_exploits";
-				rootName = "DataWithExploits";
-				break;
-			case 2:
-				dataToExport = entrypointMostInfo;
-				name = "entrypoint_most_info";
-				rootName = "EntrypointMostInfo";
-				break;
-			case 3:
-				dataToExport = port0Entries;
-				name = "port_0_entries";
-				rootName = "Port0Entries";
-				break;
-			case 4:
-				dataToExport = rankedEntryPoints;
-				name = "ranked_entry_points";
-				rootName = "RankedEntryPoints";
-				break;
-			default:
-				console.error("Invalid file selection");
-				return;
-		}
+		// Helper function to escape XML special characters
+		const escapeXML = (value) => {
+			if (typeof value !== "string") return value;
+			return value
+				.replace(/&/g, "&amp;")
+				.replace(/</g, "&lt;")
+				.replace(/>/g, "&gt;")
+				.replace(/"/g, "&quot;")
+				.replace(/'/g, "&apos;");
+		};
 
-		if (!dataToExport || Object.keys(dataToExport).length === 0) {
-			alert("No data available to export!");
-			return;
-		}
+		// Start the XML structure
+		let xmlContent = `<?xml version="1.0" encoding="UTF-8"?>\n<root>\n`;
 
-		let xmlContent = `<?xml version="1.0" encoding="UTF-8"?>\n<${rootName}>\n`;
-		Object.values(dataToExport).forEach((item) => {
-			xmlContent += "  <entry>\n";
-			for (const [key, value] of Object.entries(item)) {
-				xmlContent += `    <${key}>${value}</${key}>\n`;
+		// Process selected files
+		selectedFiles.forEach((file) => {
+			const { data, name } = fileMappings[file];
+
+			// Add section even if no data is available
+			xmlContent += `  <${name}>\n`;
+
+			if (!data || Object.keys(data).length === 0) {
+				xmlContent += `    <message>No data available</message>\n`;
+			} else {
+				// Convert each data entry to XML format
+				Object.values(data).forEach((row) => {
+					xmlContent += `    <entry>\n`;
+					Object.entries(row).forEach(([key, value]) => {
+						xmlContent += `      <${key}>${escapeXML(value)}</${key}>\n`;
+					});
+					xmlContent += `    </entry>\n`;
+				});
 			}
-			xmlContent += "  </entry>\n";
-		});
-		xmlContent += `</${rootName}>`;
 
-		const blob = new Blob([xmlContent], { type: "text/xml;charset=utf-8;" });
-		const url = URL.createObjectURL(blob);
+			// Close section
+			xmlContent += `  </${name}>\n`;
+		});
+
+		// Close the root tag
+		xmlContent += `</root>`;
+
+		// Trigger download as an XML file
+		const blob = new Blob([xmlContent], { type: "application/xml" });
 		const link = document.createElement("a");
-		link.href = url;
-		link.setAttribute("download", `${name}.xml`);
-		document.body.appendChild(link);
+		link.href = URL.createObjectURL(blob);
+		link.download = `${projectname}.xml`;
 		link.click();
-		document.body.removeChild(link);
 	}
 
 </script>
@@ -293,7 +309,7 @@
 			</div>
 
 			<!-- Select File to View -->
-			<div class="w-1/2 space-y-2 order-1">
+			<div class="w-1/2 space-y-2 order-2">
 				<label class="block text-gray-700 dark:text-white">Select File to View</label>
 				<select
 					bind:value={fileSelected}
@@ -308,24 +324,51 @@
 			</div>
 
 			<!-- Export Format Dropdown -->
-			<div class="w-1/2 space-y-2 order-2">
-				<label for="export-format" class="block text-gray-700 dark:text-white">Format to export</label>
-				<select
-					id="export-format"
-					bind:value={selectedFormat}
-					class="w-40 rounded-md border border-gray-300 bg-gray-200 px-4 py-2 focus:ring-2 focus:ring-blue-500"
-				>
-					{#each exportFormats as format}
-						<option value={format}>{format}</option>
-					{/each}
-				</select>
+			<div class="w-1/2 space-y-2 order-3 grid justify-start place-items-center">
 				<button
-					class="rounded-md bg-blue-600 px-6 py-2 text-white shadow-md transition duration-300 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-					on:click={handleExport}>Export</button
+					class="rounded-md bg-blue-600 px-8 py-4 text-white shadow-md transition duration-300 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+					on:click={handleExport}>Export Files</button
 				>
 			</div>
 		</div>
 	</div>
+
+	<!-- Export Modal -->
+	{#if showExportModal}
+		<div>
+			<div class="modal-backdrop" on:click={() => (showExportModal = false)}></div>
+			<div class="modal">
+				<h2 class="text-lg font-bold mb-4">Select Files to Export</h2>
+				<div class="mb-4">
+					{#each ['data_with_exploits', 'entrypoint_most_info', 'port_0_entries', 'ranked_entry_points'] as file, index}
+						<label>
+							<input
+								type="checkbox"
+								bind:group={selectedFiles}
+								value={index + 1}
+							/>
+							{file}
+						</label>
+						<br />
+					{/each}
+				</div>
+				<div class="mb-4">
+					<label>
+						Format:
+						<select bind:value={selectedExportFormat}> <!-- Change binding here -->
+							{#each exportFormats as format}
+								<option value={format}>{format}</option>
+							{/each}
+						</select>
+					</label>
+				</div>
+				<div class="flex justify-end space-x-4">
+					<button class="bg-gray-500 text-white px-4 py-2 rounded" on:click={() => (showExportModal = false)}>Cancel</button>
+					<button class="bg-blue-600 text-white px-4 py-2 rounded" on:click={finalizeExport}>Export</button>
+				</div>
+			</div>
+		</div>
+	{/if}
 
 	<!-- Conditional Rendering for Tables -->
 	{#if fileSelected === "1"}
@@ -440,3 +483,27 @@
 	{/if}
 
 </div>
+
+<style>
+	.modal {
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		z-index: 50;
+		background-color: white;
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+		padding: 20px;
+		border-radius: 8px;
+		width: 300px;
+	}
+	.modal-backdrop {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.5);
+		z-index: 40;
+	}
+</style>
