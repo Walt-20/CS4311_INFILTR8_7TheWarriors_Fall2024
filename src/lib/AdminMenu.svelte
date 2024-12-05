@@ -2,7 +2,7 @@
     import { navigateTo } from '../utils.js';
     import { page } from '$app/stores';
     import { Sidebar, SidebarGroup, SidebarItem, SidebarWrapper } from 'flowbite-svelte';
-    import { ChartPieSolid, ArrowRightToBracketOutline } from 'flowbite-svelte-icons';
+    import { ArrowRightToBracketOutline, UserCircleSolid, AddressBookSolid} from 'flowbite-svelte-icons';
     import { addLog } from '$lib/logStore.js'; // Import log function
 
     let menuOpen = false;
@@ -29,11 +29,23 @@
     <Sidebar {activeUrl}>
         <SidebarWrapper>
             <SidebarGroup>
-                <SidebarItem label="Password Reset" href="/admin-dashboard" on:click={() => logNavigation('admin-dashboard', '/admin-dashboard')}>
+                <SidebarItem label="Analyst Password Reset" href="/admin-dashboard" on:click={() => logNavigation('admin-dashboard', '/admin-dashboard')}>
                     <svelte:fragment slot="icon">
-                        <ChartPieSolid class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
+                        <AddressBookSolid class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
                     </svelte:fragment>
                 </SidebarItem>
+
+                <SidebarItem
+                    label="Admin Password Reset"
+                    href="/update-admin-password?username=admin"
+                    on:click={() => logNavigation('update-admin-password', '/update-admin-password?username=admin')}>               
+                    <svelte:fragment slot="icon">
+                        <UserCircleSolid
+                            class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
+                        />
+                    </svelte:fragment>
+                </SidebarItem>
+
 
                 <SidebarItem label="Log Out" href="#" on:click={() => {
                     navigateTo('/logout'); 

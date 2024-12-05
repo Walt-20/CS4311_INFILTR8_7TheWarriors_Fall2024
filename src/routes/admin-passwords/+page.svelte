@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
-	import { goto } from '$app/navigation';
+	import { navigateTo } from '../../utils.js';
 	import { addLog } from '$lib/logStore.js';
 
 	let username = '';
@@ -18,9 +18,8 @@
 
     const goToAdmin = () => {
     	addLog('Navigated back to admin homepage from password change page'); 
-    	goto('/admin-dashboard'); 
+    	navigateTo('/admin-dashboard'); 
 	};
-
 
 	// Function to validate password based on STIG requirements
 	const validatePassword = (password) => {
@@ -70,7 +69,7 @@
 
 		try {
 			// Send the request to the backend
-			const response = await fetch('http://127.0.0.1:8080/admin-password', {
+			const response = await fetch('http://127.0.0.1:8080/admin-to-user-password', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
@@ -87,7 +86,7 @@
                 alert(`Password for ${username} successfully updated.`)
 				currentError = '';
 				addLog(`Password updated successfully for user ${username}`);
-				goto('/admin-dashboard')
+				navigateTo('/admin-dashboard')
 			} else {
 				const data = await response.json();
 				currentError = data.error || 'Failed to update the password.';
