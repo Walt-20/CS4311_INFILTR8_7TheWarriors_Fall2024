@@ -12,7 +12,6 @@ app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
 
 # 'bolt://localhost:7687' for local database
-
 driver = GraphDatabase.driver('bolt://localhost:7687',auth=basic_auth("neo4j",os.environ.get("NEO4J_AUTH_KEY")))
 driver.verify_connectivity()
  
