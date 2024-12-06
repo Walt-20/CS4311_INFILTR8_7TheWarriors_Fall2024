@@ -5,20 +5,14 @@ The Intelligent Network Findings with In-Depth Learning for Targeted Reconnaissa
 INFILTR8 assists the urge for secure and resilient systems by automating the early stages of penetration testing. In addition to automating reconnaissance, INFILTR8 provides features that enable analysts to schedule analyses, monitor progress, adjust test scopes, and export compiled results. This comprehensive functionality makes INFILTR8 an invaluable asset for penetration testers and cybersecurity experts focused on discovering and mitigating vulnerabilities in defense-related systems.
 
 
-## Installation 
+## Installation and launch
 Before running the installation commands,ensure you have a .env file named .env with your database credentials inside the python-backend folder.
 
-Run the following command on a linux system:
+Run the following command on a linux system to install and start INFILTR8:
 ```bash   
-./linux-installation.sh
+./infiltr8
 ```
-## Launching INFILTR8
-
-To start the app, run the following scrip that initializes the front end, back end, and the database.
-
-```bash
-./linux-script.sh
-```
+This command handles both the installation and initialization processes, ensuring the frontend, backend, and database are properly set up and running.
 
 ## Stack Foundation 
 

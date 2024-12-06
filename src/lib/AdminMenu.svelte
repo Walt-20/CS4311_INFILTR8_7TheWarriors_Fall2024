@@ -2,7 +2,7 @@
     import { navigateTo } from '../utils.js';
     import { page } from '$app/stores';
     import { Sidebar, SidebarGroup, SidebarItem, SidebarWrapper } from 'flowbite-svelte';
-    import { ArrowRightToBracketOutline, UserCircleSolid, AddressBookSolid} from 'flowbite-svelte-icons';
+    import { ArrowRightToBracketOutline, CogOutline, UserCircleSolid, AddressBookSolid} from 'flowbite-svelte-icons';
     import { addLog } from '$lib/logStore.js'; // Import log function
 
     let menuOpen = false;
@@ -36,13 +36,19 @@
                 </SidebarItem>
 
                 <SidebarItem
-                    label="Admin Password Reset"
-                    href="/update-admin-password?username=admin"
-                    on:click={() => logNavigation('update-admin-password', '/update-admin-password?username=admin')}>               
+                    label="Update Admin Password"
+                    href="/admin-update-password?username=admin"
+                    on:click={() => logNavigation('admin-update-password', '/admin-update-password?username=admin')}>               
                     <svelte:fragment slot="icon">
                         <UserCircleSolid
                             class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
                         />
+                    </svelte:fragment>
+                </SidebarItem>
+
+                <SidebarItem label="Settings" href="/admin-settings" on:click={() => logNavigation('Settings', '/admin-settings')}>
+                    <svelte:fragment slot="icon">
+                        <CogOutline class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" />
                     </svelte:fragment>
                 </SidebarItem>
 
